@@ -12,14 +12,14 @@
 <meta property="og:site_name" content="追梦少年人♥">
 <meta property="og:description" content="此篇仅仅是为了总结这两天捣鼓Github以及Github Pages所用，非常感谢Lzh大哥的帮助，本渣渣是在他的帮助下一步步完成，留下了不学无术的眼泪。Lzh，永远滴神！ 关联本地项目和Github中的库创建完Github账号并创建完属于自己的仓库之后，需要通过一个叫做ssh key的东西来将本地项目连接在一起。通过点击Github页面右上角的头像处“Settings- SSH and GPG">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="c:%5CUsers%5Cyuyuyyu%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200624194342438.png">
-<meta property="og:image" content="c:%5CUsers%5Cyuyuyyu%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200624194619708.png">
-<meta property="og:image" content="c:%5CUsers%5Cyuyuyyu%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200624192826134.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/06/24/NwQrWV.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/06/24/NwQvFI.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/06/24/NwQgL4.png">
 <meta property="article:published_time" content="2020-06-24T12:31:10.803Z">
-<meta property="article:modified_time" content="2020-06-24T12:30:12.058Z">
+<meta property="article:modified_time" content="2020-06-24T12:53:37.772Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="c:%5CUsers%5Cyuyuyyu%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200624194342438.png">
+<meta name="twitter:image" content="https://s1.ax1x.com/2020/06/24/NwQrWV.png">
   
   
     <link rel="icon" href="/favicon.png">
@@ -161,12 +161,12 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -b 4096 -C &quot;your_email@example.com&quot;</span><br></pre></td></tr></table></figure>
 
 <p>之后的步骤回车键即可，当出现下图中的log时，代表属于你的ssh key创建成功。</p>
-<p><img src="C:%5CUsers%5Cyuyuyyu%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200624194342438.png" alt="image-20200624194342438"></p>
+<p><img src="https://s1.ax1x.com/2020/06/24/NwQrWV.png" alt="NwQrWV.png"></p>
 <h3 id="复制ssh-key"><a href="#复制ssh-key" class="headerlink" title="复制ssh key"></a>复制ssh key</h3><p>密钥创建完成之后，需要通过以下代码复制一串冗长的一段文本。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ clip &lt; ~&#x2F;.ssh&#x2F;id_rsa.pub</span><br></pre></td></tr></table></figure>
 
 <p>之后回到github界面复制到Key中即可，Title段根据你自己的喜欢来取。</p>
-<p><img src="C:%5CUsers%5Cyuyuyyu%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200624194619708.png" alt="image-20200624194619708"></p>
+<p><img src="https://s1.ax1x.com/2020/06/24/NwQvFI.png" alt="NwQvFI.png"></p>
 <p>完成上述步骤后回到Git bash中,通过输入以下代码检查是否绑定成功。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -T git@github.com</span><br></pre></td></tr></table></figure>
 
@@ -189,7 +189,7 @@
 
 <p>node.js的安装在官网上：<a href="http://nodejs.cn/download/" target="_blank" rel="noopener">http://nodejs.cn/download/</a> 下载安装包默认选项拉满即可。</p>
 <p>然后通过命令行验证，输入node -v，npm -v，出现版本号就可进入到下一步。</p>
-<p><img src="C:%5CUsers%5Cyuyuyyu%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200624192826134.png" alt="image-20200624192826134"></p>
+<p><img src="https://s1.ax1x.com/2020/06/24/NwQgL4.png" alt="NwQgL4.png"></p>
 <h2 id="搭建Git环境"><a href="#搭建Git环境" class="headerlink" title="搭建Git环境"></a>搭建Git环境</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Git环境能够方便将本地的网页和Github关联起来。</span><br></pre></td></tr></table></figure>
 
 
@@ -226,20 +226,6 @@
   </div>
   
     
-<nav id="article-nav">
-  
-    <a href="/2020/06/24/111/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          111
-        
-      </div>
-    </a>
-  
-  
-</nav>
-
   
 </article>
 
