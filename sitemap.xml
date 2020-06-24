@@ -8,4 +8,25 @@
     
   </url>
   
+  <url>
+    <loc>http://yoursite.com/2020/06/24/first%20blog/</loc>
+    
+    <lastmod>2020-06-24T12:30:12.058Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2020/06/24/first%20blog1/</loc>
+    
+    <lastmod>2020-06-24T12:30:12.058Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2020/06/24/first%20blog2/</loc>
+    
+    <lastmod>2020-06-24T12:30:12.058Z</lastmod>
+    
+  </url>
+  
 </urlset>
