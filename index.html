@@ -162,7 +162,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ clip &lt; ~&#x2F;.ssh&#x2F;id_rsa.pub</span><br></pre></td></tr></table></figure>
 
 <p>之后回到github界面复制到Key中即可，Title段根据你自己的喜欢来取。</p>
-<p>![](image/Github Pages部署/2.png)</p>
+<p>![](/Github Pages部署/2.png)</p>
 <p>完成上述步骤后回到Git bash中,通过输入以下代码检查是否绑定成功。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -T git@github.com</span><br></pre></td></tr></table></figure>
 
@@ -259,7 +259,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -b 4096 -C &quot;your_email@example.com&quot;</span><br></pre></td></tr></table></figure>
 
 <p>之后的步骤回车键即可，当出现下图中的log时，代表属于你的ssh key创建成功。</p>
-<p><img src="https://s1.ax1x.com/2020/06/24/NwQrWV.png" alt="NwQrWV.png"></p>
+<p>![](/Github Pages部署/1.png)</p>
 <h3 id="复制ssh-key"><a href="#复制ssh-key" class="headerlink" title="复制ssh key"></a>复制ssh key</h3><p>密钥创建完成之后，需要通过以下代码复制一串冗长的一段文本。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ clip &lt; ~&#x2F;.ssh&#x2F;id_rsa.pub</span><br></pre></td></tr></table></figure>
 
