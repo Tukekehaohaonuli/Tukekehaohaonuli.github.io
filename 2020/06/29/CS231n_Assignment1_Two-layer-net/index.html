@@ -5,12 +5,12 @@
   
   <title>CS231n_Assignment1_Two-layer-net | 追梦少年人♥</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="&#x2F;&#x2F;反向传播的意义是使在求导复杂函数解析式的时候能够简单有效 &#x2F;&#x2F;梯度下降仅仅是为了求最佳的W而使得预测结果的值更加准确！！！！！！！ &#x2F;&#x2F;梯度下降的过程中与loss无关！！！！！！ 1234567891011121314151617181920# A bit of setupimport numpy as npimport matplotlib.pyplot as pltfrom cs231n.">
+  <meta name="description" content="&#x2F;&#x2F;反向传播的意义是使在求导复杂函数解析式的时候能够简单有效 &#x2F;&#x2F;梯度下降仅仅是为了求最佳的W而使得预测结果的值更加准确！！！！！！！ &#x2F;&#x2F;梯度下降的过程中与loss无关！！！！！！">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CS231n_Assignment1_Two-layer-net">
 <meta property="og:url" content="http://yoursite.com/2020/06/29/CS231n_Assignment1_Two-layer-net/index.html">
 <meta property="og:site_name" content="追梦少年人♥">
-<meta property="og:description" content="&#x2F;&#x2F;反向传播的意义是使在求导复杂函数解析式的时候能够简单有效 &#x2F;&#x2F;梯度下降仅仅是为了求最佳的W而使得预测结果的值更加准确！！！！！！！ &#x2F;&#x2F;梯度下降的过程中与loss无关！！！！！！ 1234567891011121314151617181920# A bit of setupimport numpy as npimport matplotlib.pyplot as pltfrom cs231n.">
+<meta property="og:description" content="&#x2F;&#x2F;反向传播的意义是使在求导复杂函数解析式的时候能够简单有效 &#x2F;&#x2F;梯度下降仅仅是为了求最佳的W而使得预测结果的值更加准确！！！！！！！ &#x2F;&#x2F;梯度下降的过程中与loss无关！！！！！！">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://yoursite.com/images/CS231n_Assignment1_Two-layer-net/1.png">
 <meta property="og:image" content="http://yoursite.com/images/CS231n_Assignment1_Two-layer-net/2.png">
@@ -24,7 +24,7 @@
 <meta property="og:image" content="http://yoursite.com/images/CS231n_Assignment1_Two-layer-net/10.png">
 <meta property="og:image" content="http://yoursite.com/images/CS231n_Assignment1_Two-layer-net/11.png">
 <meta property="article:published_time" content="2020-06-29T05:45:33.879Z">
-<meta property="article:modified_time" content="2020-06-30T06:19:16.797Z">
+<meta property="article:modified_time" content="2020-06-30T06:23:56.403Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://yoursite.com/images/CS231n_Assignment1_Two-layer-net/1.png">
@@ -163,6 +163,8 @@
         <p>//反向传播的意义是使在求导复杂函数解析式的时候能够简单有效</p>
 <p>//梯度下降仅仅是为了求最佳的W而使得预测结果的值更加准确！！！！！！！</p>
 <p>//梯度下降的过程中与loss无关！！！！！！</p>
+<a id="more"></a>
+
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"># A bit of setup</span><br><span class="line"></span><br><span class="line">import numpy as np</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line"></span><br><span class="line">from cs231n.classifiers.neural_net import TwoLayerNet</span><br><span class="line"></span><br><span class="line">%matplotlib inline</span><br><span class="line">plt.rcParams[&#39;figure.figsize&#39;] &#x3D; (10.0, 8.0) # set default size of plots</span><br><span class="line">plt.rcParams[&#39;image.interpolation&#39;] &#x3D; &#39;nearest&#39;</span><br><span class="line">plt.rcParams[&#39;image.cmap&#39;] &#x3D; &#39;gray&#39;</span><br><span class="line"></span><br><span class="line"># for auto-reloading external modules</span><br><span class="line"># see http:&#x2F;&#x2F;stackoverflow.com&#x2F;questions&#x2F;1907993&#x2F;autoreload-of-modules-in-ipython</span><br><span class="line">%load_ext autoreload</span><br><span class="line">%autoreload 2</span><br><span class="line"></span><br><span class="line">def rel_error(x, y):</span><br><span class="line">    &quot;&quot;&quot; returns relative error &quot;&quot;&quot;</span><br><span class="line">    return np.max(np.abs(x - y) &#x2F; (np.maximum(1e-8, np.abs(x) + np.abs(y))))</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"># Create a small net and some toy data to check your implementations.</span><br><span class="line"># Note that we set the random seed for repeatable experiments.</span><br><span class="line">&#x2F;&#x2F;W1[D,H] b1[H,]  W2[H,C] b2[C,]</span><br><span class="line">input_size &#x3D; 4         &#x2F;&#x2F;D</span><br><span class="line">hidden_size &#x3D; 10       &#x2F;&#x2F;H</span><br><span class="line">num_classes &#x3D; 3        &#x2F;&#x2F;c</span><br><span class="line">num_inputs &#x3D; 5</span><br><span class="line"></span><br><span class="line">def init_toy_model():   &#x2F;&#x2F;初始化模型</span><br><span class="line">    np.random.seed(0)</span><br><span class="line">    return TwoLayerNet(input_size, hidden_size, num_classes, std&#x3D;1e-1)</span><br><span class="line"></span><br><span class="line">def init_toy_data():     &#x2F;&#x2F;初始化随机数据</span><br><span class="line">    np.random.seed(1)</span><br><span class="line">    X &#x3D; 10 * np.random.randn(num_inputs, input_size)</span><br><span class="line">    y &#x3D; np.array([0, 1, 2, 2, 1])</span><br><span class="line">    return X, y</span><br><span class="line"></span><br><span class="line">net &#x3D; init_toy_model()&#x2F;&#x2F;构建分类器</span><br><span class="line">X, y &#x3D; init_toy_data()&#x2F;&#x2F;初始化已给的随机数</span><br></pre></td></tr></table></figure>
