@@ -5,12 +5,12 @@
   
   <title>CS231n-assignment1-svm | 追梦少年人♥</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="此篇仅记录自己学习CS231n的习题成果所用 SVM正文代码段及结果图如下：123456789101112131415161718192021222324252627282930313233import randomimport numpy as npfrom cs231n.data_utils import load_CIFAR10import matplotlib.pyplot as plt%">
+  <meta name="description" content="此篇仅记录自己学习CS231n的习题成果所用">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CS231n-assignment1-svm">
 <meta property="og:url" content="http://yoursite.com/2020/06/26/CS231n-assignment1-svm/index.html">
 <meta property="og:site_name" content="追梦少年人♥">
-<meta property="og:description" content="此篇仅记录自己学习CS231n的习题成果所用 SVM正文代码段及结果图如下：123456789101112131415161718192021222324252627282930313233import randomimport numpy as npfrom cs231n.data_utils import load_CIFAR10import matplotlib.pyplot as plt%">
+<meta property="og:description" content="此篇仅记录自己学习CS231n的习题成果所用">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://yoursite.com/images/CS231n-assignment1-svm/1.png">
 <meta property="og:image" content="http://yoursite.com/images/CS231n-assignment1-svm/2.png">
@@ -30,7 +30,7 @@
 <meta property="og:image" content="http://yoursite.com/images/CS231n-assignment1-svm/16.png">
 <meta property="og:image" content="http://yoursite.com/images/CS231n-assignment1-svm/17.png">
 <meta property="article:published_time" content="2020-06-26T11:47:44.032Z">
-<meta property="article:modified_time" content="2020-06-28T08:22:14.806Z">
+<meta property="article:modified_time" content="2020-06-30T06:27:58.002Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://yoursite.com/images/CS231n-assignment1-svm/1.png">
@@ -167,6 +167,8 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>此篇仅记录自己学习CS231n的习题成果所用</p>
+<a id="more"></a>
+
 <h1 id="SVM正文代码段及结果图如下："><a href="#SVM正文代码段及结果图如下：" class="headerlink" title="SVM正文代码段及结果图如下："></a>SVM正文代码段及结果图如下：</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import random</span><br><span class="line">import numpy as np</span><br><span class="line">from cs231n.data_utils import load_CIFAR10</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line"></span><br><span class="line">%matplotlib inline</span><br><span class="line">plt.rcParams[&#39;figure.figsize&#39;] &#x3D; (10.0, 8.0) # set default size of plots</span><br><span class="line">plt.rcParams[&#39;image.interpolation&#39;] &#x3D; &#39;nearest&#39;</span><br><span class="line">plt.rcParams[&#39;image.cmap&#39;] &#x3D; &#39;gray&#39;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">%load_ext autoreload</span><br><span class="line">%autoreload 2</span><br><span class="line"></span><br><span class="line"># Load the raw CIFAR-10 data.</span><br><span class="line">cifar10_dir &#x3D; &#39;cs231n&#x2F;datasets&#x2F;cifar-10-batches-py&#39;</span><br><span class="line"></span><br><span class="line"># Cleaning up variables to prevent loading data multiple times (which may cause memory issue)</span><br><span class="line">try:</span><br><span class="line">   del X_train, y_train</span><br><span class="line">   del X_test, y_test</span><br><span class="line">   print(&#39;Clear previously loaded data.&#39;)</span><br><span class="line">except:</span><br><span class="line">   pass</span><br><span class="line"></span><br><span class="line">X_train, y_train, X_test, y_test &#x3D; load_CIFAR10(cifar10_dir)</span><br><span class="line"></span><br><span class="line"># As a sanity check, we print out the size of the training and test data.</span><br><span class="line">print(&#39;Training data shape: &#39;, X_train.shape)</span><br><span class="line">print(&#39;Training labels shape: &#39;, y_train.shape)</span><br><span class="line">print(&#39;Test data shape: &#39;, X_test.shape)</span><br><span class="line">print(&#39;Test labels shape: &#39;, y_test.shape)</span><br></pre></td></tr></table></figure>
 
 <p><img src="/images/CS231n-assignment1-svm/1.png" alt></p>
