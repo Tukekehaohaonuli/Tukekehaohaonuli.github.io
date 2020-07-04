@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://yoursite.com/2020/07/02/CS231n_Assignment2_Fully-Connected_Neural_Nets/</loc>
+    <loc>http://yoursite.com/2020/07/03/%E7%94%9F%E6%88%90%E8%84%9A%E6%9C%AC/</loc>
     
-    <lastmod>2020-07-04T03:14:47.891Z</lastmod>
+    <lastmod>2020-07-04T13:11:03.566Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2020/07/03/%E7%94%9F%E6%88%90%E8%84%9A%E6%9C%AC/</loc>
+    <loc>http://yoursite.com/2020/07/04/CS231n_Assignment2_Batch_Normalization/</loc>
     
-    <lastmod>2020-07-03T11:09:11.139Z</lastmod>
+    <lastmod>2020-07-04T13:07:08.048Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2020/07/02/CS231n_Assignment2_Fully-Connected_Neural_Nets/</loc>
+    
+    <lastmod>2020-07-04T03:14:47.891Z</lastmod>
     
   </url>
   
