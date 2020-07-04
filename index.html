@@ -148,25 +148,63 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>以命令行的方式运行python文件，并且生成exe文件。</p>
-<h1 id="exe文件的原因"><a href="#exe文件的原因" class="headerlink" title="exe文件的原因"></a>exe文件的原因</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">为什么要转换为exe文件？</span><br><span class="line">exe文件是可执行文件，可以在没有安装python的情况下执行脚本文件。如果直接运行.py文件的情况下，需要安装一些包才能运行。</span><br></pre></td></tr></table></figure>
-
-<h1 id="案例代码"><a href="#案例代码" class="headerlink" title="案例代码"></a>案例代码</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;以脚本的方式传入参数，读入.til格式的图片，处理之后输出</span><br><span class="line">import tifffile as tiff</span><br><span class="line">import numpy as np</span><br><span class="line">import argparse</span><br><span class="line">parser&#x3D;argparse.ArgumentParser(description&#x3D;&#39;mat&#39;)</span><br><span class="line">parser.add_argument(&#39;-d&#39;,&#39;--data&#39;)</span><br><span class="line">parser.add_argument(&#39;-n&#39;,&#39;--channel&#39;,default&#x3D;&#39;0&#39;)</span><br><span class="line">parser.add_argument(&#39;-info&#39;,&#39;--infomation&#39;,default&#x3D;&#39;12341234&#39;)</span><br><span class="line">parser.add_argument(&#39;-r&#39;,&#39;--region&#39;,default&#x3D;&#39;[0,0,256,256]&#39;)</span><br><span class="line">parser.add_argument(&#39;-s&#39;,&#39;--strength&#39;,default&#x3D;&#39;7&#39;)</span><br><span class="line">args&#x3D;parser.parse_args()</span><br><span class="line">str1&#x3D;args.data</span><br><span class="line">channel&#x3D;args.channel</span><br><span class="line">info&#x3D;args.infomation</span><br><span class="line">region&#x3D;args.region</span><br><span class="line">srth&#x3D;args.strength</span><br><span class="line">img&#x3D;tiff.imread(str1)</span><br><span class="line"># draw&#x3D;ImageDraw(img)</span><br><span class="line"># draw.text((region,info)</span><br><span class="line">tiff.imsave(&#39;new.tif&#39;,img)</span><br></pre></td></tr></table></figure>
-
-<h1 id="生成exe文件"><a href="#生成exe文件" class="headerlink" title="生成exe文件"></a>生成exe文件</h1><h3 id="安装pyinstaller包"><a href="#安装pyinstaller包" class="headerlink" title="安装pyinstaller包"></a>安装pyinstaller包</h3><p>生成exe文件需要先安装pyinstaller文件，在命令行中执行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install pyinstaller</span><br></pre></td></tr></table></figure>
-
-<h3 id="pyinstaller参数的作用"><a href="#pyinstaller参数的作用" class="headerlink" title="pyinstaller参数的作用"></a>pyinstaller参数的作用</h3><p>-F 表示生成单个可执行文件<br>-D –onedir 创建一个目录，包含exe文件，但会依赖很多文件（默认选项）<br>-w 表示去掉控制台窗口，这在GUI界面时非常有用。不过如果是命令行程序的话那就把这个选项删除吧<br>-c –console, –nowindowed 使用控制台，无界面(默认)<br>-p 表示你自己自定义需要加载的类路径，一般情况下用不到<br>-i 表示可执行文件的图标    图标的情况下需要.ico类型的文件</p>
-<p>转自<a href="https://segmentfault.com/a/1190000016087451" target="_blank" rel="noopener">https://segmentfault.com/a/1190000016087451</a></p>
-<p>最后将.py文件和图标放在同个目录之下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyinstaller -F test.py</span><br></pre></td></tr></table></figure>
-
-<h3 id><a href="#" class="headerlink" title></a><img src="/images/%E7%94%9F%E6%88%90%E8%84%9A%E6%9C%AC/1.png" alt></h3><p>如果出现上图的错误，可能因为图片的格式有问题，将图标去掉即可生成</p>
-
+        
+          <p class="article-more-link">
+            <a href="/2020/07/03/%E7%94%9F%E6%88%90%E8%84%9A%E6%9C%AC/#more">......</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
       
         <a data-url="http://yoursite.com/2020/07/03/%E7%94%9F%E6%88%90%E8%84%9A%E6%9C%AC/" data-id="ckc64745t00002ktj8ev26wvo" class="article-share-link">Share</a>
+      
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+    
+  
+
+    
+    <article id="post-CS231n_Assignment2_Fully-Connected Neural Nets" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/07/02/CS231n_Assignment2_Fully-Connected%20Neural%20Nets/" class="article-date">
+  <time datetime="2020-07-02T08:25:21.068Z" itemprop="datePublished">2020-07-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/02/CS231n_Assignment2_Fully-Connected%20Neural%20Nets/">CS231n_Assignment2_Fully-Connected Neural Nets</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>//本章主要讲述模块化的思想，即写成一个个的函数，然后各层整合时调用</p>
+<p>//完成4种梯度下降算法，并测试表现。</p>
+        
+          <p class="article-more-link">
+            <a href="/2020/07/02/CS231n_Assignment2_Fully-Connected%20Neural%20Nets/#more">......</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoursite.com/2020/07/02/CS231n_Assignment2_Fully-Connected%20Neural%20Nets/" data-id="ckc72i2z900001ktjasnr1r9v" class="article-share-link">Share</a>
       
 
       
