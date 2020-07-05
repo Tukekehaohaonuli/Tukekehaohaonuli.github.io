@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2020/07/05/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/</loc>
+    
+    <lastmod>2020-07-05T12:49:38.507Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2020/07/02/CS231n_Assignment2_Fully-Connected_Neural_Nets/</loc>
+    
+    <lastmod>2020-07-05T05:54:31.762Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2020/07/05/CS231n_Assignment2_Dropout/</loc>
     
     <lastmod>2020-07-05T02:37:50.304Z</lastmod>
@@ -19,13 +33,6 @@
     <loc>http://yoursite.com/2020/07/04/CS231n_Assignment2_Batch_Normalization/</loc>
     
     <lastmod>2020-07-04T13:07:08.048Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2020/07/02/CS231n_Assignment2_Fully-Connected_Neural_Nets/</loc>
-    
-    <lastmod>2020-07-04T03:14:47.891Z</lastmod>
     
   </url>
   

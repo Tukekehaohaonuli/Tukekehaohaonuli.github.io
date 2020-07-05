@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>python函数解析 | 追梦少年人♥</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="python numpy.pad函数示例constant:默认填充0   python numpy.sum函数示例axis&#x3D;0则按照第一维度相加 axis&#x3D;1则按照第二维度相加， axis&#x3D;2则按照第三维度相加，以此类推： 按照第一维度相加，所以能看到数组的值没有改变：  按照第二维度相加，也就是我们常说的按列相加，但实际上并不是这么理解：  按照第三维度相加，这就慢慢清晰了起来  将3个维度统统">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python函数解析">
+<meta property="og:url" content="http://yoursite.com/2020/07/05/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/index.html">
+<meta property="og:site_name" content="追梦少年人♥">
+<meta property="og:description" content="python numpy.pad函数示例constant:默认填充0   python numpy.sum函数示例axis&#x3D;0则按照第一维度相加 axis&#x3D;1则按照第二维度相加， axis&#x3D;2则按照第三维度相加，以此类推： 按照第一维度相加，所以能看到数组的值没有改变：  按照第二维度相加，也就是我们常说的按列相加，但实际上并不是这么理解：  按照第三维度相加，这就慢慢清晰了起来  将3个维度统统">
+<meta property="og:image" content="http://yoursite.com/iimages/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/2.png">
+<meta property="og:image" content="http://yoursite.com/iimages/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/3.png">
+<meta property="og:image" content="http://yoursite.com/iimages/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/4.png">
+<meta property="og:image" content="http://yoursite.com/iimages/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/5.png">
+<meta property="og:image" content="http://yoursite.com/iimages/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/6.png">
+<meta property="og:image" content="http://yoursite.com/iimages/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/7.png">
+<meta property="og:image" content="http://yoursite.com/.com//C:%5CUsers%5Cyuyuyyu%5CTukekehaohaonuli.github.io%5Csource%5Cimages%5Cpython%EF%BF%BDQpe%E3%89%90g%5C8.png">
+<meta property="og:image" content="http://yoursite.com/.com//C:%5CUsers%5Cyuyuyyu%5CTukekehaohaonuli.github.io%5Csource%5Cimages%5Cpython%EF%BF%BDQpe%E3%89%90g%5C9.png">
+<meta property="article:published_time" content="2020-07-05T12:46:20.944Z">
+<meta property="article:modified_time" content="2020-07-05T12:49:38.507Z">
+<meta property="article:author" content="Tukeke">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/iimages/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/2.png">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/css/scrollUp/image.css">
+
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="追梦少年人♥" type="application/atom+xml">
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <div class="logo">
+        <img src="/logo.png" alt="Profile Picture">
+      </div>
+      <div id="title">追梦少年人♥</div>
+      
+        <div id="subtitle">Stay focus,stay humble</div>
+      
+       <ul class="my-socials">
+  
+  <li>
+  	<a href="https://github.com/Tukekehaohaonuli" class="github" target="_blank">
+  		<i class="fa fa-github"></i>
+  	</a>
+  </li>
+  
+  <li>
+  	<a href="YOUR WEIBO HOME PAGE URL" class="weibo" target="_blank">
+  		<i class="fa fa-weibo"></i>
+  	</a>
+  </li>
+  
+ 
+</ul>
+    </div>
+  </div>
+  <div id="header-inner" class="">
+    <nav id="main-nav">
+      <a id="main-nav-toggle" class="nav-icon"></a>
+      <!--
+        
+          
+            <a class="main-nav-link" href="/">首页</a>
+          
+            <a class="main-nav-link" href="/categories/life">生活</a>
+          
+            <a class="main-nav-link" href="/archives">归档</a>
+          
+        
+      -->
+    </nav>
+    <nav id="title-nav" style="display:none">
+      <a href="/">追梦少年人♥</a>
+      <img src="/logo.png" alt="Profile Picture">
+      <!--
+      <span id="title-nav-socials">
+        
+          <a href="https://github.com/Tukekehaohaonuli" class="github" target="_blank">
+            <i class="fa fa-github"></i>
+          </a>
+        
+          <a href="YOUR WEIBO HOME PAGE URL" class="weibo" target="_blank">
+            <i class="fa fa-weibo"></i>
+          </a>
+        
+       
+     </span>
+      -->
+    </nav>
+    <nav id="sub-nav">
+      
+      <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+    </nav>
+    <div id="search-form-wrap">
+      <form action="http://www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+        <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+        <input type="submit" value="" class="search-form-submit">
+        <input name=tn type=hidden value="bds">
+        <input name=cl type=hidden value="3">
+        <input name=ct type=hidden value="2097152">
+        <input type="hidden" name="si" value="yoursite.com">
+      </form>
+    </div>
+  </div>
+  <div class="site-nav" style="display: none;">
+    <ul>
+      
+      
+        <li><a href="/">首页</a></li>
+      
+        <li><a href="/categories/life">生活</a></li>
+      
+        <li><a href="/archives">归档</a></li>
+      
+      
+    </ul>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-python函数解析" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/07/05/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/" class="article-date">
+  <time datetime="2020-07-05T12:46:20.944Z" itemprop="datePublished">2020-07-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      python函数解析
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="python-numpy-pad函数示例"><a href="#python-numpy-pad函数示例" class="headerlink" title="python numpy.pad函数示例"></a>python numpy.pad函数示例</h3><p>constant:默认填充0</p>
+<p><img src="/iimages/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/2.png" alt="2"></p>
+<p><img src="/iimages/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/3.png" alt="3"></p>
+<h3 id="python-numpy-sum函数示例"><a href="#python-numpy-sum函数示例" class="headerlink" title="python numpy.sum函数示例"></a>python numpy.sum函数示例</h3><p>axis=0则按照第一维度相加</p>
+<p>axis=1则按照第二维度相加，</p>
+<p>axis=2则按照第三维度相加，以此类推：</p>
+<p>按照第一维度相加，所以能看到数组的值没有改变：</p>
+<p><img src="/iimages/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/4.png" alt="4"></p>
+<p>按照第二维度相加，也就是我们常说的按列相加，但实际上并不是这么理解：</p>
+<p><img src="/iimages/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/5.png" alt="5"></p>
+<p>按照第三维度相加，这就慢慢清晰了起来</p>
+<p><img src="/iimages/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/6.png" alt="6"></p>
+<p>将3个维度统统相加</p>
+<p><img src="/iimages/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/7.png" alt="7"></p>
+<h3 id="python-numpy-transpose"><a href="#python-numpy-transpose" class="headerlink" title="python numpy.transpose"></a>python numpy.transpose</h3><p>该函数用于转换输入的维度。</p>
+<p><img src="/.com//C:%5CUsers%5Cyuyuyyu%5CTukekehaohaonuli.github.io%5Csource%5Cimages%5Cpython%EF%BF%BDQpe%E3%89%90g%5C8.png" alt="8"></p>
+<h3 id="python-numpy-矩阵相关取值问题"><a href="#python-numpy-矩阵相关取值问题" class="headerlink" title="python numpy 矩阵相关取值问题"></a>python numpy 矩阵相关取值问题</h3><p><img src="/.com//C:%5CUsers%5Cyuyuyyu%5CTukekehaohaonuli.github.io%5Csource%5Cimages%5Cpython%EF%BF%BDQpe%E3%89%90g%5C9.png" alt="9"></p>
+<p>转换成矩阵的所有行，对应的第二、三、四维所对应的矩阵</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoursite.com/2020/07/05/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/" data-id="ckc92pscv0000uotj890lcbox" class="article-share-link">Share</a>
+      
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/07/05/CS231n_Assignment2_Dropout/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">CS231n_Assignment2_Dropout</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Tukeke<br>
+      Theme <a href="https://github.com/Tukekehaohaonuli/" target="_blank">Oishi</a>, Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <!--
+      <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/categories/life" class="mobile-nav-link">生活</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+</nav>
+    -->
+    
+
+<!-- 百度分享 start -->
+
+<!-- 百度分享 end -->
+
+<script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+
+<script src="/js/jquery.scrollUp.min.js"></script>
+
+
+<script src="/js/jquery.transform.js"></script>
+
+
+<script src="/js/menu.js"></script>
+
+
+
+<script src="/js/script.js"></script>
+
+
+<script src="/js/scrollUp.js"></script>
+
+
+  </div>
+</body>
+</html>
