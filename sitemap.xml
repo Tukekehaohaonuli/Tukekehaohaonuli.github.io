@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2020/07/05/CS231n_Assignment2_Dropout/</loc>
+    
+    <lastmod>2020-07-05T02:37:50.304Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2020/07/03/%E7%94%9F%E6%88%90%E8%84%9A%E6%9C%AC/</loc>
     
     <lastmod>2020-07-04T13:11:03.566Z</lastmod>
