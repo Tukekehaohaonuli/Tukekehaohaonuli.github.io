@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2020/07/05/CS231n_Assignment2_Convolutional_Networks/</loc>
+    
+    <lastmod>2020-07-06T06:36:29.446Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2020/07/05/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/</loc>
     
-    <lastmod>2020-07-05T12:49:38.507Z</lastmod>
+    <lastmod>2020-07-06T05:32:41.699Z</lastmod>
     
   </url>
   
