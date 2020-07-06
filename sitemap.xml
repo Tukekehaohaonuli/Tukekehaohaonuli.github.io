@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://yoursite.com/2020/07/05/CS231n_Assignment2_Convolutional_Networks/</loc>
+    <loc>http://yoursite.com/2020/07/06/%E5%AE%89%E8%A3%85%E6%B5%8B%E8%AF%95CUDA%E3%80%81cuDNN%E3%80%81Pytorch-Gpu/</loc>
     
-    <lastmod>2020-07-06T06:42:03.358Z</lastmod>
+    <lastmod>2020-07-06T11:05:47.593Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2020/07/05/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/</loc>
     
-    <lastmod>2020-07-06T06:41:06.150Z</lastmod>
+    <lastmod>2020-07-06T07:08:16.662Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2020/07/05/CS231n_Assignment2_Convolutional_Networks/</loc>
+    
+    <lastmod>2020-07-06T06:42:03.358Z</lastmod>
     
   </url>
   
