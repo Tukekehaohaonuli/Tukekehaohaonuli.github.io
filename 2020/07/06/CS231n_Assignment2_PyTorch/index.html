@@ -5,14 +5,14 @@
   
   <title>CS231n_Assignment2_PyTorch | 追梦少年人♥</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="总结：使用Pytorch、TensorFlow的好处？ 1.可以直接再GPU上训练神经网络，而不需要再编写CUDA代码。 2.框架中提供很多API直接调用，而不用像现在一样手写各种功能。 Pytorch和TensorFlow都未完成，以后学习了之后再回来完成吧hhh… Training a ConvNet PyTorch12345678910111213import torchimport tor">
+  <meta name="description" content="Training a ConvNet PyTorch">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CS231n_Assignment2_PyTorch">
 <meta property="og:url" content="http://yoursite.com/2020/07/06/CS231n_Assignment2_PyTorch/index.html">
 <meta property="og:site_name" content="追梦少年人♥">
-<meta property="og:description" content="总结：使用Pytorch、TensorFlow的好处？ 1.可以直接再GPU上训练神经网络，而不需要再编写CUDA代码。 2.框架中提供很多API直接调用，而不用像现在一样手写各种功能。 Pytorch和TensorFlow都未完成，以后学习了之后再回来完成吧hhh… Training a ConvNet PyTorch12345678910111213import torchimport tor">
+<meta property="og:description" content="Training a ConvNet PyTorch">
 <meta property="article:published_time" content="2020-07-06T07:15:35.435Z">
-<meta property="article:modified_time" content="2020-07-06T12:25:40.204Z">
+<meta property="article:modified_time" content="2020-07-06T13:17:01.311Z">
 <meta property="article:author" content="Tukeke">
 <meta name="twitter:card" content="summary">
   
@@ -147,11 +147,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>总结：使用Pytorch、TensorFlow的好处？</p>
+        <h1 id="Training-a-ConvNet-PyTorch"><a href="#Training-a-ConvNet-PyTorch" class="headerlink" title="Training a ConvNet PyTorch"></a>Training a ConvNet PyTorch</h1><a id="more"></a>
+
+<p>总结：使用Pytorch、TensorFlow的好处？</p>
 <p>1.可以直接再GPU上训练神经网络，而不需要再编写CUDA代码。</p>
 <p>2.框架中提供很多API直接调用，而不用像现在一样手写各种功能。</p>
 <p>Pytorch和TensorFlow都未完成，以后学习了之后再回来完成吧hhh…</p>
-<h1 id="Training-a-ConvNet-PyTorch"><a href="#Training-a-ConvNet-PyTorch" class="headerlink" title="Training a ConvNet PyTorch"></a>Training a ConvNet PyTorch</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import torch</span><br><span class="line">import torch.nn as nn</span><br><span class="line">import torch.optim as optim</span><br><span class="line">from torch.autograd import Variable</span><br><span class="line">from torch.utils.data import DataLoader</span><br><span class="line">from torch.utils.data import sampler</span><br><span class="line"></span><br><span class="line">import torchvision.datasets as dset</span><br><span class="line">import torchvision.transforms as T</span><br><span class="line"></span><br><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line">import timeit</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import torch</span><br><span class="line">import torch.nn as nn</span><br><span class="line">import torch.optim as optim</span><br><span class="line">from torch.autograd import Variable</span><br><span class="line">from torch.utils.data import DataLoader</span><br><span class="line">from torch.utils.data import sampler</span><br><span class="line"></span><br><span class="line">import torchvision.datasets as dset</span><br><span class="line">import torchvision.transforms as T</span><br><span class="line"></span><br><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line">import timeit</span><br></pre></td></tr></table></figure>
 
 
 
