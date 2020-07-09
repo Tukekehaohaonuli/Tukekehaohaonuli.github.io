@@ -2,30 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://yoursite.com/2020/07/06/CS231n_Assignment2_PyTorch/</loc>
+    <loc>http://yoursite.com/2020/07/08/CS231n_Assignment3_Image_Captioning_with_RNNs/</loc>
     
-    <lastmod>2020-07-06T13:17:01.311Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2020/07/02/CS231n_Assignment2_Fully-Connected_Neural_Nets/</loc>
-    
-    <lastmod>2020-07-06T11:57:39.521Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2020/07/06/%E5%AE%89%E8%A3%85%E6%B5%8B%E8%AF%95CUDA%E3%80%81cuDNN%E3%80%81Pytorch-Gpu/</loc>
-    
-    <lastmod>2020-07-06T11:05:47.593Z</lastmod>
+    <lastmod>2020-07-09T11:36:36.071Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2020/07/05/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/</loc>
     
-    <lastmod>2020-07-06T07:08:16.662Z</lastmod>
+    <lastmod>2020-07-09T11:33:35.995Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2020/07/02/CS231n_Assignment2_Fully-Connected_Neural_Nets/</loc>
+    
+    <lastmod>2020-07-07T05:47:01.064Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2020/07/06/%E5%AE%89%E8%A3%85%E6%B5%8B%E8%AF%95CUDA%E3%80%81cuDNN%E3%80%81Pytorch-Gpu/</loc>
+    
+    <lastmod>2020-07-07T01:15:09.170Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2020/07/06/CS231n_Assignment2_PyTorch/</loc>
+    
+    <lastmod>2020-07-06T13:17:01.311Z</lastmod>
     
   </url>
   
