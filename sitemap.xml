@@ -2,23 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://yoursite.com/2020/07/08/CS231n_Assignment3_Image_Captioning_with_RNNs/</loc>
+    <loc>http://yoursite.com/2020/06/24/Github%20Pages%E9%83%A8%E7%BD%B2/</loc>
     
-    <lastmod>2020-07-10T03:02:36.137Z</lastmod>
+    <lastmod>2020-07-11T09:29:46.072Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2020/07/09/CS231n_Assignment3_Image_Captioning_with_LSTMs/</loc>
+    <loc>http://yoursite.com/2020/06/25/CS231n_Assignment1_Knn/</loc>
     
-    <lastmod>2020-07-10T02:53:06.942Z</lastmod>
+    <lastmod>2020-07-11T08:46:49.163Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2020/07/05/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/</loc>
     
-    <lastmod>2020-07-09T11:33:35.995Z</lastmod>
+    <lastmod>2020-07-11T08:08:36.518Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2020/07/09/CS231n_Assignment3_Image_Captioning_with_LSTMs/</loc>
+    
+    <lastmod>2020-07-11T08:07:41.377Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2020/07/08/CS231n_Assignment3_Image_Captioning_with_RNNs/</loc>
+    
+    <lastmod>2020-07-10T03:02:36.137Z</lastmod>
     
   </url>
   
@@ -72,23 +86,9 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2020/06/25/CS231n_Assignment1_Knn/</loc>
-    
-    <lastmod>2020-07-01T04:24:19.455Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://yoursite.com/2020/06/30/CS231n_Assignment1_Features/</loc>
     
     <lastmod>2020-06-30T10:19:52.337Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2020/06/24/Github%20Pages%E9%83%A8%E7%BD%B2/</loc>
-    
-    <lastmod>2020-06-30T06:28:03.567Z</lastmod>
     
   </url>
   
