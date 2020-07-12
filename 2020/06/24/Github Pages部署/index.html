@@ -17,7 +17,7 @@
 <meta property="og:image" content="http://yoursite.com/images/GithubPages%E9%83%A8%E7%BD%B2/2.png">
 <meta property="og:image" content="http://yoursite.com/images/GithubPages%E9%83%A8%E7%BD%B2/3.png">
 <meta property="article:published_time" content="2020-06-24T12:31:10.803Z">
-<meta property="article:modified_time" content="2020-07-11T11:53:41.582Z">
+<meta property="article:modified_time" content="2020-07-11T12:54:46.876Z">
 <meta property="article:author" content="Tukeke">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://yoursite.com/images/GithubPages%E9%83%A8%E7%BD%B2/4.png">
@@ -187,7 +187,7 @@
 <h3 id="上传项目到库中"><a href="#上传项目到库中" class="headerlink" title="上传项目到库中"></a>上传项目到库中</h3><p>之后再通过下面的代码上传项目到库中</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git add test.txt  #添加单个文件</span><br><span class="line">$ git add .   #添加所有文件</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git status  #完成上述代码之后可以通过此段代码来检查文件名是否变为绿色来判断是否上传成功</span><br><span class="line"></span><br><span class="line">$ git commit -m &#39;test&#39;  #记录此次的提交，并上传到库中，注意这里直接 -m &#39;&#39; 加注释信息，不然会进入文本编辑模式，操作起来比较麻烦。</span><br><span class="line">$ git push origin master  &#x2F;&#x2F;之后输入该段代码会弹出Github Login界面，输入你的邮箱和密码之后就完成了。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ git status  #完成上述代码之后可以通过此段代码来检查文件名是否变为绿色来判断是否上传成功</span><br><span class="line"></span><br><span class="line">$ git commit -m &#39;test&#39;  #记录此次的提交，并上传到库中，注意这里直接 -m &#39;&#39; 加注释信息，不然会进入文本编辑模式，操作起来比较麻烦。</span><br><span class="line">$ git push origin master  &#x2F;&#x2F;之后输入该段代码会弹出Github Login界面，输入你的邮箱和密码之后就完成了。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">$ rm -rf .git   &#x2F;&#x2F;删除所有历史操作，即删除.git文件</span><br></pre></td></tr></table></figure>
 
 <p>之后返回到Github主界面就可以看到今日上传文件，就表明所有的步骤都成功了！</p>
 <h1 id="Github-Page-上部署网页，建立属于自己的博客"><a href="#Github-Page-上部署网页，建立属于自己的博客" class="headerlink" title="Github Page 上部署网页，建立属于自己的博客"></a>Github Page 上部署网页，建立属于自己的博客</h1><p>由于已经在上面通过ssh key连接过Github中的库，因此这个步骤在这里可以省略。</p>
