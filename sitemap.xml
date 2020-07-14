@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2020/07/05/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/</loc>
+    
+    <lastmod>2020-07-14T13:31:11.909Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2020/06/24/Github%20Pages%E9%83%A8%E7%BD%B2/</loc>
     
     <lastmod>2020-07-11T12:54:46.876Z</lastmod>
@@ -12,13 +19,6 @@
     <loc>http://yoursite.com/2020/06/25/CS231n_Assignment1_Knn/</loc>
     
     <lastmod>2020-07-11T08:46:49.163Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2020/07/05/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/</loc>
-    
-    <lastmod>2020-07-11T08:08:36.518Z</lastmod>
     
   </url>
   

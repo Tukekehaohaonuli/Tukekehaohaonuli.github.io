@@ -23,8 +23,20 @@
 <meta property="og:image" content="http://yoursite.com/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/1.png">
 <meta property="og:image" content="http://yoursite.com/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/11.png">
 <meta property="og:image" content="http://yoursite.com/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/12.png">
+<meta property="og:image" content="http://yoursite.com/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/14.png">
+<meta property="og:image" content="http://yoursite.com/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/16.png">
+<meta property="og:image" content="http://yoursite.com/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/17.png">
+<meta property="og:image" content="http://yoursite.com/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/18.png">
+<meta property="og:image" content="http://yoursite.com/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/19.png">
+<meta property="og:image" content="http://yoursite.com/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/20.png">
+<meta property="og:image" content="http://yoursite.com/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/21.png">
+<meta property="og:image" content="http://yoursite.com/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/22.png">
+<meta property="og:image" content="http://yoursite.com/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/23.png">
+<meta property="og:image" content="http://yoursite.com/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/24.png">
+<meta property="og:image" content="http://yoursite.com/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/25.png">
+<meta property="og:image" content="http://yoursite.com/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/26.png">
 <meta property="article:published_time" content="2020-07-05T12:46:20.944Z">
-<meta property="article:modified_time" content="2020-07-11T08:08:36.518Z">
+<meta property="article:modified_time" content="2020-07-14T13:31:11.909Z">
 <meta property="article:author" content="Tukeke">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://yoursite.com/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/2.png">
@@ -187,6 +199,40 @@
 <p>数组a中的是选择b中第几行，例如1，则选择b数组中的第二行，所以[2,4] [5,3]就成了[2,4,3]</p>
 <h3 id="python-numpy-add-at"><a href="#python-numpy-add-at" class="headerlink" title="python numpy.add.at"></a>python numpy.add.at</h3><p><img src="/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/12.png" alt="12"></p>
 <p>[0,1]是索引</p>
+<h3 id="Pytorch-Tensor-view-clone"><a href="#Pytorch-Tensor-view-clone" class="headerlink" title="Pytorch Tensor view clone"></a>Pytorch Tensor view clone</h3><p>Tensor相当于numpy中的array</p>
+<p>view保存的是远Tensor中的副本，也就是说原Tensor中的数值和新的数值是共享的，类似于指针的效果。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">疑问:使用clone还有一个好处是会被记录在计算图中，即梯度回传到副本时也会传到源Tensor??</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/14.png" alt="14"></p>
+<h3 id="Pytorch-index-select函数"><a href="#Pytorch-index-select函数" class="headerlink" title="Pytorch index_select函数"></a>Pytorch index_select函数</h3><p>第一个参数：对象</p>
+<p>第二个参数：选择的维度，二维中，即行列</p>
+<p>第三个参数：对应维度中选择的第几行等。</p>
+<p><img src="/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/16.png" alt="3"></p>
+<h3 id="Pytorch-random-shuffle"><a href="#Pytorch-random-shuffle" class="headerlink" title="Pytorch random.shuffle"></a>Pytorch random.shuffle</h3><p>将list中的数随机排列</p>
+<p><img src="/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/17.png" alt="4"></p>
+<h3 id="Pytorch-gather"><a href="#Pytorch-gather" class="headerlink" title="Pytorch gather"></a>Pytorch gather</h3><p>第一个参数：选择的维度</p>
+<p>第二个参数：一个Tensor</p>
+<p>返回的是y_hat中y对应的概率值</p>
+<p><img src="/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/18.png" alt="5"></p>
+<h3 id="Pytorch-cat"><a href="#Pytorch-cat" class="headerlink" title="Pytorch cat"></a>Pytorch cat</h3><p>第一个参数：选择拼接的矩阵</p>
+<p>第二参数：选择拼接的维度</p>
+<p><img src="/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/19.png" alt="6"></p>
+<h3 id="Pytorch-shape-1"><a href="#Pytorch-shape-1" class="headerlink" title="Pytorch shape[-1]"></a>Pytorch shape[-1]</h3><p>获取最后一维的个数，如A.shape=(5,3),则shape[-1]=3</p>
+<h3 id="Pytorch-torch-norm-求范数"><a href="#Pytorch-torch-norm-求范数" class="headerlink" title="Pytorch torch.norm()求范数"></a>Pytorch torch.norm()求范数</h3><p><img src="/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/20.png" alt="7"></p>
+<p><img src="/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/21.png" alt="8"></p>
+<h3 id="Pytorch-isinstance"><a href="#Pytorch-isinstance" class="headerlink" title="Pytorch isinstance()"></a>Pytorch isinstance()</h3><p>判断类型是否相同</p>
+<p><img src="/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/22.png" alt="9"></p>
+<h3 id="Pandas-DataFrame和get-dummies"><a href="#Pandas-DataFrame和get-dummies" class="headerlink" title="Pandas DataFrame和get_dummies"></a>Pandas DataFrame和get_dummies</h3><p><img src="/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/23.png" alt="10"></p>
+<h3 id="Python-slice"><a href="#Python-slice" class="headerlink" title="Python slice"></a>Python slice</h3><p>第一个参数：起始位置</p>
+<p>第二个参数：末尾，不取到</p>
+<p>第三个参数：跳数</p>
+<p><img src="/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/24.png" alt="11"></p>
+<h3 id="Python-collections-OrderedDict"><a href="#Python-collections-OrderedDict" class="headerlink" title="Python collections.OrderedDict()"></a>Python collections.OrderedDict()</h3><p>会按照放入的顺序，拍好序列。</p>
+<p>并对此进行key和value的排序为:</p>
+<p><img src="/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/25.png" alt="12"></p>
+<h3 id="Python-arg和-kwargs"><a href="#Python-arg和-kwargs" class="headerlink" title="Python arg和*kwargs"></a>Python <em>arg和*</em>kwargs</h3><p>*arg:任意个无名参数，类型是tuple</p>
+<p>**kwargs:关键字参数，类型为dictionary 字典</p>
+<p><img src="/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/26.png" alt="13"></p>
 <p>CS231N中提供的关于numpy的基本教程链接：</p>
 <p><a href="https://cs231n.github.io/python-numpy-tutorial/" target="_blank" rel="noopener">https://cs231n.github.io/python-numpy-tutorial/</a></p>
 
