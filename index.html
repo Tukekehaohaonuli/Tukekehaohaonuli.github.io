@@ -125,6 +125,65 @@
   
 
     
+    <article id="post-ToDoPytorch学习总结" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/07/14/ToDoPytorch%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/" class="article-date">
+  <time datetime="2020-07-14T02:30:38.158Z" itemprop="datePublished">2020-07-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/14/ToDoPytorch%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/">ToDoPytorch学习总结</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">为什么权重W变小可以防止过拟合？</span><br><span class="line"></span><br><span class="line">1.奥卡姆剃刀法则：更小的权重W，从某种意义上来说，表示网络的复杂度更低，对数据的拟合更好。</span><br><span class="line"></span><br><span class="line">2.过拟合的时候，拟合函数的系数往往非常大。过拟合也就以为着更加注重所有的细节，因此拟合函数的波动就会很大，导致导数值很大，在自变量很小的情况下，只有系数足够大，才能导数值足够大。因此为了减少过拟合，减少系数W，就能减少过拟合。</span><br></pre></td></tr></table></figure>
+
+<p>1.dropout是经过激活函数之后的那一层进行dropout</p>
+<p>2.ModuleList和ModuleDict一样，仅仅是存放一些模块，用来列表化构造网络，但是模块之间是没有联系也没有顺序的，而且没有实现forward功能，需要自己实现。但是和python中的list和dict又不同，加入到ModuleList和ModuleDict中的所有模块的参数都会自动添加到整个网络net中。</p>
+<p>3.super().<strong>init</strong>()的作用使得在一个模块中初始化以后，可以继续调用另一个nn模块，如果没有这句话的话就不能够再次调用其他模块了，下图也表明Sequential、FancyMLP都是属于Module的子类，因此可以嵌套调用</p>
+<p><img src="/images/ToDoPytorch%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/1.png" alt="1"></p>
+<p>4.实际上卷积层的卷积核也相当于权重，并且还有偏差！！普通卷积是可以Pytorch中自带的，也是可以自定义卷积核的。</p>
+<p>5.卷积操作实际上是需要进行翻转+点积，翻转就是180度的旋转；互相关就是点积，也可以认为是不翻转卷积。但是因为卷积核在实际操作过程中都是学习出来的，因此为了避免不必要的计算，在实际的操作过程中都只使用互相关运算替代卷积。也就是说，深度学习中的卷积运算实际上是互相关运算。</p>
+<p>6.经过卷积核之后的尺寸大小:<br>$$<br>（n-kernel_size+2*padding)/stride+1<br>$$<br>7.1×1的卷积层通常用来降低网络中的通道数，并控制模型复杂度</p>
+<p>8.池化层为了缓解卷积层对位置的过度敏感性；池化层在处理多通道数据时，是对每个输入通道分别池化，因此输入通道数和输出通道数是相等的，这点与卷积不同</p>
+<p>9.给定的感受野（与输出有关的输入图片的局部大小），采用堆积的小卷积核优于采用大的卷积核，因为可以增加网络深度来保证学习更复杂的模式，而且代价还比较小（参数更少）。</p>
+<p>10.均值和方差公式：</p>
+<p><img src="/images/ToDoPytorch%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/2.png" alt="2"></p>
+<p>在4维矩阵下（批量，通道，高，宽）做均值和方差是对所有的通道进行求均值和方差。</p>
+<p>另外，训练模式下的均值和方差都是用实时的数据来求的，Moving_mean和moving_var是用在测试数据上的。</p>
+<p><img src="/images/ToDoPytorch%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/3.png" alt="3"></p>
+<p>11.批量归一化一般在卷积之后，激活函数之前，BatchNorm2d=卷积层,BatchNorm1d=全连接层</p>
+<p>12.残差网络:直接训练出理想仿射函数非常的困难，因此采用求残差的方式来求，这样求出残差方程之后，只需要将残差的参数设为0就可以近似得出理想的仿射函数！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoursite.com/2020/07/14/ToDoPytorch%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/" data-id="ckcosjlme0000pwib1s0v8v6h" class="article-share-link">Share</a>
+      
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+    
+  
+
+    
     <article id="post-CS231n_Assignment3_Image_Captioning_with_LSTMs" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/07/09/CS231n_Assignment3_Image_Captioning_with_LSTMs/" class="article-date">
@@ -527,53 +586,6 @@
     <footer class="article-footer">
       
         <a data-url="http://yoursite.com/2020/07/03/%E7%94%9F%E6%88%90%E8%84%9A%E6%9C%AC/" data-id="ckc64745t00002ktj8ev26wvo" class="article-share-link">Share</a>
-      
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-    
-  
-
-    
-    <article id="post-CS231n_Assignment2_Fully-Connected_Neural_Nets" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/07/02/CS231n_Assignment2_Fully-Connected_Neural_Nets/" class="article-date">
-  <time datetime="2020-07-02T08:25:21.068Z" itemprop="datePublished">2020-07-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/02/CS231n_Assignment2_Fully-Connected_Neural_Nets/">CS231n_Assignment2_Fully-Connected_Neural_Nets</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>//本章主要讲述模块化的思想，即写成一个个的函数，然后各层整合时调用</p>
-<p>//完成4种梯度下降算法，并测试表现。</p>
-        
-          <p class="article-more-link">
-            <a href="/2020/07/02/CS231n_Assignment2_Fully-Connected_Neural_Nets/#more">......</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://yoursite.com/2020/07/02/CS231n_Assignment2_Fully-Connected_Neural_Nets/" data-id="ckc72q7v700000otj89pi1wga" class="article-share-link">Share</a>
       
 
       
