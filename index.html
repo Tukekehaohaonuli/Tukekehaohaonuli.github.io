@@ -165,6 +165,16 @@
 <p><img src="/images/ToDoPytorch%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/3.png" alt="3"></p>
 <p>11.批量归一化一般在卷积之后，激活函数之前，BatchNorm2d=卷积层,BatchNorm1d=全连接层</p>
 <p>12.残差网络:直接训练出理想仿射函数非常的困难，因此采用求残差的方式来求，这样求出残差方程之后，只需要将残差的参数设为0就可以近似得出理想的仿射函数！</p>
+<p>13.困惑度:</p>
+<p><img src="/images/ToDoPytorch%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/4.png" alt="4"></p>
+<p>14.随机梯度下降是指随机采样一个样本来计算梯度，梯度下降是指使用整个训练数据集来计算梯度，小批量随机梯度下降是在两者之间，速度也在两者之间。</p>
+<h3 id="梯度优化算法比较："><a href="#梯度优化算法比较：" class="headerlink" title="梯度优化算法比较："></a>梯度优化算法比较：</h3><h5 id="动量法"><a href="#动量法" class="headerlink" title="动量法:"></a>动量法:</h5><p>当x1和x2的梯度值相差比较大的时候，需要足够小的学习率使得自变量在梯度值较大的维度上不发散，但是这样会导致迭代过慢。动量法依赖指数加权移动平均使得自变量的更新方向一致从而降低发散的可能。</p>
+<h5 id="AdaGrad算法："><a href="#AdaGrad算法：" class="headerlink" title="AdaGrad算法："></a>AdaGrad算法：</h5><p>自变量根据每个维度的梯度值大小来调整各个维度上的学习率，从而避免统一的学习率难以适应所有维度的问题。由于s_t一直在累加按元素平方的梯度，自变量中每个元素的学习率在迭代过程中一直在降低（或不变）。所以当学习率在迭代早期降得比较快且当前解依然不佳时，AdaGrad算法会在迭代后期由于学习率过小，导致很难找到一个有用的解。</p>
+<p>使用AdaGrad算法时，自变量中每个元素的学习率在迭代过程中一直在降低（或不变）。</p>
+<h5 id="RMSProp"><a href="#RMSProp" class="headerlink" title="RMSProp:"></a>RMSProp:</h5><p>在AdaGrad算法的基础上按元素做指数加权移动平均，防止AdaGrad中的元素学习率一直降低</p>
+<h5 id="AdaDelta算法："><a href="#AdaDelta算法：" class="headerlink" title="AdaDelta算法："></a>AdaDelta算法：</h5><p>没有学习率这一超参数，其他同RMSprop基本一样，不同之处是多维护一个额外的状态变量来代替学习率。</p>
+<h5 id="Adam算法："><a href="#Adam算法：" class="headerlink" title="Adam算法："></a>Adam算法：</h5><p>Adam算法在RMSProp算法的基础上对小批量随机梯度也做了指数加权移动平均。</p>
+<p>Adam算法使用了偏差修正。基本上是默认的最好算法。</p>
 
       
     </div>
