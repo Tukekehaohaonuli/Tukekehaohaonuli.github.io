@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Java-Stage2-Step5-实现导入导出 | 追梦少年人♥</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="仅记录自己学习java所用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java-Stage2-Step5-实现导入导出">
+<meta property="og:url" content="http://yoursite.com/2020/07/31/Java-Stage2-Step5-%E5%AE%9E%E7%8E%B0%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA/index.html">
+<meta property="og:site_name" content="追梦少年人♥">
+<meta property="og:description" content="仅记录自己学习java所用">
+<meta property="article:published_time" content="2020-07-31T07:49:02.828Z">
+<meta property="article:modified_time" content="2020-07-31T07:48:59.869Z">
+<meta property="article:author" content="Tukeke">
+<meta name="twitter:card" content="summary">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/css/scrollUp/image.css">
+
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="追梦少年人♥" type="application/atom+xml">
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <div class="logo">
+        <img src="/logo.png" alt="Profile Picture">
+      </div>
+      <div id="title">追梦少年人♥</div>
+      
+        <div id="subtitle">Stay focus,stay humble,stay curiosity.</div>
+      
+       <ul class="my-socials">
+  
+  <li>
+  	<a href="https://github.com/Tukekehaohaonuli" class="github" target="_blank">
+  		<i class="fa fa-github"></i>
+  	</a>
+  </li>
+  
+  <li>
+  	<a href="YOUR WEIBO HOME PAGE URL" class="weibo" target="_blank">
+  		<i class="fa fa-weibo"></i>
+  	</a>
+  </li>
+  
+ 
+</ul>
+    </div>
+  </div>
+  <div id="header-inner" class="">
+    <nav id="main-nav">
+      <a id="main-nav-toggle" class="nav-icon"></a>
+      <!--
+        
+          
+            <a class="main-nav-link" href="/">首页</a>
+          
+            <a class="main-nav-link" href="/categories/life">生活</a>
+          
+            <a class="main-nav-link" href="/archives">归档</a>
+          
+        
+      -->
+    </nav>
+    <nav id="title-nav" style="display:none">
+      <a href="/">追梦少年人♥</a>
+      <img src="/logo.png" alt="Profile Picture">
+      <!--
+      <span id="title-nav-socials">
+        
+          <a href="https://github.com/Tukekehaohaonuli" class="github" target="_blank">
+            <i class="fa fa-github"></i>
+          </a>
+        
+          <a href="YOUR WEIBO HOME PAGE URL" class="weibo" target="_blank">
+            <i class="fa fa-weibo"></i>
+          </a>
+        
+       
+     </span>
+      -->
+    </nav>
+    <nav id="sub-nav">
+      
+      <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+    </nav>
+    <div id="search-form-wrap">
+      <form action="http://www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+        <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+        <input type="submit" value="" class="search-form-submit">
+        <input name=tn type=hidden value="bds">
+        <input name=cl type=hidden value="3">
+        <input name=ct type=hidden value="2097152">
+        <input type="hidden" name="si" value="yoursite.com">
+      </form>
+    </div>
+  </div>
+  <div class="site-nav" style="display: none;">
+    <ul>
+      
+      
+        <li><a href="/">首页</a></li>
+      
+        <li><a href="/categories/life">生活</a></li>
+      
+        <li><a href="/archives">归档</a></li>
+      
+      
+    </ul>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Java-Stage2-Step5-实现导入导出" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/07/31/Java-Stage2-Step5-%E5%AE%9E%E7%8E%B0%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA/" class="article-date">
+  <time datetime="2020-07-31T07:49:02.828Z" itemprop="datePublished">2020-07-31</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Java-Stage2-Step5-实现导入导出
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>仅记录自己学习java所用</p>
+<a id="more"></a>
+
+<h3 id="1-IDEA快捷键："><a href="#1-IDEA快捷键：" class="headerlink" title="1- IDEA快捷键："></a>1- IDEA快捷键：</h3><p>ctrl+d 快速复制代码</p>
+<p>ctrl+alt+m  将所选中的代码快速生成一个包装类</p>
+<p>ctrl+方向 移动一整个单词</p>
+<p>ctrl+&gt;折叠代码</p>
+<p>ctrl+n查找类</p>
+<p>ctrl+alt+t：包裹选中代码段</p>
+<h3 id="2-Servlet"><a href="#2-Servlet" class="headerlink" title="2- Servlet"></a>2- Servlet</h3><p>由servlet统一调度javabean封装和处理数据，由JSP对数据进行显示。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@WebServlet(&quot;&#x2F;LoginServlet&quot;)</span><br></pre></td></tr></table></figure>
+
+<p>相当于在xml中配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;servlet&gt;</span><br><span class="line">        &lt;servlet-name&gt;LoginServlet&lt;&#x2F;servlet-name&gt;</span><br><span class="line">        &lt;servlet-class&gt;servlet.LoginServlet&lt;&#x2F;servlet-class&gt;</span><br><span class="line">    &lt;&#x2F;servlet&gt;</span><br><span class="line">&lt;servlet-mapping&gt;</span><br><span class="line">    &lt;servlet-name&gt;LoginServlet&lt;&#x2F;servlet-name&gt;</span><br><span class="line">    &lt;url-pattern&gt;&#x2F;LoginServlet&lt;&#x2F;url-pattern&gt;</span><br><span class="line">&lt;&#x2F;servlet-mapping&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-监听器："><a href="#3-监听器：" class="headerlink" title="3- 监听器："></a>3- 监听器：</h3><p>ServletRequestListener：但凡有request请求都会接受到</p>
+<p>ServletContextListener：</p>
+<p>ServletSessionListener：为每个用户申请一个监听器</p>
+<p>ServletContextAttributeListener：属性建立之类的监听器</p>
+<p>HttpSessionBindingListener:不需要注册，绑定状态事件监听器，比如用户登录，就和session绑定，退出就解绑</p>
+<h3 id="4-serverlet单点登录设置cookie值，并且开多线程处理"><a href="#4-serverlet单点登录设置cookie值，并且开多线程处理" class="headerlink" title="4- serverlet单点登录设置cookie值，并且开多线程处理"></a>4- serverlet单点登录设置cookie值，并且开多线程处理</h3><p>不同的web回传信息的代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;创建有10个线程的线程池</span><br><span class="line">    private ExecutorService service &#x3D; Executors.newFixedThreadPool(10);</span><br><span class="line"></span><br><span class="line">    private void setCookie(String server,String ticket)&#123;</span><br><span class="line">        service.submit(new Runnable() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void run() &#123;</span><br><span class="line">                HttpPost httpPost&#x3D;new HttpPost(server+&quot;&#x2F;setCookie?ticket&#x3D;&quot;+ticket);</span><br><span class="line">                CloseableHttpClient httpClient&#x3D;null;</span><br><span class="line">                CloseableHttpResponse response&#x3D;null;</span><br><span class="line">                try &#123;</span><br><span class="line">                    httpClient&#x3D; HttpClients.createDefault();</span><br><span class="line">                    response &#x3D;httpClient.execute(httpPost);</span><br><span class="line">                    HttpEntity entity&#x3D;response.getEntity();</span><br><span class="line">                    String responseContent&#x3D; EntityUtils.toString(entity,&quot;UTF-8&quot;);</span><br><span class="line">                    System.out.println(&quot;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&quot;+responseContent);</span><br><span class="line">                &#125; catch (Exception e)&#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;finally &#123;</span><br><span class="line">                    if(response!&#x3D;null)&#123;</span><br><span class="line">                        try &#123;</span><br><span class="line">                            response.close();</span><br><span class="line">                        &#125; catch (IOException e) &#123;</span><br><span class="line">                            e.printStackTrace();</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                    if(httpClient!&#x3D;null)&#123;</span><br><span class="line">                        try &#123;</span><br><span class="line">                            httpClient.close();</span><br><span class="line">                        &#125; catch (IOException e) &#123;</span><br><span class="line">                            e.printStackTrace();</span><br></pre></td></tr></table></figure>
+
+<p>在另一个web应用中，如果获取了cookie的值，则回写“OK“</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Objects.equals(&quot;&#x2F;setCookie&quot;,request.getServletPath()))&#123;</span><br><span class="line">            String ticket&#x3D;request.getParameter(&quot;ticket&quot;);</span><br><span class="line">            response.addCookie(new Cookie(&quot;Ticket_Granting_Ticket&quot;,ticket));</span><br><span class="line">            response.setCharacterEncoding(&quot;UTF-8&quot;);</span><br><span class="line">            response.setContentType(&quot;application&#x2F;text;charset&#x3D;utf-8&quot;);</span><br><span class="line">            PrintWriter out&#x3D;null;</span><br><span class="line">            try &#123;</span><br><span class="line">                out&#x3D;response.getWriter();</span><br><span class="line">                out.write(&quot;OK&quot;);</span><br><span class="line">            &#125; catch (Exception e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;finally &#123;</span><br><span class="line">                if(out!&#x3D;null)&#123;</span><br><span class="line">                    out.close();</span><br><span class="line">                &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-获得当前项目的路径："><a href="#5-获得当前项目的路径：" class="headerlink" title="5- 获得当前项目的路径："></a>5- 获得当前项目的路径：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">	String basePath &#x3D; request.getScheme() + &quot;:&#x2F;&#x2F;&quot; + request.getServerName() + &quot;:&quot; + request.getServerPort() + request.getContextPath();</span><br><span class="line">&#x2F;&#x2F;getScheme() 协议</span><br><span class="line">&#x2F;&#x2F;getServerName()服务名称</span><br><span class="line">&#x2F;&#x2F;getServerPort()端口号</span><br><span class="line">&#x2F;&#x2F;getContextPath()工程访问路径</span><br></pre></td></tr></table></figure>
+
+<p>在web.xml中配置如下可以使得所有的jsp都可以直接获得common.jsp的访问权限：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;jsp-config&gt;</span><br><span class="line">        &lt;jsp-property-group&gt;</span><br><span class="line">            &lt;url-pattern&gt;*.jsp&lt;&#x2F;url-pattern&gt;</span><br><span class="line">            &lt;include-prelude&gt;&#x2F;WEB-INF&#x2F;jsp&#x2F;common.jsp&lt;&#x2F;include-prelude&gt;</span><br><span class="line">        &lt;&#x2F;jsp-property-group&gt;</span><br><span class="line">    &lt;&#x2F;jsp-config&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-在表单中上传文件需要在form中设置："><a href="#6-在表单中上传文件需要在form中设置：" class="headerlink" title="6- 在表单中上传文件需要在form中设置："></a>6- 在表单中上传文件需要在form中设置：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;form enctype&#x3D;&quot;multipart&#x2F;form-data&quot; &gt;</span><br></pre></td></tr></table></figure>
+
+<p>在servlet要上传文件的话需要第三方组件FileUpload，因此需要下载jar包</p>
+<h3 id="7"><a href="#7" class="headerlink" title="7-"></a>7-</h3><p>Servlet中如果是普通的参数直接用getParameter就可以取得，如果是流文件的话需要做以下判断：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">if(ServletFileUpload.isMultipartContent(req))&#123;</span><br><span class="line">			ServletFileUpload upload&#x3D;new ServletFileUpload(new DiskFileItemFactory());</span><br><span class="line">            upload.setHeaderEncoding(&quot;UTF-8&quot;);</span><br><span class="line">&#125;else&#123;</span><br><span class="line">	req.getParameter();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>servlet中只调用别的类写好的方法，此类中不添加数据处理代码，只负责响应。</p>
+<h3 id="8"><a href="#8" class="headerlink" title="8-"></a>8-</h3><p>可以通过Apache poi下的workbook来获得excel，word中的数据流并解析输出到界面。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">                Workbook workbook= WorkbookFactory.create(<span class="keyword">new</span> File(<span class="string">"d:/upload/import_03_excel.xls"</span>));</span><br><span class="line">                Sheet sheet=workbook.getSheetAt(<span class="number">0</span>);</span><br><span class="line">                <span class="keyword">int</span> rowNum=sheet.getLastRowNum();</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;=rowNum; i++) &#123;</span><br><span class="line">                    Row row=sheet.getRow(i);</span><br><span class="line">                    System.out.println(<span class="string">"姓名:"</span>+row.getCell(<span class="number">0</span>).getStringCellValue());</span><br><span class="line">                    System.out.println(<span class="string">"年龄:"</span>+row.getCell(<span class="number">1</span>).getNumericCellValue());</span><br><span class="line">                    System.out.println(<span class="string">"时间:"</span>+row.getCell(<span class="number">2</span>).getDateCellValue());</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InvalidFormatException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+<p>直接用上传的文件流来解析文档的方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">workbook &#x3D; WorkbookFactory.create(FileItem.getExcel().getInputStream());</span><br></pre></td></tr></table></figure>
+
+<h3 id="9-EL表达式使用方法-JSTL表达式"><a href="#9-EL表达式使用方法-JSTL表达式" class="headerlink" title="9- EL表达式使用方法 JSTL表达式"></a>9- EL表达式使用方法 JSTL表达式</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;%<span class="meta">@taglib</span> prefix=<span class="string">"c"</span> uri=<span class="string">"http://java.sun.com/jstl/core_rt"</span> %&gt;</span><br><span class="line">&lt;%<span class="meta">@taglib</span> prefix=<span class="string">"fmt"</span> uri=<span class="string">"http://java.sun.com/jstl/fmt_rt"</span> %&gt;</span><br><span class="line">&lt;c:forEach items=<span class="string">"$&#123;result.studentList&#125;"</span> <span class="keyword">var</span>=<span class="string">"item"</span> varStatus=<span class="string">"s"</span>&gt;</span><br><span class="line">&lt;tr&gt;</span><br><span class="line">&lt;td&gt;$&#123;s.count&#125;&lt;/td&gt;</span><br><span class="line">&lt;td&gt;$&#123;item.name&#125;&lt;/td&gt;</span><br><span class="line">&lt;td&gt;$&#123;item.age&#125;&lt;/td&gt;</span><br><span class="line">&lt;td&gt;&lt;fmt:formatDate value="$&#123;item.time&#125;" pattern="yyyy-MM-dd"/&gt;&lt;/td&gt;  //jstl</span><br><span class="line">                                    &lt;/tr&gt;</span><br><span class="line">                                &lt;/c:forEach&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="10-javascript中通过EL表达式显示程序出错误的代码："><a href="#10-javascript中通过EL表达式显示程序出错误的代码：" class="headerlink" title="10-javascript中通过EL表达式显示程序出错误的代码："></a>10-javascript中通过EL表达式显示程序出错误的代码：</h3><p>如果reult.msg中有内容，则输出。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">            function bodyInit() &#123;</span><br><span class="line">                if(&#39;$&#123;result.msg&#125;&#39;) &#123;</span><br><span class="line">                    alert(&#39;$&#123;result.msg&#125;&#39;);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="11"><a href="#11" class="headerlink" title="11-"></a>11-</h3><p>所有servlet地方中的dopost和doget要保持一致，也就是说要么一致用doget方法，要么反之，不要会出现bug</p>
+<h3 id="12"><a href="#12" class="headerlink" title="12-"></a>12-</h3><p>03版word和07版word的读取方式是不同的，03版本可以直接获得内容，07版本只能一段段获得。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">public ImportWordResultDto imp(ImportWordParamDto dto) &#123;</span><br><span class="line"></span><br><span class="line">       ImportWordResultDto result &#x3D; new ImportWordResultDto();</span><br><span class="line">       result.setTitle(dto.getTitle());</span><br><span class="line">       HWPFDocument doc &#x3D; null;</span><br><span class="line">       try &#123;</span><br><span class="line">           doc &#x3D; new HWPFDocument(dto.getWord().getInputStream());</span><br><span class="line">           result.setContent(doc.getDocumentText().replace(&quot;\r&quot;,&quot;&lt;br&#x2F;&gt;&quot;));</span><br><span class="line">       &#125;catch (OfficeXmlFileException oe)&#123;</span><br><span class="line">           System.out.println(&quot;这可能是一个07版本的word&quot;);</span><br><span class="line">       &#125; catch (Exception e) &#123;</span><br><span class="line">           result.setMsg(&quot;这可能不是一个word&quot;);</span><br><span class="line">           return result;</span><br><span class="line">       &#125;finally &#123;</span><br><span class="line">           if(doc!&#x3D;null)&#123;</span><br><span class="line">               try &#123;</span><br><span class="line">                   doc.close();</span><br><span class="line">               &#125; catch (IOException e) &#123;</span><br><span class="line">                   e.printStackTrace();</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       XWPFDocument docx&#x3D;null;</span><br><span class="line">       try &#123;</span><br><span class="line">           docx&#x3D;new XWPFDocument(dto.getWord().getInputStream());</span><br><span class="line">           List&lt;XWPFParagraph&gt; paragraphList&#x3D; docx.getParagraphs();</span><br><span class="line">           StringBuilder content&#x3D;new StringBuilder();</span><br><span class="line">           for (int i &#x3D; 0; i &lt;paragraphList.size() ; i++) &#123;</span><br><span class="line">               if (i !&#x3D; 0) &#123;</span><br><span class="line">                   content.append(&quot;&lt;br&#x2F;&gt;&quot;);</span><br><span class="line">               &#125;</span><br><span class="line">               content.append(paragraphList.get(i).getText());</span><br><span class="line">           &#125;</span><br><span class="line">           result.setContent(content.toString());</span><br><span class="line">       &#125; catch (IOException e) &#123;</span><br><span class="line">           e.printStackTrace();</span><br><span class="line">       &#125;finally &#123;</span><br><span class="line">           if(docx!&#x3D;null)&#123;</span><br><span class="line">               try &#123;</span><br><span class="line">                   docx.close();</span><br><span class="line">               &#125; catch (IOException e) &#123;</span><br><span class="line">                   e.printStackTrace();</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       return result;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<p>在导出word时用到的replaceText方法要转化成java.lang.String的形式；</p>
+<p>同理导出过程中，也是比较复杂的，07版本切分了很多不同的run单元。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">public HWPFDocument export03(Map&lt;java.lang.String,java.lang.String&gt; replaceContent)&#123;</span><br><span class="line">        HWPFDocument doc &#x3D; null;</span><br><span class="line">        try &#123;</span><br><span class="line">            doc &#x3D; new HWPFDocument(new FileInputStream(&quot;d:&#x2F;upload&#x2F;template_03.doc&quot;));</span><br><span class="line">            Range range&#x3D;doc.getRange();</span><br><span class="line">            for(Map.Entry&lt;java.lang.String,java.lang.String&gt; entry:replaceContent.entrySet())&#123;</span><br><span class="line">                range.replaceText(entry.getKey(),entry.getValue());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;catch (Exception e) &#123;</span><br><span class="line">            return null;</span><br><span class="line">        &#125;finally &#123;</span><br><span class="line">            if(doc!&#x3D;null)&#123;</span><br><span class="line">                try &#123;</span><br><span class="line">                    doc.close();</span><br><span class="line">                &#125; catch (IOException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return doc;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    public XWPFDocument export07(Map&lt;java.lang.String,java.lang.String&gt; replaceContent)&#123;</span><br><span class="line">        XWPFDocument docx&#x3D;null;</span><br><span class="line"></span><br><span class="line">        try &#123;</span><br><span class="line">            docx&#x3D;new XWPFDocument((new FileInputStream(&quot;D:\\upload\\template_07.docx&quot;)));</span><br><span class="line">            List&lt;XWPFParagraph&gt; paragraphList&#x3D;docx.getParagraphs();</span><br><span class="line">            for(XWPFParagraph paragraph:paragraphList)&#123;</span><br><span class="line">                List&lt;XWPFRun&gt; runs&#x3D;paragraph.getRuns();</span><br><span class="line">                for(XWPFRun run:runs)&#123;</span><br><span class="line">                    java.lang.String str&#x3D;run.getText(run.getTextPosition());</span><br><span class="line">                    for(Map.Entry&lt;java.lang.String,java.lang.String&gt; entry:replaceContent.entrySet())&#123;</span><br><span class="line">                        str&#x3D;str.replace(entry.getKey(),entry.getValue());</span><br><span class="line">                    &#125;</span><br><span class="line">                    run.setText(str,0);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; catch (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        return docx;</span><br><span class="line">   </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoursite.com/2020/07/31/Java-Stage2-Step5-%E5%AE%9E%E7%8E%B0%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA/" data-id="ckda4rymc00010oibcrqhbfxl" class="article-share-link">Share</a>
+      
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/07/31/Windows%E4%B8%8B%E5%AE%89%E8%A3%85Linux%E7%B3%BB%E7%BB%9F/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Windows下安装Linux系统
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/07/28/labelme%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">labelme安装及使用</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Tukeke<br>
+      Theme <a href="https://github.com/Tukekehaohaonuli/" target="_blank">Oishi</a>, Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <!--
+      <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/categories/life" class="mobile-nav-link">生活</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+</nav>
+    -->
+    
+
+<!-- 百度分享 start -->
+
+<!-- 百度分享 end -->
+
+<script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+
+<script src="/js/jquery.scrollUp.min.js"></script>
+
+
+<script src="/js/jquery.transform.js"></script>
+
+
+<script src="/js/menu.js"></script>
+
+
+
+<script src="/js/script.js"></script>
+
+
+<script src="/js/scrollUp.js"></script>
+
+
+  </div>
+</body>
+</html>
