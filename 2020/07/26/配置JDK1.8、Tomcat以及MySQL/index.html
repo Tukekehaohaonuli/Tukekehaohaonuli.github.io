@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8">
   
-  <title>配置JDK1.8和IDea下的Tomcat | 追梦少年人♥</title>
+  <title>配置JDK1.8、Tomcat以及MySQL | 追梦少年人♥</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在win64x环境下搭建Tomcat。">
+  <meta name="description" content="主要步骤：1、配置JDK 2、配置Tomcat，包括IDEA 3、Tomcat控制台中文乱码问题 4、配置MySQL">
 <meta property="og:type" content="article">
-<meta property="og:title" content="配置JDK1.8和IDea下的Tomcat">
-<meta property="og:url" content="http://yoursite.com/2020/07/26/%E9%85%8D%E7%BD%AEJDK1.8%E5%92%8CIDea%E4%B8%8B%E7%9A%84Tomcat/index.html">
+<meta property="og:title" content="配置JDK1.8、Tomcat以及MySQL">
+<meta property="og:url" content="http://yoursite.com/2020/07/26/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/index.html">
 <meta property="og:site_name" content="追梦少年人♥">
-<meta property="og:description" content="在win64x环境下搭建Tomcat。">
+<meta property="og:description" content="主要步骤：1、配置JDK 2、配置Tomcat，包括IDEA 3、Tomcat控制台中文乱码问题 4、配置MySQL">
 <meta property="og:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E5%92%8CIDea%E4%B8%8B%E7%9A%84Tomcat/5.png">
 <meta property="og:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E5%92%8CIDea%E4%B8%8B%E7%9A%84Tomcat/6.png">
 <meta property="og:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E5%92%8CIDea%E4%B8%8B%E7%9A%84Tomcat/7.png">
@@ -40,8 +40,17 @@
 <meta property="og:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E5%92%8CIDea%E4%B8%8B%E7%9A%84Tomcat/25.png">
 <meta property="og:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E5%92%8CIDea%E4%B8%8B%E7%9A%84Tomcat/26.png">
 <meta property="og:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E5%92%8CIDea%E4%B8%8B%E7%9A%84Tomcat/29.png">
+<meta property="og:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E5%92%8CIDea%E4%B8%8B%E7%9A%84Tomcat/30.png">
+<meta property="og:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E5%92%8CIDea%E4%B8%8B%E7%9A%84Tomcat/31.png">
+<meta property="og:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E5%92%8CIDea%E4%B8%8B%E7%9A%84Tomcat/32.png">
+<meta property="og:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E5%92%8CIDea%E4%B8%8B%E7%9A%84Tomcat/33.png">
+<meta property="og:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E5%92%8CIDea%E4%B8%8B%E7%9A%84Tomcat/34.png">
+<meta property="og:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E5%92%8CIDea%E4%B8%8B%E7%9A%84Tomcat/35.png">
+<meta property="og:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E5%92%8CIDea%E4%B8%8B%E7%9A%84Tomcat/36.png">
+<meta property="og:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E5%92%8CIDea%E4%B8%8B%E7%9A%84Tomcat/37.png">
+<meta property="og:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E5%92%8CIDea%E4%B8%8B%E7%9A%84Tomcat/38.png">
 <meta property="article:published_time" content="2020-07-26T02:28:19.168Z">
-<meta property="article:modified_time" content="2020-07-30T12:10:51.015Z">
+<meta property="article:modified_time" content="2020-08-02T12:22:20.625Z">
 <meta property="article:author" content="Tukeke">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E5%92%8CIDea%E4%B8%8B%E7%9A%84Tomcat/5.png">
@@ -155,9 +164,9 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-配置JDK1.8和IDea下的Tomcat" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-配置JDK1.8、Tomcat以及MySQL" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/07/26/%E9%85%8D%E7%BD%AEJDK1.8%E5%92%8CIDea%E4%B8%8B%E7%9A%84Tomcat/" class="article-date">
+    <a href="/2020/07/26/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/" class="article-date">
   <time datetime="2020-07-26T02:28:19.168Z" itemprop="datePublished">2020-07-26</time>
 </a>
     
@@ -169,7 +178,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      配置JDK1.8和IDea下的Tomcat
+      配置JDK1.8、Tomcat以及MySQL
     </h1>
   
 
@@ -177,7 +186,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在win64x环境下搭建Tomcat。</p>
+        <h3 id="主要步骤："><a href="#主要步骤：" class="headerlink" title="主要步骤："></a>主要步骤：</h3><p>1、配置JDK</p>
+<p>2、配置Tomcat，包括IDEA</p>
+<p>3、Tomcat控制台中文乱码问题</p>
+<p>4、配置MySQL</p>
 <a id="more"></a>
 
 <h3 id="一：配置JDK"><a href="#一：配置JDK" class="headerlink" title="一：配置JDK"></a>一：配置JDK</h3><h5 id="第一步：下载JDK"><a href="#第一步：下载JDK" class="headerlink" title="第一步：下载JDK"></a>第一步：下载JDK</h5><p>官网:<a href="https://www.oracle.com/cn/java/technologies/javase/javase-jdk8-downloads.html" target="_blank" rel="noopener">https://www.oracle.com/cn/java/technologies/javase/javase-jdk8-downloads.html</a></p>
@@ -228,12 +240,32 @@
 <p><img src="/images/%E9%85%8D%E7%BD%AEJDK1.8%E5%92%8CIDea%E4%B8%8B%E7%9A%84Tomcat/26.png" alt="26"></p>
 <h3 id="四：IDEA下的Tomcat控制台中文乱码问题"><a href="#四：IDEA下的Tomcat控制台中文乱码问题" class="headerlink" title="四：IDEA下的Tomcat控制台中文乱码问题"></a>四：IDEA下的Tomcat控制台中文乱码问题</h3><p>在Tomcat/conf文件夹下的logging.properties文件中的UTF-8全部转换为GBK</p>
 <p><img src="/images/%E9%85%8D%E7%BD%AEJDK1.8%E5%92%8CIDea%E4%B8%8B%E7%9A%84Tomcat/29.png" alt="29"></p>
+<h3 id="五-配置MySQL"><a href="#五-配置MySQL" class="headerlink" title="五:配置MySQL"></a>五:配置MySQL</h3><p>这里下载Mysql5.7版本，老版本相对来说比较稳定。</p>
+<p>1、下载地址：<a href="https://downloads.mysql.com/archives/installer/" target="_blank" rel="noopener">https://downloads.mysql.com/archives/installer/</a></p>
+<p><img src="/images/%E9%85%8D%E7%BD%AEJDK1.8%E5%92%8CIDea%E4%B8%8B%E7%9A%84Tomcat/30.png" alt="30"></p>
+<p>2、安装MySQL</p>
+<p>选择Server only 因为只是需要数据库服务，开发JavaWeb项目。</p>
+<p><img src="/images/%E9%85%8D%E7%BD%AEJDK1.8%E5%92%8CIDea%E4%B8%8B%E7%9A%84Tomcat/31.png" alt="31"></p>
+<p><img src="/images/%E9%85%8D%E7%BD%AEJDK1.8%E5%92%8CIDea%E4%B8%8B%E7%9A%84Tomcat/32.png" alt="32"></p>
+<p>设置数据库密码为初始：123456</p>
+<p><img src="/images/%E9%85%8D%E7%BD%AEJDK1.8%E5%92%8CIDea%E4%B8%8B%E7%9A%84Tomcat/33.png" alt="33"></p>
+<p>数据库的名字：</p>
+<p><img src="/images/%E9%85%8D%E7%BD%AEJDK1.8%E5%92%8CIDea%E4%B8%8B%E7%9A%84Tomcat/34.png" alt="34"></p>
+<p>3、配置环境变量</p>
+<p>检查发现MySQL安装在：</p>
+<p><img src="/images/%E9%85%8D%E7%BD%AEJDK1.8%E5%92%8CIDea%E4%B8%8B%E7%9A%84Tomcat/35.png" alt="35"></p>
+<p>新增系统变量：MYSQL_HOME=C:\Program Files\MySQL\MySQL Server 5.7</p>
+<p><img src="/images/%E9%85%8D%E7%BD%AEJDK1.8%E5%92%8CIDea%E4%B8%8B%E7%9A%84Tomcat/36.png" alt="36"></p>
+<p>在path变量下添加: %MYSQL_HOME%\bin</p>
+<p><img src="/images/%E9%85%8D%E7%BD%AEJDK1.8%E5%92%8CIDea%E4%B8%8B%E7%9A%84Tomcat/37.png" alt="37"></p>
+<p><img src="/images/%E9%85%8D%E7%BD%AEJDK1.8%E5%92%8CIDea%E4%B8%8B%E7%9A%84Tomcat/38.png" alt="38"></p>
+<p>最后小结:配置环境变量的意义就是在于可以省去每次需要定位到特定目录所需要的步骤；设置了环境变量之后可以在任意位置输入mysql命令。MYSQL_HOME环境变量的设置不是必须的，而是为了以后方便使用mysql命令。</p>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2020/07/26/%E9%85%8D%E7%BD%AEJDK1.8%E5%92%8CIDea%E4%B8%8B%E7%9A%84Tomcat/" data-id="ckd2jtvtp000088ib1ei5a1oo" class="article-share-link">Share</a>
+        <a data-url="http://yoursite.com/2020/07/26/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/" data-id="ckdd226880000vkibe1f202ik" class="article-share-link">Share</a>
       
 
       

@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2020/07/26/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/</loc>
+    
+    <lastmod>2020-08-02T12:22:20.625Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2020/08/02/Java-Stage2-Step5.3-JavaWeb%E7%BB%BC%E5%90%88/</loc>
     
-    <lastmod>2020-08-02T08:49:07.748Z</lastmod>
+    <lastmod>2020-08-02T08:51:32.051Z</lastmod>
     
   </url>
   
@@ -26,13 +33,6 @@
     <loc>http://yoursite.com/2020/07/31/Java-Stage2-Step4.4-%E5%AE%9E%E7%8E%B0%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA/</loc>
     
     <lastmod>2020-07-31T07:48:59.869Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2020/07/26/%E9%85%8D%E7%BD%AEJDK1.8%E5%92%8CIDea%E4%B8%8B%E7%9A%84Tomcat/</loc>
-    
-    <lastmod>2020-07-30T12:10:51.015Z</lastmod>
     
   </url>
   
