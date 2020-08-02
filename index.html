@@ -125,6 +125,67 @@
   
 
     
+    <article id="post-Java-Stage2-Step5.3-JavaWeb综合" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/02/Java-Stage2-Step5.3-JavaWeb%E7%BB%BC%E5%90%88/" class="article-date">
+  <time datetime="2020-08-02T01:35:16.107Z" itemprop="datePublished">2020-08-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/02/Java-Stage2-Step5.3-JavaWeb%E7%BB%BC%E5%90%88/">Java-Stage2-Step5.3-JavaWeb综合</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-如何在首页JSP直接跳转到其他界面"><a href="#1-如何在首页JSP直接跳转到其他界面" class="headerlink" title="1-如何在首页JSP直接跳转到其他界面"></a>1-如何在首页JSP直接跳转到其他界面</h3><p>在首页JSP中<head>下添加：<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="追梦少年人♥" type="application/atom+xml">
+</head></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta http-equiv&#x3D;&quot;refresh&quot; content&#x3D;&quot;0;url&#x3D;&lt;%&#x3D;request.getContextPath()%&gt;&#x2F;product&#x2F;list.do&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-添加字符编码过滤器"><a href="#2-添加字符编码过滤器" class="headerlink" title="2-添加字符编码过滤器"></a>2-添加字符编码过滤器</h3><p>并且在web.xml中设置所有的操作都需要调用字符编码过滤器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public class CharsetEncodingFilter implements Filter &#123;</span><br><span class="line">    private String encoding;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void init(FilterConfig filterConfig) throws ServletException &#123;</span><br><span class="line">        this.encoding&#x3D;filterConfig.getInitParameter(encoding);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException &#123;</span><br><span class="line">        servletRequest.setCharacterEncoding(encoding);</span><br><span class="line">        filterChain.doFilter(servletRequest,servletResponse);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void destroy() &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">web.xml</span><br><span class="line">&lt;filter&gt;</span><br><span class="line">        &lt;filter-name&gt;CharsetEncodingFilter&lt;&#x2F;filter-name&gt;</span><br><span class="line">        &lt;filter-class&gt;com.imooc.cart.filter.CharsetEncodingFilter&lt;&#x2F;filter-class&gt;</span><br><span class="line">        &lt;init-param&gt;</span><br><span class="line">            &lt;param-name&gt;encoding&lt;&#x2F;param-name&gt;</span><br><span class="line">            &lt;param-value&gt;UTF-8&lt;&#x2F;param-value&gt;</span><br><span class="line">        &lt;&#x2F;init-param&gt;</span><br><span class="line">    &lt;&#x2F;filter&gt;</span><br><span class="line">    &lt;filter-mapping&gt;</span><br><span class="line">        &lt;filter-name&gt;CharsetEncodingFilter&lt;&#x2F;filter-name&gt;</span><br><span class="line">        &lt;url-pattern&gt;*.do&lt;&#x2F;url-pattern&gt;</span><br><span class="line">    &lt;&#x2F;filter-mapping&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-静态代码块可以用来赋初值"><a href="#2-静态代码块可以用来赋初值" class="headerlink" title="2-静态代码块可以用来赋初值"></a>2-静态代码块可以用来赋初值</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">static&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-404错误页面在web-xml中配置"><a href="#3-404错误页面在web-xml中配置" class="headerlink" title="3- 404错误页面在web.xml中配置"></a>3- 404错误页面在web.xml中配置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;error-page&gt;</span><br><span class="line">        &lt;error-code&gt;404&lt;&#x2F;error-code&gt;</span><br><span class="line">        &lt;location&gt;&#x2F;WEB-INF&#x2F;views&#x2F;error&#x2F;404.jsp&lt;&#x2F;location&gt;</span><br><span class="line">    &lt;&#x2F;error-page&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-Map迭代方式"><a href="#4-Map迭代方式" class="headerlink" title="4- Map迭代方式"></a>4- Map迭代方式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 创建一个Map</span><br><span class="line">Map&lt;String, Object&gt; infoMap &#x3D; new HashMap&lt;&gt;();</span><br><span class="line">infoMap.put(&quot;name&quot;, &quot;Zebe&quot;);</span><br><span class="line">infoMap.put(&quot;site&quot;, &quot;www.zebe.me&quot;);</span><br><span class="line">infoMap.put(&quot;email&quot;, &quot;zebe@vip.qq.com&quot;);</span><br><span class="line">&#x2F;&#x2F; 传统的Map迭代方式</span><br><span class="line">for (Map.Entry&lt;String, Object&gt; entry : infoMap.entrySet()) &#123;</span><br><span class="line">    System.out.println(entry.getKey() + &quot;：&quot; + entry.getValue());</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F; JDK8的迭代方式</span><br><span class="line">infoMap.forEach((key, value) -&gt; &#123;</span><br><span class="line">    System.out.println(key + &quot;：&quot; + value);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-静态资源热加载问题"><a href="#5-静态资源热加载问题" class="headerlink" title="5-静态资源热加载问题"></a>5-静态资源热加载问题</h3><p><img src="/images/Java-Stage2-Step5.3-JavaWeb%E7%BB%BC%E5%90%88/1.png" alt="1"></p>
+<p>ctrl+shift+A</p>
+<p><img src="/images/Java-Stage2-Step5.3-JavaWeb%E7%BB%BC%E5%90%88/2.png" alt="2"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoursite.com/2020/08/02/Java-Stage2-Step5.3-JavaWeb%E7%BB%BC%E5%90%88/" data-id="ckdcug4110000n8ib8gdcervg" class="article-share-link">Share</a>
+      
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+    
+  
+
+    
     <article id="post-Java-Stage2-Step5.1-Linux" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/07/31/Java-Stage2-Step5.1-Linux/" class="article-date">
@@ -532,52 +593,6 @@
     <footer class="article-footer">
       
         <a data-url="http://yoursite.com/2020/07/06/%E5%AE%89%E8%A3%85%E6%B5%8B%E8%AF%95CUDA%E3%80%81cuDNN%E3%80%81Pytorch-Gpu/" data-id="ckcaeg2lk0000lstjbx464x8m" class="article-share-link">Share</a>
-      
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-    
-  
-
-    
-    <article id="post-CS231n_Assignment2_PyTorch" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/07/06/CS231n_Assignment2_PyTorch/" class="article-date">
-  <time datetime="2020-07-06T07:15:35.435Z" itemprop="datePublished">2020-07-06</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/06/CS231n_Assignment2_PyTorch/">CS231n_Assignment2_PyTorch</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Training-a-ConvNet-PyTorch"><a href="#Training-a-ConvNet-PyTorch" class="headerlink" title="Training a ConvNet PyTorch"></a>Training a ConvNet PyTorch</h1>
-        
-          <p class="article-more-link">
-            <a href="/2020/07/06/CS231n_Assignment2_PyTorch/#more">......</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://yoursite.com/2020/07/06/CS231n_Assignment2_PyTorch/" data-id="ckcahwtye0000wotj4nxl1ulp" class="article-share-link">Share</a>
       
 
       
