@@ -125,6 +125,52 @@
   
 
     
+    <article id="post-Java-Stage3-Step1.5~6-JDBC&amp;JAVA反射" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/03/Java-Stage3-Step1.5~6-JDBC&JAVA%E5%8F%8D%E5%B0%84/" class="article-date">
+  <time datetime="2020-08-03T10:42:13.375Z" itemprop="datePublished">2020-08-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/03/Java-Stage3-Step1.5~6-JDBC&JAVA%E5%8F%8D%E5%B0%84/">Java-Stage3-Step1.5~6-JDBC&amp;JAVA反射</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>记录自己学习java所用</p>
+        
+          <p class="article-more-link">
+            <a href="/2020/08/03/Java-Stage3-Step1.5~6-JDBC&JAVA%E5%8F%8D%E5%B0%84/#more">......</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoursite.com/2020/08/03/Java-Stage3-Step1.5~6-JDBC&JAVA%E5%8F%8D%E5%B0%84/" data-id="ckdfbm6g80000d8ibapta3j2w" class="article-share-link">Share</a>
+      
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+    
+  
+
+    
     <article id="post-Java-Stage3-Step1.1~4-MySQL" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/08/02/Java-Stage3-Step1.1~4-MySQL/" class="article-date">
@@ -147,69 +193,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="1-数据库基本语法"><a href="#1-数据库基本语法" class="headerlink" title="1-数据库基本语法"></a>1-数据库基本语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">CREATE DATABASE&#x2F;SCHEMA db_name 创建数据库</span><br><span class="line">SHOW DATABASES&#x2F;SCHEMAS 显示所有数据库</span><br><span class="line">CREATE DATABASE IF NOT EXISTS db_name CHARACTER SET &#x3D;&#39;utf8&#39; 创建数据库并指定编码方式</span><br><span class="line">SHOW CREATE DATABASE db_name 查看指定数据库的详细信息</span><br><span class="line">ALTER DATABASE db_name DEFAULT CHARACTER SET &#39;GBK&#39; 修改指定数据库的编码方式</span><br><span class="line">USE db_name 使用指定数据库</span><br><span class="line">SELECT DATABASE()|SCHEMA() 得到当前打开的数据库</span><br><span class="line">DROP [IF EXISTS] db_name 删除指定数据库</span><br><span class="line">#|-- 注释</span><br><span class="line">SHOW WARNINGS 查看上一步操作产生的警告信息</span><br><span class="line">DESC tbl_name 查看表结构</span><br><span class="line">SHOW TABLE STATUS LIKE &#39;tbl_name&#39; ; 展示表的状态</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-数据库存储类型"><a href="#2-数据库存储类型" class="headerlink" title="2-数据库存储类型"></a>2-数据库存储类型</h3><p><img src="/images/Java-Stage3-Step1.1~4-MySQL/1.png" alt="1"></p>
-<p><img src="/images/Java-Stage3-Step1.1~4-MySQL/2.png" alt="2"></p>
-<p><img src="/images/Java-Stage3-Step1.1~4-MySQL/3.png" alt="3"></p>
-<p><img src="/images/Java-Stage3-Step1.1~4-MySQL/4.png" alt="4"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">TEXT 不能有默认值，大小写敏感</span><br><span class="line">CHAR 效率比 varchar 高  相当于空间换时间</span><br><span class="line">ENUM 编号从1开始</span><br><span class="line">YEAR </span><br><span class="line">0-69 表示 2000-2069 </span><br><span class="line">70-99 表示1970-1999</span><br><span class="line">0 插入的结果是0000</span><br><span class="line">‘0’ 插入的结果是2000</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-完整性约束条件"><a href="#3-完整性约束条件" class="headerlink" title="3-完整性约束条件"></a>3-完整性约束条件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">unsigned 无符号，没有负数，从0开始</span><br><span class="line">zerofill 零填充，长度不够的时候使用前补0填充</span><br><span class="line">NOT NULL 非空</span><br><span class="line">DEFAULT 默认值 插入的时候没有赋值就给默认值</span><br><span class="line">PRIMARY KEY 主键</span><br><span class="line">UNIQUE KEY 唯一性，一个表可以有多个，NULL除外</span><br><span class="line">AUTO_INCREMENT 自增长，只能用于数值列，而且配合索引使用(主键)</span><br><span class="line">FOREIGN KEY 外键约束</span><br></pre></td></tr></table></figure>
-
-<h3 id="4-数据表操作"><a href="#4-数据表操作" class="headerlink" title="4-数据表操作"></a>4-数据表操作</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE tbl_name(</span><br><span class="line">	id INT UNSIGNED COMMENT ’用户编号‘,  -COMMENT代表注释</span><br><span class="line">	courseId INT UNSIGNED,</span><br><span class="line">	PRIMARY KEY(id,courseId)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
-<p>添加字段：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE tbl_name</span><br><span class="line">ADD 字段名称 字段属性[完整性约束条件][FIRST|AFTER 字段名称]</span><br></pre></td></tr></table></figure>
-
-<p>删除字段：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ALTER TBALE tbl_name</span><br><span class="line">DROP 字段名称</span><br></pre></td></tr></table></figure>
-
-<p>添加默认值：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE tbl_name</span><br><span class="line">ALTER 字段名称 SET DEFAULT 默认值;</span><br></pre></td></tr></table></figure>
-
-<p>删除默认值：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE tbl_name</span><br><span class="line">ALTER 字段名称 DROP DEFAULT;</span><br></pre></td></tr></table></figure>
-
-<p>修改字段类型，字段属性：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ALTER TBALE tbl_name</span><br><span class="line">MODIFY 字段名称 字段类型 [字段属性] [FIRST|AFTER 字段名称]</span><br></pre></td></tr></table></figure>
-
-<p>修改字段名称、字段类型、字段属性:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE tbl_name</span><br><span class="line">CHANGE 原字段名称 新字段名称 字段类型 字段属性 [FIRST|AFTER 字段名称]</span><br></pre></td></tr></table></figure>
-
-<p>添加主键：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE tbl_name</span><br><span class="line">ADD PRIMARY KEY(字段名称)</span><br></pre></td></tr></table></figure>
-
-<p>删除主键：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE tbl_name</span><br><span class="line">DROP PRIMARY KEY;</span><br></pre></td></tr></table></figure>
-
-<p>添加唯一：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE tbl_name</span><br><span class="line">ADD UNIQUE KEY|INDEX  [index_name](字段名称)</span><br></pre></td></tr></table></figure>
-
-<p>删除唯一：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE tbl_name</span><br><span class="line">DROP INDEX [index_name](字段名称);</span><br></pre></td></tr></table></figure>
-
-<p>修改AUTO_INCREMANT的值</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE tbl_name AUTO_INCREMENT&#x3D;值</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="5-MyISAM存储引擎"><a href="#5-MyISAM存储引擎" class="headerlink" title="5-MyISAM存储引擎"></a>5-MyISAM存储引擎</h3><p><img src="/images/Java-Stage3-Step1.1~4-MySQL/5.png" alt="5"></p>
-<h3 id="6-InnoDB存储引擎"><a href="#6-InnoDB存储引擎" class="headerlink" title="6-InnoDB存储引擎"></a>6-InnoDB存储引擎</h3><p><img src="/images/Java-Stage3-Step1.1~4-MySQL/6.png" alt="6"></p>
-<h3 id="7-MySQL数据操作"><a href="#7-MySQL数据操作" class="headerlink" title="7-MySQL数据操作"></a>7-MySQL数据操作</h3><h5 id="插入记录："><a href="#插入记录：" class="headerlink" title="插入记录："></a>插入记录：</h5><p><img src="/images/Java-Stage3-Step1.1~4-MySQL/7.png" alt="7"></p>
-<h5 id="修改记录："><a href="#修改记录：" class="headerlink" title="修改记录："></a>修改记录：</h5><p><img src="/images/Java-Stage3-Step1.1~4-MySQL/8.png" alt="8"></p>
-<h5 id="删除记录："><a href="#删除记录：" class="headerlink" title="删除记录："></a>删除记录：</h5><p><img src="/images/Java-Stage3-Step1.1~4-MySQL/9.png" alt="9"></p>
-<p><img src="/images/Java-Stage3-Step1.1~4-MySQL/10.png" alt="10"></p>
-<h5 id="多表查询-笛卡尔积的形式就是普通多表查询"><a href="#多表查询-笛卡尔积的形式就是普通多表查询" class="headerlink" title="多表查询:笛卡尔积的形式就是普通多表查询"></a>多表查询:笛卡尔积的形式就是普通多表查询</h5><p><img src="/images/Java-Stage3-Step1.1~4-MySQL/11.png" alt="11"></p>
-<h5 id="外键约束："><a href="#外键约束：" class="headerlink" title="外键约束："></a>外键约束：</h5><p><img src="/images/Java-Stage3-Step1.1~4-MySQL/12.png" alt="12"></p>
-<h5 id="特殊形式查询：子查询，联合查询，自身连接查询"><a href="#特殊形式查询：子查询，联合查询，自身连接查询" class="headerlink" title="特殊形式查询：子查询，联合查询，自身连接查询"></a>特殊形式查询：子查询，联合查询，自身连接查询</h5><p>EXISTS () 若为真 则执行</p>
-<p>SELECT DISTINCT(username) FROM tbl_name  去掉字段username的重复值</p>
-<p><img src="/images/Java-Stage3-Step1.1~4-MySQL/13.png" alt="13"></p>
-<h5 id="MySQL常用函数："><a href="#MySQL常用函数：" class="headerlink" title="MySQL常用函数："></a>MySQL常用函数：</h5><h5 id="数学函数："><a href="#数学函数：" class="headerlink" title="数学函数："></a>数学函数：</h5><p><img src="/images/Java-Stage3-Step1.1~4-MySQL/14.png" alt="14"></p>
-<h5 id="字符串函数："><a href="#字符串函数：" class="headerlink" title="字符串函数："></a>字符串函数：</h5><p><img src="/images/Java-Stage3-Step1.1~4-MySQL/15.png" alt="15"></p>
-<h5 id="日期时间函数："><a href="#日期时间函数：" class="headerlink" title="日期时间函数："></a>日期时间函数：</h5><p><img src="/images/Java-Stage3-Step1.1~4-MySQL/16.png" alt="16"></p>
-<h5 id="其他常用函数："><a href="#其他常用函数：" class="headerlink" title="其他常用函数："></a>其他常用函数：</h5><p><img src="/images/Java-Stage3-Step1.1~4-MySQL/17.png" alt="17"></p>
-
+        <p>记录自己学习java所用</p>
+        
+          <p class="article-more-link">
+            <a href="/2020/08/02/Java-Stage3-Step1.1~4-MySQL/#more">......</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
@@ -592,52 +581,6 @@
     <footer class="article-footer">
       
         <a data-url="http://yoursite.com/2020/07/09/CS231n_Assignment3_Image_Captioning_with_LSTMs/" data-id="ckcfm7ahr0000o8ibbz4j0pii" class="article-share-link">Share</a>
-      
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-    
-  
-
-    
-    <article id="post-CS231n_Assignment3_Image_Captioning_with_RNNs" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/07/08/CS231n_Assignment3_Image_Captioning_with_RNNs/" class="article-date">
-  <time datetime="2020-07-08T10:41:42.882Z" itemprop="datePublished">2020-07-08</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/08/CS231n_Assignment3_Image_Captioning_with_RNNs/">CS231n_Assignment3_Image_Captioning_with_RNNs</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>前言:在开始之前，需要下载<em>Stanford</em> University训练好的数据集，因为是Win10系统，所以需要把命令行中的链接一个个抠出来挂上VPN下载。下载完成Coco Datasets数据集后才可开始assignment3的作业</p>
-        
-          <p class="article-more-link">
-            <a href="/2020/07/08/CS231n_Assignment3_Image_Captioning_with_RNNs/#more">......</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://yoursite.com/2020/07/08/CS231n_Assignment3_Image_Captioning_with_RNNs/" data-id="ckcepuowp0000hoibgm8o9v0l" class="article-share-link">Share</a>
       
 
       
