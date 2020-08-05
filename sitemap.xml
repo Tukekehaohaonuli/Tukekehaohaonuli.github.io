@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2020/08/04/Java-Stage3-Step2.4~5-MyBatis/</loc>
+    
+    <lastmod>2020-08-05T12:53:06.026Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2020/07/02/CS231n_Assignment2_Fully-Connected_Neural_Nets/</loc>
+    
+    <lastmod>2020-08-05T01:14:09.235Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2020/08/04/Java-Stage3-Step2.2-Maven%E5%85%A5%E9%97%A8/</loc>
     
     <lastmod>2020-08-04T08:47:36.646Z</lastmod>
@@ -103,13 +117,6 @@
     <loc>http://yoursite.com/2020/07/08/CS231n_Assignment3_Image_Captioning_with_RNNs/</loc>
     
     <lastmod>2020-07-10T03:02:36.137Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2020/07/02/CS231n_Assignment2_Fully-Connected_Neural_Nets/</loc>
-    
-    <lastmod>2020-07-07T05:47:01.064Z</lastmod>
     
   </url>
   
