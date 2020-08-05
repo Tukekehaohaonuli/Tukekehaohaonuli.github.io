@@ -5,12 +5,12 @@
   
   <title>Java-Stage3-Step2.4~5-MyBatis | 追梦少年人♥</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1-MyBatis介绍和配置  配置mybatispom.xml 12345678910&lt;dependency&gt;            &lt;groupId&gt;org.mybatis&lt;&#x2F;groupId&gt;            &lt;artifactId&gt;mybatis&lt;&#x2F;artifactId&gt;            &lt;ve">
+  <meta name="description" content="主要步骤：1、MyBatis介绍和配置 2、连接数据库工具类MyBatisUtils 3、数据查询，插入，更新，删除操作 4、日志配置及查看 5、动态sql语句 6、二级缓存 7、1对多 ，多对1关联查询 8、分页查询插件 9、连接缓冲池C3P0 10、批量插入 11、注解开发">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java-Stage3-Step2.4~5-MyBatis">
 <meta property="og:url" content="http://yoursite.com/2020/08/04/Java-Stage3-Step2.4~5-MyBatis/index.html">
 <meta property="og:site_name" content="追梦少年人♥">
-<meta property="og:description" content="1-MyBatis介绍和配置  配置mybatispom.xml 12345678910&lt;dependency&gt;            &lt;groupId&gt;org.mybatis&lt;&#x2F;groupId&gt;            &lt;artifactId&gt;mybatis&lt;&#x2F;artifactId&gt;            &lt;ve">
+<meta property="og:description" content="主要步骤：1、MyBatis介绍和配置 2、连接数据库工具类MyBatisUtils 3、数据查询，插入，更新，删除操作 4、日志配置及查看 5、动态sql语句 6、二级缓存 7、1对多 ，多对1关联查询 8、分页查询插件 9、连接缓冲池C3P0 10、批量插入 11、注解开发">
 <meta property="og:image" content="http://yoursite.com/images/Java-Stage3-Step2.4~5-MyBatis/1.png">
 <meta property="og:image" content="http://yoursite.com/images/Java-Stage3-Step2.4~5-MyBatis/4.png">
 <meta property="og:image" content="http://yoursite.com/images/Java-Stage3-Step2.4~5-MyBatis/2.png">
@@ -23,7 +23,7 @@
 <meta property="og:image" content="http://yoursite.com/images/Java-Stage3-Step2.4~5-MyBatis/10.png">
 <meta property="og:image" content="http://yoursite.com/images/Java-Stage3-Step2.4~5-MyBatis/11.png">
 <meta property="article:published_time" content="2020-08-04T08:48:35.028Z">
-<meta property="article:modified_time" content="2020-08-05T12:53:06.026Z">
+<meta property="article:modified_time" content="2020-08-05T12:59:07.317Z">
 <meta property="article:author" content="Tukeke">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://yoursite.com/images/Java-Stage3-Step2.4~5-MyBatis/1.png">
@@ -159,7 +159,20 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="1-MyBatis介绍和配置"><a href="#1-MyBatis介绍和配置" class="headerlink" title="1-MyBatis介绍和配置"></a>1-MyBatis介绍和配置</h1><p><img src="/images/Java-Stage3-Step2.4~5-MyBatis/1.png" alt="1"></p>
+        <h3 id="主要步骤："><a href="#主要步骤：" class="headerlink" title="主要步骤："></a>主要步骤：</h3><p>1、MyBatis介绍和配置</p>
+<p>2、连接数据库工具类MyBatisUtils</p>
+<p>3、数据查询，插入，更新，删除操作</p>
+<p>4、日志配置及查看</p>
+<p>5、动态sql语句</p>
+<p>6、二级缓存</p>
+<p>7、1对多 ，多对1关联查询</p>
+<p>8、分页查询插件</p>
+<p>9、连接缓冲池C3P0</p>
+<p>10、批量插入</p>
+<p>11、注解开发</p>
+<a id="more"></a>
+
+<h1 id="1-MyBatis介绍和配置"><a href="#1-MyBatis介绍和配置" class="headerlink" title="1-MyBatis介绍和配置"></a>1-MyBatis介绍和配置</h1><p><img src="/images/Java-Stage3-Step2.4~5-MyBatis/1.png" alt="1"></p>
 <p><img src="/images/Java-Stage3-Step2.4~5-MyBatis/4.png" alt="4"></p>
 <h3 id="配置mybatis"><a href="#配置mybatis" class="headerlink" title="配置mybatis"></a>配置mybatis</h3><p>pom.xml</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;org.mybatis&lt;&#x2F;groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;mybatis&lt;&#x2F;artifactId&gt;</span><br><span class="line">            &lt;version&gt;3.5.1&lt;&#x2F;version&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;mysql&lt;&#x2F;groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;mysql-connector-java&lt;&#x2F;artifactId&gt;</span><br><span class="line">            &lt;version&gt;5.1.49&lt;&#x2F;version&gt;</span><br><span class="line">        &lt;&#x2F;dependency&gt;</span><br></pre></td></tr></table></figure>
