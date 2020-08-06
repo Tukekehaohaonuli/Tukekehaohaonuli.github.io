@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Java-Stage3-Step2.4~5-MyBatis | 追梦少年人♥</title>
+  <title>Java-Stage3-Step2.4~6-MyBatis | 追梦少年人♥</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="主要步骤：1、MyBatis介绍和配置 2、连接数据库工具类MyBatisUtils 3、数据查询，插入，更新，删除操作 4、日志配置及查看 5、动态sql语句 6、二级缓存 7、1对多 ，多对1关联查询 8、分页查询插件 9、连接缓冲池C3P0 10、批量插入 11、注解开发">
+  <meta name="description" content="主要步骤：1、MyBatis介绍和配置 2、连接数据库工具类MyBatisUtils 3、数据查询，插入，更新，删除操作 4、日志配置及查看 5、动态sql语句 6、二级缓存 7、1对多 ，多对1关联查询 8、分页查询插件 9、连接缓冲池C3P0 10、批量插入 11、注解开发 12、项目开发总结">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java-Stage3-Step2.4~5-MyBatis">
-<meta property="og:url" content="http://yoursite.com/2020/08/04/Java-Stage3-Step2.4~5-MyBatis/index.html">
+<meta property="og:title" content="Java-Stage3-Step2.4~6-MyBatis">
+<meta property="og:url" content="http://yoursite.com/2020/08/04/Java-Stage3-Step2.4~6-MyBatis/index.html">
 <meta property="og:site_name" content="追梦少年人♥">
-<meta property="og:description" content="主要步骤：1、MyBatis介绍和配置 2、连接数据库工具类MyBatisUtils 3、数据查询，插入，更新，删除操作 4、日志配置及查看 5、动态sql语句 6、二级缓存 7、1对多 ，多对1关联查询 8、分页查询插件 9、连接缓冲池C3P0 10、批量插入 11、注解开发">
+<meta property="og:description" content="主要步骤：1、MyBatis介绍和配置 2、连接数据库工具类MyBatisUtils 3、数据查询，插入，更新，删除操作 4、日志配置及查看 5、动态sql语句 6、二级缓存 7、1对多 ，多对1关联查询 8、分页查询插件 9、连接缓冲池C3P0 10、批量插入 11、注解开发 12、项目开发总结">
 <meta property="og:image" content="http://yoursite.com/images/Java-Stage3-Step2.4~5-MyBatis/1.png">
 <meta property="og:image" content="http://yoursite.com/images/Java-Stage3-Step2.4~5-MyBatis/4.png">
 <meta property="og:image" content="http://yoursite.com/images/Java-Stage3-Step2.4~5-MyBatis/2.png">
@@ -22,8 +22,9 @@
 <meta property="og:image" content="http://yoursite.com/images/Java-Stage3-Step2.4~5-MyBatis/9.png">
 <meta property="og:image" content="http://yoursite.com/images/Java-Stage3-Step2.4~5-MyBatis/10.png">
 <meta property="og:image" content="http://yoursite.com/images/Java-Stage3-Step2.4~5-MyBatis/11.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/04/Java-Stage3-Step2/C:%5CUsers%5Cyuyuyyu%5CTukekehaohaonuli.github.io%5Csource%5Cimages%5CJava-Stage3-Step2.4~5-MyBatis%5C12.png">
 <meta property="article:published_time" content="2020-08-04T08:48:35.028Z">
-<meta property="article:modified_time" content="2020-08-05T12:59:07.317Z">
+<meta property="article:modified_time" content="2020-08-06T12:56:14.344Z">
 <meta property="article:author" content="Tukeke">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://yoursite.com/images/Java-Stage3-Step2.4~5-MyBatis/1.png">
@@ -137,9 +138,9 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-Java-Stage3-Step2.4~5-MyBatis" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-Java-Stage3-Step2.4~6-MyBatis" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/08/04/Java-Stage3-Step2.4~5-MyBatis/" class="article-date">
+    <a href="/2020/08/04/Java-Stage3-Step2.4~6-MyBatis/" class="article-date">
   <time datetime="2020-08-04T08:48:35.028Z" itemprop="datePublished">2020-08-04</time>
 </a>
     
@@ -151,7 +152,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Java-Stage3-Step2.4~5-MyBatis
+      Java-Stage3-Step2.4~6-MyBatis
     </h1>
   
 
@@ -170,6 +171,7 @@
 <p>9、连接缓冲池C3P0</p>
 <p>10、批量插入</p>
 <p>11、注解开发</p>
+<p>12、项目开发总结</p>
 <a id="more"></a>
 
 <h1 id="1-MyBatis介绍和配置"><a href="#1-MyBatis介绍和配置" class="headerlink" title="1-MyBatis介绍和配置"></a>1-MyBatis介绍和配置</h1><p><img src="/images/Java-Stage3-Step2.4~5-MyBatis/1.png" alt="1"></p>
@@ -268,14 +270,20 @@
 
 <h5 id="插入数据并返回Id值"><a href="#插入数据并返回Id值" class="headerlink" title="插入数据并返回Id值"></a>插入数据并返回Id值</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@Insert(&quot;INSERT INTO t_goods(title, sub_title, original_cost, current_price, discount, is_free_delivery, category_id) VALUES (#&#123;title&#125; , #&#123;subTitle&#125; , #&#123;originalCost&#125;, #&#123;currentPrice&#125;, #&#123;discount&#125;, #&#123;isFreeDelivery&#125;, #&#123;categoryId&#125;)&quot;)</span><br><span class="line">   &#x2F;&#x2F;&lt;selectKey&gt;</span><br><span class="line">   @SelectKey(statement &#x3D; &quot;select last_insert_id()&quot; , before &#x3D; false , keyProperty &#x3D; &quot;goodsId&quot; , resultType &#x3D; Integer.class)</span><br><span class="line">   public int insert(Goods goods);</span><br></pre></td></tr></table></figure>
 
-<h5 id="Results映射"><a href="#Results映射" class="headerlink" title="Results映射"></a>Results映射</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@Select(&quot;select * from t_goods&quot;)</span><br><span class="line">    &#x2F;&#x2F;&lt;resultMap&gt;</span><br><span class="line">    @Results(&#123;</span><br><span class="line">            &#x2F;&#x2F;&lt;id&gt;</span><br><span class="line">          @Result(column &#x3D; &quot;goods_id&quot; ,property &#x3D; &quot;goodsId&quot; , id &#x3D; true) ,</span><br><span class="line">            &#x2F;&#x2F;&lt;result&gt;</span><br><span class="line">            @Result(column &#x3D; &quot;title&quot; ,property &#x3D; &quot;title&quot;),</span><br><span class="line">            @Result(column &#x3D; &quot;current_price&quot; ,property &#x3D; &quot;currentPrice&quot;)</span><br><span class="line">    &#125;)</span><br><span class="line">    public List&lt;GoodsDTO&gt; selectAll();</span><br></pre></td></tr></table></figure>
+<h5 id="Results映射"><a href="#Results映射" class="headerlink" title="Results映射"></a>Results映射</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">@Select(&quot;select *from catalog where id&#x3D;#&#123;id&#125;&quot;)</span><br><span class="line">    @Results(id&#x3D;&quot;all&quot;,value&#x3D;&#123;</span><br><span class="line">            @Result(column &#x3D; &quot;id&quot;, property &#x3D; &quot;id&quot;, id &#x3D; true),</span><br><span class="line">            @Result(column &#x3D; &quot;title&quot;, property &#x3D; &quot;title&quot;),</span><br><span class="line">            @Result(column &#x3D; &quot;pid&quot;, property &#x3D; &quot;pid&quot;),</span><br><span class="line">            @Result(column &#x3D; &quot;info&quot;,property &#x3D; &quot;info&quot;),</span><br><span class="line">            @Result(column &#x3D; &quot;id&quot;, property &#x3D; &quot;children&quot;,many &#x3D; @Many(select &#x3D; &quot;selectByPid&quot;))</span><br><span class="line">    &#125;)</span><br><span class="line">    Catalog select(int id);</span><br><span class="line"></span><br><span class="line">    @Select(&quot;select *from catalog where pid&#x3D;#&#123;pid&#125;&quot;)</span><br><span class="line">    @ResultMap(&quot;all&quot;)</span><br><span class="line">    List&lt;Catalog&gt; selectByPid(int pid);</span><br></pre></td></tr></table></figure>
 
-<h3 id="总结：xml的方式适合大型项目，注解的形式适合小型项目的快速开发"><a href="#总结：xml的方式适合大型项目，注解的形式适合小型项目的快速开发" class="headerlink" title="总结：xml的方式适合大型项目，注解的形式适合小型项目的快速开发"></a>总结：xml的方式适合大型项目，注解的形式适合小型项目的快速开发</h3>
+<h3 id="总结：xml的方式适合大型项目，注解的形式适合小型项目的快速开发"><a href="#总结：xml的方式适合大型项目，注解的形式适合小型项目的快速开发" class="headerlink" title="总结：xml的方式适合大型项目，注解的形式适合小型项目的快速开发"></a>总结：xml的方式适合大型项目，注解的形式适合小型项目的快速开发</h3><h1 id="16-项目开发总结"><a href="#16-项目开发总结" class="headerlink" title="16-项目开发总结"></a>16-项目开发总结</h1><h3 id="1、web-xml配置"><a href="#1、web-xml配置" class="headerlink" title="1、web.xml配置"></a>1、web.xml配置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;web-app xmlns&#x3D;&quot;http:&#x2F;&#x2F;xmlns.jcp.org&#x2F;xml&#x2F;ns&#x2F;javaee&quot;</span><br><span class="line">         xmlns:xsi&#x3D;&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;2001&#x2F;XMLSchema-instance&quot;</span><br><span class="line">         xsi:schemaLocation&#x3D;&quot;http:&#x2F;&#x2F;xmlns.jcp.org&#x2F;xml&#x2F;ns&#x2F;javaee http:&#x2F;&#x2F;xmlns.jcp.org&#x2F;xml&#x2F;ns&#x2F;javaee&#x2F;web-app_4_0.xsd&quot;</span><br><span class="line">         version&#x3D;&quot;4.0&quot;&gt;</span><br><span class="line"> &lt;&#x2F;web-app&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2、整个实现逻辑："><a href="#2、整个实现逻辑：" class="headerlink" title="2、整个实现逻辑："></a>2、整个实现逻辑：</h3><p>持久层（底层，sql语句实现，dao）-&gt;业务层（interface和具体实现方法)-&gt;表现层（调用业务层对页面处理）-&gt;实现jsp页面</p>
+<h3 id="3、servlet如果要将数据传递给jsp页面要用转发，重定向的话是传向新的链接，所以是接受不到数据的。"><a href="#3、servlet如果要将数据传递给jsp页面要用转发，重定向的话是传向新的链接，所以是接受不到数据的。" class="headerlink" title="3、servlet如果要将数据传递给jsp页面要用转发，重定向的话是传向新的链接，所以是接受不到数据的。"></a>3、servlet如果要将数据传递给jsp页面要用转发，重定向的话是传向新的链接，所以是接受不到数据的。</h3><h3 id="4、当大量的操作都需要用到某个列表中的大量数据的时候，可以采取将这个数据放入到缓冲区中，这样在保证不会修改的情况下只需要初始化一次，当有发生修改时，再将他在缓冲区中的修改，例如放入到Application中：增加一个内容监听器"><a href="#4、当大量的操作都需要用到某个列表中的大量数据的时候，可以采取将这个数据放入到缓冲区中，这样在保证不会修改的情况下只需要初始化一次，当有发生修改时，再将他在缓冲区中的修改，例如放入到Application中：增加一个内容监听器" class="headerlink" title="4、当大量的操作都需要用到某个列表中的大量数据的时候，可以采取将这个数据放入到缓冲区中，这样在保证不会修改的情况下只需要初始化一次，当有发生修改时，再将他在缓冲区中的修改，例如放入到Application中：增加一个内容监听器"></a>4、当大量的操作都需要用到某个列表中的大量数据的时候，可以采取将这个数据放入到缓冲区中，这样在保证不会修改的情况下只需要初始化一次，当有发生修改时，再将他在缓冲区中的修改，例如放入到Application中：增加一个内容监听器</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">分类树：</span><br><span class="line">public class CatalogTreeListener implements ServletContextListener &#123;</span><br><span class="line">    private CatalogBiz catalogBiz&#x3D;new CatalogBizImpl();</span><br><span class="line">    public void contextInitialized(ServletContextEvent sce) &#123;</span><br><span class="line">        Catalog root &#x3D;catalogBiz.getRoot();</span><br><span class="line">        sce.getServletContext().setAttribute(&quot;root&quot;,root);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">在需要修改的时候：</span><br><span class="line">        request.getServletContext().setAttribute(&quot;root&quot;,root);</span><br></pre></td></tr></table></figure>
+
+<h3 id="5、在以后实现中需要考虑单例模型。"><a href="#5、在以后实现中需要考虑单例模型。" class="headerlink" title="5、在以后实现中需要考虑单例模型。"></a>5、在以后实现中需要考虑单例模型。</h3><p><img src="/2020/08/04/Java-Stage3-Step2/C:%5CUsers%5Cyuyuyyu%5CTukekehaohaonuli.github.io%5Csource%5Cimages%5CJava-Stage3-Step2.4~5-MyBatis%5C12.png" alt="12"></p>
+
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2020/08/04/Java-Stage3-Step2.4~5-MyBatis/" data-id="ckdhdhb1l0000xcibcw2ab218" class="article-share-link">Share</a>
+        <a data-url="http://yoursite.com/2020/08/04/Java-Stage3-Step2.4~6-MyBatis/" data-id="ckdit1dnv0000vgib0a9ucusm" class="article-share-link">Share</a>
       
 
       

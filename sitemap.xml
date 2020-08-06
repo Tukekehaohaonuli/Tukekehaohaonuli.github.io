@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://yoursite.com/2020/08/04/Java-Stage3-Step2.4~5-MyBatis/</loc>
+    <loc>http://yoursite.com/2020/08/04/Java-Stage3-Step2.4~6-MyBatis/</loc>
     
-    <lastmod>2020-08-05T12:59:07.317Z</lastmod>
+    <lastmod>2020-08-06T12:56:14.344Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2020/07/31/Java-Stage2-Step4.4-%E5%AE%9E%E7%8E%B0%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA/</loc>
+    
+    <lastmod>2020-08-06T09:04:47.131Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2020/07/31/Windows%E4%B8%8B%E5%AE%89%E8%A3%85Linux%E7%B3%BB%E7%BB%9F%E5%B9%B6%E9%85%8D%E7%BD%AEJava%E7%8E%AF%E5%A2%83%E7%AD%89/</loc>
+    
+    <lastmod>2020-08-05T13:06:26.694Z</lastmod>
     
   </url>
   
@@ -19,13 +33,6 @@
     <loc>http://yoursite.com/2020/08/04/Java-Stage3-Step2.2-Maven%E5%85%A5%E9%97%A8/</loc>
     
     <lastmod>2020-08-04T08:47:36.646Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2020/07/31/Java-Stage2-Step4.4-%E5%AE%9E%E7%8E%B0%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA/</loc>
-    
-    <lastmod>2020-08-04T08:46:32.082Z</lastmod>
     
   </url>
   
@@ -61,13 +68,6 @@
     <loc>http://yoursite.com/2020/07/26/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/</loc>
     
     <lastmod>2020-08-04T04:16:26.876Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2020/07/31/Windows%E4%B8%8B%E5%AE%89%E8%A3%85Linux%E7%B3%BB%E7%BB%9F%E5%B9%B6%E9%85%8D%E7%BD%AEJava%E7%8E%AF%E5%A2%83%E7%AD%89/</loc>
-    
-    <lastmod>2020-08-04T04:14:48.626Z</lastmod>
     
   </url>
   
