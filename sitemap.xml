@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2020/08/07/Java-Stage3-Step3.3-Redis/</loc>
+    
+    <lastmod>2020-08-07T09:03:08.498Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2020/07/31/Java-Stage2-Step5.1-Linux/</loc>
+    
+    <lastmod>2020-08-07T05:16:44.725Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2020/08/04/Java-Stage3-Step2.4~6-MyBatis/</loc>
     
     <lastmod>2020-08-06T12:56:14.344Z</lastmod>
@@ -33,13 +47,6 @@
     <loc>http://yoursite.com/2020/08/04/Java-Stage3-Step2.2-Maven%E5%85%A5%E9%97%A8/</loc>
     
     <lastmod>2020-08-04T08:47:36.646Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2020/07/31/Java-Stage2-Step5.1-Linux/</loc>
-    
-    <lastmod>2020-08-04T08:44:03.394Z</lastmod>
     
   </url>
   
