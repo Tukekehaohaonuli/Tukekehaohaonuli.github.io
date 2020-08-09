@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2020/08/07/Java-Stage4-Step1-Spring/</loc>
+    
+    <lastmod>2020-08-09T12:19:29.842Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2020/08/07/Java-Stage3-Step3.3-Redis/</loc>
     
     <lastmod>2020-08-07T09:03:08.498Z</lastmod>
