@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2020/09/01/Spring%20Boot%20WebSocket/</loc>
+    
+    <lastmod>2020-09-01T12:43:23.612Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2020/09/01/Restful/</loc>
     
     <lastmod>2020-09-01T11:11:12.065Z</lastmod>
@@ -9,7 +16,7 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2020/09/01/Thymeleaf/</loc>
+    <loc>http://yoursite.com/2020/09/01/Spring%20Boot%E4%B8%AD%E9%85%8D%E7%BD%AEThymeleaf/</loc>
     
     <lastmod>2020-09-01T11:09:17.443Z</lastmod>
     
