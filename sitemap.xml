@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2020/09/25/Spring%20Data%20JPA%20%E5%92%8C%20Thymeleaf%20%E7%BB%BC%E5%90%88%E5%AE%9E%E8%B7%B5/</loc>
+    
+    <lastmod>2020-09-26T03:13:31.198Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2020/09/24/Spring%20Boot%20Druid/</loc>
     
     <lastmod>2020-09-25T07:45:14.084Z</lastmod>
