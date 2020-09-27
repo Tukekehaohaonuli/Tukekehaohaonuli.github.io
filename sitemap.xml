@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2020/08/07/Java-Stage3-Step3.3-Redis/</loc>
+    
+    <lastmod>2020-09-27T08:36:22.056Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2020/09/27/Spring%20Boot%20%E6%93%8D%E4%BD%9C%20Memcache/</loc>
     
     <lastmod>2020-09-27T06:57:36.309Z</lastmod>
@@ -103,13 +110,6 @@
     <loc>http://yoursite.com/2020/08/04/Java-Stage3-Step2.4~6-MyBatis/</loc>
     
     <lastmod>2020-08-10T07:30:44.860Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2020/08/07/Java-Stage3-Step3.3-Redis/</loc>
-    
-    <lastmod>2020-08-07T09:03:08.498Z</lastmod>
     
   </url>
   
