@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2020/09/28/Spring%20Boot%20ActiveMQ/</loc>
+    
+    <lastmod>2020-09-28T12:22:37.027Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2020/09/28/Spring%20Boot%20Cache/</loc>
     
     <lastmod>2020-09-28T02:55:27.010Z</lastmod>
