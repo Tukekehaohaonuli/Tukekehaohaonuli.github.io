@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Tukekenulia♥</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="主要步骤：1、配置JDK 2、配置Tomcat，包括IDEA 3、Tomcat控制台中文乱码问题 4、配置MySQL 5、IDEA快捷键,jar,war包导出">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tukekenulia♥">
+<meta property="og:url" content="http://yoursite.com/2022/03/30/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/index.html">
+<meta property="og:site_name" content="Tukekenulia♥">
+<meta property="og:description" content="主要步骤：1、配置JDK 2、配置Tomcat，包括IDEA 3、Tomcat控制台中文乱码问题 4、配置MySQL 5、IDEA快捷键,jar,war包导出">
+<meta property="og:locale">
+<meta property="og:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/5.png">
+<meta property="og:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/6.png">
+<meta property="og:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/7.png">
+<meta property="og:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/8.png">
+<meta property="og:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/9.png">
+<meta property="og:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/10.png">
+<meta property="og:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/28.png">
+<meta property="og:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/1.png">
+<meta property="og:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/2.png">
+<meta property="og:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/3.png">
+<meta property="og:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/4.png">
+<meta property="og:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/11.png">
+<meta property="og:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/12.png">
+<meta property="og:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/13.png">
+<meta property="og:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/21.png">
+<meta property="og:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/19.png">
+<meta property="og:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/22.png">
+<meta property="og:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/23.png">
+<meta property="og:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/14.png">
+<meta property="og:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/15.png">
+<meta property="og:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/16.png">
+<meta property="og:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/20.png">
+<meta property="og:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/27.png">
+<meta property="og:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/17.png">
+<meta property="og:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/18.png">
+<meta property="og:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/24.png">
+<meta property="og:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/25.png">
+<meta property="og:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/26.png">
+<meta property="og:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/29.png">
+<meta property="og:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/30.png">
+<meta property="og:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/31.png">
+<meta property="og:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/32.png">
+<meta property="og:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/33.png">
+<meta property="og:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/34.png">
+<meta property="og:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/35.png">
+<meta property="og:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/36.png">
+<meta property="og:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/37.png">
+<meta property="og:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/38.png">
+<meta property="og:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/39.png">
+<meta property="og:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/40.png">
+<meta property="og:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/41.png">
+<meta property="og:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/42.png">
+<meta property="og:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/43.png">
+<meta property="og:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/44.png">
+<meta property="og:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/45.png">
+<meta property="og:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/46.png">
+<meta property="og:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/47.png">
+<meta property="og:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/48.png">
+<meta property="og:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/49.png">
+<meta property="og:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/50.png">
+<meta property="og:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/51.png">
+<meta property="og:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/52.png">
+<meta property="og:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/53.png">
+<meta property="og:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/54.png">
+<meta property="og:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/55.png">
+<meta property="og:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/56.png">
+<meta property="og:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/57.png">
+<meta property="og:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/58.png">
+<meta property="og:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/59.png">
+<meta property="og:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/60.png">
+<meta property="og:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/61.png">
+<meta property="og:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/62.png">
+<meta property="og:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/63.png">
+<meta property="article:published_time" content="2022-03-30T07:54:56.000Z">
+<meta property="article:modified_time" content="2022-03-30T07:54:56.000Z">
+<meta property="article:author" content="Tukeke">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/5.png">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/css/scrollUp/image.css">
+
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <div class="logo">
+        <img src="/logo.png" alt="Profile Picture">
+      </div>
+      <div id="title">Tukekenulia♥</div>
+      
+        <div id="subtitle">Stay focus,stay humble,stay curiosity.</div>
+      
+       <ul class="my-socials">
+  
+  <li>
+  	<a href="https://github.com/Tukekehaohaonuli" class="github" target="_blank">
+  		<i class="fa fa-github"></i>
+  	</a>
+  </li>
+  
+  <li>
+  	<a href="YOUR WEIBO HOME PAGE URL" class="weibo" target="_blank">
+  		<i class="fa fa-weibo"></i>
+  	</a>
+  </li>
+  
+ 
+</ul>
+    </div>
+  </div>
+  <div id="header-inner" class="">
+    <nav id="main-nav">
+      <a id="main-nav-toggle" class="nav-icon"></a>
+      <!--
+        
+          
+            <a class="main-nav-link" href="/">首页</a>
+          
+            <a class="main-nav-link" href="/categories/life">生活</a>
+          
+            <a class="main-nav-link" href="/archives">归档</a>
+          
+        
+      -->
+    </nav>
+    <nav id="title-nav" style="display:none">
+      <a href="/">Tukekenulia♥</a>
+      <img src="/logo.png" alt="Profile Picture">
+      <!--
+      <span id="title-nav-socials">
+        
+       
+     </span>
+      -->
+    </nav>
+    <nav id="sub-nav">
+      
+      <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+    </nav>
+    <div id="search-form-wrap">
+      <form action="http://www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+        <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+        <input type="submit" value="" class="search-form-submit">
+        <input name=tn type=hidden value="bds">
+        <input name=cl type=hidden value="3">
+        <input name=ct type=hidden value="2097152">
+        <input type="hidden" name="si" value="yoursite.com">
+      </form>
+    </div>
+  </div>
+  <div class="site-nav" style="display: none;">
+    <ul>
+      
+      
+        <li><a href="/">首页</a></li>
+      
+        <li><a href="/categories/life">生活</a></li>
+      
+        <li><a href="/archives">归档</a></li>
+      
+      
+    </ul>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-配置JDK1.8、Tomcat以及MySQL" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2022/03/30/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/" class="article-date">
+  <time datetime="2022-03-30T07:54:56.000Z" itemprop="datePublished">2022-03-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="主要步骤："><a href="#主要步骤：" class="headerlink" title="主要步骤："></a>主要步骤：</h3><p>1、配置JDK</p>
+<p>2、配置Tomcat，包括IDEA</p>
+<p>3、Tomcat控制台中文乱码问题</p>
+<p>4、配置MySQL</p>
+<p>5、IDEA快捷键,jar,war包导出</p>
+<span id="more"></span>
+
+<h3 id="一：配置JDK"><a href="#一：配置JDK" class="headerlink" title="一：配置JDK"></a>一：配置JDK</h3><h5 id="第一步：下载JDK"><a href="#第一步：下载JDK" class="headerlink" title="第一步：下载JDK"></a>第一步：下载JDK</h5><p>官网:<a target="_blank" rel="noopener" href="https://www.oracle.com/cn/java/technologies/javase/javase-jdk8-downloads.html">https://www.oracle.com/cn/java/technologies/javase/javase-jdk8-downloads.html</a></p>
+<p><img src="/../images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/5.png" alt="5"></p>
+<p>用户注册登录之后下载安装完成。</p>
+<h5 id="第二步：验证JDK"><a href="#第二步：验证JDK" class="headerlink" title="第二步：验证JDK"></a>第二步：验证JDK</h5><p>输入 java -version 以及 javac -version查看java版本：这里一定要确保版本一致，不然会出现问题</p>
+<p><img src="/../images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/6.png" alt="6"></p>
+<p>之后输入 java -verbose查看jdk版本是否是对的：</p>
+<p><img src="/../images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/7.png" alt="6"></p>
+<p>我原来的版本是JRE，JRE虽然能运行JAVA文件，但是不是开发者模式，如果想要用Tomcat必须有JDK</p>
+<p>JDK、JRE、JVM关系如下：</p>
+<p><img src="/../images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/8.png" alt="8"></p>
+<h5 id="第三步：配置环境"><a href="#第三步：配置环境" class="headerlink" title="第三步：配置环境"></a>第三步：配置环境</h5><p>1.<strong>JAVA_HOME</strong> 环境配置：C:\Program Files\Java\jdk1.8.0_261</p>
+<p><img src="/../images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/9.png" alt="9"></p>
+<p>2.Path 环境配置:在Path中添加：%JAVA_HOME%\bin;%JAVA_HOME%\jre\bin;</p>
+<p><img src="/../images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/10.png" alt="10"></p>
+<p>3.CLASSPATH环境配置： 添加： .;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar;</p>
+<p><img src="/../images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/28.png" alt="28"></p>
+<p>配置完成!</p>
+<h3 id="二：配置Tomcat"><a href="#二：配置Tomcat" class="headerlink" title="二：配置Tomcat"></a>二：配置Tomcat</h3><h5 id="第一步：下载Tomcat"><a href="#第一步：下载Tomcat" class="headerlink" title="第一步：下载Tomcat"></a>第一步：下载Tomcat</h5><p>Tomcat官网:<a target="_blank" rel="noopener" href="https://tomcat.apache.org/download-80.cgi">https://tomcat.apache.org/download-80.cgi</a></p>
+<p>推荐下载8.0版本，下载压缩包。</p>
+<p><img src="/../images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/1.png" alt="1"></p>
+<h5 id="第二步：Tomcat环境变量配置"><a href="#第二步：Tomcat环境变量配置" class="headerlink" title="第二步：Tomcat环境变量配置"></a>第二步：Tomcat环境变量配置</h5><p>添加系统变量：</p>
+<h5 id="1-第一个环境变量：CATALINA-BASE"><a href="#1-第一个环境变量：CATALINA-BASE" class="headerlink" title="1:第一个环境变量：CATALINA_BASE"></a>1:第一个环境变量：<strong>CATALINA_BASE</strong></h5><p><img src="/../images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/2.png" alt="2"></p>
+<h5 id="2：同理，第二个环境变量：CATALINA-HOME"><a href="#2：同理，第二个环境变量：CATALINA-HOME" class="headerlink" title="2：同理，第二个环境变量：CATALINA_HOME"></a>2：同理，第二个环境变量：<strong>CATALINA_HOME</strong></h5><p><img src="/../images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/3.png" alt="3"></p>
+<h5 id="3：在CLASSPATH环境下添加-CATALINA-HOME-lib-servlet-api-jar-如果没有的话就新建，有的话就在原来的基础上添加。"><a href="#3：在CLASSPATH环境下添加-CATALINA-HOME-lib-servlet-api-jar-如果没有的话就新建，有的话就在原来的基础上添加。" class="headerlink" title="3：在CLASSPATH环境下添加%CATALINA_HOME%\lib\servlet-api.jar;如果没有的话就新建，有的话就在原来的基础上添加。"></a>3：在CLASSPATH环境下添加%CATALINA_HOME%\lib\servlet-api.jar;如果没有的话就新建，有的话就在原来的基础上添加。</h5><p><img src="/../images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/4.png" alt="4"></p>
+<h5 id="4-在Path中加上Tomcat中的bin和lib文件即：-CATALINA-HOME-bin-CATALINA-HOME-lib；"><a href="#4-在Path中加上Tomcat中的bin和lib文件即：-CATALINA-HOME-bin-CATALINA-HOME-lib；" class="headerlink" title="4:在Path中加上Tomcat中的bin和lib文件即：%CATALINA_HOME%\bin;%CATALINA_HOME%\lib；"></a>4:在Path中加上Tomcat中的bin和lib文件即：%CATALINA_HOME%\bin;%CATALINA_HOME%\lib；</h5><p><img src="/../images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/11.png" alt="11"></p>
+<h5 id="第三步：验证Tomcat："><a href="#第三步：验证Tomcat：" class="headerlink" title="第三步：验证Tomcat："></a>第三步：验证Tomcat：</h5><p>在命令行中输入</p>
+<p><img src="/../images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/12.png" alt="12"></p>
+<p>因为Tomcat的端口号为8080，因此在浏览器中输入：</p>
+<p><a target="_blank" rel="noopener" href="http://localhost:8080/%E6%98%BE%E7%A4%BATomcat%E7%BD%91%E9%A1%B5%E5%88%99%E8%A1%A8%E7%A4%BA%E9%85%8D%E7%BD%AE%E6%88%90%E5%8A%9F%EF%BC%81">http://localhost:8080/显示Tomcat网页则表示配置成功！</a></p>
+<p><img src="/../images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/13.png" alt="13"></p>
+<h3 id="三-在IntelliJ-IDEA配置Tomcat"><a href="#三-在IntelliJ-IDEA配置Tomcat" class="headerlink" title="三:在IntelliJ IDEA配置Tomcat"></a>三:在IntelliJ IDEA配置Tomcat</h3><h5 id="第一步：因为Tomcat是web项目，所以需要新建一个web项目，创建一个module模块后，创建web项目"><a href="#第一步：因为Tomcat是web项目，所以需要新建一个web项目，创建一个module模块后，创建web项目" class="headerlink" title="第一步：因为Tomcat是web项目，所以需要新建一个web项目，创建一个module模块后，创建web项目"></a>第一步：因为Tomcat是web项目，所以需要新建一个web项目，创建一个module模块后，创建web项目</h5><p><img src="/../images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/21.png" alt="21"></p>
+<p><img src="/../images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/19.png" alt="19"></p>
+<h5 id="第二步：之后再web-WEB-INF下创建2个文件夹，"><a href="#第二步：之后再web-WEB-INF下创建2个文件夹，" class="headerlink" title="第二步：之后再web&#x2F;WEB-INF下创建2个文件夹，"></a>第二步：之后再web&#x2F;WEB-INF下创建2个文件夹，</h5><p>classes用来存放编译后输出的class文件，lib用于存放第三方jar包。</p>
+<p><img src="/../images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/22.png" alt="22"></p>
+<h5 id="第三步：配置文件夹路径：都设置为classes文件夹"><a href="#第三步：配置文件夹路径：都设置为classes文件夹" class="headerlink" title="第三步：配置文件夹路径：都设置为classes文件夹"></a>第三步：配置文件夹路径：都设置为classes文件夹</h5><p><img src="/../images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/23.png" alt="23"></p>
+<h5 id="第四步-配置Tomcat容器"><a href="#第四步-配置Tomcat容器" class="headerlink" title="第四步:配置Tomcat容器"></a>第四步:配置Tomcat容器</h5><p><img src="/../images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/14.png" alt="14"></p>
+<p><img src="/../images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/15.png" alt="15"></p>
+<p><img src="/../images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/16.png" alt="16"></p>
+<p><img src="/../images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/20.png" alt="20"></p>
+<h6 id="第五步：打开jsp运行Tomcat进行测试"><a href="#第五步：打开jsp运行Tomcat进行测试" class="headerlink" title="第五步：打开jsp运行Tomcat进行测试"></a>第五步：打开jsp运行Tomcat进行测试</h6><p><img src="/../images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/27.png" alt="27"></p>
+<p>结果在浏览器中打开测试完成！</p>
+<h3 id="导入jar包"><a href="#导入jar包" class="headerlink" title="导入jar包"></a>导入jar包</h3><h5 id="第一种："><a href="#第一种：" class="headerlink" title="第一种："></a>第一种：</h5><p><img src="/../images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/17.png" alt="17"></p>
+<p><img src="/../images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/18.png"></p>
+<h5 id="第二种-直接添加jar包依赖文件，这样不需要像第一种一样每次在后面添加的jar包都要重新配置"><a href="#第二种-直接添加jar包依赖文件，这样不需要像第一种一样每次在后面添加的jar包都要重新配置" class="headerlink" title="第二种:直接添加jar包依赖文件，这样不需要像第一种一样每次在后面添加的jar包都要重新配置"></a>第二种:直接添加jar包依赖文件，这样不需要像第一种一样每次在后面添加的jar包都要重新配置</h5><p><img src="/../images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/24.png" alt="24"></p>
+<p><img src="/../images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/25.png" alt="25"></p>
+<p><img src="/../images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/26.png" alt="26"></p>
+<h3 id="四：IDEA下的Tomcat控制台中文乱码问题"><a href="#四：IDEA下的Tomcat控制台中文乱码问题" class="headerlink" title="四：IDEA下的Tomcat控制台中文乱码问题"></a>四：IDEA下的Tomcat控制台中文乱码问题</h3><p>在Tomcat&#x2F;conf文件夹下的logging.properties文件中的UTF-8全部转换为GBK</p>
+<p><img src="/../images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/29.png" alt="29"></p>
+<h3 id="五-配置MySQL"><a href="#五-配置MySQL" class="headerlink" title="五:配置MySQL"></a>五:配置MySQL</h3><p>这里下载Mysql5.7版本，老版本相对来说比较稳定。</p>
+<p>1、下载地址：<a target="_blank" rel="noopener" href="https://downloads.mysql.com/archives/installer/">https://downloads.mysql.com/archives/installer/</a></p>
+<p><img src="/../images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/30.png" alt="30"></p>
+<p>2、安装MySQL</p>
+<p>选择Server only 因为只是需要数据库服务，开发JavaWeb项目。</p>
+<p><img src="/../images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/31.png" alt="31"></p>
+<p><img src="/../images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/32.png" alt="32"></p>
+<p>设置数据库密码为初始：123456</p>
+<p><img src="/../images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/33.png" alt="33"></p>
+<p>数据库的名字：</p>
+<p><img src="/../images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/34.png" alt="34"></p>
+<p>3、配置环境变量</p>
+<p>检查发现MySQL安装在：</p>
+<p><img src="/../images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/35.png" alt="35"></p>
+<p>新增系统变量：MYSQL_HOME&#x3D;C:\Program Files\MySQL\MySQL Server 5.7</p>
+<p><img src="/../images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/36.png" alt="36"></p>
+<p>在path变量下添加: %MYSQL_HOME%\bin</p>
+<p><img src="/../images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/37.png" alt="37"></p>
+<p><img src="/../images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/38.png" alt="38"></p>
+<p>最后小结:配置环境变量的意义就是在于可以省去每次需要定位到特定目录所需要的步骤；设置了环境变量之后可以在任意位置输入mysql命令。MYSQL_HOME环境变量的设置不是必须的，而是为了以后方便使用mysql命令。</p>
+<p>MySQL的配置文件：</p>
+<p><img src="/../images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/39.png" alt="39"></p>
+<h3 id="六-IDEA快捷键-jar-war包导出"><a href="#六-IDEA快捷键-jar-war包导出" class="headerlink" title="六:IDEA快捷键,jar,war包导出"></a>六:IDEA快捷键,jar,war包导出</h3><h5 id="1-IDEA快捷键"><a href="#1-IDEA快捷键" class="headerlink" title="1-IDEA快捷键"></a>1-IDEA快捷键</h5><p><img src="/../images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/40.png" alt="40"></p>
+<p><img src="/../images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/41.png" alt="41"></p>
+<h5 id="查看更多live-template"><a href="#查看更多live-template" class="headerlink" title="查看更多live template:"></a>查看更多live template:</h5><p><img src="/../images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/42.png" alt="42"></p>
+<h3 id="2-IDEA打包jar"><a href="#2-IDEA打包jar" class="headerlink" title="2-IDEA打包jar"></a>2-IDEA打包jar</h3><p><img src="/../images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/43.png" alt="43"></p>
+<p><img src="/../images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/44.png" alt="44"></p>
+<h5 id="选择类："><a href="#选择类：" class="headerlink" title="选择类："></a>选择类：</h5><p><img src="/../images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/45.png" alt="45"></p>
+<h5 id="双击将-complie-output文件加入到左边，不然jar包中会没有可编译的类："><a href="#双击将-complie-output文件加入到左边，不然jar包中会没有可编译的类：" class="headerlink" title="双击将 complie output文件加入到左边，不然jar包中会没有可编译的类："></a>双击将 complie output文件加入到左边，不然jar包中会没有可编译的类：</h5><p><img src="/../images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/46.png" alt="46"></p>
+<h5 id="可以看到MF文件被创建了："><a href="#可以看到MF文件被创建了：" class="headerlink" title="可以看到MF文件被创建了："></a>可以看到MF文件被创建了：</h5><p><img src="/../images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/47.png" alt="47"></p>
+<h5 id="生成jar包："><a href="#生成jar包：" class="headerlink" title="生成jar包："></a>生成jar包：</h5><p><img src="/../images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/48.png" alt="48"></p>
+<p><img src="/../images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/49.png" alt="49"></p>
+<p><img src="/../images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/50.png" alt="50"></p>
+<h5 id="运行jar文件："><a href="#运行jar文件：" class="headerlink" title="运行jar文件："></a>运行jar文件：</h5><p><img src="/../images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/51.png" alt="51"></p>
+<h5 id="在某个文件夹下直接输入cmd可以直接定位到该文件路径："><a href="#在某个文件夹下直接输入cmd可以直接定位到该文件路径：" class="headerlink" title="在某个文件夹下直接输入cmd可以直接定位到该文件路径："></a>在某个文件夹下直接输入cmd可以直接定位到该文件路径：</h5><p><img src="/../images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/52.png" alt="52"></p>
+<p><img src="/../images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/53.png" alt="53"></p>
+<h5 id="热部署只有在debug模式下才可以："><a href="#热部署只有在debug模式下才可以：" class="headerlink" title="热部署只有在debug模式下才可以："></a>热部署只有在debug模式下才可以：</h5><p><img src="/../images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/54.png" alt="54"></p>
+<h3 id="3-IDEA打包war"><a href="#3-IDEA打包war" class="headerlink" title="3-IDEA打包war"></a>3-IDEA打包war</h3><p><img src="/../images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/55.png" alt="30"></p>
+<h5 id="将右侧的资源双击移动到左侧中"><a href="#将右侧的资源双击移动到左侧中" class="headerlink" title="将右侧的资源双击移动到左侧中"></a>将右侧的资源双击移动到左侧中</h5><p><img src="/../images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/56.png" alt="31"></p>
+<p><img src="/../images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/57.png" alt="33"></p>
+<p><img src="/../images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/58.png" alt="34"></p>
+<h5 id="之后就能在该包目录下找到war文件"><a href="#之后就能在该包目录下找到war文件" class="headerlink" title="之后就能在该包目录下找到war文件"></a>之后就能在该包目录下找到war文件</h5><p><img src="/../images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/59.png" alt="32"></p>
+<p><img src="/../images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/60.png" alt="35"></p>
+<h5 id="将它放置在tomcat的webapps下："><a href="#将它放置在tomcat的webapps下：" class="headerlink" title="将它放置在tomcat的webapps下："></a>将它放置在tomcat的webapps下：</h5><p><img src="/../images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/61.png" alt="44"></p>
+<h5 id="进入到Tomcat-的bin目录下启动"><a href="#进入到Tomcat-的bin目录下启动" class="headerlink" title="进入到Tomcat 的bin目录下启动"></a>进入到Tomcat 的bin目录下启动</h5><h5 id=""><a href="#" class="headerlink" title=""></a></h5><p><img src="/../images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/62.png" alt="45"></p>
+<h5 id="访问成功！"><a href="#访问成功！" class="headerlink" title="访问成功！"></a>访问成功！</h5><p><img src="/../images/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/63.png" alt="46"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoursite.com/2022/03/30/%E9%85%8D%E7%BD%AEJDK1.8%E3%80%81Tomcat%E4%BB%A5%E5%8F%8AMySQL/" data-id="clkwhj3u5001j6s7sg81q3qgo" class="article-share-link">Share</a>
+      
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/03/30/SSM%E6%A1%86%E6%9E%B6%E6%95%B4%E5%90%88%E5%BC%80%E5%8F%91/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/03/15/%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98-vc%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93%E5%92%8C%E6%98%BE%E7%A4%BA%E5%AF%BC%E5%85%A5%E4%BE%9D%E8%B5%96/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2023 Tukeke<br>
+      Theme <a href="https://github.com/Tukekehaohaonuli/" target="_blank">Oishi</a>, Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <!--
+      <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/categories/life" class="mobile-nav-link">生活</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+</nav>
+    -->
+    
+
+<!-- 百度分享 start -->
+
+<!-- 百度分享 end -->
+
+<script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+
+<script src="/js/jquery.scrollUp.min.js"></script>
+
+
+<script src="/js/jquery.transform.js"></script>
+
+
+<script src="/js/menu.js"></script>
+
+
+
+<script src="/js/script.js"></script>
+
+
+<script src="/js/scrollUp.js"></script>
+
+
+  </div>
+</body>
+</html>

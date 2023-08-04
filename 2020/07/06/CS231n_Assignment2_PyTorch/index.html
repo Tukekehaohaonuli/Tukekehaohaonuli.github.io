@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Tukekenulia♥</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Training a ConvNet PyTorch">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tukekenulia♥">
+<meta property="og:url" content="http://yoursite.com/2020/07/06/CS231n_Assignment2_PyTorch/index.html">
+<meta property="og:site_name" content="Tukekenulia♥">
+<meta property="og:description" content="Training a ConvNet PyTorch">
+<meta property="og:locale">
+<meta property="article:published_time" content="2020-07-06T13:17:02.000Z">
+<meta property="article:modified_time" content="2020-07-06T13:17:02.000Z">
+<meta property="article:author" content="Tukeke">
+<meta name="twitter:card" content="summary">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/css/scrollUp/image.css">
+
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <div class="logo">
+        <img src="/logo.png" alt="Profile Picture">
+      </div>
+      <div id="title">Tukekenulia♥</div>
+      
+        <div id="subtitle">Stay focus,stay humble,stay curiosity.</div>
+      
+       <ul class="my-socials">
+  
+  <li>
+  	<a href="https://github.com/Tukekehaohaonuli" class="github" target="_blank">
+  		<i class="fa fa-github"></i>
+  	</a>
+  </li>
+  
+  <li>
+  	<a href="YOUR WEIBO HOME PAGE URL" class="weibo" target="_blank">
+  		<i class="fa fa-weibo"></i>
+  	</a>
+  </li>
+  
+ 
+</ul>
+    </div>
+  </div>
+  <div id="header-inner" class="">
+    <nav id="main-nav">
+      <a id="main-nav-toggle" class="nav-icon"></a>
+      <!--
+        
+          
+            <a class="main-nav-link" href="/">首页</a>
+          
+            <a class="main-nav-link" href="/categories/life">生活</a>
+          
+            <a class="main-nav-link" href="/archives">归档</a>
+          
+        
+      -->
+    </nav>
+    <nav id="title-nav" style="display:none">
+      <a href="/">Tukekenulia♥</a>
+      <img src="/logo.png" alt="Profile Picture">
+      <!--
+      <span id="title-nav-socials">
+        
+       
+     </span>
+      -->
+    </nav>
+    <nav id="sub-nav">
+      
+      <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+    </nav>
+    <div id="search-form-wrap">
+      <form action="http://www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+        <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+        <input type="submit" value="" class="search-form-submit">
+        <input name=tn type=hidden value="bds">
+        <input name=cl type=hidden value="3">
+        <input name=ct type=hidden value="2097152">
+        <input type="hidden" name="si" value="yoursite.com">
+      </form>
+    </div>
+  </div>
+  <div class="site-nav" style="display: none;">
+    <ul>
+      
+      
+        <li><a href="/">首页</a></li>
+      
+        <li><a href="/categories/life">生活</a></li>
+      
+        <li><a href="/archives">归档</a></li>
+      
+      
+    </ul>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-CS231n_Assignment2_PyTorch" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/07/06/CS231n_Assignment2_PyTorch/" class="article-date">
+  <time datetime="2020-07-06T13:17:02.000Z" itemprop="datePublished">2020-07-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Training-a-ConvNet-PyTorch"><a href="#Training-a-ConvNet-PyTorch" class="headerlink" title="Training a ConvNet PyTorch"></a>Training a ConvNet PyTorch</h1><span id="more"></span>
+
+<p>总结：使用Pytorch、TensorFlow的好处？</p>
+<p>1.可以直接再GPU上训练神经网络，而不需要再编写CUDA代码。</p>
+<p>2.框架中提供很多API直接调用，而不用像现在一样手写各种功能。</p>
+<p>Pytorch和TensorFlow都未完成，以后学习了之后再回来完成吧hhh…</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import torch</span><br><span class="line">import torch.nn as nn</span><br><span class="line">import torch.optim as optim</span><br><span class="line">from torch.autograd import Variable</span><br><span class="line">from torch.utils.data import DataLoader</span><br><span class="line">from torch.utils.data import sampler</span><br><span class="line"></span><br><span class="line">import torchvision.datasets as dset</span><br><span class="line">import torchvision.transforms as T</span><br><span class="line"></span><br><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line">import timeit</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Load-Datasets"><a href="#Load-Datasets" class="headerlink" title="Load Datasets"></a>Load Datasets</h3><p>读取数据集的方法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">class ChunkSampler(sampler.Sampler):</span><br><span class="line">    &quot;&quot;&quot;Samples elements sequentially from some offset. </span><br><span class="line">    Arguments:</span><br><span class="line">        num_samples: # of desired datapoints</span><br><span class="line">        start: offset where we should start selecting from</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    def __init__(self, num_samples, start = 0):</span><br><span class="line">        self.num_samples = num_samples</span><br><span class="line">        self.start = start</span><br><span class="line"></span><br><span class="line">    def __iter__(self):</span><br><span class="line">        return iter(range(self.start, self.start + self.num_samples))</span><br><span class="line"></span><br><span class="line">    def __len__(self):</span><br><span class="line">        return self.num_samples</span><br><span class="line"></span><br><span class="line">NUM_TRAIN = 49000</span><br><span class="line">NUM_VAL = 1000</span><br><span class="line"></span><br><span class="line">cifar10_train = dset.CIFAR10(&#x27;./cs231n/datasets&#x27;, train=True, download=True,</span><br><span class="line">                           transform=T.ToTensor())</span><br><span class="line">loader_train = DataLoader(cifar10_train, batch_size=64, sampler=ChunkSampler(NUM_TRAIN, 0))</span><br><span class="line"></span><br><span class="line">cifar10_val = dset.CIFAR10(&#x27;./cs231n/datasets&#x27;, train=True, download=True,</span><br><span class="line">                           transform=T.ToTensor())</span><br><span class="line">loader_val = DataLoader(cifar10_val, batch_size=64, sampler=ChunkSampler(NUM_VAL, NUM_TRAIN))</span><br><span class="line"></span><br><span class="line">cifar10_test = dset.CIFAR10(&#x27;./cs231n/datasets&#x27;, train=False, download=True,</span><br><span class="line">                          transform=T.ToTensor())</span><br><span class="line">loader_test = DataLoader(cifar10_test, batch_size=64)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p>目前测试使用在CPU上训练的数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">dtype = torch.FloatTensor # the CPU datatype</span><br><span class="line"></span><br><span class="line"># Constant to control how frequently we print train loss</span><br><span class="line">print_every = 100</span><br><span class="line"></span><br><span class="line"># This is a little utility that we&#x27;ll use to reset the model</span><br><span class="line"># if we want to re-initialize all our parameters</span><br><span class="line">def reset(m):</span><br><span class="line">    if hasattr(m, &#x27;reset_parameters&#x27;):</span><br><span class="line">        m.reset_parameters()</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Example-Model"><a href="#Example-Model" class="headerlink" title="Example Model"></a>Example Model</h2><p>在普通的二位数据卷积中，数据为[N,C,H,W]，这里想法是将N个数据集拉成一条包含C,H,W的长向量，然后进行训练，这样在python的矩阵运算当中会快非常多，然后再通过类似于二位中的reshape方法将其还原。以下是压缩成[N,]的方法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">class Flatten(nn.Module):</span><br><span class="line">    def forward(self, x):</span><br><span class="line">        N, C, H, W = x.size() # read in N, C, H, W</span><br><span class="line">        return x.view(N, -1)  # &quot;flatten&quot; the C * H * W values into a single vector per image</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="The-example-model-itself"><a href="#The-example-model-itself" class="headerlink" title="The example model itself"></a>The example model itself</h3><p>以下是框架中的方法生成模型</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># Here&#x27;s where we define the architecture of the model... </span><br><span class="line">simple_model = nn.Sequential(</span><br><span class="line">                nn.Conv2d(3, 32, kernel_size=7, stride=2),</span><br><span class="line">                nn.ReLU(inplace=True),</span><br><span class="line">                Flatten(), # see above for explanation</span><br><span class="line">                nn.Linear(5408, 10), # affine layer</span><br><span class="line">              )</span><br><span class="line"></span><br><span class="line"># Set the type of all data in this model to be FloatTensor </span><br><span class="line">simple_model.type(dtype)</span><br><span class="line"></span><br><span class="line">loss_fn = nn.CrossEntropyLoss().type(dtype)</span><br><span class="line">optimizer = optim.Adam(simple_model.parameters(), lr=1e-2) # lr sets the learning rate of the optimizer</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoursite.com/2020/07/06/CS231n_Assignment2_PyTorch/" data-id="clkwhj3ty000a6s7sez0sfo2i" class="article-share-link">Share</a>
+      
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/07/10/CS231n_Assignment3_Image_Captioning_with_RNNs/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/07/06/CS231n_Assignment2_Convolutional_Networks/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2023 Tukeke<br>
+      Theme <a href="https://github.com/Tukekehaohaonuli/" target="_blank">Oishi</a>, Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <!--
+      <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/categories/life" class="mobile-nav-link">生活</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+</nav>
+    -->
+    
+
+<!-- 百度分享 start -->
+
+<!-- 百度分享 end -->
+
+<script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+
+<script src="/js/jquery.scrollUp.min.js"></script>
+
+
+<script src="/js/jquery.transform.js"></script>
+
+
+<script src="/js/menu.js"></script>
+
+
+
+<script src="/js/script.js"></script>
+
+
+<script src="/js/scrollUp.js"></script>
+
+
+  </div>
+</body>
+</html>

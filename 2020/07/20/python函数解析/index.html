@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Tukekenulia♥</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="记录实践过程中遇到的python函数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tukekenulia♥">
+<meta property="og:url" content="http://yoursite.com/2020/07/20/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/index.html">
+<meta property="og:site_name" content="Tukekenulia♥">
+<meta property="og:description" content="记录实践过程中遇到的python函数">
+<meta property="og:locale">
+<meta property="og:image" content="http://yoursite.com/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/2.png">
+<meta property="og:image" content="http://yoursite.com/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/3.png">
+<meta property="og:image" content="http://yoursite.com/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/4.png">
+<meta property="og:image" content="http://yoursite.com/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/5.png">
+<meta property="og:image" content="http://yoursite.com/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/6.png">
+<meta property="og:image" content="http://yoursite.com/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/7.png">
+<meta property="og:image" content="http://yoursite.com/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/8.png">
+<meta property="og:image" content="http://yoursite.com/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/9.png">
+<meta property="og:image" content="http://yoursite.com/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/10.png">
+<meta property="og:image" content="http://yoursite.com/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/1.png">
+<meta property="og:image" content="http://yoursite.com/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/11.png">
+<meta property="og:image" content="http://yoursite.com/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/12.png">
+<meta property="og:image" content="http://yoursite.com/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/14.png">
+<meta property="og:image" content="http://yoursite.com/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/16.png">
+<meta property="og:image" content="http://yoursite.com/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/17.png">
+<meta property="og:image" content="http://yoursite.com/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/18.png">
+<meta property="og:image" content="http://yoursite.com/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/19.png">
+<meta property="og:image" content="http://yoursite.com/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/20.png">
+<meta property="og:image" content="http://yoursite.com/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/21.png">
+<meta property="og:image" content="http://yoursite.com/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/22.png">
+<meta property="og:image" content="http://yoursite.com/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/23.png">
+<meta property="og:image" content="http://yoursite.com/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/24.png">
+<meta property="og:image" content="http://yoursite.com/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/25.png">
+<meta property="og:image" content="http://yoursite.com/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/26.png">
+<meta property="og:image" content="http://yoursite.com/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/27.png">
+<meta property="og:image" content="http://yoursite.com/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/28.png">
+<meta property="og:image" content="http://yoursite.com/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/29.png">
+<meta property="og:image" content="http://yoursite.com/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/30.png">
+<meta property="article:published_time" content="2020-07-20T13:36:04.000Z">
+<meta property="article:modified_time" content="2020-07-20T13:36:04.000Z">
+<meta property="article:author" content="Tukeke">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/2.png">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/css/scrollUp/image.css">
+
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <div class="logo">
+        <img src="/logo.png" alt="Profile Picture">
+      </div>
+      <div id="title">Tukekenulia♥</div>
+      
+        <div id="subtitle">Stay focus,stay humble,stay curiosity.</div>
+      
+       <ul class="my-socials">
+  
+  <li>
+  	<a href="https://github.com/Tukekehaohaonuli" class="github" target="_blank">
+  		<i class="fa fa-github"></i>
+  	</a>
+  </li>
+  
+  <li>
+  	<a href="YOUR WEIBO HOME PAGE URL" class="weibo" target="_blank">
+  		<i class="fa fa-weibo"></i>
+  	</a>
+  </li>
+  
+ 
+</ul>
+    </div>
+  </div>
+  <div id="header-inner" class="">
+    <nav id="main-nav">
+      <a id="main-nav-toggle" class="nav-icon"></a>
+      <!--
+        
+          
+            <a class="main-nav-link" href="/">首页</a>
+          
+            <a class="main-nav-link" href="/categories/life">生活</a>
+          
+            <a class="main-nav-link" href="/archives">归档</a>
+          
+        
+      -->
+    </nav>
+    <nav id="title-nav" style="display:none">
+      <a href="/">Tukekenulia♥</a>
+      <img src="/logo.png" alt="Profile Picture">
+      <!--
+      <span id="title-nav-socials">
+        
+       
+     </span>
+      -->
+    </nav>
+    <nav id="sub-nav">
+      
+      <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+    </nav>
+    <div id="search-form-wrap">
+      <form action="http://www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+        <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+        <input type="submit" value="" class="search-form-submit">
+        <input name=tn type=hidden value="bds">
+        <input name=cl type=hidden value="3">
+        <input name=ct type=hidden value="2097152">
+        <input type="hidden" name="si" value="yoursite.com">
+      </form>
+    </div>
+  </div>
+  <div class="site-nav" style="display: none;">
+    <ul>
+      
+      
+        <li><a href="/">首页</a></li>
+      
+        <li><a href="/categories/life">生活</a></li>
+      
+        <li><a href="/archives">归档</a></li>
+      
+      
+    </ul>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-python函数解析" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/07/20/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/" class="article-date">
+  <time datetime="2020-07-20T13:36:04.000Z" itemprop="datePublished">2020-07-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>记录实践过程中遇到的python函数</p>
+<span id="more"></span>
+
+<h3 id="python-numpy-pad函数示例"><a href="#python-numpy-pad函数示例" class="headerlink" title="python numpy.pad函数示例"></a>python numpy.pad函数示例</h3><p>constant:默认填充0</p>
+<p><img src="/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/2.png" alt="2"></p>
+<p><img src="/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/3.png" alt="3"></p>
+<h3 id="python-numpy-sum函数示例"><a href="#python-numpy-sum函数示例" class="headerlink" title="python numpy.sum函数示例"></a>python numpy.sum函数示例</h3><p>axis&#x3D;0则按照第一维度相加</p>
+<p>axis&#x3D;1则按照第二维度相加，</p>
+<p>axis&#x3D;2则按照第三维度相加，以此类推：</p>
+<p>按照第一维度相加，所以能看到数组的值没有改变：</p>
+<p><img src="/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/4.png" alt="4"></p>
+<p>按照第二维度相加，也就是我们常说的按列相加，但实际上并不是这么理解：</p>
+<p><img src="/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/5.png" alt="5"></p>
+<p>按照第三维度相加，这就慢慢清晰了起来</p>
+<p><img src="/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/6.png" alt="6"></p>
+<p>将3个维度统统相加</p>
+<p><img src="/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/7.png" alt="7"></p>
+<h3 id="python-numpy-transpose"><a href="#python-numpy-transpose" class="headerlink" title="python numpy.transpose"></a>python numpy.transpose</h3><p>该函数用于转换输入的维度。</p>
+<p><img src="/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/8.png" alt="8"></p>
+<h3 id="python-numpy-矩阵相关取值问题"><a href="#python-numpy-矩阵相关取值问题" class="headerlink" title="python numpy 矩阵相关取值问题"></a>python numpy 矩阵相关取值问题</h3><p><img src="/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/9.png" alt="9"></p>
+<p>转换成矩阵的所有行，对应的第二、三、四维所对应的矩阵</p>
+<h3 id="python-numpy-max，numpy-maximum和numpy-argmax"><a href="#python-numpy-max，numpy-maximum和numpy-argmax" class="headerlink" title="python numpy.max，numpy.maximum和numpy.argmax"></a>python numpy.max，numpy.maximum和numpy.argmax</h3><p><img src="/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/10.png" alt="10"></p>
+<h3 id="python-numpy-mean-求平均值"><a href="#python-numpy-mean-求平均值" class="headerlink" title="python numpy.mean:求平均值"></a>python numpy.mean:求平均值</h3><h3 id="python-numpy-var-求方差"><a href="#python-numpy-var-求方差" class="headerlink" title="python numpy.var:求方差"></a>python numpy.var:求方差</h3><h3 id="python-numpy-std-求标准差，即var的平方根"><a href="#python-numpy-std-求标准差，即var的平方根" class="headerlink" title="python numpy.std:求标准差，即var的平方根"></a>python numpy.std:求标准差，即var的平方根</h3><h3 id="python-range"><a href="#python-range" class="headerlink" title="python range()"></a>python range()</h3><p><img src="/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/1.png" alt="1"></p>
+<h3 id="python-numpy的矩阵成向量的方式"><a href="#python-numpy的矩阵成向量的方式" class="headerlink" title="python numpy的矩阵成向量的方式"></a>python numpy的矩阵成向量的方式</h3><p><img src="/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/11.png" alt="11"></p>
+<p>数组a中的是选择b中第几行，例如1，则选择b数组中的第二行，所以[2,4] [5,3]就成了[2,4,3]</p>
+<h3 id="python-numpy-add-at"><a href="#python-numpy-add-at" class="headerlink" title="python numpy.add.at"></a>python numpy.add.at</h3><p><img src="/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/12.png" alt="12"></p>
+<p>[0,1]是索引</p>
+<h3 id="Pytorch-Tensor-view-clone"><a href="#Pytorch-Tensor-view-clone" class="headerlink" title="Pytorch Tensor view clone"></a>Pytorch Tensor view clone</h3><p>Tensor相当于numpy中的array</p>
+<p>view保存的是远Tensor中的副本，也就是说原Tensor中的数值和新的数值是共享的，类似于指针的效果。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">疑问:使用clone还有一个好处是会被记录在计算图中，即梯度回传到副本时也会传到源Tensor??</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/14.png" alt="14"></p>
+<h3 id="Pytorch-index-select函数"><a href="#Pytorch-index-select函数" class="headerlink" title="Pytorch index_select函数"></a>Pytorch index_select函数</h3><p>第一个参数：对象</p>
+<p>第二个参数：选择的维度，二维中，即行列</p>
+<p>第三个参数：对应维度中选择的第几行等。</p>
+<p><img src="/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/16.png" alt="3"></p>
+<h3 id="Pytorch-random-shuffle"><a href="#Pytorch-random-shuffle" class="headerlink" title="Pytorch random.shuffle"></a>Pytorch random.shuffle</h3><p>将list中的数随机排列</p>
+<p><img src="/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/17.png" alt="4"></p>
+<h3 id="Pytorch-gather"><a href="#Pytorch-gather" class="headerlink" title="Pytorch gather"></a>Pytorch gather</h3><p>第一个参数：选择的维度</p>
+<p>第二个参数：一个Tensor</p>
+<p>返回的是y_hat中y对应的概率值</p>
+<p><img src="/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/18.png" alt="5"></p>
+<h3 id="Pytorch-cat"><a href="#Pytorch-cat" class="headerlink" title="Pytorch cat"></a>Pytorch cat</h3><p>第一个参数：选择拼接的矩阵</p>
+<p>第二参数：选择拼接的维度</p>
+<p><img src="/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/19.png" alt="6"></p>
+<h3 id="Pytorch-shape-1"><a href="#Pytorch-shape-1" class="headerlink" title="Pytorch shape[-1]"></a>Pytorch shape[-1]</h3><p>获取最后一维的个数，如A.shape&#x3D;(5,3),则shape[-1]&#x3D;3</p>
+<h3 id="Pytorch-torch-norm-求范数"><a href="#Pytorch-torch-norm-求范数" class="headerlink" title="Pytorch torch.norm()求范数"></a>Pytorch torch.norm()求范数</h3><p><img src="/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/20.png" alt="7"></p>
+<p><img src="/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/21.png" alt="8"></p>
+<h3 id="Pytorch-isinstance"><a href="#Pytorch-isinstance" class="headerlink" title="Pytorch isinstance()"></a>Pytorch isinstance()</h3><p>判断类型是否相同</p>
+<p><img src="/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/22.png" alt="9"></p>
+<h3 id="Pandas-DataFrame和get-dummies"><a href="#Pandas-DataFrame和get-dummies" class="headerlink" title="Pandas DataFrame和get_dummies"></a>Pandas DataFrame和get_dummies</h3><p><img src="/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/23.png" alt="10"></p>
+<h3 id="Python-slice"><a href="#Python-slice" class="headerlink" title="Python slice"></a>Python slice</h3><p>第一个参数：起始位置</p>
+<p>第二个参数：末尾，不取到</p>
+<p>第三个参数：跳数</p>
+<p><img src="/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/24.png" alt="11"></p>
+<h3 id="Python-collections-OrderedDict"><a href="#Python-collections-OrderedDict" class="headerlink" title="Python collections.OrderedDict()"></a>Python collections.OrderedDict()</h3><p>会按照放入的顺序，拍好序列。</p>
+<p>并对此进行key和value的排序为:</p>
+<p><img src="/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/25.png" alt="12"></p>
+<h3 id="Python-arg和-kwargs"><a href="#Python-arg和-kwargs" class="headerlink" title="Python *arg和**kwargs"></a>Python *arg和**kwargs</h3><p>*arg:任意个无名参数，类型是tuple</p>
+<p>**kwargs:关键字参数，类型为dictionary 字典</p>
+<p><img src="/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/26.png" alt="13"></p>
+<h3 id="Python-加2个维度的方法"><a href="#Python-加2个维度的方法" class="headerlink" title="Python 加2个维度的方法"></a>Python 加2个维度的方法</h3><p><img src="/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/27.png" alt="27"></p>
+<h3 id="Pytorch-stack"><a href="#Pytorch-stack" class="headerlink" title="Pytorch stack"></a>Pytorch stack</h3><p>第一个参数必须是tuple张量，不能是一维张量</p>
+<p><img src="/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/28.png" alt="28"></p>
+<p>CS231N中提供的关于numpy的基本教程链接：</p>
+<p><a target="_blank" rel="noopener" href="https://cs231n.github.io/python-numpy-tutorial/">https://cs231n.github.io/python-numpy-tutorial/</a></p>
+<h3 id="Pytorch-tensor-scatter"><a href="#Pytorch-tensor-scatter" class="headerlink" title="Pytorch tensor.scatter_"></a>Pytorch tensor.scatter_</h3><p>第一个参数：用indices中的值替换的维度</p>
+<p>第二个参数：替换维度的数</p>
+<p>第三个参数：替换的数</p>
+<p><img src="/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/29.png" alt="29"></p>
+<p>例如：indices [0,1]&#x3D;1 dim&#x3D;0  则替换的位置为：[1,1],替换的数为x[0,1]&#x3D;0.9476</p>
+<h3 id="Python-contiguous"><a href="#Python-contiguous" class="headerlink" title="Python contiguous()"></a>Python contiguous()</h3><p>如果在view之前使用了transpose,就需要用contiguous来吧tensor在内存中的分布变为连续分布的形式，不然无法使用view。</p>
+<p><img src="/images/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/30.png" alt="30"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoursite.com/2020/07/20/python%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90/" data-id="clkwhj3u3001e6s7sgxgj3xqb" class="article-share-link">Share</a>
+      
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/07/22/ToDoPytorch%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/07/11/CS231n_Assignment1_Knn/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2023 Tukeke<br>
+      Theme <a href="https://github.com/Tukekehaohaonuli/" target="_blank">Oishi</a>, Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <!--
+      <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/categories/life" class="mobile-nav-link">生活</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+</nav>
+    -->
+    
+
+<!-- 百度分享 start -->
+
+<!-- 百度分享 end -->
+
+<script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+
+<script src="/js/jquery.scrollUp.min.js"></script>
+
+
+<script src="/js/jquery.transform.js"></script>
+
+
+<script src="/js/menu.js"></script>
+
+
+
+<script src="/js/script.js"></script>
+
+
+<script src="/js/scrollUp.js"></script>
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Tukekenulia♥</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="本文讲述CUDA，cuDnn，Pytorch,Anaconda虚拟环境搭建，更换Anaconda源等等…">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tukekenulia♥">
+<meta property="og:url" content="http://yoursite.com/2020/08/26/%E5%AE%89%E8%A3%85%E6%B5%8B%E8%AF%95CUDA%E3%80%81cuDNN%E3%80%81Pytorch-Gpu/index.html">
+<meta property="og:site_name" content="Tukekenulia♥">
+<meta property="og:description" content="本文讲述CUDA，cuDnn，Pytorch,Anaconda虚拟环境搭建，更换Anaconda源等等…">
+<meta property="og:locale">
+<meta property="og:image" content="http://yoursite.com/images/%E5%AE%89%E8%A3%85%E6%B5%8B%E8%AF%95CUDA%E3%80%81cuDNN%E3%80%81Pytorch-Gpu/1.png">
+<meta property="og:image" content="http://yoursite.com/images/%E5%AE%89%E8%A3%85%E6%B5%8B%E8%AF%95CUDA%E3%80%81cuDNN%E3%80%81Pytorch-Gpu/2.png">
+<meta property="og:image" content="http://yoursite.com/images/%E5%AE%89%E8%A3%85%E6%B5%8B%E8%AF%95CUDA%E3%80%81cuDNN%E3%80%81Pytorch-Gpu/3.png">
+<meta property="og:image" content="http://yoursite.com/images/%E5%AE%89%E8%A3%85%E6%B5%8B%E8%AF%95CUDA%E3%80%81cuDNN%E3%80%81Pytorch-Gpu/4.png">
+<meta property="og:image" content="http://yoursite.com/images/%E5%AE%89%E8%A3%85%E6%B5%8B%E8%AF%95CUDA%E3%80%81cuDNN%E3%80%81Pytorch-Gpu/5.png">
+<meta property="og:image" content="http://yoursite.com/images/%E5%AE%89%E8%A3%85%E6%B5%8B%E8%AF%95CUDA%E3%80%81cuDNN%E3%80%81Pytorch-Gpu/6.png">
+<meta property="og:image" content="http://yoursite.com/images/%E5%AE%89%E8%A3%85%E6%B5%8B%E8%AF%95CUDA%E3%80%81cuDNN%E3%80%81Pytorch-Gpu/7.png">
+<meta property="og:image" content="http://yoursite.com/images/%E5%AE%89%E8%A3%85%E6%B5%8B%E8%AF%95CUDA%E3%80%81cuDNN%E3%80%81Pytorch-Gpu/8.png">
+<meta property="og:image" content="http://yoursite.com/images/%E5%AE%89%E8%A3%85%E6%B5%8B%E8%AF%95CUDA%E3%80%81cuDNN%E3%80%81Pytorch-Gpu/9.png">
+<meta property="og:image" content="http://yoursite.com/images/%E5%AE%89%E8%A3%85%E6%B5%8B%E8%AF%95CUDA%E3%80%81cuDNN%E3%80%81Pytorch-Gpu/10.png">
+<meta property="og:image" content="http://yoursite.com/images/%E5%AE%89%E8%A3%85%E6%B5%8B%E8%AF%95CUDA%E3%80%81cuDNN%E3%80%81Pytorch-Gpu/11.png">
+<meta property="og:image" content="http://yoursite.com/images/%E5%AE%89%E8%A3%85%E6%B5%8B%E8%AF%95CUDA%E3%80%81cuDNN%E3%80%81Pytorch-Gpu/12.png">
+<meta property="og:image" content="http://yoursite.com/images/%E5%AE%89%E8%A3%85%E6%B5%8B%E8%AF%95CUDA%E3%80%81cuDNN%E3%80%81Pytorch-Gpu/13.png">
+<meta property="og:image" content="http://yoursite.com/images/%E5%AE%89%E8%A3%85%E6%B5%8B%E8%AF%95CUDA%E3%80%81cuDNN%E3%80%81Pytorch-Gpu/14.png">
+<meta property="og:image" content="http://yoursite.com/images/%E5%AE%89%E8%A3%85%E6%B5%8B%E8%AF%95CUDA%E3%80%81cuDNN%E3%80%81Pytorch-Gpu/16.png">
+<meta property="og:image" content="http://yoursite.com/images/%E5%AE%89%E8%A3%85%E6%B5%8B%E8%AF%95CUDA%E3%80%81cuDNN%E3%80%81Pytorch-Gpu/17.png">
+<meta property="og:image" content="http://yoursite.com/images/%E5%AE%89%E8%A3%85%E6%B5%8B%E8%AF%95CUDA%E3%80%81cuDNN%E3%80%81Pytorch-Gpu/18.png">
+<meta property="og:image" content="http://yoursite.com/images/%E5%AE%89%E8%A3%85%E6%B5%8B%E8%AF%95CUDA%E3%80%81cuDNN%E3%80%81Pytorch-Gpu/15.png">
+<meta property="og:image" content="http://yoursite.com/images/%E5%AE%89%E8%A3%85%E6%B5%8B%E8%AF%95CUDA%E3%80%81cuDNN%E3%80%81Pytorch-Gpu/20.png">
+<meta property="og:image" content="http://yoursite.com/images/%E5%AE%89%E8%A3%85%E6%B5%8B%E8%AF%95CUDA%E3%80%81cuDNN%E3%80%81Pytorch-Gpu/21.png">
+<meta property="og:image" content="http://yoursite.com/images/%E5%AE%89%E8%A3%85%E6%B5%8B%E8%AF%95CUDA%E3%80%81cuDNN%E3%80%81Pytorch-Gpu/19.png">
+<meta property="article:published_time" content="2020-08-26T12:38:00.000Z">
+<meta property="article:modified_time" content="2020-08-26T12:38:00.000Z">
+<meta property="article:author" content="Tukeke">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/images/%E5%AE%89%E8%A3%85%E6%B5%8B%E8%AF%95CUDA%E3%80%81cuDNN%E3%80%81Pytorch-Gpu/1.png">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/css/scrollUp/image.css">
+
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <div class="logo">
+        <img src="/logo.png" alt="Profile Picture">
+      </div>
+      <div id="title">Tukekenulia♥</div>
+      
+        <div id="subtitle">Stay focus,stay humble,stay curiosity.</div>
+      
+       <ul class="my-socials">
+  
+  <li>
+  	<a href="https://github.com/Tukekehaohaonuli" class="github" target="_blank">
+  		<i class="fa fa-github"></i>
+  	</a>
+  </li>
+  
+  <li>
+  	<a href="YOUR WEIBO HOME PAGE URL" class="weibo" target="_blank">
+  		<i class="fa fa-weibo"></i>
+  	</a>
+  </li>
+  
+ 
+</ul>
+    </div>
+  </div>
+  <div id="header-inner" class="">
+    <nav id="main-nav">
+      <a id="main-nav-toggle" class="nav-icon"></a>
+      <!--
+        
+          
+            <a class="main-nav-link" href="/">首页</a>
+          
+            <a class="main-nav-link" href="/categories/life">生活</a>
+          
+            <a class="main-nav-link" href="/archives">归档</a>
+          
+        
+      -->
+    </nav>
+    <nav id="title-nav" style="display:none">
+      <a href="/">Tukekenulia♥</a>
+      <img src="/logo.png" alt="Profile Picture">
+      <!--
+      <span id="title-nav-socials">
+        
+       
+     </span>
+      -->
+    </nav>
+    <nav id="sub-nav">
+      
+      <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+    </nav>
+    <div id="search-form-wrap">
+      <form action="http://www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+        <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+        <input type="submit" value="" class="search-form-submit">
+        <input name=tn type=hidden value="bds">
+        <input name=cl type=hidden value="3">
+        <input name=ct type=hidden value="2097152">
+        <input type="hidden" name="si" value="yoursite.com">
+      </form>
+    </div>
+  </div>
+  <div class="site-nav" style="display: none;">
+    <ul>
+      
+      
+        <li><a href="/">首页</a></li>
+      
+        <li><a href="/categories/life">生活</a></li>
+      
+        <li><a href="/archives">归档</a></li>
+      
+      
+    </ul>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-安装测试CUDA、cuDNN、Pytorch-Gpu" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/26/%E5%AE%89%E8%A3%85%E6%B5%8B%E8%AF%95CUDA%E3%80%81cuDNN%E3%80%81Pytorch-Gpu/" class="article-date">
+  <time datetime="2020-08-26T12:38:00.000Z" itemprop="datePublished">2020-08-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文讲述CUDA，cuDnn，Pytorch,Anaconda虚拟环境搭建，更换Anaconda源等等…</p>
+<span id="more"></span>
+
+<h1 id="CUDA安装"><a href="#CUDA安装" class="headerlink" title="CUDA安装"></a>CUDA安装</h1><p>前言：Gpu对于图像的处理加速效果非常明显，因此想要利用GPU加速对图像的处理，GPU的速度通常是CPU的60倍+</p>
+<p>CUDA:首先如果想要进行GPU加速，就需要安装CUDA。CUDA是NVIDIA推出的用于自家GPU的并行计算框架</p>
+<p>cuDNN:是针对深度卷积神经网络的加速库，是建立在CUDA之上的，他是卷积代码，用于实现卷积的加速的，内置过程，就比如JAVA代码写的效率很慢，C++很快一样。cuDNN的速度为原生CUDA的3倍左右</p>
+<h3 id="第一步：选择适合自己版本的CUDA"><a href="#第一步：选择适合自己版本的CUDA" class="headerlink" title="第一步：选择适合自己版本的CUDA"></a>第一步：选择适合自己版本的CUDA</h3><p>首先查看自己显卡版本：</p>
+<p><img src="/images/%E5%AE%89%E8%A3%85%E6%B5%8B%E8%AF%95CUDA%E3%80%81cuDNN%E3%80%81Pytorch-Gpu/1.png" alt="1"></p>
+<p><img src="/images/%E5%AE%89%E8%A3%85%E6%B5%8B%E8%AF%95CUDA%E3%80%81cuDNN%E3%80%81Pytorch-Gpu/2.png" alt="2"></p>
+<p><img src="/images/%E5%AE%89%E8%A3%85%E6%B5%8B%E8%AF%95CUDA%E3%80%81cuDNN%E3%80%81Pytorch-Gpu/3.png" alt="3"></p>
+<p>对应CUDA9.1.85的版本在Windows版本下的驱动是我不支持的，所以退而求其次，安装9.0.76版本的CUDA。</p>
+<p>NVIDIA官网下载CUDA:<a target="_blank" rel="noopener" href="https://developer.nvidia.com/cuda-toolkit-archive">https://developer.nvidia.com/cuda-toolkit-archive</a></p>
+<h3 id="第二步：安装"><a href="#第二步：安装" class="headerlink" title="第二步：安装"></a>第二步：安装</h3><p>自定义选择安装路径，选择自定义安装，因为发现新版本都更低，因此不选择，然后下一步安装即可</p>
+<p><img src="/images/%E5%AE%89%E8%A3%85%E6%B5%8B%E8%AF%95CUDA%E3%80%81cuDNN%E3%80%81Pytorch-Gpu/4.png" alt="4"></p>
+<p><img src="/images/%E5%AE%89%E8%A3%85%E6%B5%8B%E8%AF%95CUDA%E3%80%81cuDNN%E3%80%81Pytorch-Gpu/5.png" alt="5"></p>
+<h3 id="第三步：检查安装是否成功"><a href="#第三步：检查安装是否成功" class="headerlink" title="第三步：检查安装是否成功"></a>第三步：检查安装是否成功</h3><p><img src="/images/%E5%AE%89%E8%A3%85%E6%B5%8B%E8%AF%95CUDA%E3%80%81cuDNN%E3%80%81Pytorch-Gpu/6.png" alt="6"></p>
+<p>安装完成之后，发现环境变量已经出现了CUDA的配置。</p>
+<p>然后再命令行中输入 nvcc -version可以查看CUDA的版本</p>
+<p><img src="/images/%E5%AE%89%E8%A3%85%E6%B5%8B%E8%AF%95CUDA%E3%80%81cuDNN%E3%80%81Pytorch-Gpu/7.png" alt="7"></p>
+<p>查看环境变量</p>
+<p><img src="/images/%E5%AE%89%E8%A3%85%E6%B5%8B%E8%AF%95CUDA%E3%80%81cuDNN%E3%80%81Pytorch-Gpu/8.png" alt="8"></p>
+<p>接下来在自定义的目录下找到deviceQuery.exe，bandwidthTest.exe文件，在命令行中运行，显示Result&#x3D;PASS则没有问题。</p>
+<p><img src="/images/%E5%AE%89%E8%A3%85%E6%B5%8B%E8%AF%95CUDA%E3%80%81cuDNN%E3%80%81Pytorch-Gpu/9.png" alt="9"></p>
+<p><img src="/images/%E5%AE%89%E8%A3%85%E6%B5%8B%E8%AF%95CUDA%E3%80%81cuDNN%E3%80%81Pytorch-Gpu/10.png" alt="10"></p>
+<p>至此CUDA完全安装完毕</p>
+<h1 id="cuDNN的安装"><a href="#cuDNN的安装" class="headerlink" title="cuDNN的安装"></a>cuDNN的安装</h1><h3 id="第一步：选择合适的cuDNN版本"><a href="#第一步：选择合适的cuDNN版本" class="headerlink" title="第一步：选择合适的cuDNN版本"></a>第一步：选择合适的cuDNN版本</h3><p>每一个版本的CUDA可有好几个版本的cuDNN与之对应，但一般有一个最新版本的cuDNN版本与CUDA对应效果更佳。</p>
+<p>cuDNN的官网：<a target="_blank" rel="noopener" href="https://developer.nvidia.com/rdp/cudnn-download">https://developer.nvidia.com/rdp/cudnn-download</a></p>
+<p>登录之后选择与CUDA对应版本的cuDNN，因此我选择的是cuDNN v7.6.5 for CUDA9.0</p>
+<p><img src="/images/%E5%AE%89%E8%A3%85%E6%B5%8B%E8%AF%95CUDA%E3%80%81cuDNN%E3%80%81Pytorch-Gpu/11.png" alt="11"></p>
+<p><img src="/images/%E5%AE%89%E8%A3%85%E6%B5%8B%E8%AF%95CUDA%E3%80%81cuDNN%E3%80%81Pytorch-Gpu/12.png" alt="12"></p>
+<h3 id="第二步：下载安装cuDNN"><a href="#第二步：下载安装cuDNN" class="headerlink" title="第二步：下载安装cuDNN"></a>第二步：下载安装cuDNN</h3><p>下载解压文件之后是这样的：</p>
+<p><img src="/images/%E5%AE%89%E8%A3%85%E6%B5%8B%E8%AF%95CUDA%E3%80%81cuDNN%E3%80%81Pytorch-Gpu/13.png" alt="13"></p>
+<p>将bin、include和lib文件放到自定义安装目录下的文件夹中</p>
+<p><img src="/images/%E5%AE%89%E8%A3%85%E6%B5%8B%E8%AF%95CUDA%E3%80%81cuDNN%E3%80%81Pytorch-Gpu/14.png" alt="14"></p>
+<p>至此安装完成</p>
+<h1 id="Anaconda配置虚拟环境"><a href="#Anaconda配置虚拟环境" class="headerlink" title="Anaconda配置虚拟环境"></a>Anaconda配置虚拟环境</h1><p><img src="/images/%E5%AE%89%E8%A3%85%E6%B5%8B%E8%AF%95CUDA%E3%80%81cuDNN%E3%80%81Pytorch-Gpu/16.png" alt="16"></p>
+<p>点击Envronments-&gt;create新建即可，新建完成之后可以在这里打开</p>
+<p><img src="/images/%E5%AE%89%E8%A3%85%E6%B5%8B%E8%AF%95CUDA%E3%80%81cuDNN%E3%80%81Pytorch-Gpu/17.png" alt="17"></p>
+<h1 id="Anaconda配置设置安装包的镜像源"><a href="#Anaconda配置设置安装包的镜像源" class="headerlink" title="Anaconda配置设置安装包的镜像源"></a>Anaconda配置设置安装包的镜像源</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/</span><br><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/</span><br><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/</span><br><span class="line">conda config --set show_channel_urls yes</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/%E5%AE%89%E8%A3%85%E6%B5%8B%E8%AF%95CUDA%E3%80%81cuDNN%E3%80%81Pytorch-Gpu/18.png" alt="18"></p>
+<p><img src="/images/%E5%AE%89%E8%A3%85%E6%B5%8B%E8%AF%95CUDA%E3%80%81cuDNN%E3%80%81Pytorch-Gpu/15.png" alt="15"></p>
+<p>在自己的用户目录下找到.condarc文件，将defaults注释掉即可。</p>
+<p>如果想要再次更换源，则需要在命令行输入以下指令，即恢复默认源。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda config --remove-key channels</span><br></pre></td></tr></table></figure>
+
+<h1 id="安装Pytorch"><a href="#安装Pytorch" class="headerlink" title="安装Pytorch"></a>安装Pytorch</h1><p>之后在pytorch官网：<a target="_blank" rel="noopener" href="https://pytorch.org/get-started/locally/%E9%80%89%E6%8B%A9%E8%87%AA%E5%B7%B1CUDA%E5%AF%B9%E5%BA%94%E7%9A%84%E7%89%88%E6%9C%AC%E8%8E%B7%E5%BE%97%E5%91%BD%E4%BB%A4%E8%A1%8C">https://pytorch.org/get-started/locally/选择自己CUDA对应的版本获得命令行</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install pytorch torchvision cudatoolkit=9.0 -c pytorch</span><br></pre></td></tr></table></figure>
+
+<p>在官方的标准中，是上述所示， -c pytorch是官方源，由于我们设置了镜像源因此去掉 -c pytorch即:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install pytorch torchvision cudatoolkit=9.0 -c pytorch</span><br></pre></td></tr></table></figure>
+
+<p>这里我选择了将版本改为自己的9.0版本。</p>
+<h1 id="检测Pytorch-GPU"><a href="#检测Pytorch-GPU" class="headerlink" title="检测Pytorch-GPU"></a>检测Pytorch-GPU</h1><p>在命令行中输入：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip list</span><br></pre></td></tr></table></figure>
+
+<p>在输出中能够看到torch和torchvision的版本</p>
+<p><img src="/images/%E5%AE%89%E8%A3%85%E6%B5%8B%E8%AF%95CUDA%E3%80%81cuDNN%E3%80%81Pytorch-Gpu/20.png" alt="20"></p>
+<p>之后再输入以下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">python</span><br><span class="line">import torch</span><br><span class="line">torch.cuda.is_availabel</span><br></pre></td></tr></table></figure>
+
+<p>弹出True则表示安装Pytorch-GPU成功</p>
+<p><img src="/images/%E5%AE%89%E8%A3%85%E6%B5%8B%E8%AF%95CUDA%E3%80%81cuDNN%E3%80%81Pytorch-Gpu/21.png" alt="21"></p>
+<h1 id="如何使用CUDA进行训练"><a href="#如何使用CUDA进行训练" class="headerlink" title="如何使用CUDA进行训练"></a>如何使用CUDA进行训练</h1><p><img src="/images/%E5%AE%89%E8%A3%85%E6%B5%8B%E8%AF%95CUDA%E3%80%81cuDNN%E3%80%81Pytorch-Gpu/19.png" alt="19"></p>
+<p>参考链接：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/144311348">https://zhuanlan.zhihu.com/p/144311348</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/144575524">https://zhuanlan.zhihu.com/p/144575524</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/zbbmm/article/details/102680387">https://blog.csdn.net/zbbmm/article/details/102680387</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/VictoriaW/article/details/72871777">https://blog.csdn.net/VictoriaW/article/details/72871777</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoursite.com/2020/08/26/%E5%AE%89%E8%A3%85%E6%B5%8B%E8%AF%95CUDA%E3%80%81cuDNN%E3%80%81Pytorch-Gpu/" data-id="clkwhj3u3001f6s7sflurajhz" class="article-share-link">Share</a>
+      
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/09/01/FastFDS%E3%80%81Nginx%E9%85%8D%E7%BD%AE%E4%B8%8E%E4%BD%BF%E7%94%A8/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/08/26/Github%20Pages%E9%83%A8%E7%BD%B2/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2023 Tukeke<br>
+      Theme <a href="https://github.com/Tukekehaohaonuli/" target="_blank">Oishi</a>, Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <!--
+      <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/categories/life" class="mobile-nav-link">生活</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+</nav>
+    -->
+    
+
+<!-- 百度分享 start -->
+
+<!-- 百度分享 end -->
+
+<script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+
+<script src="/js/jquery.scrollUp.min.js"></script>
+
+
+<script src="/js/jquery.transform.js"></script>
+
+
+<script src="/js/menu.js"></script>
+
+
+
+<script src="/js/script.js"></script>
+
+
+<script src="/js/scrollUp.js"></script>
+
+
+  </div>
+</body>
+</html>

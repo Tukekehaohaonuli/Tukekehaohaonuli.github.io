@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Tukekenulia♥</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="此篇仅记录自己学习CS231n的习题成果所用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tukekenulia♥">
+<meta property="og:url" content="http://yoursite.com/2020/06/30/CS231n_Assignment1_Features/index.html">
+<meta property="og:site_name" content="Tukekenulia♥">
+<meta property="og:description" content="此篇仅记录自己学习CS231n的习题成果所用">
+<meta property="og:locale">
+<meta property="og:image" content="http://yoursite.com/images/CS231n_Assignment1_Features/1.png">
+<meta property="og:image" content="http://yoursite.com/images/CS231n_Assignment1_Features/2.png">
+<meta property="og:image" content="http://yoursite.com/images/CS231n_Assignment1_Features/3.png">
+<meta property="og:image" content="http://yoursite.com/images/CS231n_Assignment1_Features/4.png">
+<meta property="og:image" content="http://yoursite.com/images/CS231n_Assignment1_Features/5.png">
+<meta property="og:image" content="http://yoursite.com/images/CS231n_Assignment1_Features/6.png">
+<meta property="og:image" content="http://yoursite.com/images/CS231n_Assignment1_Features/7.png">
+<meta property="article:published_time" content="2020-06-30T10:19:54.000Z">
+<meta property="article:modified_time" content="2020-06-30T10:19:54.000Z">
+<meta property="article:author" content="Tukeke">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/images/CS231n_Assignment1_Features/1.png">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/css/scrollUp/image.css">
+
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <div class="logo">
+        <img src="/logo.png" alt="Profile Picture">
+      </div>
+      <div id="title">Tukekenulia♥</div>
+      
+        <div id="subtitle">Stay focus,stay humble,stay curiosity.</div>
+      
+       <ul class="my-socials">
+  
+  <li>
+  	<a href="https://github.com/Tukekehaohaonuli" class="github" target="_blank">
+  		<i class="fa fa-github"></i>
+  	</a>
+  </li>
+  
+  <li>
+  	<a href="YOUR WEIBO HOME PAGE URL" class="weibo" target="_blank">
+  		<i class="fa fa-weibo"></i>
+  	</a>
+  </li>
+  
+ 
+</ul>
+    </div>
+  </div>
+  <div id="header-inner" class="">
+    <nav id="main-nav">
+      <a id="main-nav-toggle" class="nav-icon"></a>
+      <!--
+        
+          
+            <a class="main-nav-link" href="/">首页</a>
+          
+            <a class="main-nav-link" href="/categories/life">生活</a>
+          
+            <a class="main-nav-link" href="/archives">归档</a>
+          
+        
+      -->
+    </nav>
+    <nav id="title-nav" style="display:none">
+      <a href="/">Tukekenulia♥</a>
+      <img src="/logo.png" alt="Profile Picture">
+      <!--
+      <span id="title-nav-socials">
+        
+       
+     </span>
+      -->
+    </nav>
+    <nav id="sub-nav">
+      
+      <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+    </nav>
+    <div id="search-form-wrap">
+      <form action="http://www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+        <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+        <input type="submit" value="" class="search-form-submit">
+        <input name=tn type=hidden value="bds">
+        <input name=cl type=hidden value="3">
+        <input name=ct type=hidden value="2097152">
+        <input type="hidden" name="si" value="yoursite.com">
+      </form>
+    </div>
+  </div>
+  <div class="site-nav" style="display: none;">
+    <ul>
+      
+      
+        <li><a href="/">首页</a></li>
+      
+        <li><a href="/categories/life">生活</a></li>
+      
+        <li><a href="/archives">归档</a></li>
+      
+      
+    </ul>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-CS231n_Assignment1_Features" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/30/CS231n_Assignment1_Features/" class="article-date">
+  <time datetime="2020-06-30T10:19:54.000Z" itemprop="datePublished">2020-06-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>此篇仅记录自己学习CS231n的习题成果所用</p>
+<span id="more"></span>
+
+<p>&#x2F;&#x2F;features.py中的各种图像处理函数的操作并不是非常懂，有机会回头在学一次这段代码</p>
+<p>&#x2F;&#x2F;对于每幅图像，我们将计算一个定向梯度直方图(HOG)以及使用HSV颜色空间中的色相通道的颜色直方图。我们通过连接HOG和颜色直方图的特征向量来形成我们最终的特征向量。大体来说，HOG应该捕捉图像的纹理而忽略颜色信息，颜色直方图表示输入图像的颜色而忽略纹理。因此，我们认为两者一起使用应该比单独使用更好。为了自己的兴趣，验证这一假设将是一件好事。这就是用机器学习中的一些方法提取特征</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">import random</span><br><span class="line">import numpy as np</span><br><span class="line">from cs231n.data_utils import load_CIFAR10</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">%matplotlib inline</span><br><span class="line">plt.rcParams[&#x27;figure.figsize&#x27;] = (10.0, 8.0) # set default size of plots</span><br><span class="line">plt.rcParams[&#x27;image.interpolation&#x27;] = &#x27;nearest&#x27;</span><br><span class="line">plt.rcParams[&#x27;image.cmap&#x27;] = &#x27;gray&#x27;</span><br><span class="line"></span><br><span class="line"># for auto-reloading extenrnal modules</span><br><span class="line"># see http://stackoverflow.com/questions/1907993/autoreload-of-modules-in-ipython</span><br><span class="line">%load_ext autoreload</span><br><span class="line">%autoreload 2</span><br><span class="line"></span><br><span class="line">from cs231n.features import color_histogram_hsv, hog_feature</span><br><span class="line"></span><br><span class="line">def get_CIFAR10_data(num_training=49000, num_validation=1000, num_test=1000):</span><br><span class="line">    # Load the raw CIFAR-10 data</span><br><span class="line">    cifar10_dir = &#x27;cs231n/datasets/cifar-10-batches-py&#x27;</span><br><span class="line"></span><br><span class="line">    # Cleaning up variables to prevent loading data multiple times (which may cause memory issue)</span><br><span class="line">    try:</span><br><span class="line">       del X_train, y_train</span><br><span class="line">       del X_test, y_test</span><br><span class="line">       print(&#x27;Clear previously loaded data.&#x27;)</span><br><span class="line">    except:</span><br><span class="line">       pass</span><br><span class="line"></span><br><span class="line">    X_train, y_train, X_test, y_test = load_CIFAR10(cifar10_dir)</span><br><span class="line">    </span><br><span class="line">    # Subsample the data</span><br><span class="line">    mask = list(range(num_training, num_training + num_validation))</span><br><span class="line">    X_val = X_train[mask]</span><br><span class="line">    y_val = y_train[mask]</span><br><span class="line">    mask = list(range(num_training))</span><br><span class="line">    X_train = X_train[mask]</span><br><span class="line">    y_train = y_train[mask]</span><br><span class="line">    mask = list(range(num_test))</span><br><span class="line">    X_test = X_test[mask]</span><br><span class="line">    y_test = y_test[mask]</span><br><span class="line">    </span><br><span class="line">    return X_train, y_train, X_val, y_val, X_test, y_test</span><br><span class="line"></span><br><span class="line">X_train, y_train, X_val, y_val, X_test, y_test = get_CIFAR10_data()</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">//图像的预处理，就像OPENCV中的一些均值化操作等</span><br><span class="line">//调用features.py操作来提取方向梯度直方图以及颜色直方图</span><br><span class="line">from cs231n.features import *</span><br><span class="line"></span><br><span class="line">num_color_bins = 10 # Number of bins in the color histogram</span><br><span class="line">feature_fns = [hog_feature, lambda img: color_histogram_hsv(img, nbin=num_color_bins)]</span><br><span class="line">X_train_feats = extract_features(X_train, feature_fns, verbose=True)</span><br><span class="line">X_val_feats = extract_features(X_val, feature_fns)</span><br><span class="line">X_test_feats = extract_features(X_test, feature_fns)</span><br><span class="line"></span><br><span class="line"># Preprocessing: Subtract the mean feature</span><br><span class="line">mean_feat = np.mean(X_train_feats, axis=0, keepdims=True)</span><br><span class="line">X_train_feats -= mean_feat</span><br><span class="line">X_val_feats -= mean_feat</span><br><span class="line">X_test_feats -= mean_feat</span><br><span class="line"></span><br><span class="line"># Preprocessing: Divide by standard deviation. This ensures that each feature</span><br><span class="line"># has roughly the same scale.</span><br><span class="line">std_feat = np.std(X_train_feats, axis=0, keepdims=True)</span><br><span class="line">X_train_feats /= std_feat</span><br><span class="line">X_val_feats /= std_feat</span><br><span class="line">X_test_feats /= std_feat</span><br><span class="line"></span><br><span class="line"># Preprocessing: Add a bias dimension</span><br><span class="line">X_train_feats = np.hstack([X_train_feats, np.ones((X_train_feats.shape[0], 1))])</span><br><span class="line">X_val_feats = np.hstack([X_val_feats, np.ones((X_val_feats.shape[0], 1))])</span><br><span class="line">X_test_feats = np.hstack([X_test_feats, np.ones((X_test_feats.shape[0], 1))])</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/CS231n_Assignment1_Features/1.png" alt="1"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">//选择超参数就是正则化强度和学习率来测试在验证集上的准确率，使用的是SVM的训练器</span><br><span class="line"># Use the validation set to tune the learning rate and regularization strength</span><br><span class="line"></span><br><span class="line">from cs231n.classifiers.linear_classifier import LinearSVM</span><br><span class="line"></span><br><span class="line">learning_rates = [1e-9, 1e-8, 1e-7]</span><br><span class="line">regularization_strengths = [5e4, 5e5, 5e6]</span><br><span class="line"></span><br><span class="line">results = &#123;&#125;</span><br><span class="line">best_val = -1</span><br><span class="line">best_svm = None</span><br><span class="line"></span><br><span class="line">################################################################################</span><br><span class="line"># TODO:                                                                        #</span><br><span class="line"># Use the validation set to set the learning rate and regularization strength. #</span><br><span class="line"># This should be identical to the validation that you did for the SVM; save    #</span><br><span class="line"># the best trained classifer in best_svm. You might also want to play          #</span><br><span class="line"># with different numbers of bins in the color histogram. If you are careful    #</span><br><span class="line"># you should be able to get accuracy of near 0.44 on the validation set.       #</span><br><span class="line">################################################################################</span><br><span class="line"># *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****</span><br><span class="line">for lr in learning_rates:</span><br><span class="line">    for reg in regularization_strengths:</span><br><span class="line">        svm=LinearSVM()</span><br><span class="line">        loss_hist=svm.train(X_train_feats,y_train,lr,reg,num_iters=6000)</span><br><span class="line">        y_train_pred=svm.predict(X_train_feats)</span><br><span class="line">        train_accuracy=np.mean(y_train==y_train_pred)</span><br><span class="line">        y_val_pred=svm.predict(X_val_feats)</span><br><span class="line">        val_accuracy=np.mean(y_val==y_val_pred)</span><br><span class="line">        if val_accuracy&gt;best_val:</span><br><span class="line">            best_val=val_accuracy</span><br><span class="line">            best_svm=svm</span><br><span class="line">        results[(lr,reg)]=train_accuracy,val_accuracy</span><br><span class="line">        </span><br><span class="line"></span><br><span class="line">pass</span><br><span class="line"></span><br><span class="line"># *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****</span><br><span class="line"></span><br><span class="line"># Print out results.</span><br><span class="line">for lr, reg in sorted(results):</span><br><span class="line">    train_accuracy, val_accuracy = results[(lr, reg)]</span><br><span class="line">    print(&#x27;lr %e reg %e train accuracy: %f val accuracy: %f&#x27; % (</span><br><span class="line">                lr, reg, train_accuracy, val_accuracy))</span><br><span class="line">    </span><br><span class="line">print(&#x27;best validation accuracy achieved during cross-validation: %f&#x27; % best_val)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/CS231n_Assignment1_Features/2.png" alt="2"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//在测试集上的表现</span><br><span class="line"># Evaluate your trained SVM on the test set: you should be able to get at least 0.40</span><br><span class="line">y_test_pred = best_svm.predict(X_test_feats)</span><br><span class="line">test_accuracy = np.mean(y_test == y_test_pred)</span><br><span class="line">print(test_accuracy)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/CS231n_Assignment1_Features/3.png" alt="3"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">//可视化分类的情况</span><br><span class="line"># An important way to gain intuition about how an algorithm works is to</span><br><span class="line"># visualize the mistakes that it makes. In this visualization, we show examples</span><br><span class="line"># of images that are misclassified by our current system. The first column</span><br><span class="line"># shows images that our system labeled as &quot;plane&quot; but whose true label is</span><br><span class="line"># something other than &quot;plane&quot;.</span><br><span class="line"></span><br><span class="line">examples_per_class = 8</span><br><span class="line">classes = [&#x27;plane&#x27;, &#x27;car&#x27;, &#x27;bird&#x27;, &#x27;cat&#x27;, &#x27;deer&#x27;, &#x27;dog&#x27;, &#x27;frog&#x27;, &#x27;horse&#x27;, &#x27;ship&#x27;, &#x27;truck&#x27;]</span><br><span class="line">for cls, cls_name in enumerate(classes):</span><br><span class="line">    idxs = np.where((y_test != cls) &amp; (y_test_pred == cls))[0]</span><br><span class="line">    idxs = np.random.choice(idxs, examples_per_class, replace=False)</span><br><span class="line">    for i, idx in enumerate(idxs):</span><br><span class="line">        plt.subplot(examples_per_class, len(classes), i * len(classes) + cls + 1)</span><br><span class="line">        plt.imshow(X_test[idx].astype(&#x27;uint8&#x27;))</span><br><span class="line">        plt.axis(&#x27;off&#x27;)</span><br><span class="line">        if i == 0:</span><br><span class="line">            plt.title(cls_name)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/CS231n_Assignment1_Features/4.png" alt="4"></p>
+<h3 id="Neural-Network-on-image-features部分"><a href="#Neural-Network-on-image-features部分" class="headerlink" title="Neural Network on image features部分"></a>Neural Network on image features部分</h3><p>&#x2F;&#x2F;在神经网络上的表现，测试证明是有一个比较好的效果提升的</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># Preprocessing: Remove the bias dimension</span><br><span class="line"># Make sure to run this cell only ONCE</span><br><span class="line">print(X_train_feats.shape)</span><br><span class="line">X_train_feats = X_train_feats[:, :-1]</span><br><span class="line">X_val_feats = X_val_feats[:, :-1]</span><br><span class="line">X_test_feats = X_test_feats[:, :-1]</span><br><span class="line"></span><br><span class="line">print(X_train_feats.shape)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/CS231n_Assignment1_Features/5.png" alt="5"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">//选择超参数即正则化强度以及学习率以此来检测准确率</span><br><span class="line">from cs231n.classifiers.neural_net import TwoLayerNet</span><br><span class="line"></span><br><span class="line">input_dim = X_train_feats.shape[1]</span><br><span class="line">hidden_dim = 500</span><br><span class="line">num_classes = 10</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">best_net = None</span><br><span class="line"></span><br><span class="line">results=&#123;&#125;</span><br><span class="line">best_val=-1</span><br><span class="line">best_net=None</span><br><span class="line"></span><br><span class="line">learning_rates_base=0.0007</span><br><span class="line">learning_rates_step=0.0001</span><br><span class="line">reg_base=0.25</span><br><span class="line">reg_step=0.25</span><br><span class="line">for lr_count in range(3):</span><br><span class="line">    for reg_count in range(3):</span><br><span class="line">        lr=learning_rates_base+lr_count*learning_rates_step</span><br><span class="line">        reg=reg_base+reg_count*reg_step</span><br><span class="line">        net=TwoLayerNet(input_dim,hidden_dim,num_classes)</span><br><span class="line">//训练器的生成一定要放在内部，不然net是不会更新的，虽然results里面的内容会更新，导致predict函数中调用的self.W1,W2,b1,b2都会更新，所以在这里显示的预测值是会改变的，但是net本身是没有改变的，因此如果不放在循环内部的话，会导致后面预测测试集时出现问题</span><br><span class="line">        results=net.train(X_train_feats,y_train,X_val_feats,y_val,num_iters=1500,</span><br><span class="line">                          batch_size=200,learning_rate=lr,learning_rate_decay=0.95,</span><br><span class="line">                          reg=reg,verbose=False)</span><br><span class="line">        val_acc=np.mean(net.predict(X_val_fa))</span><br><span class="line">        print(&quot;lr:%f, reg:%f, val accuracy:%f&quot;%(lr, reg, val_acc))</span><br><span class="line">        if val_acc&gt;best_val:</span><br><span class="line">            best_val=val_acc</span><br><span class="line">            best_net=net</span><br><span class="line">print(&quot;lr:%f,reg:%f,val_accuracy:%f&quot;%(best_lr,best_reg,best_val_acc))      </span><br><span class="line">################################################################################</span><br><span class="line"># TODO: Train a two-layer neural network on image features. You may want to    #</span><br><span class="line"># cross-validate various parameters as in previous sections. Store your best   #</span><br><span class="line"># model in the best_net variable.                                              #</span><br><span class="line">################################################################################</span><br><span class="line"># *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****</span><br><span class="line"></span><br><span class="line">pass</span><br><span class="line"></span><br><span class="line"># *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/CS231n_Assignment1_Features/6.png" alt="6"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//在测试集上的表现  </span><br><span class="line"># Run your best neural net classifier on the test set. You should be able</span><br><span class="line"># to get more than 55% accuracy.</span><br><span class="line"></span><br><span class="line">test_acc = (best_net.predict(X_test_feats) == y_test).mean()</span><br><span class="line">print(test_acc)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/CS231n_Assignment1_Features/7.png" alt="7"></p>
+<h1 id="features-py"><a href="#features-py" class="headerlink" title="features.py"></a>features.py</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br></pre></td><td class="code"><pre><span class="line">from __future__ import print_function</span><br><span class="line">from builtins import zip</span><br><span class="line">from builtins import range</span><br><span class="line">from past.builtins import xrange</span><br><span class="line"></span><br><span class="line">import matplotlib</span><br><span class="line">import numpy as np</span><br><span class="line">from scipy.ndimage import uniform_filter</span><br><span class="line"></span><br><span class="line">//提取每张图片所有特征矩阵中向量的特征值，并将所有的特征值整合到一个大型矩阵中</span><br><span class="line">def extract_features(imgs, feature_fns, verbose=False):</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    Given pixel data for images and several feature functions that can operate on</span><br><span class="line">    single images, apply all feature functions to all images, concatenating the</span><br><span class="line">    feature vectors for each image and storing the features for all images in</span><br><span class="line">    a single matrix.</span><br><span class="line"></span><br><span class="line">    Inputs:</span><br><span class="line">    - imgs: N x H X W X C array of pixel data for N images.</span><br><span class="line">    - feature_fns: List of k feature functions. The ith feature function should</span><br><span class="line">      take as input an H x W x D array and return a (one-dimensional) array of</span><br><span class="line">      length F_i.</span><br><span class="line">    - verbose: Boolean; if true, print progress.</span><br><span class="line"></span><br><span class="line">    Returns:</span><br><span class="line">    An array of shape (N, F_1 + ... + F_k) where each column is the concatenation</span><br><span class="line">    of all features for a single image.</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    num_images = imgs.shape[0]</span><br><span class="line">    if num_images == 0:</span><br><span class="line">        return np.array([])</span><br><span class="line"></span><br><span class="line">    # Use the first image to determine feature dimensions</span><br><span class="line">    feature_dims = []  //特征矩阵的维度</span><br><span class="line">    first_image_features = [] //以第一张图特征的大小来确定大型矩阵的维度</span><br><span class="line">    for feature_fn in feature_fns:</span><br><span class="line">        feats = feature_fn(imgs[0].squeeze())</span><br><span class="line">        assert len(feats.shape) == 1, &#x27;Feature functions must be one-dimensional&#x27;</span><br><span class="line">        feature_dims.append(feats.size)</span><br><span class="line">        first_image_features.append(feats)</span><br><span class="line"></span><br><span class="line">    # Now that we know the dimensions of the features, we can allocate a single</span><br><span class="line">    # big array to store all features as columns.</span><br><span class="line">    total_feature_dim = sum(feature_dims)</span><br><span class="line">    imgs_features = np.zeros((num_images, total_feature_dim))</span><br><span class="line">    imgs_features[0] = np.hstack(first_image_features).T</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//将剩余图片的特征值提取到一个大型特征向量矩阵中</span><br><span class="line">    # Extract features for the rest of the images.</span><br><span class="line">    for i in range(1, num_images):</span><br><span class="line">        idx = 0</span><br><span class="line">        for feature_fn, feature_dim in zip(feature_fns, feature_dims):</span><br><span class="line">            next_idx = idx + feature_dim</span><br><span class="line">            imgs_features[i, idx:next_idx] = feature_fn(imgs[i].squeeze())</span><br><span class="line">            idx = next_idx</span><br><span class="line">        if verbose and i % 1000 == 999:</span><br><span class="line">            print(&#x27;Done extracting features for %d / %d images&#x27; % (i+1, num_images))</span><br><span class="line"></span><br><span class="line">    return imgs_features</span><br><span class="line">    </span><br><span class="line">//RGB图像转到灰度图像，这里直接使用了公式</span><br><span class="line">def rgb2gray(rgb):</span><br><span class="line">    &quot;&quot;&quot;Convert RGB image to grayscale</span><br><span class="line"></span><br><span class="line">      Parameters:</span><br><span class="line">        rgb : RGB image</span><br><span class="line"></span><br><span class="line">      Returns:</span><br><span class="line">        gray : grayscale image</span><br><span class="line"></span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    return np.dot(rgb[...,:3], [0.299, 0.587, 0.144])</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">//提取方向梯度直方图函数</span><br><span class="line">def hog_feature(im):</span><br><span class="line">    &quot;&quot;&quot;Compute Histogram of Gradient (HOG) feature for an image</span><br><span class="line"></span><br><span class="line">         Modified from skimage.feature.hog</span><br><span class="line">         http://pydoc.net/Python/scikits-image/0.4.2/skimage.feature.hog</span><br><span class="line"></span><br><span class="line">       Reference:</span><br><span class="line">         Histograms of Oriented Gradients for Human Detection</span><br><span class="line">         Navneet Dalal and Bill Triggs, CVPR 2005</span><br><span class="line"></span><br><span class="line">      Parameters:</span><br><span class="line">        im : an input grayscale or rgb image</span><br><span class="line"></span><br><span class="line">      Returns:</span><br><span class="line">        feat: Histogram of Gradient (HOG) feature</span><br><span class="line"></span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">    # convert rgb to grayscale if needed</span><br><span class="line">    if im.ndim == 3:</span><br><span class="line">        image = rgb2gray(im)</span><br><span class="line">    else:</span><br><span class="line">        image = np.at_least_2d(im)</span><br><span class="line"></span><br><span class="line">    sx, sy = image.shape # image size</span><br><span class="line">    orientations = 9 # number of gradient bins</span><br><span class="line">    cx, cy = (8, 8) # pixels per cell</span><br><span class="line"></span><br><span class="line">    gx = np.zeros(image.shape)</span><br><span class="line">    gy = np.zeros(image.shape)</span><br><span class="line">    gx[:, :-1] = np.diff(image, n=1, axis=1) # compute gradient on x-direction</span><br><span class="line">    gy[:-1, :] = np.diff(image, n=1, axis=0) # compute gradient on y-direction</span><br><span class="line">    grad_mag = np.sqrt(gx ** 2 + gy ** 2) # gradient magnitude</span><br><span class="line">    grad_ori = np.arctan2(gy, (gx + 1e-15)) * (180 / np.pi) + 90 # gradient orientation</span><br><span class="line"></span><br><span class="line">    n_cellsx = int(np.floor(sx / cx))  # number of cells in x</span><br><span class="line">    n_cellsy = int(np.floor(sy / cy))  # number of cells in y</span><br><span class="line">    # compute orientations integral images</span><br><span class="line">    orientation_histogram = np.zeros((n_cellsx, n_cellsy, orientations))</span><br><span class="line">    for i in range(orientations):</span><br><span class="line">        # create new integral image for this orientation</span><br><span class="line">        # isolate orientations in this range</span><br><span class="line">        temp_ori = np.where(grad_ori &lt; 180 / orientations * (i + 1),</span><br><span class="line">                            grad_ori, 0)</span><br><span class="line">        temp_ori = np.where(grad_ori &gt;= 180 / orientations * i,</span><br><span class="line">                            temp_ori, 0)</span><br><span class="line">        # select magnitudes for those orientations</span><br><span class="line">        cond2 = temp_ori &gt; 0</span><br><span class="line">        temp_mag = np.where(cond2, grad_mag, 0)</span><br><span class="line">        orientation_histogram[:,:,i] = uniform_filter(temp_mag, size=(cx, cy))[round(cx/2)::cx, round(cy/2)::cy].T</span><br><span class="line"></span><br><span class="line">    return orientation_histogram.ravel()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//用hsv模式计算颜色直方图函数</span><br><span class="line">def color_histogram_hsv(im, nbin=10, xmin=0, xmax=255, normalized=True):</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    Compute color histogram for an image using hue.</span><br><span class="line"></span><br><span class="line">    Inputs:</span><br><span class="line">    - im: H x W x C array of pixel data for an RGB image.</span><br><span class="line">    - nbin: Number of histogram bins. (default: 10)</span><br><span class="line">    - xmin: Minimum pixel value (default: 0)</span><br><span class="line">    - xmax: Maximum pixel value (default: 255)</span><br><span class="line">    - normalized: Whether to normalize the histogram (default: True)</span><br><span class="line"></span><br><span class="line">    Returns:</span><br><span class="line">      1D vector of length nbin giving the color histogram over the hue of the</span><br><span class="line">      input image.</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    ndim = im.ndim</span><br><span class="line">    bins = np.linspace(xmin, xmax, nbin+1)</span><br><span class="line">    hsv = matplotlib.colors.rgb_to_hsv(im/xmax) * xmax</span><br><span class="line">    imhist, bin_edges = np.histogram(hsv[:,:,0], bins=bins, density=normalized)</span><br><span class="line">    imhist = imhist * np.diff(bin_edges)</span><br><span class="line"></span><br><span class="line">    # return histogram</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoursite.com/2020/06/30/CS231n_Assignment1_Features/" data-id="clkwhj3tv00026s7s8otp1zsb" class="article-share-link">Share</a>
+      
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/07/04/CS231n_Assignment2_Batch_Normalization/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/06/30/CS231n-assignment1-svm/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2023 Tukeke<br>
+      Theme <a href="https://github.com/Tukekehaohaonuli/" target="_blank">Oishi</a>, Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <!--
+      <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/categories/life" class="mobile-nav-link">生活</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+</nav>
+    -->
+    
+
+<!-- 百度分享 start -->
+
+<!-- 百度分享 end -->
+
+<script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+
+<script src="/js/jquery.scrollUp.min.js"></script>
+
+
+<script src="/js/jquery.transform.js"></script>
+
+
+<script src="/js/menu.js"></script>
+
+
+
+<script src="/js/script.js"></script>
+
+
+<script src="/js/scrollUp.js"></script>
+
+
+  </div>
+</body>
+</html>

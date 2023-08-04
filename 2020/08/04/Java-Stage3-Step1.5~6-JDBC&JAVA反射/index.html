@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Tukekenulia♥</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="主要步骤：1、JDBC学习 2、配置连接缓冲池 3、SQL注入漏洞 4、反射机制的介绍">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tukekenulia♥">
+<meta property="og:url" content="http://yoursite.com/2020/08/04/Java-Stage3-Step1.5~6-JDBC&JAVA%E5%8F%8D%E5%B0%84/index.html">
+<meta property="og:site_name" content="Tukekenulia♥">
+<meta property="og:description" content="主要步骤：1、JDBC学习 2、配置连接缓冲池 3、SQL注入漏洞 4、反射机制的介绍">
+<meta property="og:locale">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage3-Step1.5~6-JDBC&JAVA%E5%8F%8D%E5%B0%84/1.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage3-Step1.5~6-JDBC&JAVA%E5%8F%8D%E5%B0%84/2.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage3-Step1.5~6-JDBC&JAVA%E5%8F%8D%E5%B0%84/3.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage3-Step1.5~6-JDBC&JAVA%E5%8F%8D%E5%B0%84/4.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage3-Step1.5~6-JDBC&JAVA%E5%8F%8D%E5%B0%84/5.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage3-Step1.5~6-JDBC&JAVA%E5%8F%8D%E5%B0%84/6.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage3-Step1.5~6-JDBC&JAVA%E5%8F%8D%E5%B0%84/7.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage3-Step1.5~6-JDBC&JAVA%E5%8F%8D%E5%B0%84/8.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage3-Step1.5~6-JDBC&JAVA%E5%8F%8D%E5%B0%84/9.png">
+<meta property="article:published_time" content="2020-08-04T08:41:20.000Z">
+<meta property="article:modified_time" content="2020-08-04T08:41:20.000Z">
+<meta property="article:author" content="Tukeke">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/images/Java-Stage3-Step1.5~6-JDBC&JAVA%E5%8F%8D%E5%B0%84/1.png">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/css/scrollUp/image.css">
+
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <div class="logo">
+        <img src="/logo.png" alt="Profile Picture">
+      </div>
+      <div id="title">Tukekenulia♥</div>
+      
+        <div id="subtitle">Stay focus,stay humble,stay curiosity.</div>
+      
+       <ul class="my-socials">
+  
+  <li>
+  	<a href="https://github.com/Tukekehaohaonuli" class="github" target="_blank">
+  		<i class="fa fa-github"></i>
+  	</a>
+  </li>
+  
+  <li>
+  	<a href="YOUR WEIBO HOME PAGE URL" class="weibo" target="_blank">
+  		<i class="fa fa-weibo"></i>
+  	</a>
+  </li>
+  
+ 
+</ul>
+    </div>
+  </div>
+  <div id="header-inner" class="">
+    <nav id="main-nav">
+      <a id="main-nav-toggle" class="nav-icon"></a>
+      <!--
+        
+          
+            <a class="main-nav-link" href="/">首页</a>
+          
+            <a class="main-nav-link" href="/categories/life">生活</a>
+          
+            <a class="main-nav-link" href="/archives">归档</a>
+          
+        
+      -->
+    </nav>
+    <nav id="title-nav" style="display:none">
+      <a href="/">Tukekenulia♥</a>
+      <img src="/logo.png" alt="Profile Picture">
+      <!--
+      <span id="title-nav-socials">
+        
+       
+     </span>
+      -->
+    </nav>
+    <nav id="sub-nav">
+      
+      <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+    </nav>
+    <div id="search-form-wrap">
+      <form action="http://www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+        <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+        <input type="submit" value="" class="search-form-submit">
+        <input name=tn type=hidden value="bds">
+        <input name=cl type=hidden value="3">
+        <input name=ct type=hidden value="2097152">
+        <input type="hidden" name="si" value="yoursite.com">
+      </form>
+    </div>
+  </div>
+  <div class="site-nav" style="display: none;">
+    <ul>
+      
+      
+        <li><a href="/">首页</a></li>
+      
+        <li><a href="/categories/life">生活</a></li>
+      
+        <li><a href="/archives">归档</a></li>
+      
+      
+    </ul>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Java-Stage3-Step1.5~6-JDBC&amp;JAVA反射" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/04/Java-Stage3-Step1.5~6-JDBC&JAVA%E5%8F%8D%E5%B0%84/" class="article-date">
+  <time datetime="2020-08-04T08:41:20.000Z" itemprop="datePublished">2020-08-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="主要步骤："><a href="#主要步骤：" class="headerlink" title="主要步骤："></a>主要步骤：</h3><p>1、JDBC学习</p>
+<p>2、配置连接缓冲池</p>
+<p>3、SQL注入漏洞</p>
+<p>4、反射机制的介绍</p>
+<span id="more"></span>
+
+<h3 id="1-JDBC入门"><a href="#1-JDBC入门" class="headerlink" title="1-JDBC入门"></a>1-JDBC入门</h3><p><img src="/images/Java-Stage3-Step1.5~6-JDBC&JAVA%E5%8F%8D%E5%B0%84/1.png" alt="1"></p>
+<p><img src="/images/Java-Stage3-Step1.5~6-JDBC&JAVA%E5%8F%8D%E5%B0%84/2.png" alt="2"></p>
+<p>IDEA中已经自动加载了驱动，因此不需要加载，标准JDBC连接和释放方式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">@Test</span><br><span class="line">	/**</span><br><span class="line">	 * JDBC资源的释放</span><br><span class="line">	 */</span><br><span class="line">	public void demo2()&#123;</span><br><span class="line">		Connection conn = null;</span><br><span class="line">		Statement stmt = null;</span><br><span class="line">		ResultSet rs = null;</span><br><span class="line">		try &#123;</span><br><span class="line">			// 1.加载驱动</span><br><span class="line">//			DriverManager.registerDriver(new Driver());// 会导致驱动注册两次。</span><br><span class="line">			Class.forName(&quot;com.mysql.jdbc.Driver&quot;); </span><br><span class="line">			// 2.获得连接</span><br><span class="line">			            conn= DriverManager.getConnection(&quot;jdbc:mysql:///test?useUnicode=true&amp;characterEncoding=utf8&quot;,&quot;root&quot;,&quot;123456&quot;);</span><br><span class="line">			            //出现中文乱码问题时加入?useUnicode=true&amp;characterEncoding=utf8</span><br><span class="line">			// 3.创建执行SQL语句的对象，并且执行SQL</span><br><span class="line">			// 3.1创建执行sql的对象</span><br><span class="line">			String sql = &quot;select * from user&quot;;</span><br><span class="line">			stmt = conn.createStatement();</span><br><span class="line">			// 3.2执行sql</span><br><span class="line">			rs = stmt.executeQuery(sql);</span><br><span class="line">			while(rs.next())&#123;</span><br><span class="line">				int uid = rs.getInt(&quot;uid&quot;);</span><br><span class="line">				String username = rs.getString(&quot;username&quot;);</span><br><span class="line">				String password = rs.getString(&quot;password&quot;);</span><br><span class="line">				String name = rs.getString(&quot;name&quot;);</span><br><span class="line">				</span><br><span class="line">				System.out.println(uid+&quot;   &quot;+username+&quot;   &quot;+password+&quot;   &quot;+name);</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">		&#125; catch (Exception e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;finally&#123;</span><br><span class="line">			// 4.释放资源</span><br><span class="line">		    if (rs != null) &#123;</span><br><span class="line">		        try &#123;</span><br><span class="line">		            rs.close();</span><br><span class="line">		        &#125; catch (SQLException sqlEx) &#123; // ignore </span><br><span class="line">		        	</span><br><span class="line">		        &#125;</span><br><span class="line"></span><br><span class="line">		        rs = null;</span><br><span class="line">		    &#125;</span><br><span class="line">		    </span><br><span class="line">		    if(stmt != null)&#123;</span><br><span class="line">		    	try &#123;</span><br><span class="line">					stmt.close();</span><br><span class="line">				&#125; catch (SQLException e) &#123;</span><br><span class="line">					e.printStackTrace();</span><br><span class="line">				&#125;</span><br><span class="line">		    	stmt = null;</span><br><span class="line">		    &#125;</span><br><span class="line">		    </span><br><span class="line">		    if(conn != null)&#123;</span><br><span class="line">		    	try &#123;</span><br><span class="line">					conn.close();</span><br><span class="line">				&#125; catch (SQLException e) &#123;</span><br><span class="line">					e.printStackTrace();</span><br><span class="line">				&#125;</span><br><span class="line">		    	conn = null;// 垃圾回收机制更早回收对象。</span><br><span class="line">		    &#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-JDBC工具类初始版（没有连接缓冲池）"><a href="#2-JDBC工具类初始版（没有连接缓冲池）" class="headerlink" title="2-JDBC工具类初始版（没有连接缓冲池）"></a>2-JDBC工具类初始版（没有连接缓冲池）</h3><p>为了将一些属性名统一放置修改，而不需要修改统一的JDBC工具类，因此创建properties文件</p>
+<p><img src="/images/Java-Stage3-Step1.5~6-JDBC&JAVA%E5%8F%8D%E5%B0%84/3.png" alt="3"></p>
+<p>jdbc.properties文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">driverClass=com.mysql.jdbc.Driver</span><br><span class="line">url=jdbc:mysql:///test?useUnicode=true&amp;characterEncoding=utf8</span><br><span class="line">username=root</span><br><span class="line">password=123456</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * JDBC的工具类</span><br><span class="line"> * @author jt</span><br><span class="line"> *</span><br><span class="line"> */</span><br><span class="line">public class JDBCUtils &#123;</span><br><span class="line">	private static final String driverClass;</span><br><span class="line">	private static final String url;</span><br><span class="line">	private static final String username;</span><br><span class="line">	private static final String password;</span><br><span class="line">	</span><br><span class="line">	static&#123;</span><br><span class="line">		// 加载属性文件并解析：</span><br><span class="line">		Properties props = new Properties();</span><br><span class="line">		// 如何获得属性文件的输入流？</span><br><span class="line">		// 通常情况下使用类的加载器的方式进行获取：</span><br><span class="line">		InputStream is = JDBCUtils.class.getClassLoader().getResourceAsStream(&quot;jdbc.properties&quot;);</span><br><span class="line">		try &#123;</span><br><span class="line">			props.load(is);</span><br><span class="line">		&#125; catch (IOException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		driverClass = props.getProperty(&quot;driverClass&quot;);</span><br><span class="line">		url = props.getProperty(&quot;url&quot;);</span><br><span class="line">		username = props.getProperty(&quot;username&quot;);</span><br><span class="line">		password = props.getProperty(&quot;password&quot;);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	/**</span><br><span class="line">	 * 注册驱动的方法</span><br><span class="line">	 * @throws ClassNotFoundException </span><br><span class="line">	 */</span><br><span class="line">	public static void loadDriver() throws ClassNotFoundException&#123;</span><br><span class="line">		Class.forName(driverClass);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	/**</span><br><span class="line">	 * 获得连接的方法:</span><br><span class="line">	 * @throws SQLException </span><br><span class="line">	 */</span><br><span class="line">	public static Connection getConnection() throws Exception&#123;</span><br><span class="line">		loadDriver();</span><br><span class="line">		Connection conn = DriverManager.getConnection(url, username, password);</span><br><span class="line">		return conn;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	/**</span><br><span class="line">	 * 资源释放</span><br><span class="line">	 */</span><br><span class="line">	public static void release(Statement stmt,Connection conn)&#123;</span><br><span class="line">		if(stmt != null)&#123;</span><br><span class="line">			try &#123;</span><br><span class="line">				stmt.close();</span><br><span class="line">			&#125; catch (SQLException e) &#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">			stmt = null;</span><br><span class="line">		&#125;</span><br><span class="line">		if(conn != null)&#123;</span><br><span class="line">			try &#123;</span><br><span class="line">				conn.close();</span><br><span class="line">			&#125; catch (SQLException e) &#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">			conn = null;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	public static void release(ResultSet rs,Statement stmt,Connection conn)&#123;</span><br><span class="line">		if(rs!= null)&#123;</span><br><span class="line">			try &#123;</span><br><span class="line">				rs.close();</span><br><span class="line">			&#125; catch (SQLException e) &#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">			rs = null;</span><br><span class="line">		&#125;</span><br><span class="line">		if(stmt != null)&#123;</span><br><span class="line">			try &#123;</span><br><span class="line">				stmt.close();</span><br><span class="line">			&#125; catch (SQLException e) &#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">			stmt = null;</span><br><span class="line">		&#125;</span><br><span class="line">		if(conn != null)&#123;</span><br><span class="line">			try &#123;</span><br><span class="line">				conn.close();</span><br><span class="line">			&#125; catch (SQLException e) &#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">			conn = null;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="3-SQL注入漏洞"><a href="#3-SQL注入漏洞" class="headerlink" title="3-SQL注入漏洞"></a>3-SQL注入漏洞</h3><p>使用statement可以在sql语句中注入关键字，从而产生漏洞进入系统。</p>
+<p>使用PrepareStatement可以产生占位符，占位符中不会是关键词，从而解决SQL注入漏洞。</p>
+<h3 id="4-配置连接缓冲池"><a href="#4-配置连接缓冲池" class="headerlink" title="4-配置连接缓冲池"></a>4-配置连接缓冲池</h3><p>配置缓冲池能够有效的减少数据库的连接压力，从而更加有效。</p>
+<p>如果没有配置连接缓冲池，则每个用户需要连接数据库时都需要访问连接数据库，造成数据库压力过大，如果配置了连接缓冲池，则每次只需要在缓冲池中获得连接，用完释放即可，不需要每次都连接数据库。</p>
+<p>配置文件：c3p0-config.xml</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;c3p0-config&gt;</span><br><span class="line"></span><br><span class="line">  &lt;default-config&gt;</span><br><span class="line">    &lt;property name=&quot;driverClass&quot;&gt;com.mysql.jdbc.Driver&lt;/property&gt;</span><br><span class="line">	&lt;property name=&quot;jdbcUrl&quot;&gt;jdbc:mysql:///test&lt;/property&gt;</span><br><span class="line">	&lt;property name=&quot;user&quot;&gt;root&lt;/property&gt;</span><br><span class="line">	&lt;property name=&quot;password&quot;&gt;123456&lt;/property&gt;</span><br><span class="line">	&lt;property name=&quot;initialPoolSize&quot;&gt;5&lt;/property&gt;</span><br><span class="line">	&lt;property name=&quot;maxPoolSize&quot;&gt;20&lt;/property&gt;</span><br><span class="line">  &lt;/default-config&gt;</span><br><span class="line">  </span><br><span class="line">&lt;/c3p0-config&gt;</span><br></pre></td></tr></table></figure>
+
+<p>配置完文件之后只需要获得连接池就可以直接使用 而不需要在设置参数。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ComboPooledDataSource dataSource=new ComboPooledDataSource();</span><br></pre></td></tr></table></figure>
+
+<p>因此改进JDBC工具类</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">public class JDBCUtils2 &#123;</span><br><span class="line">	private static final ComboPooledDataSource dataSource = new ComboPooledDataSource();</span><br><span class="line">	</span><br><span class="line">	/**</span><br><span class="line">	 * 获得连接的方法:</span><br><span class="line">	 * @throws SQLException </span><br><span class="line">	 */</span><br><span class="line">	public static Connection getConnection() throws Exception&#123;</span><br><span class="line">		Connection conn = dataSource.getConnection();</span><br><span class="line">		return conn;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	/**</span><br><span class="line">	 * 资源释放</span><br><span class="line">	 */</span><br><span class="line">	public static void release(Statement stmt,Connection conn)&#123;</span><br><span class="line">		if(stmt != null)&#123;</span><br><span class="line">			try &#123;</span><br><span class="line">				stmt.close();</span><br><span class="line">			&#125; catch (SQLException e) &#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">			stmt = null;</span><br><span class="line">		&#125;</span><br><span class="line">		if(conn != null)&#123;</span><br><span class="line">			try &#123;</span><br><span class="line">				conn.close();</span><br><span class="line">			&#125; catch (SQLException e) &#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">			conn = null;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	public static void release(ResultSet rs,Statement stmt,Connection conn)&#123;</span><br><span class="line">		if(rs!= null)&#123;</span><br><span class="line">			try &#123;</span><br><span class="line">				rs.close();</span><br><span class="line">			&#125; catch (SQLException e) &#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">			rs = null;</span><br><span class="line">		&#125;</span><br><span class="line">		if(stmt != null)&#123;</span><br><span class="line">			try &#123;</span><br><span class="line">				stmt.close();</span><br><span class="line">			&#125; catch (SQLException e) &#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">			stmt = null;</span><br><span class="line">		&#125;</span><br><span class="line">		if(conn != null)&#123;</span><br><span class="line">			try &#123;</span><br><span class="line">				conn.close();</span><br><span class="line">			&#125; catch (SQLException e) &#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">			conn = null;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-反射机制"><a href="#5-反射机制" class="headerlink" title="5-反射机制"></a>5-反射机制</h3><p><img src="/images/Java-Stage3-Step1.5~6-JDBC&JAVA%E5%8F%8D%E5%B0%84/4.png" alt="4"></p>
+<p><img src="/images/Java-Stage3-Step1.5~6-JDBC&JAVA%E5%8F%8D%E5%B0%84/5.png" alt="5"></p>
+<p><img src="/images/Java-Stage3-Step1.5~6-JDBC&JAVA%E5%8F%8D%E5%B0%84/6.png" alt="6"></p>
+<p><img src="/images/Java-Stage3-Step1.5~6-JDBC&JAVA%E5%8F%8D%E5%B0%84/7.png" alt="7"></p>
+<p><img src="/images/Java-Stage3-Step1.5~6-JDBC&JAVA%E5%8F%8D%E5%B0%84/8.png" alt="8"></p>
+<h5 id="在Method类中如果调用私有方法同样需要设置访问权限setAccessible-true"><a href="#在Method类中如果调用私有方法同样需要设置访问权限setAccessible-true" class="headerlink" title="在Method类中如果调用私有方法同样需要设置访问权限setAccessible(true)"></a>在Method类中如果调用私有方法同样需要设置访问权限setAccessible(true)</h5><p><img src="/images/Java-Stage3-Step1.5~6-JDBC&JAVA%E5%8F%8D%E5%B0%84/9.png" alt="9"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoursite.com/2020/08/04/Java-Stage3-Step1.5~6-JDBC&JAVA%E5%8F%8D%E5%B0%84/" data-id="clkwhj3tz000j6s7s9s7u1dlu" class="article-share-link">Share</a>
+      
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/08/04/Java-Stage2-Step5.3-JavaWeb%E7%BB%BC%E5%90%88/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/07/28/labelme%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2023 Tukeke<br>
+      Theme <a href="https://github.com/Tukekehaohaonuli/" target="_blank">Oishi</a>, Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <!--
+      <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/categories/life" class="mobile-nav-link">生活</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+</nav>
+    -->
+    
+
+<!-- 百度分享 start -->
+
+<!-- 百度分享 end -->
+
+<script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+
+<script src="/js/jquery.scrollUp.min.js"></script>
+
+
+<script src="/js/jquery.transform.js"></script>
+
+
+<script src="/js/menu.js"></script>
+
+
+
+<script src="/js/script.js"></script>
+
+
+<script src="/js/scrollUp.js"></script>
+
+
+  </div>
+</body>
+</html>

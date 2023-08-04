@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Tukekenulia♥</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="学习使用NoSQL数据库MongoDB 主要步骤： 1、MongoDB的安装 2、安装可视化界面MongoDB compass 3、Spring Boot集成MongoDB">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tukekenulia♥">
+<meta property="og:url" content="http://yoursite.com/2020/09/29/Spring%20Boot%20MongoDB/index.html">
+<meta property="og:site_name" content="Tukekenulia♥">
+<meta property="og:description" content="学习使用NoSQL数据库MongoDB 主要步骤： 1、MongoDB的安装 2、安装可视化界面MongoDB compass 3、Spring Boot集成MongoDB">
+<meta property="og:locale">
+<meta property="og:image" content="http://yoursite.com/images/Spring-Boot-MongoDB/1.png">
+<meta property="og:image" content="http://yoursite.com/images/Spring-Boot-MongoDB/2.png">
+<meta property="og:image" content="http://yoursite.com/images/Spring-Boot-MongoDB/3.png">
+<meta property="og:image" content="http://yoursite.com/images/Spring-Boot-MongoDB/4.png">
+<meta property="og:image" content="http://yoursite.com/images/Spring-Boot-MongoDB/5.png">
+<meta property="og:image" content="http://yoursite.com/images/Spring-Boot-MongoDB/6.png">
+<meta property="og:image" content="http://yoursite.com/images/Spring-Boot-MongoDB/7.png">
+<meta property="og:image" content="http://yoursite.com/images/Spring-Boot-MongoDB/8.png">
+<meta property="og:image" content="http://yoursite.com/images/Spring-Boot-MongoDB/9.png">
+<meta property="og:image" content="http://yoursite.com/images/Spring-Boot-MongoDB/10.png">
+<meta property="article:published_time" content="2020-09-29T09:59:14.000Z">
+<meta property="article:modified_time" content="2020-09-29T09:59:14.000Z">
+<meta property="article:author" content="Tukeke">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/images/Spring-Boot-MongoDB/1.png">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/css/scrollUp/image.css">
+
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <div class="logo">
+        <img src="/logo.png" alt="Profile Picture">
+      </div>
+      <div id="title">Tukekenulia♥</div>
+      
+        <div id="subtitle">Stay focus,stay humble,stay curiosity.</div>
+      
+       <ul class="my-socials">
+  
+  <li>
+  	<a href="https://github.com/Tukekehaohaonuli" class="github" target="_blank">
+  		<i class="fa fa-github"></i>
+  	</a>
+  </li>
+  
+  <li>
+  	<a href="YOUR WEIBO HOME PAGE URL" class="weibo" target="_blank">
+  		<i class="fa fa-weibo"></i>
+  	</a>
+  </li>
+  
+ 
+</ul>
+    </div>
+  </div>
+  <div id="header-inner" class="">
+    <nav id="main-nav">
+      <a id="main-nav-toggle" class="nav-icon"></a>
+      <!--
+        
+          
+            <a class="main-nav-link" href="/">首页</a>
+          
+            <a class="main-nav-link" href="/categories/life">生活</a>
+          
+            <a class="main-nav-link" href="/archives">归档</a>
+          
+        
+      -->
+    </nav>
+    <nav id="title-nav" style="display:none">
+      <a href="/">Tukekenulia♥</a>
+      <img src="/logo.png" alt="Profile Picture">
+      <!--
+      <span id="title-nav-socials">
+        
+       
+     </span>
+      -->
+    </nav>
+    <nav id="sub-nav">
+      
+      <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+    </nav>
+    <div id="search-form-wrap">
+      <form action="http://www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+        <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+        <input type="submit" value="" class="search-form-submit">
+        <input name=tn type=hidden value="bds">
+        <input name=cl type=hidden value="3">
+        <input name=ct type=hidden value="2097152">
+        <input type="hidden" name="si" value="yoursite.com">
+      </form>
+    </div>
+  </div>
+  <div class="site-nav" style="display: none;">
+    <ul>
+      
+      
+        <li><a href="/">首页</a></li>
+      
+        <li><a href="/categories/life">生活</a></li>
+      
+        <li><a href="/archives">归档</a></li>
+      
+      
+    </ul>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Spring Boot MongoDB" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/09/29/Spring%20Boot%20MongoDB/" class="article-date">
+  <time datetime="2020-09-29T09:59:14.000Z" itemprop="datePublished">2020-09-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>学习使用NoSQL数据库MongoDB</p>
+<p>主要步骤：</p>
+<p>1、MongoDB的安装</p>
+<p>2、安装可视化界面MongoDB compass</p>
+<p>3、Spring Boot集成MongoDB</p>
+<span id="more"></span>
+
+<h1 id="1-MongoDB的安装"><a href="#1-MongoDB的安装" class="headerlink" title="1-MongoDB的安装"></a>1-MongoDB的安装</h1><p>下载链接： <a target="_blank" rel="noopener" href="https://www.mongodb.com/download-center/community">https://www.mongodb.com/download-center/community</a></p>
+<p><img src="/images/Spring-Boot-MongoDB/1.png" alt="1"></p>
+<p><img src="/images/Spring-Boot-MongoDB/2.png" alt="2"></p>
+<p><img src="/images/Spring-Boot-MongoDB/3.png" alt="3"></p>
+<p><img src="/images/Spring-Boot-MongoDB/4.png" alt="4"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongod -dbpath C:\MongoDB\data\db</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/Spring-Boot-MongoDB/5.png" alt="5"></p>
+<p>在打开一个cmd，输入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongo</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/Spring-Boot-MongoDB/6.png" alt="6"></p>
+<h1 id="2-安装可视化界面MongoDB-Compass"><a href="#2-安装可视化界面MongoDB-Compass" class="headerlink" title="2-安装可视化界面MongoDB Compass"></a>2-安装可视化界面<strong>MongoDB Compass</strong></h1><p>下载链接： <a target="_blank" rel="noopener" href="https://www.mongodb.com/download-center/compass">https://www.mongodb.com/download-center/compass </a></p>
+<p><img src="/images/Spring-Boot-MongoDB/7.png" alt="7"></p>
+<p>解压到文件夹中，</p>
+<p><img src="/images/Spring-Boot-MongoDB/8.png" alt="8"></p>
+<p>点击connect出现下图表示安装成功</p>
+<p><img src="/images/Spring-Boot-MongoDB/9.png" alt="9"></p>
+<h1 id="3-Spring-Boot-简单集成-MongoDB"><a href="#3-Spring-Boot-简单集成-MongoDB" class="headerlink" title="3-Spring Boot 简单集成 MongoDB"></a>3-Spring Boot 简单集成 MongoDB</h1><h3 id="MongoDB-简介"><a href="#MongoDB-简介" class="headerlink" title="MongoDB 简介"></a>MongoDB 简介</h3><p>MongoDB（Humongous，庞大）是可以应用于各种规模的企业、各个行业以及各类应用程序的开源数据库，作为一个适用于敏捷开发的数据库，MongoDB 的数据模式可以随着应用程序的发展而灵活地更新。与此同时，它也为开发人员提供了传统数据库的功能：二级索引、完整的查询系统及严格一致性等。MongoDB 能够使企业更加具有敏捷性和可扩展性，各种规模的企业都可以通过使用 MongoDB 来创建新的应用，来提高与客户之间的工作效率，加快产品上市时间，以及降低企业成本。</p>
+<p>MongoDB 是专门为可扩展性、高性能和高可用性而设计的数据库，它可以从单服务器部署扩展到大型、复杂的多数据中心架构。利用内存计算的优势，MongoDB 能够提供高性能的数据读写操作。 MongoDB 的本地复制和自动故障转移功能使应用程序具有企业级的可靠性和操作灵活性。</p>
+<p><strong>MongoDB 相关概念</strong></p>
+<p>常说 MongoDB 是最像关系数据库的 NoSQL 数据库</p>
+<table>
+<thead>
+<tr>
+<th align="left">SQL 术语&#x2F;概念</th>
+<th align="left">MongoDB 术语&#x2F;概念</th>
+<th align="left">解释&#x2F;说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">DataBase</td>
+<td align="left">DataBase</td>
+<td align="left">数据库</td>
+</tr>
+<tr>
+<td align="left">Table</td>
+<td align="left">Collection</td>
+<td align="left">数据库表&#x2F;集合</td>
+</tr>
+<tr>
+<td align="left">Row</td>
+<td align="left">Document</td>
+<td align="left">数据记录行&#x2F;文档</td>
+</tr>
+<tr>
+<td align="left">Column</td>
+<td align="left">Field</td>
+<td align="left">数据字段&#x2F;域</td>
+</tr>
+<tr>
+<td align="left">index</td>
+<td align="left">index</td>
+<td align="left">索引</td>
+</tr>
+<tr>
+<td align="left">Table joins</td>
+<td align="left"></td>
+<td align="left">表连接，MongoDB 不支持</td>
+</tr>
+<tr>
+<td align="left">primary key</td>
+<td align="left">primary key</td>
+<td align="left">主键，MongoDB 自动将 _id 字段设置为主键</td>
+</tr>
+</tbody></table>
+<p>MongoDB 和关系数据库一样有库的概念，一个 MongoDB 数据库可以有很多数据库，MongoDB 中的集合就相当于我们关系数据库中的表，文档就相当于关系数据库中的行，域就相当于关系数据库中的列，MongoDB 也支持各种索引有唯一主键，但不支持表连接查询。</p>
+<h3 id="Spring-Boot-MongoDB"><a href="#Spring-Boot-MongoDB" class="headerlink" title="Spring Boot MongoDB"></a>Spring Boot MongoDB</h3><p>Spring Boot 操作数据库的各种 Starters 都继承于 Spring Data，Spring Data 是 Spring 为了简化数据库操作而封装的一个组件包，提供了操作多种数据库的支持，其 API 简洁、调用方便。</p>
+<p>spring-boot-starter-data-mongodb 是 Spring Data 的一个子模块。目标是为 MongoDB 提供一个相近的、一致的、基于 Spring 的编程模型。spring-boot-starter-data-mongodb 核心功能是映射 POJO 到 Mongo 的 DBCollection 中的文档，并且提供 Repository 风格数据访问层。</p>
+<p>我们使用 Spring Boot 进行 MongoDB 连接，需要使用 spring-boot-starter-data-mongodb 包。spring-boot-starter-data-mongodb 继承 Spring Data 的通用功能外，针对 MongoDB 的特性开发了很多定制的功能，让我们使用 Spring Boot 操作 MongoDB 更加简便。</p>
+<p>Spring Boot 操作 MongoDB 有两种比较流行的使用方法，一种是将 MongoTemplate 直接注入到 Dao 中使用，一种是继承 MongoRepository，MongoRepository 内置了很多方法可直接使用。MongoTemplate 的使用</p>
+<p>MongoTemplate 提供了非常多的操作 MongoDB 方法，它是线程安全的，可以在多线程的情况下使用。</p>
+<p>MongoTemplate 实现了 MongoOperations 接口, 此接口定义了众多的操作方法如 find、findAndModify、findOne、insert、remove、save、update and updateMulti 等。它转换 domain object 为 DBObject，并提供了 Query、Criteria and Update 等流式 API。</p>
+<h4 id="（1）pom-包配置"><a href="#（1）pom-包配置" class="headerlink" title="（1）pom 包配置"></a>（1）pom 包配置</h4><p>pom 包里面添加 spring-boot-starter-data-mongodb 包引用：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span> </span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-data-mongodb<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="（2）在-application-properties-中添加配置"><a href="#（2）在-application-properties-中添加配置" class="headerlink" title="（2）在 application.properties 中添加配置"></a>（2）在 application.properties 中添加配置</h4><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring.data.mongodb.uri</span>=<span class="string">mongodb://name:pass@localhost:27017/test</span></span><br><span class="line"><span class="attr">复制</span></span><br></pre></td></tr></table></figure>
+
+<p>多个 IP 集群可以采用以下配置：</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring.data.mongodb.uri</span>=<span class="string">mongodb://user:pwd@ip1:port1,ip2:port2/database</span></span><br><span class="line"><span class="attr">复制</span></span><br></pre></td></tr></table></figure>
+
+<p>当然了密码和用户名如果没有设置可以不用添加，像这样：</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring.data.mongodb.uri</span>=<span class="string">mongodb://localhost:27017/test</span></span><br><span class="line"><span class="attr">复制</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注：Mongo 3.0 Java 驱动不支持 spring.data.mongodb.host 和 spring.data.mongodb.port，对于这种情况，spring.data.mongodb.uri 需要提供全部的配置信息。</p>
+</blockquote>
+<h4 id="（3）创建数据实体"><a href="#（3）创建数据实体" class="headerlink" title="（3）创建数据实体"></a>（3）创建数据实体</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">User</span> <span class="keyword">implements</span> <span class="title class_">Serializable</span> &#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">long</span> <span class="variable">serialVersionUID</span> <span class="operator">=</span> -<span class="number">3258839839160856613L</span>;</span><br><span class="line">        <span class="keyword">private</span> Long id;</span><br><span class="line">        <span class="keyword">private</span> String userName;</span><br><span class="line">        <span class="keyword">private</span> String passWord;</span><br><span class="line"></span><br><span class="line">      <span class="comment">//getter、setter 省略</span></span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<h4 id="（4）对实体进行增删改查操作"><a href="#（4）对实体进行增删改查操作" class="headerlink" title="（4）对实体进行增删改查操作"></a>（4）对实体进行增删改查操作</h4><p>Repository 层实现了 User 对象的增、删、改、查功能。</p>
+<p>首先将 MongoTemplate 注入到实体类中：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserRepositoryImpl</span> <span class="keyword">implements</span> <span class="title class_">UserRepository</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> MongoTemplate mongoTemplate;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>做增、删、改、查功能时，直接使用即可。</p>
+<p>添加数据：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">saveUser</span><span class="params">(UserEntity user)</span> &#123;</span><br><span class="line">    mongoTemplate.save(user);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>save 方法中会进行判断，如果对象包含了 ID 信息就会进行更新，如果没有包含 ID 信息就自动保存。</p>
+<p>根据用户名查询对象：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> User <span class="title function_">findUserByUserName</span><span class="params">(String userName)</span> &#123;</span><br><span class="line">    Query query=<span class="keyword">new</span> <span class="title class_">Query</span>(Criteria.where(<span class="string">&quot;userName&quot;</span>).is(userName));</span><br><span class="line">    <span class="type">User</span> <span class="variable">user</span> <span class="operator">=</span>  mongoTemplate.findOne(query , User.class);</span><br><span class="line">    <span class="keyword">return</span> user;</span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>更新对象比较灵活，可以选择更新一条数据，或者更新多条数据。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> <span class="type">long</span> <span class="title function_">updateUser</span><span class="params">(User user)</span> &#123;</span><br><span class="line">    Query query=<span class="keyword">new</span> <span class="title class_">Query</span>(Criteria.where(<span class="string">&quot;id&quot;</span>).is(user.getId()));</span><br><span class="line">    Update update= <span class="keyword">new</span> <span class="title class_">Update</span>().set(<span class="string">&quot;userName&quot;</span>, user.getUserName()).set(<span class="string">&quot;passWord&quot;</span>, user.getPassWord());</span><br><span class="line">    <span class="comment">//更新查询返回结果集的第一条</span></span><br><span class="line">    <span class="type">UpdateResult</span> <span class="variable">result</span> <span class="operator">=</span>mongoTemplate.updateFirst(query,update,User.class);</span><br><span class="line">    <span class="comment">//更新查询返回结果集的所有</span></span><br><span class="line">    <span class="comment">// mongoTemplate.updateMulti(query,update,UserEntity.class);</span></span><br><span class="line">    <span class="keyword">if</span>(result!=<span class="literal">null</span>)</span><br><span class="line">        <span class="keyword">return</span> result.getMatchedCount();</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>删除对象：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">deleteUserById</span><span class="params">(Long id)</span> &#123;</span><br><span class="line">    Query query=<span class="keyword">new</span> <span class="title class_">Query</span>(Criteria.where(<span class="string">&quot;id&quot;</span>).is(id));</span><br><span class="line">    mongoTemplate.remove(query,User.class);</span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<h4 id="（5）开发对应的测试方法"><a href="#（5）开发对应的测试方法" class="headerlink" title="（5）开发对应的测试方法"></a>（5）开发对应的测试方法</h4><p>测试时注入封装好的 UserRepository，根据情况调用对应的方法即可：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RunWith(SpringRunner.class)</span></span><br><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserRepositoryTest</span> &#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> UserRepository userRepository;</span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>测试插入数据：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testSaveUser</span><span class="params">()</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">    User user=<span class="keyword">new</span> <span class="title class_">User</span>();</span><br><span class="line">    user.setId(<span class="number">2l</span>);</span><br><span class="line">    user.setUserName(<span class="string">&quot;小明&quot;</span>);</span><br><span class="line">    user.setPassWord(<span class="string">&quot;fffooo123&quot;</span>);</span><br><span class="line">    userRepository.saveUser(user);</span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>测试查询方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">findUserByUserName</span><span class="params">()</span>&#123;</span><br><span class="line">    User user= userRepository.findUserByUserName(<span class="string">&quot;小明&quot;</span>);</span><br><span class="line">   System.out.println(<span class="string">&quot;user is &quot;</span>+user);</span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>测试更新：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">updateUser</span><span class="params">()</span>&#123;</span><br><span class="line">    User user=<span class="keyword">new</span> <span class="title class_">User</span>();</span><br><span class="line">    user.setId(<span class="number">2l</span>);</span><br><span class="line">    user.setUserName(<span class="string">&quot;天空&quot;</span>);</span><br><span class="line">    user.setPassWord(<span class="string">&quot;fffxxxx&quot;</span>);</span><br><span class="line">    userRepository.updateUser(user);</span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>最后测试删除：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">deleteUserById</span><span class="params">()</span>&#123;</span><br><span class="line">    userRepository.deleteUserById(<span class="number">1L</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="MongoRepository-的使用"><a href="#MongoRepository-的使用" class="headerlink" title="MongoRepository 的使用"></a>MongoRepository 的使用</h3><p>MongoRepository 继承于 PagingAndSortingRepository，再往上就是 CrudRepository，根据下面的类图可以看出 MongoRepository 和前面 JPA、Elasticsearch 的使用比较类似，都是 Spring Data 家族的产品，最终使用方法也就和 JPA、ElasticSearch 的使用方式类似，可以根据方法名自动生成 SQL 来查询。</p>
+<p><img src="/images/Spring-Boot-MongoDB/10.png" alt="10"></p>
+<p>MongoRepository 项目结构和上面类似，只有 Repository 层的代码有所变化，如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">UserRepository</span> <span class="keyword">extends</span> <span class="title class_">MongoRepository</span>&lt;UserEntity, Long&gt; &#123;</span><br><span class="line">    UserEntity <span class="title function_">findByUserName</span><span class="params">(String userName)</span>;</span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>我们新建 UserRepository 需要继承 MongoRepository，这样就可直接使用 MongoRepository 的内置方法。</p>
+<p>使用 UserRepository 进行增、删、改、查功能，首先将 UserRepository 注入到类中：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RunWith(SpringRunner.class)</span></span><br><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserDaoTest</span> &#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> UserRepository userRepository;</span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>集成 MongoRepository 会默认实现很多的内置方法，其中就包括保持、删除等操作。</p>
+<p>测试保存数据：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testSaveUser</span><span class="params">()</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">    User user=<span class="keyword">new</span> <span class="title class_">User</span>();</span><br><span class="line">    user.setId(i);</span><br><span class="line">    user.setUserName(<span class="string">&quot;小明&quot;</span>+i);</span><br><span class="line">    user.setPassWord(<span class="string">&quot;fffooo123&quot;</span>);</span><br><span class="line">    userRepository.save(user);</span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>测试根据属性查询：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">findUserByUserName</span><span class="params">()</span>&#123;</span><br><span class="line">  User user= userRepository.findByUserName(<span class="string">&quot;小明&quot;</span>);</span><br><span class="line">   System.out.println(<span class="string">&quot;user is &quot;</span>+user);</span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>测试更新属性，保存和更新都使用的是 save() 方法，内部会根据实体是否有注解来判断是用来更新还是用来保存。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">updateUser</span><span class="params">()</span>&#123;</span><br><span class="line">    User user=<span class="keyword">new</span> <span class="title class_">User</span>();</span><br><span class="line">    user.setId(<span class="number">2l</span>);</span><br><span class="line">    user.setUserName(<span class="string">&quot;天空&quot;</span>);</span><br><span class="line">    user.setPassWord(<span class="string">&quot;fffxxxx&quot;</span>);</span><br><span class="line">    userRepository.save(user);</span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>测试删除数据：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">deleteUserById</span><span class="params">()</span>&#123;</span><br><span class="line">    userRepository.delete(<span class="number">1l</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我们发现 UserRepository 已经自动实现了常用的数据库操作，不用像使用 MongoTemplate 那样需要手动来实现。</p>
+<p>如果想使用分页怎么办？只需要在 UserRepository 再加入一个空方法，不需要自己实现。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Page&lt;UserEntity&gt; <span class="title function_">findAll</span><span class="params">(Pageable var1)</span>;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>首先使用 save 方法插入 100 个 UserEntity：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testSaveUser</span><span class="params">()</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">long</span> i=<span class="number">0</span>;i&lt;<span class="number">100</span>;i++) &#123;</span><br><span class="line">        User user=<span class="keyword">new</span> <span class="title class_">User</span>();</span><br><span class="line">        user.setId(i);</span><br><span class="line">        user.setUserName(<span class="string">&quot;小明&quot;</span>+i);</span><br><span class="line">        user.setPassWord(<span class="string">&quot;fffooo123&quot;</span>);</span><br><span class="line">        userRepository.save(user);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>返回测试分页，设置以 ID 的倒叙排序，每页 10 条数据，取第二页的用户列表。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testPage</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="type">Sort</span> <span class="variable">sort</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Sort</span>(Sort.Direction.DESC, <span class="string">&quot;id&quot;</span>);</span><br><span class="line">    <span class="type">Pageable</span> <span class="variable">pageable</span> <span class="operator">=</span> PageRequest.of(<span class="number">2</span>, <span class="number">10</span>, sort);</span><br><span class="line">    Page page=userRepository.findAll(pageable);</span><br><span class="line">    System.out.println(<span class="string">&quot;users: &quot;</span>+page.getContent().toString());</span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Pageable 是 Spring Data 库中定义的一个接口，该接口是所有分页相关信息的一个抽象，通过该接口，可以得到和分页相关所有信息（如 pageNumber、pageSize 等），这样，JPA 就能够通过 pageable 参数来得到一个带分页信息的 SQL 语句。</li>
+<li>Page 类也是 Spring Data 提供的一个接口，该接口表示一部分数据的集合以及其相关的下一部分数据、数据总数等相关信息，通过该接口，可以得到数据的总体信息（数据总数、总页数…）以及当前数据的信息（当前数据的集合、当前页数等）。</li>
+</ul>
+<p>在 Spring Boot 2.0 中 new PageRequest(2, 10, sort) 已经过期不再推荐使用，2.0 中推荐使用 PageRequest.of(2, 10, sort) 来做排序参数控制。</p>
+<p>我们发现使用 Repository 的方式和前几课介绍的 Spring Boot JPA 非常相似，其实 spring-boot-starter-data-mongodb 和 Spring-boot-starter-data-jpa 都来自于 Spring Data 大家族，它们的实现原理基本一致，因此使用 Repository 完全可以参考前面课程 JPA 用法。</p>
+<h3 id="多数据源-MongoDB-的使用"><a href="#多数据源-MongoDB-的使用" class="headerlink" title="多数据源 MongoDB 的使用"></a>多数据源 MongoDB 的使用</h3><p>我们来学习在多数据源的情况下，如何使用 MongoDB。</p>
+<h4 id="（1）添加配置"><a href="#（1）添加配置" class="headerlink" title="（1）添加配置"></a>（1）添加配置</h4><p>首先在配置文件中添加不同的数据源，配置文件添加两条数据源，如下：</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">mongodb.primary.uri</span>=<span class="string">mongodb://192.168.0.1:27017</span></span><br><span class="line"><span class="attr">mongodb.primary.database</span>=<span class="string">primary</span></span><br><span class="line"><span class="attr">mongodb.secondary.uri</span>=<span class="string">mongodb://192.168.0.1:27017</span></span><br><span class="line"><span class="attr">mongodb.secondary.database</span>=<span class="string">secondary</span></span><br><span class="line"><span class="attr">复制</span></span><br></pre></td></tr></table></figure>
+
+<p>如果使用的是 MongoDB 集群可以这样配置：</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">mongodb.xxx.uri</span>=<span class="string">mongodb://192.168.0.1:27017,192.168.0.2:27017,192.168.0.3:27017</span></span><br><span class="line"><span class="attr">mongodb.xxx.database</span>=<span class="string">xxx</span></span><br><span class="line"><span class="attr">复制</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="（2）配置数据源"><a href="#（2）配置数据源" class="headerlink" title="（2）配置数据源"></a>（2）配置数据源</h4><p>封装读取以 MongoDB 开头的两个配置文件：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@ConfigurationProperties(prefix = &quot;mongodb&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MultipleMongoProperties</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="type">MongoProperties</span> <span class="variable">primary</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">MongoProperties</span>();</span><br><span class="line">    <span class="keyword">private</span> <span class="type">MongoProperties</span> <span class="variable">secondary</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">MongoProperties</span>();</span><br><span class="line">    <span class="comment">//省略 getter、setter</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>创建 MultipleMongoConfig 类分别创建两个数据源的 MongoTemplate。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MultipleMongoConfig</span> &#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> MultipleMongoProperties mongoProperties;</span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>根据配置文件信息构建第一个数据源的 MongoDbFactory。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="meta">@Primary</span></span><br><span class="line"><span class="keyword">public</span> MongoDbFactory <span class="title function_">primaryFactory</span><span class="params">(MongoProperties mongo)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">    <span class="type">MongoClient</span> <span class="variable">client</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">MongoClient</span>(<span class="keyword">new</span> <span class="title class_">MongoClientURI</span>(mongoProperties.getPrimary().getUri()));</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">SimpleMongoDbFactory</span>(client, mongoProperties.getPrimary().getDatabase());</span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>利用上面构建好的 MongoDbFactory 创建对应的 MongoTemplate 。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Primary</span></span><br><span class="line"><span class="meta">@Bean(name = &quot;primaryMongoTemplate&quot;)</span></span><br><span class="line"><span class="keyword">public</span> MongoTemplate <span class="title function_">primaryMongoTemplate</span><span class="params">()</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">MongoTemplate</span>(primaryFactory(<span class="built_in">this</span>.mongoProperties.getPrimary()));</span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>最后将 MongoTemplate 信息注入到对应的包路径下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableConfigurationProperties(MultipleMongoProperties.class)</span></span><br><span class="line"><span class="meta">@EnableMongoRepositories(basePackages = &quot;com.neo.repository.primary&quot;,</span></span><br><span class="line"><span class="meta">        mongoTemplateRef = &quot;primaryMongoTemplate&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">PrimaryMongoConfig</span> &#123;</span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>以上第一个数据源就配置完成了，第二个数据源的配置过程类似，大家可以直接看课程演示项目。总结一下封装过程：读取配置信息封装为 Properties，根据 Properties 信息构建 Factory，再由 Factory 构建出最后需要使用的 MongoTemplate，MongoTemplate 在根据包路径配置注入到对应的包下。</p>
+<h4 id="（3）创建两个库分别对应的对象和-Repository"><a href="#（3）创建两个库分别对应的对象和-Repository" class="headerlink" title="（3）创建两个库分别对应的对象和 Repository"></a>（3）创建两个库分别对应的对象和 Repository</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">User</span> <span class="keyword">implements</span> <span class="title class_">Serializable</span> &#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">long</span> <span class="variable">serialVersionUID</span> <span class="operator">=</span> -<span class="number">3258839839160856613L</span>;</span><br><span class="line">        <span class="keyword">private</span> String  id;</span><br><span class="line">        <span class="keyword">private</span> String userName;</span><br><span class="line">        <span class="keyword">private</span> String passWord;</span><br><span class="line">        <span class="comment">//省略getter setter</span></span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>对应的 Repository：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">PrimaryRepository</span> <span class="keyword">extends</span> <span class="title class_">MongoRepository</span>&lt;User, String&gt; &#123;</span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>继承了 MongoRepository 会默认实现很多基本的增、删、改、查功能，省了很多自己写 Dao 层的代码，Secondary 和上面的代码类似就不贴出来了。</p>
+<h4 id="（4）最后测试"><a href="#（4）最后测试" class="headerlink" title="（4）最后测试"></a>（4）最后测试</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RunWith(SpringRunner.class)</span></span><br><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MuliDatabaseTest</span> &#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> PrimaryRepository primaryRepository;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> SecondaryRepository secondaryRepository;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">TestSave</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.primaryRepository.save(<span class="keyword">new</span> <span class="title class_">User</span>(<span class="string">&quot;小张&quot;</span>, <span class="string">&quot;123456&quot;</span>));</span><br><span class="line">        <span class="built_in">this</span>.secondaryRepository.save(<span class="keyword">new</span> <span class="title class_">User</span>(<span class="string">&quot;小王&quot;</span>, <span class="string">&quot;654321&quot;</span>));</span><br><span class="line">        List&lt;User&gt; primaries = <span class="built_in">this</span>.primaryRepository.findAll();</span><br><span class="line">        <span class="keyword">for</span> (User primary : primaries) &#123;</span><br><span class="line">            System.out.println(primary.toString());</span><br><span class="line">        &#125;</span><br><span class="line">        List&lt;User&gt; secondaries = <span class="built_in">this</span>.secondaryRepository.findAll();</span><br><span class="line">        <span class="keyword">for</span> (User secondary : secondaries) &#123;</span><br><span class="line">            System.out.println(secondary.toString());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>输出内容如下：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">com.neo.entity.UserEntity@2a3a299[id=5a0ed2d7439f6618ac294ba6,userName=小张,passWord=123456]</span><br><span class="line">com.neo.entity.UserEntity@5b989dc7[id=5a0ed2d7439f6618ac294ba7,userName=小王,passWord=654321]</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>使用 Robo 3T 分别查看两个库的数据，均已经有对应的 User 对象，说明多数据源使用测试成功。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>两种方式都可以方便地操作 MongoDB 数据库，MongoTemplate 模式比较灵活可以根据自己的使用情况进行组装，MongoRepository 的使用方式更简单，因为继承了 Spring Data，所以默认实现了很多基础的增、删、改、查功能，业务直接拿来使用即可。简单日常的使用推荐 MongoRepository，简单方便利于项目快速开发，复杂多变的查询推荐使用 MongoTemplate 自行进行封装。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoursite.com/2020/09/29/Spring%20Boot%20MongoDB/" data-id="clkwhj3u200146s7sht7qfbmt" class="article-share-link">Share</a>
+      
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/09/30/Spring%20Boot%20Quartz/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/09/28/Spring%20Boot%20ActiveMQ/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2023 Tukeke<br>
+      Theme <a href="https://github.com/Tukekehaohaonuli/" target="_blank">Oishi</a>, Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <!--
+      <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/categories/life" class="mobile-nav-link">生活</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+</nav>
+    -->
+    
+
+<!-- 百度分享 start -->
+
+<!-- 百度分享 end -->
+
+<script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+
+<script src="/js/jquery.scrollUp.min.js"></script>
+
+
+<script src="/js/jquery.transform.js"></script>
+
+
+<script src="/js/menu.js"></script>
+
+
+
+<script src="/js/script.js"></script>
+
+
+<script src="/js/scrollUp.js"></script>
+
+
+  </div>
+</body>
+</html>

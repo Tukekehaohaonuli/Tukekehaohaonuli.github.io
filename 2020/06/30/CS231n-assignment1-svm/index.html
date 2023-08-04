@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Tukekenulia♥</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="此篇仅记录自己学习CS231n的习题成果所用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tukekenulia♥">
+<meta property="og:url" content="http://yoursite.com/2020/06/30/CS231n-assignment1-svm/index.html">
+<meta property="og:site_name" content="Tukekenulia♥">
+<meta property="og:description" content="此篇仅记录自己学习CS231n的习题成果所用">
+<meta property="og:locale">
+<meta property="og:image" content="http://yoursite.com/images/CS231n-assignment1-svm/1.png">
+<meta property="og:image" content="http://yoursite.com/images/CS231n-assignment1-svm/2.png">
+<meta property="og:image" content="http://yoursite.com/images/CS231n-assignment1-svm/3.png">
+<meta property="og:image" content="http://yoursite.com/images/CS231n-assignment1-svm/4.png">
+<meta property="og:image" content="http://yoursite.com/images/CS231n-assignment1-svm/5.png">
+<meta property="og:image" content="http://yoursite.com/images/CS231n-assignment1-svm/6.png">
+<meta property="og:image" content="http://yoursite.com/images/CS231n-assignment1-svm/7.png">
+<meta property="og:image" content="http://yoursite.com/images/CS231n-assignment1-svm/8.png">
+<meta property="og:image" content="http://yoursite.com/images/CS231n-assignment1-svm/9.png">
+<meta property="og:image" content="http://yoursite.com/images/CS231n-assignment1-svm/10.png">
+<meta property="og:image" content="http://yoursite.com/images/CS231n-assignment1-svm/11.png">
+<meta property="og:image" content="http://yoursite.com/images/CS231n-assignment1-svm/12.png">
+<meta property="og:image" content="http://yoursite.com/images/CS231n-assignment1-svm/13.png">
+<meta property="og:image" content="http://yoursite.com/images/CS231n-assignment1-svm/14.png">
+<meta property="og:image" content="http://yoursite.com/images/CS231n-assignment1-svm/15.png">
+<meta property="og:image" content="http://yoursite.com/images/CS231n-assignment1-svm/16.png">
+<meta property="og:image" content="http://yoursite.com/images/CS231n-assignment1-svm/17.png">
+<meta property="article:published_time" content="2020-06-30T06:28:00.000Z">
+<meta property="article:modified_time" content="2020-06-30T06:28:00.000Z">
+<meta property="article:author" content="Tukeke">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/images/CS231n-assignment1-svm/1.png">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/css/scrollUp/image.css">
+
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <div class="logo">
+        <img src="/logo.png" alt="Profile Picture">
+      </div>
+      <div id="title">Tukekenulia♥</div>
+      
+        <div id="subtitle">Stay focus,stay humble,stay curiosity.</div>
+      
+       <ul class="my-socials">
+  
+  <li>
+  	<a href="https://github.com/Tukekehaohaonuli" class="github" target="_blank">
+  		<i class="fa fa-github"></i>
+  	</a>
+  </li>
+  
+  <li>
+  	<a href="YOUR WEIBO HOME PAGE URL" class="weibo" target="_blank">
+  		<i class="fa fa-weibo"></i>
+  	</a>
+  </li>
+  
+ 
+</ul>
+    </div>
+  </div>
+  <div id="header-inner" class="">
+    <nav id="main-nav">
+      <a id="main-nav-toggle" class="nav-icon"></a>
+      <!--
+        
+          
+            <a class="main-nav-link" href="/">首页</a>
+          
+            <a class="main-nav-link" href="/categories/life">生活</a>
+          
+            <a class="main-nav-link" href="/archives">归档</a>
+          
+        
+      -->
+    </nav>
+    <nav id="title-nav" style="display:none">
+      <a href="/">Tukekenulia♥</a>
+      <img src="/logo.png" alt="Profile Picture">
+      <!--
+      <span id="title-nav-socials">
+        
+       
+     </span>
+      -->
+    </nav>
+    <nav id="sub-nav">
+      
+      <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+    </nav>
+    <div id="search-form-wrap">
+      <form action="http://www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+        <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+        <input type="submit" value="" class="search-form-submit">
+        <input name=tn type=hidden value="bds">
+        <input name=cl type=hidden value="3">
+        <input name=ct type=hidden value="2097152">
+        <input type="hidden" name="si" value="yoursite.com">
+      </form>
+    </div>
+  </div>
+  <div class="site-nav" style="display: none;">
+    <ul>
+      
+      
+        <li><a href="/">首页</a></li>
+      
+        <li><a href="/categories/life">生活</a></li>
+      
+        <li><a href="/archives">归档</a></li>
+      
+      
+    </ul>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-CS231n-assignment1-svm" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/30/CS231n-assignment1-svm/" class="article-date">
+  <time datetime="2020-06-30T06:28:00.000Z" itemprop="datePublished">2020-06-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>此篇仅记录自己学习CS231n的习题成果所用</p>
+<span id="more"></span>
+
+<h1 id="SVM正文代码段及结果图如下："><a href="#SVM正文代码段及结果图如下：" class="headerlink" title="SVM正文代码段及结果图如下："></a>SVM正文代码段及结果图如下：</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import random</span><br><span class="line">import numpy as np</span><br><span class="line">from cs231n.data_utils import load_CIFAR10</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line"></span><br><span class="line">%matplotlib inline</span><br><span class="line">plt.rcParams[&#x27;figure.figsize&#x27;] = (10.0, 8.0) # set default size of plots</span><br><span class="line">plt.rcParams[&#x27;image.interpolation&#x27;] = &#x27;nearest&#x27;</span><br><span class="line">plt.rcParams[&#x27;image.cmap&#x27;] = &#x27;gray&#x27;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">%load_ext autoreload</span><br><span class="line">%autoreload 2</span><br><span class="line"></span><br><span class="line"># Load the raw CIFAR-10 data.</span><br><span class="line">cifar10_dir = &#x27;cs231n/datasets/cifar-10-batches-py&#x27;</span><br><span class="line"></span><br><span class="line"># Cleaning up variables to prevent loading data multiple times (which may cause memory issue)</span><br><span class="line">try:</span><br><span class="line">   del X_train, y_train</span><br><span class="line">   del X_test, y_test</span><br><span class="line">   print(&#x27;Clear previously loaded data.&#x27;)</span><br><span class="line">except:</span><br><span class="line">   pass</span><br><span class="line"></span><br><span class="line">X_train, y_train, X_test, y_test = load_CIFAR10(cifar10_dir)</span><br><span class="line"></span><br><span class="line"># As a sanity check, we print out the size of the training and test data.</span><br><span class="line">print(&#x27;Training data shape: &#x27;, X_train.shape)</span><br><span class="line">print(&#x27;Training labels shape: &#x27;, y_train.shape)</span><br><span class="line">print(&#x27;Test data shape: &#x27;, X_test.shape)</span><br><span class="line">print(&#x27;Test labels shape: &#x27;, y_test.shape)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/CS231n-assignment1-svm/1.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">classes = [&#x27;plane&#x27;, &#x27;car&#x27;, &#x27;bird&#x27;, &#x27;cat&#x27;, &#x27;deer&#x27;, &#x27;dog&#x27;, &#x27;frog&#x27;, &#x27;horse&#x27;, &#x27;ship&#x27;, &#x27;truck&#x27;]</span><br><span class="line">num_classes = len(classes)</span><br><span class="line">samples_per_class = 7</span><br><span class="line">for y, cls in enumerate(classes):</span><br><span class="line">    idxs = np.flatnonzero(y_train == y)</span><br><span class="line">    idxs = np.random.choice(idxs, samples_per_class, replace=False)</span><br><span class="line">    for i, idx in enumerate(idxs):</span><br><span class="line">        plt_idx = i * num_classes + y + 1</span><br><span class="line">        plt.subplot(samples_per_class, num_classes, plt_idx)</span><br><span class="line">        plt.imshow(X_train[idx].astype(&#x27;uint8&#x27;))</span><br><span class="line">        plt.axis(&#x27;off&#x27;)</span><br><span class="line">        if i == 0:</span><br><span class="line">            plt.title(cls)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/CS231n-assignment1-svm/2.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">//本段是为了从50000个训练集中选择1000个作为验证集，并从原来的训练集中删除 用到的是np.random.choice</span><br><span class="line">//并且从10000个测试集中选择1000个作为测试集</span><br><span class="line">num_training = 49000       //训练集</span><br><span class="line">num_validation = 1000   //验证集</span><br><span class="line">num_test = 1000         //测试集</span><br><span class="line">num_dev = 500           //开发集</span><br><span class="line"></span><br><span class="line">mask = range(num_training, num_training + num_validation)  //49000-50000</span><br><span class="line">X_val = X_train[mask]   //训练集中的49000-50000放入放X_val中x_val中包含的是验证集</span><br><span class="line">y_val = y_train[mask]   //对应的标签同理</span><br><span class="line"></span><br><span class="line">mask = range(num_training)  //0-49000</span><br><span class="line">X_train = X_train[mask]     //训练集</span><br><span class="line">y_train = y_train[mask]     //训练集标签</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">mask = np.random.choice(num_training, num_dev, replace=False) </span><br><span class="line">//从0-49000中选择500个不同的数 例如选择到的数是500</span><br><span class="line">X_dev = X_train[mask]    // 则将X_train[500]的数重新赋值给X_dev</span><br><span class="line">y_dev = y_train[mask]    // 开发集  是一个小的训练集</span><br><span class="line"></span><br><span class="line">mask = range(num_test)</span><br><span class="line">X_test = X_test[mask]  //从10000中选择1000个，变为原来数据量的十分之一</span><br><span class="line">y_test = y_test[mask]    //测试集</span><br><span class="line"></span><br><span class="line">print(&#x27;Train data shape: &#x27;, X_train.shape)</span><br><span class="line">print(&#x27;Train labels shape: &#x27;, y_train.shape)</span><br><span class="line">print(&#x27;Validation data shape: &#x27;, X_val.shape)</span><br><span class="line">print(&#x27;Validation labels shape: &#x27;, y_val.shape)</span><br><span class="line">print(&#x27;Test data shape: &#x27;, X_test.shape)</span><br><span class="line">print(&#x27;Test labels shape: &#x27;, y_test.shape)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/CS231n-assignment1-svm/3.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">// https://tefuirnever.blog.csdn.net/article/details/88919206 </span><br><span class="line">//例如 a.shape=(209,3,3,3)</span><br><span class="line">//经过reshape(a,(a[0],-1))能够变成a.shape=(209,27) </span><br><span class="line">//python里面的-1代表未知数 </span><br><span class="line"></span><br><span class="line">X_train = np.reshape(X_train, (X_train.shape[0], -1))</span><br><span class="line">X_val = np.reshape(X_val, (X_val.shape[0], -1))</span><br><span class="line">X_test = np.reshape(X_test, (X_test.shape[0], -1))</span><br><span class="line">X_dev = np.reshape(X_dev, (X_dev.shape[0], -1))</span><br><span class="line"></span><br><span class="line"># As a sanity check, print out the shapes of the data</span><br><span class="line">print(&#x27;Training data shape: &#x27;, X_train.shape)</span><br><span class="line">print(&#x27;Validation data shape: &#x27;, X_val.shape)</span><br><span class="line">print(&#x27;Test data shape: &#x27;, X_test.shape)</span><br><span class="line">print(&#x27;dev data shape: &#x27;, X_dev.shape)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/CS231n-assignment1-svm/4.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">//预处理:减去均值图像</span><br><span class="line">//第一步:根据训练数据计算图像均值</span><br><span class="line">mean_image = np.mean(X_train, axis=0) //</span><br><span class="line">print(mean_image[:10]) # print a few of the elements</span><br><span class="line">plt.figure(figsize=(4,4))</span><br><span class="line">plt.imshow(mean_image.reshape((32,32,3)).astype(&#x27;uint8&#x27;)) # visualize the mean image</span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line">//第二步：从训练和测试数据中减去平均图像</span><br><span class="line"></span><br><span class="line">X_train -= mean_image</span><br><span class="line">X_val -= mean_image</span><br><span class="line">X_test -= mean_image</span><br><span class="line">X_dev -= mean_image</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//第三步 ：添加一个为1的偏差位维数，这就是SVM</span><br><span class="line">//只需要优化一个权值矩阵W。</span><br><span class="line"></span><br><span class="line">X_train = np.hstack([X_train, np.ones((X_train.shape[0], 1))])</span><br><span class="line">X_val = np.hstack([X_val, np.ones((X_val.shape[0], 1))])</span><br><span class="line">X_test = np.hstack([X_test, np.ones((X_test.shape[0], 1))])</span><br><span class="line">X_dev = np.hstack([X_dev, np.ones((X_dev.shape[0], 1))])</span><br><span class="line"></span><br><span class="line">print(X_train.shape, X_val.shape, X_test.shape, X_dev.shape)</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/CS231n-assignment1-svm/5.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"># Preprocessing: subtract the mean image</span><br><span class="line"># first: compute the image mean based on the training data</span><br><span class="line">mean_image = np.mean(X_train, axis=0)</span><br><span class="line">print(mean_image[:10]) # print a few of the elements</span><br><span class="line">plt.figure(figsize=(4,4))</span><br><span class="line">plt.imshow(mean_image.reshape((32,32,3)).astype(&#x27;uint8&#x27;)) # visualize the mean image</span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line"># second: subtract the mean image from train and test data</span><br><span class="line">X_train -= mean_image</span><br><span class="line">X_val -= mean_image</span><br><span class="line">X_test -= mean_image</span><br><span class="line">X_dev -= mean_image</span><br><span class="line"></span><br><span class="line"># third: append the bias dimension of ones (i.e. bias trick) so that our SVM</span><br><span class="line"># only has to worry about optimizing a single weight matrix W.</span><br><span class="line">X_train = np.hstack([X_train, np.ones((X_train.shape[0], 1))])</span><br><span class="line">X_val = np.hstack([X_val, np.ones((X_val.shape[0], 1))])</span><br><span class="line">X_test = np.hstack([X_test, np.ones((X_test.shape[0], 1))])</span><br><span class="line">X_dev = np.hstack([X_dev, np.ones((X_dev.shape[0], 1))])</span><br><span class="line"></span><br><span class="line">print(X_train.shape, X_val.shape, X_test.shape, X_dev.shape)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/CS231n-assignment1-svm/6.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">from cs231n.classifiers.linear_svm import svm_loss_naive</span><br><span class="line">import time</span><br><span class="line"></span><br><span class="line">//随机生成一个较小数值的权值矩阵</span><br><span class="line"></span><br><span class="line">W = np.random.randn(3073, 10) * 0.0001  //生成3073行*10列的标准正态分布矩阵并缩小</span><br><span class="line">//传入权值矩阵，传入开发集和标签</span><br><span class="line">loss, grad = svm_loss_naive(W, X_dev, y_dev, 0.000005)  </span><br><span class="line">//W为3073行，10类的权重矩阵</span><br><span class="line">//X为1000个样本的图像</span><br><span class="line">//y为标签</span><br><span class="line">//0.000005为正则化强度</span><br><span class="line"></span><br><span class="line">print(&#x27;loss: %f&#x27; % (loss, ))</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/CS231n-assignment1-svm/7.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">loss, grad = svm_loss_naive(W, X_dev, y_dev, 0.0)</span><br><span class="line"></span><br><span class="line">from cs231n.gradient_check import grad_check_sparse</span><br><span class="line">f = lambda w: svm_loss_naive(w, X_dev, y_dev, 0.0)[0]  </span><br><span class="line">//svm_loss_naive()[0]返回函数的第一个返回值即loss </span><br><span class="line">// 则f（w）=loss</span><br><span class="line">grad_numerical = grad_check_sparse(f, W, grad)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">loss, grad = svm_loss_naive(W, X_dev, y_dev, 5e1)</span><br><span class="line">f = lambda w: svm_loss_naive(w, X_dev, y_dev, 5e1)[0]</span><br><span class="line">grad_numerical = grad_check_sparse(f, W, grad)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/CS231n-assignment1-svm/8.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">//比较2种计算loss和dW的差异</span><br><span class="line"></span><br><span class="line">tic = time.time()</span><br><span class="line">loss_naive, grad_naive = svm_loss_naive(W, X_dev, y_dev, 0.000005)</span><br><span class="line">toc = time.time()</span><br><span class="line">print(&#x27;Naive loss: %e computed in %fs&#x27; % (loss_naive, toc - tic))</span><br><span class="line"></span><br><span class="line">from cs231n.classifiers.linear_svm import svm_loss_vectorized</span><br><span class="line">tic = time.time()</span><br><span class="line">loss_vectorized, _ = svm_loss_vectorized(W, X_dev, y_dev, 0.000005)</span><br><span class="line">toc = time.time()</span><br><span class="line">print(&#x27;Vectorized loss: %e computed in %fs&#x27; % (loss_vectorized, toc - tic))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">print(&#x27;difference: %f&#x27; % (loss_naive - loss_vectorized))</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/CS231n-assignment1-svm/9.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">//两种计算梯度方式的对比</span><br><span class="line"># Complete the implementation of svm_loss_vectorized, and compute the gradient</span><br><span class="line"># of the loss function in a vectorized way.</span><br><span class="line"></span><br><span class="line"># The naive implementation and the vectorized implementation should match, but</span><br><span class="line"># the vectorized version should still be much faster.</span><br><span class="line">tic = time.time()</span><br><span class="line">_, grad_naive = svm_loss_naive(W, X_dev, y_dev, 0.000005)</span><br><span class="line">toc = time.time()</span><br><span class="line">print(&#x27;Naive loss and gradient: computed in %fs&#x27; % (toc - tic))</span><br><span class="line"></span><br><span class="line">tic = time.time()</span><br><span class="line">_, grad_vectorized = svm_loss_vectorized(W, X_dev, y_dev, 0.000005)</span><br><span class="line">toc = time.time()</span><br><span class="line">print(&#x27;Vectorized loss and gradient: computed in %fs&#x27; % (toc - tic))</span><br><span class="line"></span><br><span class="line"># The loss is a single number, so it is easy to compare the values computed</span><br><span class="line"># by the two implementations. The gradient on the other hand is a matrix, so</span><br><span class="line"># we use the Frobenius norm to compare them.</span><br><span class="line">difference = np.linalg.norm(grad_naive - grad_vectorized, ord=&#x27;fro&#x27;)</span><br><span class="line">print(&#x27;difference: %f&#x27; % difference)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/CS231n-assignment1-svm/10.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//训练SVM分类器的时间以及损失函数</span><br><span class="line"></span><br><span class="line"># In the file linear_classifier.py, implement SGD in the function</span><br><span class="line"># LinearClassifier.train() and then run it with the code below.</span><br><span class="line">from cs231n.classifiers import LinearSVM</span><br><span class="line">svm = LinearSVM()</span><br><span class="line">tic = time.time()</span><br><span class="line">loss_hist = svm.train(X_train, y_train, learning_rate=1e-7, reg=2.5e4,</span><br><span class="line">                      num_iters=1500, verbose=True)</span><br><span class="line">toc = time.time()</span><br><span class="line">print(&#x27;That took %fs&#x27; % (toc - tic))</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/CS231n-assignment1-svm/11.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//画出迭代数量和损失函数关系图</span><br><span class="line"># A useful debugging strategy is to plot the loss as a function of</span><br><span class="line"># iteration number:</span><br><span class="line">plt.plot(loss_hist)</span><br><span class="line">plt.xlabel(&#x27;Iteration number&#x27;)</span><br><span class="line">plt.ylabel(&#x27;Loss value&#x27;)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/CS231n-assignment1-svm/12.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//训练集和验证集上预测的准确率</span><br><span class="line"># Write the LinearSVM.predict function and evaluate the performance on both the</span><br><span class="line"># training and validation set</span><br><span class="line">y_train_pred = svm.predict(X_train)</span><br><span class="line">print(&#x27;training accuracy: %f&#x27; % (np.mean(y_train == y_train_pred),))</span><br><span class="line">print(y_train==y_train_pred)</span><br><span class="line">print(np.sum(y_train==y_train_pred)/y_train.shape[0])</span><br><span class="line">y_val_pred = svm.predict(X_val)</span><br><span class="line">print(&#x27;validation accuracy: %f&#x27; % (np.mean(y_val == y_val_pred) ))</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/CS231n-assignment1-svm/13.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">//选择不同的正则化系数和学习率来验证梯度下降算法中预测的准确率，并找出在验证集中表现最好的准确率</span><br><span class="line"></span><br><span class="line"># Use the validation set to tune hyperparameters (regularization strength and</span><br><span class="line"># learning rate). You should experiment with different ranges for the learning</span><br><span class="line"># rates and regularization strengths; if you are careful you should be able to</span><br><span class="line"># get a classification accuracy of about 0.39 on the validation set.</span><br><span class="line"></span><br><span class="line"># Note: you may see runtime/overflow warnings during hyper-parameter search. </span><br><span class="line"># This may be caused by extreme values, and is not a bug.</span><br><span class="line"></span><br><span class="line"># results is dictionary mapping tuples of the form</span><br><span class="line"># (learning_rate, regularization_strength) to tuples of the form</span><br><span class="line"># (training_accuracy, validation_accuracy). The accuracy is simply the fraction</span><br><span class="line"># of data points that are correctly classified.</span><br><span class="line">results = &#123;&#125;</span><br><span class="line">best_val = -1   # The highest validation accuracy that we have seen so far.</span><br><span class="line">best_svm = None # The LinearSVM object that achieved the highest validation rate.</span><br><span class="line"></span><br><span class="line">################################################################################</span><br><span class="line"># TODO:                                                                        #</span><br><span class="line"># Write code that chooses the best hyperparameters by tuning on the validation #</span><br><span class="line"># set. For each combination of hyperparameters, train a linear SVM on the      #</span><br><span class="line"># training set, compute its accuracy on the training and validation sets, and  #</span><br><span class="line"># store these numbers in the results dictionary. In addition, store the best   #</span><br><span class="line"># validation accuracy in best_val and the LinearSVM object that achieves this  #</span><br><span class="line"># accuracy in best_svm.                                                        #</span><br><span class="line">#                                                                              #</span><br><span class="line"># Hint: You should use a small value for num_iters as you develop your         #</span><br><span class="line"># validation code so that the SVMs don&#x27;t take much time to train; once you are #</span><br><span class="line"># confident that your validation code works, you should rerun the validation   #</span><br><span class="line"># code with a larger value for num_iters.                                      #</span><br><span class="line">################################################################################</span><br><span class="line"></span><br><span class="line"># Provided as a reference. You may or may not want to change these hyperparameters</span><br><span class="line">learning_rates = [1e-7, 5e-5]</span><br><span class="line">regularization_strengths = [2.5e4, 5e4]</span><br><span class="line"></span><br><span class="line">for lr in  learning_rates:</span><br><span class="line">    for reg in regularization_strengths:</span><br><span class="line">        svm=LinearSVM()</span><br><span class="line">        loss_hist = svm.train(X_train, y_train, lr, reg,num_iters=1500, verbose=False)</span><br><span class="line">        y_train_pred=svm.predict(X_train)</span><br><span class="line">        train_accuracy_accuracy=np.mean(y_train==y_train_pred)</span><br><span class="line">        y_val_pred=svm.predict(X_val)</span><br><span class="line">        val_accuracy=np.mean(y_val_pred==y_val)</span><br><span class="line">        if val_accuracy &gt;best_val:</span><br><span class="line">            best_val=val_accuracy</span><br><span class="line">            best_svm=svm</span><br><span class="line">        results[(lr,reg)]=train_accuracy,val_accuracy</span><br><span class="line">        </span><br><span class="line"># *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****</span><br><span class="line"></span><br><span class="line">pass</span><br><span class="line"></span><br><span class="line"># *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****</span><br><span class="line">    </span><br><span class="line"># Print out results.</span><br><span class="line">for lr, reg in sorted(results):</span><br><span class="line">    train_accuracy, val_accuracy = results[(lr, reg)]</span><br><span class="line">    print(&#x27;lr %e reg %e train accuracy: %f val accuracy: %f&#x27; % (</span><br><span class="line">                lr, reg, train_accuracy, val_accuracy))</span><br><span class="line">    </span><br><span class="line">print(&#x27;best validation accuracy achieved during cross-validation: %f&#x27; % best_val)</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="/images/CS231n-assignment1-svm/14.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">//以图片的方式来显示学习率和正则化强度在验证集和训练集上的准确率表现。</span><br><span class="line"># Visualize the cross-validation results</span><br><span class="line">import math</span><br><span class="line">import pdb</span><br><span class="line"></span><br><span class="line"># pdb.set_trace()</span><br><span class="line"></span><br><span class="line">x_scatter = [math.log10(x[0]) for x in results]</span><br><span class="line">y_scatter = [math.log10(x[1]) for x in results]</span><br><span class="line"></span><br><span class="line"># plot training accuracy</span><br><span class="line">marker_size = 100</span><br><span class="line">colors = [results[x][0] for x in results]</span><br><span class="line">plt.subplot(2, 1, 1)</span><br><span class="line">plt.tight_layout(pad=3)</span><br><span class="line">plt.scatter(x_scatter, y_scatter, marker_size, c=colors, cmap=plt.cm.coolwarm)</span><br><span class="line">plt.colorbar()</span><br><span class="line">plt.xlabel(&#x27;log learning rate&#x27;)</span><br><span class="line">plt.ylabel(&#x27;log regularization strength&#x27;)</span><br><span class="line">plt.title(&#x27;CIFAR-10 training accuracy&#x27;)</span><br><span class="line"></span><br><span class="line"># plot validation accuracy</span><br><span class="line">colors = [results[x][1] for x in results] # default size of markers is 20</span><br><span class="line">plt.subplot(2, 1, 2)</span><br><span class="line">plt.scatter(x_scatter, y_scatter, marker_size, c=colors, cmap=plt.cm.coolwarm)</span><br><span class="line">plt.colorbar()</span><br><span class="line">plt.xlabel(&#x27;log learning rate&#x27;)</span><br><span class="line">plt.ylabel(&#x27;log regularization strength&#x27;)</span><br><span class="line">plt.title(&#x27;CIFAR-10 validation accuracy&#x27;)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="/images/CS231n-assignment1-svm/15.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//测试在最终测试集上的准确率</span><br><span class="line"># Evaluate the best svm on test set</span><br><span class="line">y_test_pred = best_svm.predict(X_test)</span><br><span class="line">test_accuracy = np.mean(y_test == y_test_pred)</span><br><span class="line">print(&#x27;linear SVM on raw pixels final test set accuracy: %f&#x27; % test_accuracy)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/CS231n-assignment1-svm/16.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">//可视化最终SVM显示的图像是怎样的</span><br><span class="line"># Visualize the learned weights for each class.</span><br><span class="line"># Depending on your choice of learning rate and regularization strength, these may</span><br><span class="line"># or may not be nice to look at.</span><br><span class="line">w = best_svm.W[:-1,:] # strip out the bias</span><br><span class="line">w = w.reshape(32, 32, 3, 10)</span><br><span class="line">w_min, w_max = np.min(w), np.max(w)</span><br><span class="line">classes = [&#x27;plane&#x27;, &#x27;car&#x27;, &#x27;bird&#x27;, &#x27;cat&#x27;, &#x27;deer&#x27;, &#x27;dog&#x27;, &#x27;frog&#x27;, &#x27;horse&#x27;, &#x27;ship&#x27;, &#x27;truck&#x27;]</span><br><span class="line">for i in range(10):</span><br><span class="line">    plt.subplot(2, 5, i + 1)</span><br><span class="line">      </span><br><span class="line">    # Rescale the weights to be between 0 and 255</span><br><span class="line">    wimg = 255.0 * (w[:, :, :, i].squeeze() - w_min) / (w_max - w_min)</span><br><span class="line">    plt.imshow(wimg.astype(&#x27;uint8&#x27;))</span><br><span class="line">    plt.axis(&#x27;off&#x27;)</span><br><span class="line">    plt.title(classes[i])</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/CS231n-assignment1-svm/17.png"></p>
+<h1 id="linear-svm-py"><a href="#linear-svm-py" class="headerlink" title="linear_svm.py"></a>linear_svm.py</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line">from builtins import range</span><br><span class="line">import numpy as np</span><br><span class="line">from random import shuffle</span><br><span class="line">from past.builtins import xrange</span><br><span class="line"></span><br><span class="line">def svm_loss_naive(W, X, y, reg):</span><br><span class="line">   //返回单精度损失</span><br><span class="line">   //和W相同形状，权重W的梯度</span><br><span class="line">    dW = np.zeros(W.shape) # initialize the gradient as zero</span><br><span class="line"></span><br><span class="line">    num_classes = W.shape[1]  //获得权重矩阵的种类数</span><br><span class="line">    num_train = X.shape[0]    //开发集的行数</span><br><span class="line">    loss = 0.0</span><br><span class="line">    for i in range(num_train):</span><br><span class="line">        scores = X[i].dot(W)  //开发集1000*3073 权值矩阵3073*10 =1000*10的矩阵</span><br><span class="line">        correct_class_score = scores[y[i]] //在这个权值矩阵下标签对应的正确值</span><br><span class="line">        for j in range(num_classes):  //遍历10个种类</span><br><span class="line">            if j == y[i]:      //如果10个种类中有与预测的标签的种类相同的则结束循环</span><br><span class="line">                continue</span><br><span class="line">            margin = scores[j] - correct_class_score + 1 # note delta = 1</span><br><span class="line">            </span><br><span class="line">            //第J个标签对应的值-第i个标签对应值+1</span><br><span class="line">            if margin &gt; 0:</span><br><span class="line">                loss += margin</span><br><span class="line">                loss += margin</span><br><span class="line">                dw[:j]+=X[i].T</span><br><span class="line">                dw[:,y[i]]-=X[i].T    //y[i]就是数字，数字就是存储的标签，标签就是用数字存储的。</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    loss /= num_train //获得损失均值</span><br><span class="line"></span><br><span class="line">    # Add regularization to the loss.  //加上正则化损失</span><br><span class="line">    //LOSS的正则化L2的正则化补偿是+reg*W**</span><br><span class="line">    //dW的正则化L2的补偿是 reg*d(w**)==reg*2*w</span><br><span class="line">    loss += reg * np.sum(W * W)</span><br><span class="line"></span><br><span class="line">    pass</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    return loss, dW</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def svm_loss_vectorized(W, X, y, reg):</span><br><span class="line"></span><br><span class="line">    loss = 0.0</span><br><span class="line">    dW = np.zeros(W.shape) # initialize the gradient as zero</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    num_train=X.shape[0]</span><br><span class="line">    y_f=np.dot(X,W)</span><br><span class="line">    y_c=y_f[range(num_train),list(y)].reshape(-1,1) //列出正确标签的对应值数组</span><br><span class="line">    margins=np.maximum(y_f-y_c+1,0)    //range(10)=0,1,2,3,4,5,6,7,8,9</span><br><span class="line">    margins[range(num_train),list(y)]=0</span><br><span class="line">    loss=np.sum(margins)/num_train+reg*np.sum(W*W)</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    pass</span><br><span class="line">//然后是实现dW的计算，根据上面循环方式的实现可知，对于一个sample而言，在margin[i]大于0时 (0&lt;i&lt;num_classes)，dW中的第i列(初始列为0)要加上X.T, 同时第y[i]列要减去X.T，所以如果由一个mask，能够把这所有的对应关系记录下来，每有一个这样的关系(margin&gt;0)就加上1，然后在y[i]列减去1，然后直接用data.T乘以mask，就能得到dW的值，根据前面得到的margins，其大于0的部分便是结果，所以mask定义为margins&gt;0的部分为1，然后对于每个y[i]列（即每个样本的真实标记），将mask每行的和的负数赋值给sample真实标记所在位置</span><br><span class="line">原文链接：https://blog.csdn.net/qq_26414307/java/article/details/79318555</span><br><span class="line">    mask=margins</span><br><span class="line">    mask[margins&gt;0]=1</span><br><span class="line">    mask[range(num_train),list(y)]=-np.sum(mask,axis=1)</span><br><span class="line">    dW=np.dot(X.T,mask)</span><br><span class="line">    dW=dW/num_train+2*reg*W</span><br><span class="line"></span><br><span class="line">    pass</span><br><span class="line"></span><br><span class="line">    # *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****</span><br><span class="line"></span><br><span class="line">    return loss, dW</span><br></pre></td></tr></table></figure>
+
+<h1 id="linear-classifier-py"><a href="#linear-classifier-py" class="headerlink" title="linear_classifier.py"></a>linear_classifier.py</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line">from __future__ import print_function</span><br><span class="line"></span><br><span class="line">from builtins import range</span><br><span class="line">from builtins import object</span><br><span class="line">import numpy as np</span><br><span class="line">from cs231n.classifiers.linear_svm import *</span><br><span class="line">from cs231n.classifiers.softmax import *</span><br><span class="line">from past.builtins import xrange</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class LinearClassifier(object):</span><br><span class="line"></span><br><span class="line">    def __init__(self):</span><br><span class="line">        self.W = None</span><br><span class="line"></span><br><span class="line">    def train(self, X, y, learning_rate=1e-3, reg=1e-5, num_iters=100,</span><br><span class="line">              batch_size=200, verbose=False):</span><br><span class="line">        num_train, dim = X.shape</span><br><span class="line">        num_classes = np.max(y) + 1 # assume y takes values 0...K-1 where K is number of classes</span><br><span class="line">        if self.W is None:</span><br><span class="line">            # lazily initialize W</span><br><span class="line">            self.W = 0.001 * np.random.randn(dim, num_classes)</span><br><span class="line"></span><br><span class="line">        # Run stochastic gradient descent to optimize W</span><br><span class="line">        loss_history = []</span><br><span class="line">        for it in range(num_iters):</span><br><span class="line">            X_batch = None</span><br><span class="line">            y_batch = None</span><br><span class="line"></span><br><span class="line">            index=np.random.choice(num_train,batch_size,replace=False) ##i think replace is False</span><br><span class="line">            X_batch=X[index]</span><br><span class="line">            y_batch=y[index]</span><br><span class="line"></span><br><span class="line">            pass</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            loss, grad = self.loss(X_batch, y_batch, reg)</span><br><span class="line">            loss_history.append(loss)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            self.W+=-learning_rate*grad //梯度下降的变化</span><br><span class="line"></span><br><span class="line">            pass</span><br><span class="line"></span><br><span class="line">            # *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****</span><br><span class="line"></span><br><span class="line">            if verbose and it % 100 == 0:</span><br><span class="line">                print(&#x27;iteration %d / %d: loss %f&#x27; % (it, num_iters, loss))</span><br><span class="line"></span><br><span class="line">        return loss_history</span><br><span class="line">        </span><br><span class="line">    def predict(self, X):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        Use the trained weights of this linear classifier to predict labels for</span><br><span class="line">        data points.</span><br><span class="line"></span><br><span class="line">        Inputs:</span><br><span class="line">        - X: A numpy array of shape (N, D) containing training data; there are N</span><br><span class="line">          training samples each of dimension D.</span><br><span class="line"></span><br><span class="line">        Returns:</span><br><span class="line">        - y_pred: Predicted labels for the data in X. y_pred is a 1-dimensional</span><br><span class="line">          array of length N, and each element is an integer giving the predicted</span><br><span class="line">          class.</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        y_pred = np.zeros(X.shape[0])</span><br><span class="line">        </span><br><span class="line">        y_pred=np.argmax(X.dot(self.W),axis=1)//返回标签值</span><br><span class="line">        //argmax是返回最大值的索引，这里索引就是标签</span><br><span class="line">        //axis=1以行为标准  X=[N,D]  W[D,C]  因此为行</span><br><span class="line">        </span><br><span class="line"></span><br><span class="line">        pass</span><br><span class="line"></span><br><span class="line">        # *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****</span><br><span class="line">        return y_pred</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoursite.com/2020/06/30/CS231n-assignment1-svm/" data-id="clkwhj3tt00016s7s3ojyfadq" class="article-share-link">Share</a>
+      
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/06/30/CS231n_Assignment1_Features/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/06/30/CS231n_Assignment1_Two-layer-net/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2023 Tukeke<br>
+      Theme <a href="https://github.com/Tukekehaohaonuli/" target="_blank">Oishi</a>, Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <!--
+      <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/categories/life" class="mobile-nav-link">生活</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+</nav>
+    -->
+    
+
+<!-- 百度分享 start -->
+
+<!-- 百度分享 end -->
+
+<script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+
+<script src="/js/jquery.scrollUp.min.js"></script>
+
+
+<script src="/js/jquery.transform.js"></script>
+
+
+<script src="/js/menu.js"></script>
+
+
+
+<script src="/js/script.js"></script>
+
+
+<script src="/js/scrollUp.js"></script>
+
+
+  </div>
+</body>
+</html>

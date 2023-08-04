@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Tukekenulia♥</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="主要步骤：1、Maven的下载和配置 2、Maven项目的打包 3、Maven的相关介绍">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tukekenulia♥">
+<meta property="og:url" content="http://yoursite.com/2020/08/04/Java-Stage3-Step2.2-Maven%E5%85%A5%E9%97%A8/index.html">
+<meta property="og:site_name" content="Tukekenulia♥">
+<meta property="og:description" content="主要步骤：1、Maven的下载和配置 2、Maven项目的打包 3、Maven的相关介绍">
+<meta property="og:locale">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage3-Step2.2-Maven%E5%85%A5%E9%97%A8/1.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage3-Step2.2-Maven%E5%85%A5%E9%97%A8/2.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage3-Step2.2-Maven%E5%85%A5%E9%97%A8/3.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage3-Step2.2-Maven%E5%85%A5%E9%97%A8/4.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage3-Step2.2-Maven%E5%85%A5%E9%97%A8/5.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage3-Step2.2-Maven%E5%85%A5%E9%97%A8/6.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage3-Step2.2-Maven%E5%85%A5%E9%97%A8/7.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage3-Step2.2-Maven%E5%85%A5%E9%97%A8/8.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage3-Step2.2-Maven%E5%85%A5%E9%97%A8/9.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage3-Step2.2-Maven%E5%85%A5%E9%97%A8/10.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage3-Step2.2-Maven%E5%85%A5%E9%97%A8/11.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage3-Step2.2-Maven%E5%85%A5%E9%97%A8/16.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage3-Step2.2-Maven%E5%85%A5%E9%97%A8/13.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage3-Step2.2-Maven%E5%85%A5%E9%97%A8/12.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage3-Step2.2-Maven%E5%85%A5%E9%97%A8/14.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage3-Step2.2-Maven%E5%85%A5%E9%97%A8/15.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage3-Step2.2-Maven%E5%85%A5%E9%97%A8/17.png">
+<meta property="article:published_time" content="2020-08-04T08:47:38.000Z">
+<meta property="article:modified_time" content="2020-08-04T08:47:38.000Z">
+<meta property="article:author" content="Tukeke">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/images/Java-Stage3-Step2.2-Maven%E5%85%A5%E9%97%A8/1.png">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/css/scrollUp/image.css">
+
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <div class="logo">
+        <img src="/logo.png" alt="Profile Picture">
+      </div>
+      <div id="title">Tukekenulia♥</div>
+      
+        <div id="subtitle">Stay focus,stay humble,stay curiosity.</div>
+      
+       <ul class="my-socials">
+  
+  <li>
+  	<a href="https://github.com/Tukekehaohaonuli" class="github" target="_blank">
+  		<i class="fa fa-github"></i>
+  	</a>
+  </li>
+  
+  <li>
+  	<a href="YOUR WEIBO HOME PAGE URL" class="weibo" target="_blank">
+  		<i class="fa fa-weibo"></i>
+  	</a>
+  </li>
+  
+ 
+</ul>
+    </div>
+  </div>
+  <div id="header-inner" class="">
+    <nav id="main-nav">
+      <a id="main-nav-toggle" class="nav-icon"></a>
+      <!--
+        
+          
+            <a class="main-nav-link" href="/">首页</a>
+          
+            <a class="main-nav-link" href="/categories/life">生活</a>
+          
+            <a class="main-nav-link" href="/archives">归档</a>
+          
+        
+      -->
+    </nav>
+    <nav id="title-nav" style="display:none">
+      <a href="/">Tukekenulia♥</a>
+      <img src="/logo.png" alt="Profile Picture">
+      <!--
+      <span id="title-nav-socials">
+        
+       
+     </span>
+      -->
+    </nav>
+    <nav id="sub-nav">
+      
+      <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+    </nav>
+    <div id="search-form-wrap">
+      <form action="http://www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+        <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+        <input type="submit" value="" class="search-form-submit">
+        <input name=tn type=hidden value="bds">
+        <input name=cl type=hidden value="3">
+        <input name=ct type=hidden value="2097152">
+        <input type="hidden" name="si" value="yoursite.com">
+      </form>
+    </div>
+  </div>
+  <div class="site-nav" style="display: none;">
+    <ul>
+      
+      
+        <li><a href="/">首页</a></li>
+      
+        <li><a href="/categories/life">生活</a></li>
+      
+        <li><a href="/archives">归档</a></li>
+      
+      
+    </ul>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Java-Stage3-Step2.2-Maven入门" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/04/Java-Stage3-Step2.2-Maven%E5%85%A5%E9%97%A8/" class="article-date">
+  <time datetime="2020-08-04T08:47:38.000Z" itemprop="datePublished">2020-08-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="主要步骤："><a href="#主要步骤：" class="headerlink" title="主要步骤："></a>主要步骤：</h3><p>1、Maven的下载和配置</p>
+<p>2、Maven项目的打包</p>
+<p>3、Maven的相关介绍</p>
+<span id="more"></span>
+
+<h1 id="1-Maven下载和配置"><a href="#1-Maven下载和配置" class="headerlink" title="1-Maven下载和配置"></a>1-Maven下载和配置</h1><p>下载链接：<a target="_blank" rel="noopener" href="http://maven.apache.org/download.cgi">http://maven.apache.org/download.cgi</a></p>
+<p><img src="/images/Java-Stage3-Step2.2-Maven%E5%85%A5%E9%97%A8/1.png" alt="1"></p>
+<p><img src="/images/Java-Stage3-Step2.2-Maven%E5%85%A5%E9%97%A8/2.png" alt="2"></p>
+<h3 id="path添加：C-java-apache-maven-3-6-3-bin"><a href="#path添加：C-java-apache-maven-3-6-3-bin" class="headerlink" title="path添加：C:\java\apache-maven-3.6.3\bin"></a>path添加：C:\java\apache-maven-3.6.3\bin</h3><p><img src="/images/Java-Stage3-Step2.2-Maven%E5%85%A5%E9%97%A8/3.png" alt="3"></p>
+<p><img src="/images/Java-Stage3-Step2.2-Maven%E5%85%A5%E9%97%A8/4.png" alt="4"></p>
+<p>配置完成。</p>
+<h3 id="Maven镜像源添加，获得更快下载速度"><a href="#Maven镜像源添加，获得更快下载速度" class="headerlink" title="Maven镜像源添加，获得更快下载速度"></a>Maven镜像源添加，获得更快下载速度</h3><p>在settings.xml的mirrors中添加，这里一定要注意不要添加到注释中去</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;mirror&gt;</span><br><span class="line">      &lt;id&gt;alimaven&lt;/id&gt;</span><br><span class="line">      &lt;name&gt;aliyun maven&lt;/name&gt;</span><br><span class="line">      &lt;url&gt;http://maven.aliyun.com/nexus/content/groups/public/&lt;/url&gt;</span><br><span class="line">      &lt;mirrorOf&gt;central&lt;/mirrorOf&gt;</span><br><span class="line">    &lt;/mirror&gt;</span><br><span class="line">	</span><br><span class="line">	&lt;mirror&gt;</span><br><span class="line">      &lt;id&gt;repo2&lt;/id&gt;</span><br><span class="line">      &lt;mirrorOf&gt;central&lt;/mirrorOf&gt;</span><br><span class="line">      &lt;name&gt;Human Readable Name for this Mirror.&lt;/name&gt;</span><br><span class="line">      &lt;url&gt;http://repo2.maven.org/maven2/&lt;/url&gt;</span><br><span class="line">    &lt;/mirror&gt;</span><br><span class="line"></span><br><span class="line">    &lt;mirror&gt;</span><br><span class="line">      &lt;id&gt;ui&lt;/id&gt;</span><br><span class="line">      &lt;mirrorOf&gt;central&lt;/mirrorOf&gt;</span><br><span class="line">      &lt;name&gt;Human Readable Name for this Mirror.&lt;/name&gt;</span><br><span class="line">      &lt;url&gt;http://uk.maven.org/maven2/&lt;/url&gt;</span><br><span class="line">    &lt;/mirror&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/Java-Stage3-Step2.2-Maven%E5%85%A5%E9%97%A8/5.png" alt="5"></p>
+<h3 id="更改jar包下载的目录"><a href="#更改jar包下载的目录" class="headerlink" title="更改jar包下载的目录"></a>更改jar包下载的目录</h3><p>在settings.xml中找到localRepository标签，修改下载的目录。</p>
+<p><img src="/images/Java-Stage3-Step2.2-Maven%E5%85%A5%E9%97%A8/6.png" alt="6"></p>
+<h3 id="IDEA配置Maven"><a href="#IDEA配置Maven" class="headerlink" title="IDEA配置Maven"></a>IDEA配置Maven</h3><p><img src="/images/Java-Stage3-Step2.2-Maven%E5%85%A5%E9%97%A8/7.png" alt="7"></p>
+<p><img src="/images/Java-Stage3-Step2.2-Maven%E5%85%A5%E9%97%A8/8.png" alt="8"></p>
+<h5 id="为当前项目配置Maven："><a href="#为当前项目配置Maven：" class="headerlink" title="为当前项目配置Maven："></a>为当前项目配置Maven：</h5><p><img src="/images/Java-Stage3-Step2.2-Maven%E5%85%A5%E9%97%A8/9.png" alt="9"></p>
+<p><img src="/images/Java-Stage3-Step2.2-Maven%E5%85%A5%E9%97%A8/10.png" alt="10"></p>
+<p><img src="/images/Java-Stage3-Step2.2-Maven%E5%85%A5%E9%97%A8/11.png" alt="11"></p>
+<p>等待下载完即可。</p>
+<h3 id="设置Maven-jar包自动下载"><a href="#设置Maven-jar包自动下载" class="headerlink" title="设置Maven jar包自动下载"></a>设置Maven jar包自动下载</h3><p>这个是在导入Maven项目时才启动自动下载</p>
+<p><img src="/images/Java-Stage3-Step2.2-Maven%E5%85%A5%E9%97%A8/16.png" alt="16"></p>
+<h3 id="创建Maven项目"><a href="#创建Maven项目" class="headerlink" title="创建Maven项目"></a>创建Maven项目</h3><p><img src="/images/Java-Stage3-Step2.2-Maven%E5%85%A5%E9%97%A8/13.png" alt="13"></p>
+<p>创建web项目:</p>
+<p><img src="/images/Java-Stage3-Step2.2-Maven%E5%85%A5%E9%97%A8/12.png" alt="12"></p>
+<h1 id="2-Maven介绍"><a href="#2-Maven介绍" class="headerlink" title="2-Maven介绍"></a>2-Maven介绍</h1><p><img src="/images/Java-Stage3-Step2.2-Maven%E5%85%A5%E9%97%A8/14.png" alt="14"></p>
+<p>查找依赖：<a target="_blank" rel="noopener" href="https://search.maven.org/">https://search.maven.org/</a></p>
+<p>例如：</p>
+<p><img src="/images/Java-Stage3-Step2.2-Maven%E5%85%A5%E9%97%A8/15.png" alt="15"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependencies&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;mysql&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;</span><br><span class="line">            &lt;version&gt;5.1.49&lt;/version&gt;</span><br><span class="line">        &lt;/dependency&gt;</span><br><span class="line">&lt;/dependencies&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/Java-Stage3-Step2.2-Maven%E5%85%A5%E9%97%A8/17.png" alt="17"></p>
+<h1 id="3-Maven项目的打包"><a href="#3-Maven项目的打包" class="headerlink" title="3-Maven项目的打包"></a>3-Maven项目的打包</h1><p>包括jar和war包（未完成）</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoursite.com/2020/08/04/Java-Stage3-Step2.2-Maven%E5%85%A5%E9%97%A8/" data-id="clkwhj3u0000l6s7s1fcp9j8a" class="article-share-link">Share</a>
+      
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/08/05/CS231n_Assignment2_Fully-Connected_Neural_Nets/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/08/04/Java-Stage3-Step1.1~4-MySQL/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2023 Tukeke<br>
+      Theme <a href="https://github.com/Tukekehaohaonuli/" target="_blank">Oishi</a>, Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <!--
+      <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/categories/life" class="mobile-nav-link">生活</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+</nav>
+    -->
+    
+
+<!-- 百度分享 start -->
+
+<!-- 百度分享 end -->
+
+<script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+
+<script src="/js/jquery.scrollUp.min.js"></script>
+
+
+<script src="/js/jquery.transform.js"></script>
+
+
+<script src="/js/menu.js"></script>
+
+
+
+<script src="/js/script.js"></script>
+
+
+<script src="/js/scrollUp.js"></script>
+
+
+  </div>
+</body>
+</html>
