@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html  lang="english" >
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+    <title>Tukekenulia</title>
+    <meta name="description" content="主要步骤：1、Redis数据库在Linux和Windows下的安装 2、Redis常用基本配置 3、Redis基本命令 4、远程连接操作Redis数据库 5、Spring Boot Redis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tukekenulia">
+<meta property="og:url" content="http://yoursite.com/2022/05/17/Java-Stage3-Step3.3-Redis/index.html">
+<meta property="og:site_name" content="Tukekenulia">
+<meta property="og:description" content="主要步骤：1、Redis数据库在Linux和Windows下的安装 2、Redis常用基本配置 3、Redis基本命令 4、远程连接操作Redis数据库 5、Spring Boot Redis">
+<meta property="og:locale">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage3-Step3.3-Redis/1.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage3-Step3.3-Redis/2.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage3-Step3.3-Redis/3.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage3-Step3.3-Redis/4.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage3-Step3.3-Redis/5.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage3-Step3.3-Redis/6.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage3-Step3.3-Redis/7.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage3-Step3.3-Redis/8.png">
+<meta property="article:published_time" content="2022-05-17T05:27:38.000Z">
+<meta property="article:modified_time" content="2022-05-17T05:27:38.000Z">
+<meta property="article:author" content="Tukeke">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/images/Java-Stage3-Step3.3-Redis/1.png">
+
+    
+    <link rel="icon" href="/images/icon.png" type="image/x-icon">
+
+    
+<link rel="stylesheet" href="/css/common.min.css">
+
+
+
+    
+    
+    
+    
+        <link href="//cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/css/lightgallery.min.css" rel="stylesheet">
+    
+    
+    
+<link rel="stylesheet" href="/css/iconfont.min.css">
+
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+    <body>
+        <header class="header header-fixture">
+    <div class="profile-search-wrap flex sm:block">
+        
+        
+        <div class="profile sm:text-center md:px-1 lg:px-3 sm:pb-4 sm:pt-6">
+            <a id="avatar" role="link" href="https://github.com/fengkx" class="inline-block lg:w-16 lg:h-16 w-8 h-8 m-2" target="_blank" rel="noopener" rel="noreferrer" >
+                <img src="https://www.gravatar.com/avatar/0bc83cb571cd1c50ba6f3e8a78ef1346?s=128" class="rounded-full" alt="avatar">
+            </a>
+            <h2 id="name" class="hidden lg:block">fengkx</h2>
+            <h3 id="title" class="hidden lg:block">Student &amp; Coder</h3>
+            
+            <small id="location" class="hidden lg:block">
+                <i class="iconfont icon-map-icon"></i>
+                Guangzhou, China
+            </small>
+            
+        </div>
+        
+        
+<div class="search flex-1 flex lg:inline-block sm:hidden lg:px-4 lg:mt-2 lg:mb-4 lg:w-full">
+    <form id="search-form" class="my-auto flex-1 lg:border lg:border-solid lg:border-gray-200">
+        <div class="input-group table bg-gray-100 lg:bg-white w-full">
+            <input id="search-input" type="text" placeholder="Search" class="inline-block w-full bg-gray-100 lg:bg-white p-1">
+            <span class="table-cell">
+                <button name="search tigger button" disabled>
+                    <i class="iconfont icon-search m-2"></i>
+                </button>
+            </span>
+        </div>
+    </form>
+        
+<div id="content-json" data-placeholder="Search" class="invisible hidden">/content.json</div>
+<script id="search-teamplate" type="text/html" data-path="/content.json">
+    <div>
+        <div class="search-header bg-gray-400">
+            <input id="actual-search-input" model="keyword" ref="input" class="inline-block w-full h-10 px-2 py-1" placeholder="Search" type="text">
+        </div>
+        <div class="search-result bg-gray-200">
+            {{#each searchPosts}}
+            <a href="/{{ path }}" class="result-item block px-2 pb-3 mb-1 pt-1 hover:bg-indigo-100">
+                <i class="iconfont icon-file"></i>
+                <h1 class="result-title inline font-medium text-lg">{{ title }}</h1>
+                <p class="result-content text-gray-600 text-sm">{{{ text }}}</p>
+            </a>
+            {{/each}}
+        </div>
+    </div>
+</script>
+
+</div>
+
+
+        <button name="menu toogle button" id="menu-toggle-btn" class="block sm:hidden p-3" role="button" aria-expanded="false">
+            <i class="iconfont icon-hamburger"></i>
+        </button>
+    </div>
+    <nav id="menu-nav" class="hidden sm:flex flex-col">
+        
+        
+            <div class="menu-item menu-home" role="menuitem">
+                <a href="/.">
+                    <i class="iconfont icon-home" aria-hidden="true"></i>
+                    <span class="menu-title">Home</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-archives" role="menuitem">
+                <a href="/archives">
+                    <i class="iconfont icon-archive" aria-hidden="true"></i>
+                    <span class="menu-title">Archives</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-categories" role="menuitem">
+                <a href="/categories">
+                    <i class="iconfont icon-folder" aria-hidden="true"></i>
+                    <span class="menu-title">Categories</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-tags" role="menuitem">
+                <a href="/tags">
+                    <i class="iconfont icon-tag" aria-hidden="true"></i>
+                    <span class="menu-title">Tags</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-repository" role="menuitem">
+                <a href="/repository">
+                    <i class="iconfont icon-project" aria-hidden="true"></i>
+                    <span class="menu-title">Repository</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-links" role="menuitem">
+                <a href="/links">
+                    <i class="iconfont icon-friend" aria-hidden="true"></i>
+                    <span class="menu-title">Links</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-about" role="menuitem">
+                <a href="/about">
+                    <i class="iconfont icon-cup" aria-hidden="true"></i>
+                    <span class="menu-title">About</span>
+                </a>
+            </div>
+        
+        
+<div class="social-links flex sm:flex-col lg:hidden mt-5">
+    
+        <span class="social-item text-center">
+            <a target="_blank" rel="noopener" href="https://github.com/fengkx">
+                <i class="iconfont social-icon icon-github"></i>
+                <span class="menu-title hidden lg:inline">menu.github</span>
+            </a>
+        </span>
+    
+        <span class="social-item text-center">
+            <a target="_blank" rel="noopener" href="https://t.me/fengkx">
+                <i class="iconfont social-icon icon-telegram"></i>
+                <span class="menu-title hidden lg:inline">menu.telegram</span>
+            </a>
+        </span>
+    
+        <span class="social-item text-center">
+            <a target="_blank" rel="noopener" href="https://twitter.com/example">
+                <i class="iconfont social-icon icon-twitter"></i>
+                <span class="menu-title hidden lg:inline">menu.twitter</span>
+            </a>
+        </span>
+    
+        <span class="social-item text-center">
+            <a href="/atom.xml">
+                <i class="iconfont social-icon icon-rss"></i>
+                <span class="menu-title hidden lg:inline">menu.rss</span>
+            </a>
+        </span>
+    
+</div>
+
+
+    </nav>
+</header>
+
+        <section class="main-section">
+            
+    <main class="flex-1 px-4 py-14 md:px-5 lg:px-8 lg:py-4 relative min-h-screen">
+    
+
+    <article class="content article article-archives article-type-list" itemscope="">
+        <header class="article-header">
+            
+
+
+            <p class="article-meta mb-3 text-xs">
+                <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2022/05/17/Java-Stage3-Step3.3-Redis/" class="article-date">
+	  <time datetime="2022-05-17T05:27:38.000Z" itemprop="datePublished">May 17</time>
+	</a>
+</span>
+
+                
+
+                
+
+                <span class="_partial/post-comment"><i class="icon icon-comment"></i>
+                    <a href="/2022/05/17/Java-Stage3-Step3.3-Redis/#comments" class="article-comment-link">
+                        Comments
+                    </a>
+                </span>
+                
+
+            </p>
+        </header>
+        <div class="marked-body article-body">
+            <h3 id="主要步骤："><a href="#主要步骤：" class="headerlink" title="主要步骤："></a>主要步骤：</h3><p>1、Redis数据库在Linux和Windows下的安装</p>
+<p>2、Redis常用基本配置</p>
+<p>3、Redis基本命令</p>
+<p>4、远程连接操作Redis数据库</p>
+<p>5、Spring Boot Redis</p>
+<span id="more"></span>
+
+<h1 id="1-Redis内存数据库的安装"><a href="#1-Redis内存数据库的安装" class="headerlink" title="1-Redis内存数据库的安装"></a>1-Redis内存数据库的安装</h1><h3 id="1、Linux系统"><a href="#1、Linux系统" class="headerlink" title="1、Linux系统"></a>1、Linux系统</h3><p>redis官网下载链接:<a target="_blank" rel="noopener" href="https://redis.io/download">https://redis.io/download</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local 进入该目录</span><br><span class="line">mkdir redis 创建文件夹</span><br><span class="line">cd redis 进入该目录</span><br><span class="line">yum install gcc 安装gcc</span><br><span class="line">wget http://download.redis.io/releases/redis-6.0.6.tar.gz 下载redis</span><br><span class="line">tar xzf redis-6.0.6.tar.gz 解压缩</span><br><span class="line">cd redis-6.0.6 进入redis目录</span><br><span class="line">make 编译redis</span><br><span class="line">src/redis-server 启动redis 前台的方式</span><br></pre></td></tr></table></figure>
+
+<p>只安装gcc可能报错，新系统不全面</p>
+<p>gcc套装：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">yum install cpp</span><br><span class="line">yum install binutils</span><br><span class="line">yum install glibc</span><br><span class="line">yum install glibc-kernheaders</span><br><span class="line">yum install glibc-common</span><br><span class="line">yum install glibc-devel</span><br><span class="line">yum install gcc</span><br><span class="line">yum install make</span><br><span class="line">yum -y install centos-release-scl</span><br><span class="line">yum -y install devtoolset-9-gcc devtoolset-9-gcc-c++ devtoolset-9-binutils</span><br><span class="line">scl enable devtoolset-9 bash</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../images/Java-Stage3-Step3.3-Redis/1.png" alt="1"></p>
+<p>安装成功！</p>
+<h3 id="2、Windows系统"><a href="#2、Windows系统" class="headerlink" title="2、Windows系统"></a>2、Windows系统</h3><p>微软开发：<a target="_blank" rel="noopener" href="https://github.com/microsoftarchive/redis/releases">https://github.com/microsoftarchive/redis/releases</a></p>
+<p>最新版本为5+ ，这个只能供自己学习使用，因为在更新的过程中调用的方式是不变的。</p>
+<p><img src="/../images/Java-Stage3-Step3.3-Redis/2.png" alt="2"></p>
+<p>运行：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-server redis.windows.conf</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/Java-Stage3-Step3.3-Redis/3.png" alt="3"></p>
+<h1 id="2-Redis的常用基本配置"><a href="#2-Redis的常用基本配置" class="headerlink" title="2-Redis的常用基本配置"></a>2-Redis的常用基本配置</h1><p><img src="/../images/Java-Stage3-Step3.3-Redis/4.png" alt="4"></p>
+<p>配置守护进程：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">vim redis.conf  -编辑配置文件</span><br><span class="line">deamonize yes </span><br><span class="line">netstat -tulpn 查看当前占用的端口</span><br><span class="line">kill -9 进程号 关闭进行</span><br><span class="line">src/redis-server redis.conf 后台的方式运行redis</span><br><span class="line">src/redis-cli shutdown  关闭reids</span><br><span class="line">logfile &quot;redis.log&quot;  日志文件</span><br><span class="line">port 6380 端口号</span><br><span class="line">cat redis.log 查看日志文件</span><br><span class="line">src/redis-cli -p 6380 打开redis ping查看redis是否正常运行 exit退出 </span><br><span class="line">auth 输入密码</span><br></pre></td></tr></table></figure>
+
+<h1 id="3-Redis基本命令"><a href="#3-Redis基本命令" class="headerlink" title="3-Redis基本命令"></a>3-Redis基本命令</h1><p><img src="/../images/Java-Stage3-Step3.3-Redis/5.png" alt="5"></p>
+<p><img src="/../images/Java-Stage3-Step3.3-Redis/6.png" alt="6"></p>
+<p><img src="/../images/Java-Stage3-Step3.3-Redis/7.png" alt="7"></p>
+<p><img src="/../images/Java-Stage3-Step3.3-Redis/8.png" alt="8"></p>
+<h1 id="4-远程连接Redis"><a href="#4-远程连接Redis" class="headerlink" title="4-远程连接Redis"></a>4-远程连接Redis</h1><h3 id="1、Linux中设置：redis"><a href="#1、Linux中设置：redis" class="headerlink" title="1、Linux中设置：redis"></a>1、Linux中设置：redis</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vim redis.conf</span><br><span class="line">protected-mode no -使得远程可以连接</span><br><span class="line">bind 0.0.0.0 表示所有主机的IP都可以访问</span><br><span class="line">src/redis-server redis.conf 启动</span><br></pre></td></tr></table></figure>
+
+<p>需要设置防火墙允许6379端口可以通信</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --zone=public --add-port=6379/tcp --permanent 开启防火墙</span><br><span class="line">firewall-cmd --reload 重新加载防火墙</span><br></pre></td></tr></table></figure>
+
+<h3 id="2、Windows："><a href="#2、Windows：" class="headerlink" title="2、Windows："></a>2、Windows：</h3><p>github：<a target="_blank" rel="noopener" href="https://github.com/xetorthio/jedis">https://github.com/xetorthio/jedis</a></p>
+<p>2.9.0是目前国内用的最多的。</p>
+<p>依赖：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;redis.clients&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;jedis&lt;/artifactId&gt;</span><br><span class="line">            &lt;version&gt;2.9.0&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<p>连接Jedis：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Jedis jedis = null;</span><br><span class="line">        try &#123;</span><br><span class="line">            jedis = new Jedis(&quot;192.168.101.207&quot;, 6379);</span><br><span class="line">            jedis.auth(&quot;&quot;);</span><br><span class="line">            jedis.select(2);</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; finally &#123;</span><br><span class="line">            jedis.close();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="fastjson："><a href="#fastjson：" class="headerlink" title="fastjson："></a>fastjson：</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;com.alibaba&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;fastjson&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.2.73&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<h5 id="通过json将列表序列化存储到Redis中："><a href="#通过json将列表序列化存储到Redis中：" class="headerlink" title="通过json将列表序列化存储到Redis中："></a>通过json将列表序列化存储到Redis中：</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">public class CacheSample &#123;</span><br><span class="line">    public CacheSample()&#123;</span><br><span class="line">        Jedis jedis = new Jedis(&quot;192.168.132.144&quot;);</span><br><span class="line">        try &#123;</span><br><span class="line">            List&lt;Goods&gt; goodsList = new ArrayList&lt;Goods&gt;();</span><br><span class="line">            goodsList.add(new Goods(8818, &quot;红富士苹果&quot;, &quot;&quot;, 3.5f));</span><br><span class="line">            goodsList.add(new Goods(8819, &quot;进口脐橙&quot;, &quot;&quot;, 5f));</span><br><span class="line">            goodsList.add(new Goods(8820, &quot;进口香蕉&quot;, &quot;&quot;, 25f));</span><br><span class="line">            jedis.auth(&quot;12345&quot;);</span><br><span class="line">            jedis.select(3);</span><br><span class="line">            for (Goods goods : goodsList) &#123;</span><br><span class="line">                String json = JSON.toJSONString(goods);</span><br><span class="line">                System.out.println(json);</span><br><span class="line">                String key = &quot;goods:&quot; + goods.getGoodsId();</span><br><span class="line">                jedis.set(key , json);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;finally &#123;</span><br><span class="line">            jedis.close();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="查询Redis数据重新转化为Java："><a href="#查询Redis数据重新转化为Java：" class="headerlink" title="查询Redis数据重新转化为Java："></a>查询Redis数据重新转化为Java：</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String json=jedis.get(key);</span><br><span class="line">Goods goods =JSON.parseObject(json,Goods.class)</span><br></pre></td></tr></table></figure>
+
+<h1 id="5-Spring-Boot-Redis"><a href="#5-Spring-Boot-Redis" class="headerlink" title="5-Spring Boot Redis"></a>5-Spring Boot Redis</h1><h3 id="Redis-介绍"><a href="#Redis-介绍" class="headerlink" title="Redis 介绍"></a>Redis 介绍</h3><p>Redis 是一个速度非常快的非关系数据库（Non-Relational Database），它可以存储键（Key）与 5 种不同类型的值（Value）之间的映射（Mapping），可以将存储在内存的键值对数据持久化到硬盘，可以使用复制特性来扩展读性能，还可以使用客户端分片来扩展写性能。</p>
+<p>为了满足高性能，Redis 采用内存（in-memory）数据集（Dataset），根据使用场景，可以通过每隔一段时间转储数据集到磁盘，或者追加每条命令到日志来持久化。持久化也可以被禁用，如果你只是需要一个功能丰富、网络化的内存缓存。	</p>
+<p><strong>数据模型</strong></p>
+<p>Redis 数据模型不仅与关系数据库管理系统（RDBMS）不同，也不同于任何简单的 NoSQL 键-值数据存储。Redis 数据类型类似于编程语言的基础数据类型，因此开发人员感觉很自然，每个数据类型都支持适用于其类型的操作，受支持的数据类型包括：</p>
+<ul>
+<li>String（字符串）</li>
+<li>Hash（哈希）</li>
+<li>List（列表）</li>
+<li>Set（集合）</li>
+<li>Zset（Sorted Set：有序集合）</li>
+</ul>
+<p><strong>关键优势</strong></p>
+<p>Redis 的优势包括它的速度、对富数据类型的支持、操作的原子性，以及通用性：</p>
+<ul>
+<li>性能极高，它每秒可执行约 100,000 个 Set 以及约 100,000 个 Get 操作；</li>
+<li>丰富的数据类型，Redis 对大多数开发人员已知的大多数数据类型提供了原生支持，这使得各种问题得以轻松解决；</li>
+<li>原子性，因为所有 Redis 操作都是原子性的，所以多个客户端会并发地访问一个 Redis 服务器，获取相同的更新值；</li>
+<li>丰富的特性，Redis 是一个多效用工具，有非常多的应用场景，包括缓存、消息队列（Redis 原生支持发布&#x2F;订阅）、短期应用程序数据（比如 Web 会话、Web 页面命中计数）等。</li>
+</ul>
+<h3 id="spring-boot-starter-data-redis"><a href="#spring-boot-starter-data-redis" class="headerlink" title="spring-boot-starter-data-redis"></a>spring-boot-starter-data-redis</h3><p>Spring Boot 提供了对 Redis 集成的组件包：spring-boot-starter-data-redis，它依赖于 spring-data-redis 和 lettuce。Spring Boot 1.0 默认使用的是 Jedis 客户端，2.0 替换成了 Lettuce，但如果你从 Spring Boot 1.5.X 切换过来，几乎感受不大差异，这是因为 spring-boot-starter-data-redis 为我们隔离了其中的差异性。</p>
+<ul>
+<li>Lettuce：是一个可伸缩线程安全的 Redis 客户端，多个线程可以共享同一个 RedisConnection，它利用优秀 Netty NIO 框架来高效地管理多个连接。</li>
+<li>Spring Data：是 Spring 框架中的一个主要项目，目的是为了简化构建基于 Spring 框架应用的数据访问，包括非关系数据库、Map-Reduce 框架、云数据服务等，另外也包含对关系数据库的访问支持。</li>
+<li>Spring Data Redis：是 Spring Data 项目中的一个主要模块，实现了对 Redis 客户端 API 的高度封装，使对 Redis 的操作更加便捷。</li>
+</ul>
+<p>可以用以下方式来表达它们之间的关系：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Lettuce → Spring Data Redis → Spring Data → spring-boot-starter-data-redis</span><br></pre></td></tr></table></figure>
+
+<p>因此 Spring Data Redis 和 Lettuce 具备的功能，spring-boot-starter-data-redis 几乎都会有。</p>
+<h4 id="相关配置"><a href="#相关配置" class="headerlink" title="相关配置"></a>相关配置</h4><p><strong>引入依赖包</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-data-redis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.commons<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>commons-pool2<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>引入 commons-pool 2 是因为 Lettuce 需要使用 commons-pool 2 创建 Redis 连接池。</p>
+<p><strong>application 配置</strong></p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Redis 数据库索引（默认为 0）</span></span><br><span class="line"><span class="attr">spring.redis.database</span>=<span class="string">0</span></span><br><span class="line"><span class="comment"># Redis 服务器地址</span></span><br><span class="line"><span class="attr">spring.redis.host</span>=<span class="string">localhost</span></span><br><span class="line"><span class="comment"># Redis 服务器连接端口</span></span><br><span class="line"><span class="attr">spring.redis.port</span>=<span class="string">6379  </span></span><br><span class="line"><span class="comment"># Redis 服务器连接密码（默认为空）</span></span><br><span class="line"><span class="attr">spring.redis.password</span>=<span class="string"></span></span><br><span class="line"><span class="comment"># 连接池最大连接数（使用负值表示没有限制） 默认 8</span></span><br><span class="line"><span class="attr">spring.redis.lettuce.pool.max-active</span>=<span class="string">8</span></span><br><span class="line"><span class="comment"># 连接池最大阻塞等待时间（使用负值表示没有限制） 默认 -1</span></span><br><span class="line"><span class="attr">spring.redis.lettuce.pool.max-wait</span>=<span class="string">-1</span></span><br><span class="line"><span class="comment"># 连接池中的最大空闲连接 默认 8</span></span><br><span class="line"><span class="attr">spring.redis.lettuce.pool.max-idle</span>=<span class="string">8</span></span><br><span class="line"><span class="comment"># 连接池中的最小空闲连接 默认 0</span></span><br><span class="line"><span class="attr">spring.redis.lettuce.pool.min-idle</span>=<span class="string">0</span></span><br></pre></td></tr></table></figure>
+
+<p>从配置也可以看出 Spring Boot 默认支持 Lettuce 连接池。</p>
+<h4 id="缓存配置"><a href="#缓存配置" class="headerlink" title="缓存配置"></a>缓存配置</h4><p>在这里可以为 Redis 设置一些全局配置，比如配置主键的生产策略 KeyGenerator，如不配置会默认使用参数名作为主键。</p>
+<p>在这里可以为 Redis 设置一些全局配置，比如配置主键的生产策略 KeyGenerator，如不配置会默认使用参数名作为主键。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableCaching</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">RedisConfig</span> <span class="keyword">extends</span> <span class="title class_">CachingConfigurerSupport</span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> KeyGenerator <span class="title function_">keyGenerator</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">KeyGenerator</span>() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> Object <span class="title function_">generate</span><span class="params">(Object target, Method method, Object... params)</span> &#123;</span><br><span class="line">                <span class="type">StringBuilder</span> <span class="variable">sb</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>();</span><br><span class="line">                sb.append(target.getClass().getName());</span><br><span class="line">                sb.append(method.getName());</span><br><span class="line">                <span class="keyword">for</span> (Object obj : params) &#123;</span><br><span class="line">                    sb.append(obj.toString());</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">return</span> sb.toString();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意，我们使用了注解：@EnableCaching 来开启缓存。</p>
+</blockquote>
+<h4 id="测试使用"><a href="#测试使用" class="headerlink" title="测试使用"></a>测试使用</h4><p>在单元测试中，注入 RedisTemplate。String 是最常用的一种数据类型，普通的 key&#x2F;value 存储都可以归为此类，value 其实不仅是 String 也可以是数字。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RunWith(SpringRunner.class)</span></span><br><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TestRedisTemplate</span> &#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> RedisTemplate redisTemplate;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testString</span><span class="params">()</span>  &#123;</span><br><span class="line">        redisTemplate.opsForValue().set(<span class="string">&quot;neo&quot;</span>, <span class="string">&quot;ityouknow&quot;</span>);</span><br><span class="line">        Assert.assertEquals(<span class="string">&quot;ityouknow&quot;</span>, redisTemplate.opsForValue().get(<span class="string">&quot;neo&quot;</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;    </span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>在这个单元测试中，我们使用 redisTemplate 存储了一个字符串 “ityouknow”，存储之后获取进行验证，<strong>多次进行 set 相同的 key，键对应的值会被覆盖</strong>。</p>
+<p>从上面的整个流程来看，使用 spring-boot-starter-data-redis 只需要三步就可以快速地集成 Redis 进行操作，下面介绍 Redis 如何操作各种数据类型。</p>
+<h4 id="实体"><a href="#实体" class="headerlink" title="实体"></a>实体</h4><p>先来看 Redis 对 Pojo 的支持，新建一个 User 对象，放到缓存中，再取出来。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testObj</span><span class="params">()</span>&#123;</span><br><span class="line">    User user=<span class="keyword">new</span> <span class="title class_">User</span>(<span class="string">&quot;ityouknow@126.com&quot;</span>, <span class="string">&quot;smile&quot;</span>, <span class="string">&quot;youknow&quot;</span>, <span class="string">&quot;know&quot;</span>,<span class="string">&quot;2020&quot;</span>);</span><br><span class="line">    ValueOperations&lt;String, User&gt; operations=redisTemplate.opsForValue();</span><br><span class="line">    operations.set(<span class="string">&quot;com.neo&quot;</span>, user);</span><br><span class="line">    User u=operations.get(<span class="string">&quot;com.neo&quot;</span>);</span><br><span class="line">    System.out.println(<span class="string">&quot;user: &quot;</span>+u.toString());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">user:User&#123;id=null, userName=&#x27;know&#x27;, password=&#x27;youknow&#x27;, email=&#x27;ityouknow@126.com&#x27;, nickname=&#x27;smile&#x27;, regTime=&#x27;2020&#x27;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>验证发现完美支持对象的存入和读取。</p>
+<h4 id="超时失效"><a href="#超时失效" class="headerlink" title="超时失效"></a>超时失效</h4><p>Redis 在存入每一个数据的时候都可以设置一个超时时间，过了这个时间就会自动删除数据，这种特性非常适合我们对阶段数据的缓存。</p>
+<p>新建一个 User 对象，存入 Redis 的同时设置 100 毫秒后失效，设置一个线程暂停 1000 毫秒之后，判断数据是否存在并打印结果。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testExpire</span><span class="params">()</span> <span class="keyword">throws</span> InterruptedException &#123;</span><br><span class="line">    User user=<span class="keyword">new</span> <span class="title class_">User</span>(<span class="string">&quot;ityouknow@126.com&quot;</span>, <span class="string">&quot;expire&quot;</span>, <span class="string">&quot;youknow&quot;</span>, <span class="string">&quot;expire&quot;</span>,<span class="string">&quot;2020&quot;</span>);</span><br><span class="line">    ValueOperations&lt;String, User&gt; operations=redisTemplate.opsForValue();</span><br><span class="line">    operations.set(<span class="string">&quot;expire&quot;</span>, user,<span class="number">100</span>,TimeUnit.MILLISECONDS);</span><br><span class="line">    Thread.sleep(<span class="number">1000</span>);</span><br><span class="line">    <span class="type">boolean</span> exists=redisTemplate.hasKey(<span class="string">&quot;expire&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span>(exists)&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;exists is true&quot;</span>);</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;exists is false&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exists is <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="删除数据"><a href="#删除数据" class="headerlink" title="删除数据"></a>删除数据</h4><p>有些时候，我们需要对过期的缓存进行删除，下面来测试此场景的使用。首 set 一个字符串“ityouknow”，紧接着删除此 key 的值，再进行判断。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testDelete</span><span class="params">()</span> &#123;</span><br><span class="line">    ValueOperations&lt;String, User&gt; operations=redisTemplate.opsForValue();</span><br><span class="line">    redisTemplate.opsForValue().set(<span class="string">&quot;deletekey&quot;</span>, <span class="string">&quot;ityouknow&quot;</span>);</span><br><span class="line">    redisTemplate.delete(<span class="string">&quot;deletekey&quot;</span>);</span><br><span class="line">    <span class="type">boolean</span> exists=redisTemplate.hasKey(<span class="string">&quot;deletekey&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span>(exists)&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;exists is true&quot;</span>);</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;exists is false&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exists is <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+
+<p>结果表明字符串“ityouknow”已经被成功删除。</p>
+<h4 id="Hash（哈希）"><a href="#Hash（哈希）" class="headerlink" title="Hash（哈希）"></a>Hash（哈希）</h4><p>一般我们存储一个键，很自然的就会使用 get&#x2F;set 去存储，实际上这并不是很好的做法。Redis 存储一个 key 会有一个最小内存，不管你存的这个键多小，都不会低于这个内存，因此合理的使用 Hash 可以帮我们节省很多内存。</p>
+<p>Hash Set 就在哈希表 Key 中的域（Field）的值设为 value。如果 Key 不存在，一个新的哈希表被创建并进行 Hset 操作；如果域（Field）已经存在于哈希表中，旧值将被覆盖。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testHash</span><span class="params">()</span> &#123;</span><br><span class="line">    HashOperations&lt;String, Object, Object&gt; hash = redisTemplate.opsForHash();</span><br><span class="line">    hash.put(<span class="string">&quot;hash&quot;</span>,<span class="string">&quot;you&quot;</span>,<span class="string">&quot;you&quot;</span>);</span><br><span class="line">    String value=(String) hash.get(<span class="string">&quot;hash&quot;</span>,<span class="string">&quot;you&quot;</span>);</span><br><span class="line">    System.out.println(<span class="string">&quot;hash value :&quot;</span>+value);</span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hash value :you</span><br></pre></td></tr></table></figure>
+
+<p>根据上面测试用例发现，Hash set 的时候需要传入三个参数，第一个为 key，第二个为 Field，第三个为存储的值。一般情况下 Key 代表一组数据，Field 为 key 相关的属性，而 Value 就是属性对应的值。</p>
+<h4 id="List"><a href="#List" class="headerlink" title="List"></a>List</h4><p>Redis List 的应用场景非常多，也是 Redis 最重要的数据结构之一。 使用 List 可以轻松的实现一个队列，List 典型的应用场景就是消息队列，可以利用 List 的 Push 操作，将任务存在 List 中，然后工作线程再用 POP 操作将任务取出进行执行。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testList</span><span class="params">()</span> &#123;</span><br><span class="line">    ListOperations&lt;String, String&gt; list = redisTemplate.opsForList();</span><br><span class="line">    list.leftPush(<span class="string">&quot;list&quot;</span>,<span class="string">&quot;it&quot;</span>);</span><br><span class="line">    list.leftPush(<span class="string">&quot;list&quot;</span>,<span class="string">&quot;you&quot;</span>);</span><br><span class="line">    list.leftPush(<span class="string">&quot;list&quot;</span>,<span class="string">&quot;know&quot;</span>);</span><br><span class="line">    String value=(String)list.leftPop(<span class="string">&quot;list&quot;</span>);</span><br><span class="line">    System.out.println(<span class="string">&quot;list value :&quot;</span>+value.toString());</span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">list value :know</span><br></pre></td></tr></table></figure>
+
+<p>上面的例子我们从左侧插入一个 key 为 “list” 的队列，然后取出左侧最近的一条数据。其实 List 有很多 API 可以操作，比如从右侧进行插入队列从右侧进行读取，或者通过方法 range 读取队列的一部分。接着上面的例子我们使用 range 来读取。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; values=list.range(<span class="string">&quot;list&quot;</span>,<span class="number">0</span>,<span class="number">2</span>);</span><br><span class="line">   <span class="keyword">for</span> (String v:values)&#123;</span><br><span class="line">       System.out.println(<span class="string">&quot;list range :&quot;</span>+v);</span><br><span class="line">   &#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">list range :know</span><br><span class="line">list range :you</span><br><span class="line">list range :it</span><br></pre></td></tr></table></figure>
+
+<p>range 后面的两个参数就是插入数据的位置，输入不同的参数就可以取出队列中对应的数据。</p>
+<blockquote>
+<p>Redis List 的实现为一个双向链表，即可以支持反向查找和遍历，更方便操作，不过带来了部分额外的内存开销，Redis 内部的很多实现，包括发送缓冲队列等也都是用的这个数据结构。</p>
+</blockquote>
+<h4 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h4><p>Redis Set 对外提供的功能与 List 类似是一个列表的功能，特殊之处在于 Set 是可以自动排重的，当你需要存储一个列表数据，又不希望出现重复数据时，Set 是一个很好的选择，并且 Set 提供了判断某个成员是否在一个 Set 集合内的重要接口，这个也是 List 所不能提供的。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testSet</span><span class="params">()</span> &#123;</span><br><span class="line">    String key=<span class="string">&quot;set&quot;</span>;</span><br><span class="line">    SetOperations&lt;String, String&gt; set = redisTemplate.opsForSet();</span><br><span class="line">    set.add(key,<span class="string">&quot;it&quot;</span>);</span><br><span class="line">    set.add(key,<span class="string">&quot;you&quot;</span>);</span><br><span class="line">    set.add(key,<span class="string">&quot;you&quot;</span>);</span><br><span class="line">    set.add(key,<span class="string">&quot;know&quot;</span>);</span><br><span class="line">    Set&lt;String&gt; values=set.members(key);</span><br><span class="line">    <span class="keyword">for</span> (String v:values)&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;set value :&quot;</span>+v);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">set value :it</span><br><span class="line">set value :know</span><br><span class="line">set value :you</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>通过上面的例子我们发现，输入了两个相同的值“you”，全部读取的时候只剩下了一条，说明 Set 对队列进行了自动的排重操作。</p>
+<p>Redis 为集合提供了求交集、并集、差集等操作，可以非常方便的使用。</p>
+<p><strong>测试 difference</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">SetOperations&lt;String, String&gt; set = redisTemplate.opsForSet();</span><br><span class="line">String key1=<span class="string">&quot;setMore1&quot;</span>;</span><br><span class="line">String key2=<span class="string">&quot;setMore2&quot;</span>;</span><br><span class="line">set.add(key1,<span class="string">&quot;it&quot;</span>);</span><br><span class="line">set.add(key1,<span class="string">&quot;you&quot;</span>);</span><br><span class="line">set.add(key1,<span class="string">&quot;you&quot;</span>);</span><br><span class="line">set.add(key1,<span class="string">&quot;know&quot;</span>);</span><br><span class="line">set.add(key2,<span class="string">&quot;xx&quot;</span>);</span><br><span class="line">set.add(key2,<span class="string">&quot;know&quot;</span>);</span><br><span class="line">Set&lt;String&gt; diffs=set.difference(key1,key2);</span><br><span class="line"><span class="keyword">for</span> (String v:diffs)&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;diffs set value :&quot;</span>+v);</span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">diffs set value :it</span><br><span class="line">diffs set value :you</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>根据上面这个例子可以看出，difference() 函数会把 key 1 中不同于 key 2 的数据对比出来，这个特性适合我们在金融场景中对账的时候使用。</p>
+<p><strong>测试 unions</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">SetOperations&lt;String, String&gt; set = redisTemplate.opsForSet();</span><br><span class="line">String key3=<span class="string">&quot;setMore3&quot;</span>;</span><br><span class="line">String key4=<span class="string">&quot;setMore4&quot;</span>;</span><br><span class="line">set.add(key3,<span class="string">&quot;it&quot;</span>);</span><br><span class="line">set.add(key3,<span class="string">&quot;you&quot;</span>);</span><br><span class="line">set.add(key3,<span class="string">&quot;xx&quot;</span>);</span><br><span class="line">set.add(key4,<span class="string">&quot;aa&quot;</span>);</span><br><span class="line">set.add(key4,<span class="string">&quot;bb&quot;</span>);</span><br><span class="line">set.add(key4,<span class="string">&quot;know&quot;</span>);</span><br><span class="line">Set&lt;String&gt; unions=set.union(key3,key4);</span><br><span class="line"><span class="keyword">for</span> (String v:unions)&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;unions value :&quot;</span>+v);</span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">unions value :know</span><br><span class="line">unions value :you</span><br><span class="line">unions value :xx</span><br><span class="line">unions value :it</span><br><span class="line">unions value :bb</span><br><span class="line">unions value :aa</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>根据例子我们发现，unions 会取两个集合的合集，Set 还有其他很多类似的操作，非常方便我们对集合进行数据处理。</p>
+<blockquote>
+<p>Set 的内部实现是一个 Value 永远为 null 的 HashMap，实际就是通过计算 Hash 的方式来快速排重，这也是 Set 能提供判断一个成员是否在集合内的原因。</p>
+</blockquote>
+<h4 id="ZSet"><a href="#ZSet" class="headerlink" title="ZSet"></a>ZSet</h4><p>Redis Sorted Set 的使用场景与 Set 类似，区别是 Set 不是自动有序的，而 Sorted Set 可以通过用户额外提供一个优先级（Score）的参数来为成员排序，并且是插入有序，即自动排序。</p>
+<p>在使用 Zset 的时候需要额外的输入一个参数 Score，Zset 会自动根据 Score 的值对集合进行排序，我们可以利用这个特性来做具有权重的队列，比如普通消息的 Score 为1，重要消息的 Score 为 2，然后工作线程可以选择按 Score 的倒序来获取工作任务。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testZset</span><span class="params">()</span>&#123;</span><br><span class="line">    String key=<span class="string">&quot;zset&quot;</span>;</span><br><span class="line">    redisTemplate.delete(key);</span><br><span class="line">    ZSetOperations&lt;String, String&gt; zset = redisTemplate.opsForZSet();</span><br><span class="line">    zset.add(key,<span class="string">&quot;it&quot;</span>,<span class="number">1</span>);</span><br><span class="line">    zset.add(key,<span class="string">&quot;you&quot;</span>,<span class="number">6</span>);</span><br><span class="line">    zset.add(key,<span class="string">&quot;know&quot;</span>,<span class="number">4</span>);</span><br><span class="line">    zset.add(key,<span class="string">&quot;neo&quot;</span>,<span class="number">3</span>);</span><br><span class="line"></span><br><span class="line">    Set&lt;String&gt; zsets=zset.range(key,<span class="number">0</span>,<span class="number">3</span>);</span><br><span class="line">    <span class="keyword">for</span> (String v:zsets)&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;zset value :&quot;</span>+v);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    Set&lt;String&gt; zsetB=zset.rangeByScore(key,<span class="number">0</span>,<span class="number">3</span>);</span><br><span class="line">    <span class="keyword">for</span> (String v:zsetB)&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;zsetB value :&quot;</span>+v);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">zset value :it</span><br><span class="line">zset value :neo</span><br><span class="line">zset value :know</span><br><span class="line">zset value :you</span><br><span class="line">zsetB value :it</span><br><span class="line">zsetB value :neo</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>通过上面的例子我们发现插入到 Zset 的数据会自动根据 Score 进行排序，根据这个特性我们可以做优先队列等各种常见的场景。另外 Redis 还提供了 rangeByScore 这样的一个方法，可以只获取 Score 范围内排序后的数据。</p>
+<blockquote>
+<p>Redis Sorted Set 的内部使用 HashMap 和跳跃表（SkipList）来保证数据的存储和有序，HashMap 里放的是成员到 Score 的映射，而跳跃表里存放的是所有的成员，排序依据是 HashMap 里存的 Score，使用跳跃表的结构可以获得比较高的查找效率，并且在实现上比较简单。</p>
+</blockquote>
+<h3 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h3><p>在我们实际的使用过程中，不会给每一个使用的类都注入 redisTemplate 来直接使用，一般都会对业务进行简单的包装，最后提供出来对外使用。</p>
+<p>我们举两个例子说明。</p>
+<p>首先定义一个 RedisService 服务，将 RedisTemplate 注入到类中。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">RedisService</span> &#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> RedisTemplate redisTemplate;</span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>封装简单插入操作：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">set</span><span class="params">(<span class="keyword">final</span> String key, Object value)</span> &#123;</span><br><span class="line">    <span class="type">boolean</span> <span class="variable">result</span> <span class="operator">=</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        ValueOperations&lt;Serializable, Object&gt; operations = redisTemplate.opsForValue();</span><br><span class="line">        operations.set(key, value);</span><br><span class="line">        result = <span class="literal">true</span>;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">        logger.error(<span class="string">&quot;set error: key &#123;&#125;, value &#123;&#125;&quot;</span>,key,value,e);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>会对其中出现的异常继续处理，反馈给调用方。</p>
+<p>比如我们想删除某一类的 Key 的值。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">removePattern</span><span class="params">(<span class="keyword">final</span> String pattern)</span> &#123;</span><br><span class="line">    Set&lt;Serializable&gt; keys = redisTemplate.keys(pattern);</span><br><span class="line">    <span class="keyword">if</span> (keys.size() &gt; <span class="number">0</span>)</span><br><span class="line">        redisTemplate.delete(keys);</span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>使用 Redis 的 Pattern 来匹配出一批符合条件的缓存，然后批量进行删除。</p>
+<p>还有其他封装方法，比如删除的时候先判断 Key 是否存在等，这些简单的业务判断都应该封装在 RedisService，对外提供最简单的 API 调用即可。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="keyword">private</span> RedisService redisService;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testString</span><span class="params">()</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">    redisService.set(<span class="string">&quot;neo&quot;</span>, <span class="string">&quot;ityouknow&quot;</span>);</span><br><span class="line">    Assert.assertEquals(<span class="string">&quot;ityouknow&quot;</span>, redisService.get(<span class="string">&quot;neo&quot;</span>));</span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>在其他服务使用的时候将 RedisService 注入其中，调用对应的方法来操作 Redis，这样会更优雅简单一些。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>Redis 是一款非常优秀的高性能缓存中间件，被广泛的使用在各互联网公司中，Spring Boot 对 Redis 的操作提供了很多支持，可以非常方便的去集成。Redis 拥有丰富的数据类型，方便我们在不同的业务场景中去使用，特别是提供了很多内置的高效集合操作，在业务中使用非常方便。</p>
+<h1 id="6-使用-Redis-实现-Session-共享"><a href="#6-使用-Redis-实现-Session-共享" class="headerlink" title="6-使用 Redis 实现 Session 共享"></a>6-使用 Redis 实现 Session 共享</h1><p><strong>Session 复制</strong></p>
+<p>部分 Web 服务器能够支持 Session 复制功能，如 Tomcat。用户可以通过修改 Web 服务器的配置文件，让 Web 服务器进行 Session 复制，保持每一个服务器节点的 Session 数据都能达到一致。</p>
+<p>这种方案的实现依赖于 Web 服务器，需要 Web 服务器有 Session 复制功能。当 Web 应用中 Session 数量较多的时候，每个服务器节点都需要有一部分内存用来存放 Session，将会占用大量内存资源。同时大量的 Session 对象通过网络传输进行复制，不但占用了网络资源，还会因为复制同步出现延迟，导致程序运行错误。</p>
+<p><strong>在微服务架构中，往往需要 N 个服务端来共同支持服务，不建议采用这种方案。</strong></p>
+<p><strong>Session 集中存储</strong></p>
+<p>在单独的服务器或服务器集群上使用缓存技术，如 Redis 存储 Session 数据，集中管理所有的 Session，所有的 Web 服务器都从这个存储介质中存取对应的 Session，实现 Session 共享。将 Session 信息从应用中剥离出来后，其实就达到了服务的无状态化，这样就方便在业务极速发展时水平扩充。</p>
+<p>在微服务架构下，推荐采用此方案，接下来详细介绍。</p>
+<h3 id="Session-共享"><a href="#Session-共享" class="headerlink" title="Session 共享"></a>Session 共享</h3><h4 id="Session"><a href="#Session" class="headerlink" title="Session"></a>Session</h4><p><strong>什么是 Session</strong></p>
+<p>由于 HTTP 协议是无状态的协议，因而服务端需要记录用户的状态时，就需要用某种机制来识具体的用户。Session 是另一种记录客户状态的机制，不同的是 Cookie 保存在客户端浏览器中，而 Session 保存在服务器上。客户端浏览器访问服务器的时候，服务器把客户端信息以某种形式记录在服务器上，这就是 Session。客户端浏览器再次访问时只需要从该 Session 中查找该客户的状态就可以了。</p>
+<p><strong>为什么需要 Session 共享</strong></p>
+<p>在互联网行业中用户量访问巨大，往往需要多个节点共同对外提供某一种服务</p>
+<p>用户的请求首先会到达前置网关，前置网关根据路由策略将请求分发到后端的服务器，这就会出现第一次的请求会交给服务器 A 处理，下次的请求可能会是服务 B 处理，如果不做 Session 共享的话，就有可能出现用户在服务 A 登录了，下次请求的时候到达服务 B 又要求用户重新登录。</p>
+<p>前置网关我们一般使用 lvs、Nginx 或者 F5 等软硬件，有些软件可以指定策略让用户每次请求都分发到同一台服务器中，这也有个弊端，如果当其中一台服务 Down 掉之后，就会出现一批用户交易失效。在实际工作中我们建议使用外部的缓存设备来共享 Session，避免单个节点挂掉而影响服务，使用外部缓存 Session 后，我们的共享数据都会放到外部缓存容器中，服务本身就会变成无状态的服务，可以随意的根据流量的大小增加或者减少负载的设备。</p>
+<p>Spring 官方针对 Session 管理这个问题，提供了专门的组件 Spring Session，使用 Spring Session 在项目中集成分布式 Session 非常方便。</p>
+<h4 id="Spring-Session"><a href="#Spring-Session" class="headerlink" title="Spring Session"></a>Spring Session</h4><p>Spring Session 提供了一套创建和管理 Servlet HttpSession 的方案。Spring Session 提供了集群 Session（Clustered Sessions）功能，默认采用外置的 Redis 来存储 Session 数据，以此来解决 Session 共享的问题。</p>
+<p>Spring Session 为企业级 Java 应用的 Session 管理带来了革新，使得以下的功能更加容易实现：</p>
+<ul>
+<li>API 和用于管理用户会话的实现；</li>
+<li>HttpSession，允许以应用程序容器（即 Tomcat）中性的方式替换 HttpSession；</li>
+<li>将 Session 所保存的状态卸载到特定的外部 Session 存储中，如 Redis 或 Apache Geode 中，它们能够以独立于应用服务器的方式提供高质量的集群；</li>
+<li>支持每个浏览器上使用多个 Session，从而能够很容易地构建更加丰富的终端用户体验；</li>
+<li>控制 Session ID 如何在客户端和服务器之间进行交换，这样的话就能很容易地编写 Restful API，因为它可以从 HTTP 头信息中获取 Session ID，而不必再依赖于 cookie；</li>
+<li>当用户使用 WebSocket 发送请求的时候，能够保持 HttpSession 处于活跃状态。</li>
+</ul>
+<p>需要说明的很重要的一点就是，Spring Session 的核心项目并不依赖于 Spring 框架，因此，我们甚至能够将其应用于不使用 Spring 框架的项目中。</p>
+<p>Spring 为 Spring Session 和 Redis 的集成提供了组件：spring-session-data-redis</p>
+<h4 id="快速集成"><a href="#快速集成" class="headerlink" title="快速集成"></a>快速集成</h4><p><strong>引入依赖包</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.session<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-session-data-redis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.commons<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>commons-pool2<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-data-jpa<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>添加配置文件</strong></p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 数据库配置</span></span><br><span class="line"><span class="attr">spring.datasource.url</span>=<span class="string">jdbc:mysql://localhost:3306/test?serverTimezone=UTC&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=true</span></span><br><span class="line"><span class="attr">spring.datasource.username</span>=<span class="string">root</span></span><br><span class="line"><span class="attr">spring.datasource.password</span>=<span class="string">root</span></span><br><span class="line"><span class="attr">spring.datasource.driver-class-name</span>=<span class="string">com.mysql.cj.jdbc.Driver</span></span><br><span class="line"><span class="comment"># JPA 配置</span></span><br><span class="line"><span class="attr">spring.jpa.properties.hibernate.hbm2ddl.auto</span>=<span class="string">create</span></span><br><span class="line"><span class="attr">spring.jpa.properties.hibernate.dialect</span>=<span class="string">org.hibernate.dialect.MySQL5InnoDBDialect</span></span><br><span class="line"><span class="attr">spring.jpa.show-sql</span>= <span class="string">true</span></span><br><span class="line"><span class="comment"># Redis 配置</span></span><br><span class="line"><span class="comment"># Redis 数据库索引（默认为0）</span></span><br><span class="line"><span class="attr">spring.redis.database</span>=<span class="string">0  </span></span><br><span class="line"><span class="comment"># Redis 服务器地址</span></span><br><span class="line"><span class="attr">spring.redis.host</span>=<span class="string">localhost</span></span><br><span class="line"><span class="comment"># Redis 服务器连接端口</span></span><br><span class="line"><span class="attr">spring.redis.port</span>=<span class="string">6379  </span></span><br><span class="line"><span class="comment"># Redis 服务器连接密码（默认为空）</span></span><br><span class="line"><span class="attr">spring.redis.password</span>=<span class="string"></span></span><br><span class="line"><span class="comment"># 连接池最大连接数（使用负值表示没有限制）</span></span><br><span class="line"><span class="attr">spring.redis.lettuce.pool.max-active</span>=<span class="string">8</span></span><br><span class="line"><span class="attr">spring.redis.lettuce.pool.max-wait</span>=<span class="string">-1</span></span><br><span class="line"><span class="attr">spring.redis.lettuce.shutdown-timeout</span>=<span class="string">100</span></span><br><span class="line"><span class="attr">spring.redis.lettuce.pool.max-idle</span>=<span class="string">8</span></span><br><span class="line"><span class="attr">spring.redis.lettuce.pool.min-idle</span>=<span class="string">0</span></span><br></pre></td></tr></table></figure>
+
+<p>整体配置分为三块：数据库配置、JPA 配置、Redis 配置，具体配置项在前面课程都有所介绍。</p>
+<p>在项目中创建 SessionConfig 类，使用注解配置其过期时间。</p>
+<p><strong>Session 配置：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableRedisHttpSession(maxInactiveIntervalInSeconds = 86400*30)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SessionConfig</span> &#123;</span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>maxInactiveIntervalInSeconds: 设置 Session 失效时间，使用 Redis Session 之后，原 Spring Boot 中的 server.session.timeout 属性不再生效。</p>
+</blockquote>
+<p>仅仅需要这两步 Spring Boot 分布式 Session 就配置完成了。</p>
+<h4 id="测试验证"><a href="#测试验证" class="headerlink" title="测试验证"></a>测试验证</h4><p>我们在 Web 层写两个方法进行验证。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(value = &quot;/setSession&quot;)</span></span><br><span class="line"><span class="keyword">public</span> Map&lt;String, Object&gt; <span class="title function_">setSession</span> <span class="params">(HttpServletRequest request)</span>&#123;</span><br><span class="line">    Map&lt;String, Object&gt; map = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">    request.getSession().setAttribute(<span class="string">&quot;message&quot;</span>, request.getRequestURL());</span><br><span class="line">    map.put(<span class="string">&quot;request Url&quot;</span>, request.getRequestURL());</span><br><span class="line">    <span class="keyword">return</span> map;</span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>上述方法中获取本次请求的请求地址，并把请求地址放入 Key 为 message 的 Session 中，同时结果返回页面。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(value = &quot;/getSession&quot;)</span></span><br><span class="line"><span class="keyword">public</span> Object <span class="title function_">getSession</span> <span class="params">(HttpServletRequest request)</span>&#123;</span><br><span class="line">    Map&lt;String, Object&gt; map = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">    map.put(<span class="string">&quot;sessionId&quot;</span>, request.getSession().getId());</span><br><span class="line">    map.put(<span class="string">&quot;message&quot;</span>, request.getSession().getAttribute(<span class="string">&quot;message&quot;</span>));</span><br><span class="line">    <span class="keyword">return</span> map;</span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>getSession() 方法获取 Session 中的 Session Id 和 Key 为 message 的信息，将获取到的信息封装到 Map 中并在页面展示。</p>
+<p>在测试前我们需要将项目 spring-boot-redis-session 复制一份，改名为 spring-boot-redis-session-1 并将端口改为：9090(server.port&#x3D;9090)。修改完成后依次启动两个项目。</p>
+<p>首先访问 8080 端口的服务，浏览器输入网址 <a target="_blank" rel="noopener" href="http://localhost:8080/setSession%EF%BC%8C%E8%BF%94%E5%9B%9E%EF%BC%9A%60%7B%22request">http://localhost:8080/setSession，返回：`{&quot;request</a> Url”:”<a target="_blank" rel="noopener" href="http://localhost:8080/setSession%22%7D%60%EF%BC%9B%E6%B5%8F%E8%A7%88%E5%99%A8%E6%A0%8F%E8%BE%93%E5%85%A5%E7%BD%91%E5%9D%80">http://localhost:8080/setSession&quot;}`；浏览器栏输入网址</a> <a target="_blank" rel="noopener" href="http://localhost:8080/getSession%EF%BC%8C%E8%BF%94%E5%9B%9E%E4%BF%A1%E6%81%AF%E5%A6%82%E4%B8%8B%EF%BC%9A">http://localhost:8080/getSession，返回信息如下：</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;sessionId&quot;:&quot;432765e1-049e-4e76-980c-d7f55a232d42&quot;,&quot;message&quot;:&quot;http://localhost:8080/setSession&quot;&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>说明 Url 地址信息已经存入到 Session 中。</p>
+<p>访问 9090 端口的服务，浏览器栏输入网址 <a target="_blank" rel="noopener" href="http://localhost:9090/getSession%EF%BC%8C%E8%BF%94%E5%9B%9E%E4%BF%A1%E6%81%AF%E5%A6%82%E4%B8%8B%EF%BC%9A">http://localhost:9090/getSession，返回信息如下：</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;sessionId&quot;:&quot;432765e1-049e-4e76-980c-d7f55a232d42&quot;,&quot;message&quot;:&quot;http://localhost:8080/setSession&quot;&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>通过对比发现，8080 和 9090 服务返回的 Session 信息完全一致，说明已经实现了 Session 共享。</p>
+<h4 id="模拟登录"><a href="#模拟登录" class="headerlink" title="模拟登录"></a>模拟登录</h4><p>在实际中作中常常使用共享 Session 的方式去保存用户的登录状态，避免用户在不同的页面多次登录。我们来简单模拟一下这个场景，假设有一个 index 页面，必须是登录的用户才可以访问，如果用户没有登录给出请登录的提示。在一台实例上登录后，再次访问另外一台的 index 看它是否需要再次登录，来验证统一登录是否成功。</p>
+<p>添加登录方法，登录成功后将用户信息存放到 Session 中。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(value = &quot;/login&quot;)</span></span><br><span class="line"><span class="keyword">public</span> String <span class="title function_">login</span> <span class="params">(HttpServletRequest request,String userName,String password)</span>&#123;</span><br><span class="line">    String msg=<span class="string">&quot;logon failure!&quot;</span>;</span><br><span class="line">    User user= userRepository.findByUserName(userName);</span><br><span class="line">    <span class="keyword">if</span> (user!=<span class="literal">null</span> &amp;&amp; user.getPassword().equals(password))&#123;</span><br><span class="line">        request.getSession().setAttribute(<span class="string">&quot;user&quot;</span>,user);</span><br><span class="line">        msg=<span class="string">&quot;login successful!&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> msg;</span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>通过 JPA 的方式查询数据库中的用户名和密码，通过对比判断是否登录成功，成功后将用户信息存储到 Session 中。</p>
+<p>在添加一个登出的方法，清除掉用户的 Session 信息。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(value = &quot;/loginout&quot;)</span></span><br><span class="line"><span class="keyword">public</span> String <span class="title function_">loginout</span> <span class="params">(HttpServletRequest request)</span>&#123;</span><br><span class="line">    request.getSession().removeAttribute(<span class="string">&quot;user&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;loginout successful!&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>定义 index 方法，只有用户登录之后才会看到：index content ，否则提示请先登录。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(value = &quot;/index&quot;)</span></span><br><span class="line"><span class="keyword">public</span> String <span class="title function_">index</span> <span class="params">(HttpServletRequest request)</span>&#123;</span><br><span class="line">    String msg=<span class="string">&quot;index content&quot;</span>;</span><br><span class="line">    Object user= request.getSession().getAttribute(<span class="string">&quot;user&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (user==<span class="literal">null</span>)&#123;</span><br><span class="line">        msg=<span class="string">&quot;please login first！&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> msg;</span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>和上面一样我们需要将项目复制为两个，第二个项目的端口改为 9090，依次启动两个项目。在 test 数据库中的 user 表添加一个用户名为 neo，密码为 123456 的用户，脚本如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO `user` VALUES (&#x27;1&#x27;, &#x27;ityouknow@126.com&#x27;, &#x27;smile&#x27;, &#x27;123456&#x27;, &#x27;2018&#x27;, &#x27;neo&#x27;);</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>也可以利用 Spring Data JPA 特性在应用启动时完成数据初始化：当配置 spring.jpa.hibernate.ddl-auto : create-drop，在应用启动时，自动根据 Entity 生成表，并且执行 classpath 下的 import.sql。</p>
+</blockquote>
+<p>首先测试 8080 端口的服务，直接访问网址 <a target="_blank" rel="noopener" href="http://localhost:8080/index%EF%BC%8C%E8%BF%94%E5%9B%9E%EF%BC%9Aplease">http://localhost:8080/index，返回：please</a> login first！提示请先登录。我们将验证用户名为 neo，密码为 123456 的用户登录。访问地址 <a target="_blank" rel="noopener" href="http://localhost:8080/login?userName=neo&password=123456">http://localhost:8080/login?userName=neo&amp;password=123456</a> 模拟用户登录，返回：login successful!，提示登录成功。我们再次访问地址 <a target="_blank" rel="noopener" href="http://localhost:8080/index%EF%BC%8C%E8%BF%94%E5%9B%9E">http://localhost:8080/index，返回</a> index content 说明已经可以查看受限的资源。</p>
+<p>再来测试 9090 端口的服务，直接访问网址 <a target="_blank" rel="noopener" href="http://localhost:9090/index%EF%BC%8C%E9%A1%B5%E9%9D%A2%E8%BF%94%E5%9B%9E">http://localhost:9090/index，页面返回</a> index content，并没有提示请先进行登录，这说明 9090 服务已经同步了用户的登录状态，达到了统一登录的目的。</p>
+<p>我们在 8080 服务上测试用户退出系统，再来验证 9090 的用户登录状态是否同步失效。首先访问地址 <a target="_blank" rel="noopener" href="http://localhost:8080/loginout">http://localhost:8080/loginout</a> 模拟用户在 8080 服务上退出，访问网址 <a target="_blank" rel="noopener" href="http://localhost:8080/index%EF%BC%8C%E8%BF%94%E5%9B%9E">http://localhost:8080/index，返回</a> please login first！说明用户在 8080 服务上已经退出。再次访问地址 <a target="_blank" rel="noopener" href="http://localhost:9090/index%EF%BC%8C%E9%A1%B5%E9%9D%A2%E8%BF%94%E5%9B%9E%EF%BC%9Aplease">http://localhost:9090/index，页面返回：please</a> login first！，说明 9090 服务上的退出状态也进行了同步。</p>
+<h3 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h3><p>在微服务架构下，系统被分割成大量的小而相互关联的微服务，因此需要考虑分布式 Session 管理，方便平台架构升级时水平扩充。通过向架构中引入高性能的缓存服务器，将整个微服务架构下的 Session 进行统一管理。</p>
+<p>Spring Session 是 Spring 官方提供的 Session 管理组件，集成到 Spring Boot 项目中轻松解决分布式 Session 管理的问题。</p>
+
+        </div>
+        
+<blockquote class="copyright">
+    <p><strong>本文链接 : </strong><a class="permalink" href="http://yoursite.com/2022/05/17/Java-Stage3-Step3.3-Redis/">http://yoursite.com/2022/05/17/Java-Stage3-Step3.3-Redis/</a></p>
+    <p><strong>This article is available under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)</a> License</strong></p>
+</blockquote>
+
+
+    </article>
+    
+    <section id="comments">
+        
+    </section>
+
+
+    
+
+</main>
+
+
+<aside style="" id="sidebar" class="aside aside-fixture">
+    <div class="toc-sidebar">
+        <nav id="toc" class="article-toc">
+            <h3 class="toc-title">Catalogue</h3>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BB%E8%A6%81%E6%AD%A5%E9%AA%A4%EF%BC%9A"><span class="toc-number">1.</span> <span class="toc-text">主要步骤：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-Redis%E5%86%85%E5%AD%98%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%AE%89%E8%A3%85"><span class="toc-number"></span> <span class="toc-text">1-Redis内存数据库的安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81Linux%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.</span> <span class="toc-text">1、Linux系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81Windows%E7%B3%BB%E7%BB%9F"><span class="toc-number">2.</span> <span class="toc-text">2、Windows系统</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-Redis%E7%9A%84%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE"><span class="toc-number"></span> <span class="toc-text">2-Redis的常用基本配置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-Redis%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4"><span class="toc-number"></span> <span class="toc-text">3-Redis基本命令</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5Redis"><span class="toc-number"></span> <span class="toc-text">4-远程连接Redis</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81Linux%E4%B8%AD%E8%AE%BE%E7%BD%AE%EF%BC%9Aredis"><span class="toc-number">1.</span> <span class="toc-text">1、Linux中设置：redis</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81Windows%EF%BC%9A"><span class="toc-number">2.</span> <span class="toc-text">2、Windows：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#fastjson%EF%BC%9A"><span class="toc-number">3.</span> <span class="toc-text">fastjson：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%80%9A%E8%BF%87json%E5%B0%86%E5%88%97%E8%A1%A8%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%98%E5%82%A8%E5%88%B0Redis%E4%B8%AD%EF%BC%9A"><span class="toc-number">3.0.1.</span> <span class="toc-text">通过json将列表序列化存储到Redis中：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2Redis%E6%95%B0%E6%8D%AE%E9%87%8D%E6%96%B0%E8%BD%AC%E5%8C%96%E4%B8%BAJava%EF%BC%9A"><span class="toc-number">3.0.2.</span> <span class="toc-text">查询Redis数据重新转化为Java：</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-Spring-Boot-Redis"><span class="toc-number"></span> <span class="toc-text">5-Spring Boot Redis</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Redis-%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.</span> <span class="toc-text">Redis 介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#spring-boot-starter-data-redis"><span class="toc-number">2.</span> <span class="toc-text">spring-boot-starter-data-redis</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E9%85%8D%E7%BD%AE"><span class="toc-number">2.1.</span> <span class="toc-text">相关配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%93%E5%AD%98%E9%85%8D%E7%BD%AE"><span class="toc-number">2.2.</span> <span class="toc-text">缓存配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E4%BD%BF%E7%94%A8"><span class="toc-number">2.3.</span> <span class="toc-text">测试使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E4%BD%93"><span class="toc-number">2.4.</span> <span class="toc-text">实体</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B6%85%E6%97%B6%E5%A4%B1%E6%95%88"><span class="toc-number">2.5.</span> <span class="toc-text">超时失效</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE"><span class="toc-number">2.6.</span> <span class="toc-text">删除数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Hash%EF%BC%88%E5%93%88%E5%B8%8C%EF%BC%89"><span class="toc-number">2.7.</span> <span class="toc-text">Hash（哈希）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#List"><span class="toc-number">2.8.</span> <span class="toc-text">List</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Set"><span class="toc-number">2.9.</span> <span class="toc-text">Set</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ZSet"><span class="toc-number">2.10.</span> <span class="toc-text">ZSet</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%81%E8%A3%85"><span class="toc-number">3.</span> <span class="toc-text">封装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">4.</span> <span class="toc-text">总结</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-%E4%BD%BF%E7%94%A8-Redis-%E5%AE%9E%E7%8E%B0-Session-%E5%85%B1%E4%BA%AB"><span class="toc-number"></span> <span class="toc-text">6-使用 Redis 实现 Session 共享</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Session-%E5%85%B1%E4%BA%AB"><span class="toc-number">1.</span> <span class="toc-text">Session 共享</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Session"><span class="toc-number">1.1.</span> <span class="toc-text">Session</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Spring-Session"><span class="toc-number">1.2.</span> <span class="toc-text">Spring Session</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E9%9B%86%E6%88%90"><span class="toc-number">1.3.</span> <span class="toc-text">快速集成</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E9%AA%8C%E8%AF%81"><span class="toc-number">1.4.</span> <span class="toc-text">测试验证</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A8%A1%E6%8B%9F%E7%99%BB%E5%BD%95"><span class="toc-number">1.5.</span> <span class="toc-text">模拟登录</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-1"><span class="toc-number">2.</span> <span class="toc-text">总结</span></a></li></ol>
+        </nav>
+    </div>
+</aside>
+
+
+
+
+
+        </section>
+        <footer class="hidden lg:block fixed bottom-0 left-0 sm:w-1/12 lg:w-1/6 bg-gray-100 z-40">
+    
+    <div class="footer-social-links">
+        
+            <a target="_blank" rel="noopener" href="https://github.com/fengkx">
+                <i class="iconfont icon-github"></i>
+            </a>
+        
+            <a target="_blank" rel="noopener" href="https://t.me/fengkx">
+                <i class="iconfont icon-telegram"></i>
+            </a>
+        
+            <a target="_blank" rel="noopener" href="https://twitter.com/example">
+                <i class="iconfont icon-twitter"></i>
+            </a>
+        
+            <a href="/atom.xml">
+                <i class="iconfont icon-rss"></i>
+            </a>
+        
+    </div>
+    
+    
+</footer>
+
+        <div id="mask" class="hidden mask fixed inset-0 bg-gray-900 opacity-75 z-40"></div>
+        <div id="search-view-container" class="hidden shadow-xl"></div>
+        
+<script src="/js/dom-event.min.js"></script>
+
+
+
+<script src="/js/local-search.min.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/js/lightgallery.min.js"></script>
+    
+<script src="/js/light-gallery.min.js"></script>
+
+
+
+
+
+
+    </body>
+</html>
