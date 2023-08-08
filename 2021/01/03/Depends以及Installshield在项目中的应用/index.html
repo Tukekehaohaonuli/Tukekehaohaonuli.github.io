@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html  lang="english" >
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+    <title>Tukekenulia</title>
+    <meta name="description" content="主要流程：项目过程中遇到一些总结 1、Depends的使用 2、Installshield的使用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tukekenulia">
+<meta property="og:url" content="http://yoursite.com/2021/01/03/Depends%E4%BB%A5%E5%8F%8AInstallshield%E5%9C%A8%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/index.html">
+<meta property="og:site_name" content="Tukekenulia">
+<meta property="og:description" content="主要流程：项目过程中遇到一些总结 1、Depends的使用 2、Installshield的使用">
+<meta property="og:locale">
+<meta property="og:image" content="http://yoursite.com/images/Depends%E4%BB%A5%E5%8F%8AInstallshield%E5%9C%A8%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/1.png">
+<meta property="og:image" content="http://yoursite.com/images/Depends%E4%BB%A5%E5%8F%8AInstallshield%E5%9C%A8%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/2.png">
+<meta property="og:image" content="http://yoursite.com/images/Depends%E4%BB%A5%E5%8F%8AInstallshield%E5%9C%A8%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/3.png">
+<meta property="og:image" content="http://yoursite.com/images/Depends%E4%BB%A5%E5%8F%8AInstallshield%E5%9C%A8%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/4.png">
+<meta property="og:image" content="http://yoursite.com/images/Depends%E4%BB%A5%E5%8F%8AInstallshield%E5%9C%A8%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/5.png">
+<meta property="og:image" content="http://yoursite.com/images/Depends%E4%BB%A5%E5%8F%8AInstallshield%E5%9C%A8%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/6.png">
+<meta property="og:image" content="http://yoursite.com/images/Depends%E4%BB%A5%E5%8F%8AInstallshield%E5%9C%A8%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/7.png">
+<meta property="og:image" content="http://yoursite.com/images/Depends%E4%BB%A5%E5%8F%8AInstallshield%E5%9C%A8%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/9.png">
+<meta property="og:image" content="http://yoursite.com/images/Depends%E4%BB%A5%E5%8F%8AInstallshield%E5%9C%A8%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/10.png">
+<meta property="og:image" content="http://yoursite.com/images/Depends%E4%BB%A5%E5%8F%8AInstallshield%E5%9C%A8%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/8.png">
+<meta property="article:published_time" content="2021-01-03T15:34:20.000Z">
+<meta property="article:modified_time" content="2021-01-03T15:34:20.000Z">
+<meta property="article:author" content="Tukeke">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/images/Depends%E4%BB%A5%E5%8F%8AInstallshield%E5%9C%A8%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/1.png">
+
+    
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+
+    
+<link rel="stylesheet" href="/css/common.min.css">
+
+
+
+    
+    
+    
+    
+        <link href="//cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/css/lightgallery.min.css" rel="stylesheet">
+    
+    
+    
+<link rel="stylesheet" href="/css/iconfont.min.css">
+
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+    <body>
+        <header class="header header-fixture">
+    <div class="profile-search-wrap flex sm:block">
+        
+        
+        <div class="profile sm:text-center md:px-1 lg:px-3 sm:pb-4 sm:pt-6">
+            <a id="avatar" role="link" href="https://github.com/fengkx" class="inline-block lg:w-16 lg:h-16 w-8 h-8 m-2" target="_blank" rel="noopener" rel="noreferrer" >
+                <img src="https://www.gravatar.com/avatar/0bc83cb571cd1c50ba6f3e8a78ef1346?s=128" class="rounded-full" alt="avatar">
+            </a>
+            <h2 id="name" class="hidden lg:block">fengkx</h2>
+            <h3 id="title" class="hidden lg:block">Student &amp; Coder</h3>
+            
+            <small id="location" class="hidden lg:block">
+                <i class="iconfont icon-map-icon"></i>
+                Guangzhou, China
+            </small>
+            
+        </div>
+        
+        
+<div class="search flex-1 flex lg:inline-block sm:hidden lg:px-4 lg:mt-2 lg:mb-4 lg:w-full">
+    <form id="search-form" class="my-auto flex-1 lg:border lg:border-solid lg:border-gray-200">
+        <div class="input-group table bg-gray-100 lg:bg-white w-full">
+            <input id="search-input" type="text" placeholder="Search" class="inline-block w-full bg-gray-100 lg:bg-white p-1">
+            <span class="table-cell">
+                <button name="search tigger button" disabled>
+                    <i class="iconfont icon-search m-2"></i>
+                </button>
+            </span>
+        </div>
+    </form>
+        
+<div id="content-json" data-placeholder="Search" class="invisible hidden">/content.json</div>
+<script id="search-teamplate" type="text/html" data-path="/content.json">
+    <div>
+        <div class="search-header bg-gray-400">
+            <input id="actual-search-input" model="keyword" ref="input" class="inline-block w-full h-10 px-2 py-1" placeholder="Search" type="text">
+        </div>
+        <div class="search-result bg-gray-200">
+            {{#each searchPosts}}
+            <a href="/{{ path }}" class="result-item block px-2 pb-3 mb-1 pt-1 hover:bg-indigo-100">
+                <i class="iconfont icon-file"></i>
+                <h1 class="result-title inline font-medium text-lg">{{ title }}</h1>
+                <p class="result-content text-gray-600 text-sm">{{{ text }}}</p>
+            </a>
+            {{/each}}
+        </div>
+    </div>
+</script>
+
+</div>
+
+
+        <button name="menu toogle button" id="menu-toggle-btn" class="block sm:hidden p-3" role="button" aria-expanded="false">
+            <i class="iconfont icon-hamburger"></i>
+        </button>
+    </div>
+    <nav id="menu-nav" class="hidden sm:flex flex-col">
+        
+        
+            <div class="menu-item menu-home" role="menuitem">
+                <a href="/.">
+                    <i class="iconfont icon-home" aria-hidden="true"></i>
+                    <span class="menu-title">Home</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-archives" role="menuitem">
+                <a href="/archives">
+                    <i class="iconfont icon-archive" aria-hidden="true"></i>
+                    <span class="menu-title">Archives</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-categories" role="menuitem">
+                <a href="/categories">
+                    <i class="iconfont icon-folder" aria-hidden="true"></i>
+                    <span class="menu-title">Categories</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-tags" role="menuitem">
+                <a href="/tags">
+                    <i class="iconfont icon-tag" aria-hidden="true"></i>
+                    <span class="menu-title">Tags</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-repository" role="menuitem">
+                <a href="/repository">
+                    <i class="iconfont icon-project" aria-hidden="true"></i>
+                    <span class="menu-title">Repository</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-links" role="menuitem">
+                <a href="/links">
+                    <i class="iconfont icon-friend" aria-hidden="true"></i>
+                    <span class="menu-title">Links</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-about" role="menuitem">
+                <a href="/about">
+                    <i class="iconfont icon-cup" aria-hidden="true"></i>
+                    <span class="menu-title">About</span>
+                </a>
+            </div>
+        
+        
+<div class="social-links flex sm:flex-col lg:hidden mt-5">
+    
+        <span class="social-item text-center">
+            <a target="_blank" rel="noopener" href="https://github.com/fengkx">
+                <i class="iconfont social-icon icon-github"></i>
+                <span class="menu-title hidden lg:inline">menu.github</span>
+            </a>
+        </span>
+    
+        <span class="social-item text-center">
+            <a target="_blank" rel="noopener" href="https://t.me/fengkx">
+                <i class="iconfont social-icon icon-telegram"></i>
+                <span class="menu-title hidden lg:inline">menu.telegram</span>
+            </a>
+        </span>
+    
+        <span class="social-item text-center">
+            <a target="_blank" rel="noopener" href="https://twitter.com/example">
+                <i class="iconfont social-icon icon-twitter"></i>
+                <span class="menu-title hidden lg:inline">menu.twitter</span>
+            </a>
+        </span>
+    
+        <span class="social-item text-center">
+            <a href="/atom.xml">
+                <i class="iconfont social-icon icon-rss"></i>
+                <span class="menu-title hidden lg:inline">menu.rss</span>
+            </a>
+        </span>
+    
+</div>
+
+
+    </nav>
+</header>
+
+        <section class="main-section">
+            
+    <main class="flex-1 px-4 py-14 md:px-5 lg:px-8 lg:py-4 relative min-h-screen">
+    
+
+    <article class="content article article-archives article-type-list" itemscope="">
+        <header class="article-header">
+            
+
+
+            <p class="article-meta mb-3 text-xs">
+                <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2021/01/03/Depends%E4%BB%A5%E5%8F%8AInstallshield%E5%9C%A8%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/" class="article-date">
+	  <time datetime="2021-01-03T15:34:20.000Z" itemprop="datePublished">Jan 3</time>
+	</a>
+</span>
+
+                
+
+                
+
+                <span class="_partial/post-comment"><i class="icon icon-comment"></i>
+                    <a href="/2021/01/03/Depends%E4%BB%A5%E5%8F%8AInstallshield%E5%9C%A8%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/#comments" class="article-comment-link">
+                        Comments
+                    </a>
+                </span>
+                
+
+            </p>
+        </header>
+        <div class="marked-body article-body">
+            <p>主要流程：项目过程中遇到一些总结</p>
+<p>1、Depends的使用</p>
+<p>2、Installshield的使用</p>
+<span id="more"></span>
+
+<h3 id="1-Depends软件的使用"><a href="#1-Depends软件的使用" class="headerlink" title="1-Depends软件的使用"></a>1-Depends软件的使用</h3><p>遇到0X000007b错误时是因为缺少依赖库，使用dependecy walker可以查看一个项目依赖的dll，并且可以在模块中查看dll是X86还是64位的。下图中一般API开头的dll不需要管。</p>
+<p>下载dll的网址：<a target="_blank" rel="noopener" href="https://cn.dll-files.com/">https://cn.dll-files.com/</a></p>
+<p><img src="/images/Depends%E4%BB%A5%E5%8F%8AInstallshield%E5%9C%A8%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/1.png" alt="1"></p>
+<h3 id="2-编译成-exe文件后，是不需要头文件和-CPP文件的；编译成静态库-lib时，需要头文件以及-CPP文件，以便后续的程序能够调用到该程序。"><a href="#2-编译成-exe文件后，是不需要头文件和-CPP文件的；编译成静态库-lib时，需要头文件以及-CPP文件，以便后续的程序能够调用到该程序。" class="headerlink" title="2-编译成.exe文件后，是不需要头文件和.CPP文件的；编译成静态库.lib时，需要头文件以及.CPP文件，以便后续的程序能够调用到该程序。"></a>2-编译成.exe文件后，是不需要头文件和.CPP文件的；编译成静态库.lib时，需要头文件以及.CPP文件，以便后续的程序能够调用到该程序。</h3><h3 id="用到atoi函数一定要保证最后要有结束标志-0，在debug模式下会多一些内存的自动分配，因此有些数组的越界在debug模式下不会发生，但是放到release模式下会发生越界。"><a href="#用到atoi函数一定要保证最后要有结束标志-0，在debug模式下会多一些内存的自动分配，因此有些数组的越界在debug模式下不会发生，但是放到release模式下会发生越界。" class="headerlink" title="用到atoi函数一定要保证最后要有结束标志\0，在debug模式下会多一些内存的自动分配，因此有些数组的越界在debug模式下不会发生，但是放到release模式下会发生越界。"></a>用到atoi函数一定要保证最后要有结束标志\0，在debug模式下会多一些内存的自动分配，因此有些数组的越界在debug模式下不会发生，但是放到release模式下会发生越界。</h3><h3 id="Debug和Release不一样，首先怀疑内存越界问题"><a href="#Debug和Release不一样，首先怀疑内存越界问题" class="headerlink" title="Debug和Release不一样，首先怀疑内存越界问题"></a>Debug和Release不一样，首先怀疑内存越界问题</h3><h3 id="3-Installshield的打包过程"><a href="#3-Installshield的打包过程" class="headerlink" title="3-Installshield的打包过程"></a>3-Installshield的打包过程</h3><p>可以使用installshield将工程目录打包，它可以自动导入需要该项目需要的dll，流程是选择.exe文件即可。</p>
+<p><img src="/images/Depends%E4%BB%A5%E5%8F%8AInstallshield%E5%9C%A8%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/2.png" alt="2"></p>
+<p><img src="/images/Depends%E4%BB%A5%E5%8F%8AInstallshield%E5%9C%A8%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/3.png" alt="3"></p>
+<p><img src="/images/Depends%E4%BB%A5%E5%8F%8AInstallshield%E5%9C%A8%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/4.png" alt="4"></p>
+<p><img src="/images/Depends%E4%BB%A5%E5%8F%8AInstallshield%E5%9C%A8%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/5.png" alt="5"></p>
+<p><img src="/images/Depends%E4%BB%A5%E5%8F%8AInstallshield%E5%9C%A8%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/6.png" alt="6"></p>
+<p><img src="/images/Depends%E4%BB%A5%E5%8F%8AInstallshield%E5%9C%A8%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/7.png" alt="7"></p>
+<p><img src="/images/Depends%E4%BB%A5%E5%8F%8AInstallshield%E5%9C%A8%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/9.png" alt="9"></p>
+<p><img src="/images/Depends%E4%BB%A5%E5%8F%8AInstallshield%E5%9C%A8%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/10.png" alt="10"></p>
+<p><img src="/images/Depends%E4%BB%A5%E5%8F%8AInstallshield%E5%9C%A8%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/8.png" alt="8"></p>
+
+        </div>
+        
+<blockquote class="copyright">
+    <p><strong>Link to this article : </strong><a class="permalink" href="http://yoursite.com/2021/01/03/Depends%E4%BB%A5%E5%8F%8AInstallshield%E5%9C%A8%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/">http://yoursite.com/2021/01/03/Depends以及Installshield在项目中的应用/</a></p>
+    <p><strong>This article is available under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)</a> License</strong></p>
+</blockquote>
+
+
+    </article>
+    
+    <section id="comments">
+        
+    </section>
+
+
+    
+
+</main>
+
+
+<aside style="" id="sidebar" class="aside aside-fixture">
+    <div class="toc-sidebar">
+        <nav id="toc" class="article-toc">
+            <h3 class="toc-title">Catalogue</h3>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Depends%E8%BD%AF%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">1.</span> <span class="toc-text">1-Depends软件的使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%BC%96%E8%AF%91%E6%88%90-exe%E6%96%87%E4%BB%B6%E5%90%8E%EF%BC%8C%E6%98%AF%E4%B8%8D%E9%9C%80%E8%A6%81%E5%A4%B4%E6%96%87%E4%BB%B6%E5%92%8C-CPP%E6%96%87%E4%BB%B6%E7%9A%84%EF%BC%9B%E7%BC%96%E8%AF%91%E6%88%90%E9%9D%99%E6%80%81%E5%BA%93-lib%E6%97%B6%EF%BC%8C%E9%9C%80%E8%A6%81%E5%A4%B4%E6%96%87%E4%BB%B6%E4%BB%A5%E5%8F%8A-CPP%E6%96%87%E4%BB%B6%EF%BC%8C%E4%BB%A5%E4%BE%BF%E5%90%8E%E7%BB%AD%E7%9A%84%E7%A8%8B%E5%BA%8F%E8%83%BD%E5%A4%9F%E8%B0%83%E7%94%A8%E5%88%B0%E8%AF%A5%E7%A8%8B%E5%BA%8F%E3%80%82"><span class="toc-number">2.</span> <span class="toc-text">2-编译成.exe文件后，是不需要头文件和.CPP文件的；编译成静态库.lib时，需要头文件以及.CPP文件，以便后续的程序能够调用到该程序。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8%E5%88%B0atoi%E5%87%BD%E6%95%B0%E4%B8%80%E5%AE%9A%E8%A6%81%E4%BF%9D%E8%AF%81%E6%9C%80%E5%90%8E%E8%A6%81%E6%9C%89%E7%BB%93%E6%9D%9F%E6%A0%87%E5%BF%97-0%EF%BC%8C%E5%9C%A8debug%E6%A8%A1%E5%BC%8F%E4%B8%8B%E4%BC%9A%E5%A4%9A%E4%B8%80%E4%BA%9B%E5%86%85%E5%AD%98%E7%9A%84%E8%87%AA%E5%8A%A8%E5%88%86%E9%85%8D%EF%BC%8C%E5%9B%A0%E6%AD%A4%E6%9C%89%E4%BA%9B%E6%95%B0%E7%BB%84%E7%9A%84%E8%B6%8A%E7%95%8C%E5%9C%A8debug%E6%A8%A1%E5%BC%8F%E4%B8%8B%E4%B8%8D%E4%BC%9A%E5%8F%91%E7%94%9F%EF%BC%8C%E4%BD%86%E6%98%AF%E6%94%BE%E5%88%B0release%E6%A8%A1%E5%BC%8F%E4%B8%8B%E4%BC%9A%E5%8F%91%E7%94%9F%E8%B6%8A%E7%95%8C%E3%80%82"><span class="toc-number">3.</span> <span class="toc-text">用到atoi函数一定要保证最后要有结束标志\0，在debug模式下会多一些内存的自动分配，因此有些数组的越界在debug模式下不会发生，但是放到release模式下会发生越界。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Debug%E5%92%8CRelease%E4%B8%8D%E4%B8%80%E6%A0%B7%EF%BC%8C%E9%A6%96%E5%85%88%E6%80%80%E7%96%91%E5%86%85%E5%AD%98%E8%B6%8A%E7%95%8C%E9%97%AE%E9%A2%98"><span class="toc-number">4.</span> <span class="toc-text">Debug和Release不一样，首先怀疑内存越界问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Installshield%E7%9A%84%E6%89%93%E5%8C%85%E8%BF%87%E7%A8%8B"><span class="toc-number">5.</span> <span class="toc-text">3-Installshield的打包过程</span></a></li></ol>
+        </nav>
+    </div>
+</aside>
+
+
+
+
+
+        </section>
+        <footer class="hidden lg:block fixed bottom-0 left-0 sm:w-1/12 lg:w-1/6 bg-gray-100 z-40">
+    
+    <div class="footer-social-links">
+        
+            <a target="_blank" rel="noopener" href="https://github.com/fengkx">
+                <i class="iconfont icon-github"></i>
+            </a>
+        
+            <a target="_blank" rel="noopener" href="https://t.me/fengkx">
+                <i class="iconfont icon-telegram"></i>
+            </a>
+        
+            <a target="_blank" rel="noopener" href="https://twitter.com/example">
+                <i class="iconfont icon-twitter"></i>
+            </a>
+        
+            <a href="/atom.xml">
+                <i class="iconfont icon-rss"></i>
+            </a>
+        
+    </div>
+    
+    
+</footer>
+
+        <div id="mask" class="hidden mask fixed inset-0 bg-gray-900 opacity-75 z-40"></div>
+        <div id="search-view-container" class="hidden shadow-xl"></div>
+        
+<script src="/js/dom-event.min.js"></script>
+
+
+
+<script src="/js/local-search.min.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/js/lightgallery.min.js"></script>
+    
+<script src="/js/light-gallery.min.js"></script>
+
+
+
+
+
+
+    </body>
+</html>

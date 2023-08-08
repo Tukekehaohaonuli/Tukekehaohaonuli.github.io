@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html  lang="english" >
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+    <title>Tukekenulia</title>
+    <meta name="description" content="Dive-into-DL-PyTorch学习小结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tukekenulia">
+<meta property="og:url" content="http://yoursite.com/2020/07/22/ToDoPytorch%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/index.html">
+<meta property="og:site_name" content="Tukekenulia">
+<meta property="og:description" content="Dive-into-DL-PyTorch学习小结">
+<meta property="og:locale">
+<meta property="og:image" content="http://yoursite.com/images/ToDoPytorch%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/1.png">
+<meta property="og:image" content="http://yoursite.com/images/ToDoPytorch%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/2.png">
+<meta property="og:image" content="http://yoursite.com/images/ToDoPytorch%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/3.png">
+<meta property="og:image" content="http://yoursite.com/images/ToDoPytorch%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/4.png">
+<meta property="article:published_time" content="2020-07-22T07:47:56.000Z">
+<meta property="article:modified_time" content="2020-07-22T07:47:56.000Z">
+<meta property="article:author" content="Tukeke">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/images/ToDoPytorch%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/1.png">
+
+    
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+
+    
+<link rel="stylesheet" href="/css/common.min.css">
+
+
+
+    
+    
+    
+    
+        <link href="//cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/css/lightgallery.min.css" rel="stylesheet">
+    
+    
+    
+<link rel="stylesheet" href="/css/iconfont.min.css">
+
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+    <body>
+        <header class="header header-fixture">
+    <div class="profile-search-wrap flex sm:block">
+        
+        
+        <div class="profile sm:text-center md:px-1 lg:px-3 sm:pb-4 sm:pt-6">
+            <a id="avatar" role="link" href="https://github.com/fengkx" class="inline-block lg:w-16 lg:h-16 w-8 h-8 m-2" target="_blank" rel="noopener" rel="noreferrer" >
+                <img src="https://www.gravatar.com/avatar/0bc83cb571cd1c50ba6f3e8a78ef1346?s=128" class="rounded-full" alt="avatar">
+            </a>
+            <h2 id="name" class="hidden lg:block">fengkx</h2>
+            <h3 id="title" class="hidden lg:block">Student &amp; Coder</h3>
+            
+            <small id="location" class="hidden lg:block">
+                <i class="iconfont icon-map-icon"></i>
+                Guangzhou, China
+            </small>
+            
+        </div>
+        
+        
+<div class="search flex-1 flex lg:inline-block sm:hidden lg:px-4 lg:mt-2 lg:mb-4 lg:w-full">
+    <form id="search-form" class="my-auto flex-1 lg:border lg:border-solid lg:border-gray-200">
+        <div class="input-group table bg-gray-100 lg:bg-white w-full">
+            <input id="search-input" type="text" placeholder="Search" class="inline-block w-full bg-gray-100 lg:bg-white p-1">
+            <span class="table-cell">
+                <button name="search tigger button" disabled>
+                    <i class="iconfont icon-search m-2"></i>
+                </button>
+            </span>
+        </div>
+    </form>
+        
+<div id="content-json" data-placeholder="Search" class="invisible hidden">/content.json</div>
+<script id="search-teamplate" type="text/html" data-path="/content.json">
+    <div>
+        <div class="search-header bg-gray-400">
+            <input id="actual-search-input" model="keyword" ref="input" class="inline-block w-full h-10 px-2 py-1" placeholder="Search" type="text">
+        </div>
+        <div class="search-result bg-gray-200">
+            {{#each searchPosts}}
+            <a href="/{{ path }}" class="result-item block px-2 pb-3 mb-1 pt-1 hover:bg-indigo-100">
+                <i class="iconfont icon-file"></i>
+                <h1 class="result-title inline font-medium text-lg">{{ title }}</h1>
+                <p class="result-content text-gray-600 text-sm">{{{ text }}}</p>
+            </a>
+            {{/each}}
+        </div>
+    </div>
+</script>
+
+</div>
+
+
+        <button name="menu toogle button" id="menu-toggle-btn" class="block sm:hidden p-3" role="button" aria-expanded="false">
+            <i class="iconfont icon-hamburger"></i>
+        </button>
+    </div>
+    <nav id="menu-nav" class="hidden sm:flex flex-col">
+        
+        
+            <div class="menu-item menu-home" role="menuitem">
+                <a href="/.">
+                    <i class="iconfont icon-home" aria-hidden="true"></i>
+                    <span class="menu-title">Home</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-archives" role="menuitem">
+                <a href="/archives">
+                    <i class="iconfont icon-archive" aria-hidden="true"></i>
+                    <span class="menu-title">Archives</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-categories" role="menuitem">
+                <a href="/categories">
+                    <i class="iconfont icon-folder" aria-hidden="true"></i>
+                    <span class="menu-title">Categories</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-tags" role="menuitem">
+                <a href="/tags">
+                    <i class="iconfont icon-tag" aria-hidden="true"></i>
+                    <span class="menu-title">Tags</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-repository" role="menuitem">
+                <a href="/repository">
+                    <i class="iconfont icon-project" aria-hidden="true"></i>
+                    <span class="menu-title">Repository</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-links" role="menuitem">
+                <a href="/links">
+                    <i class="iconfont icon-friend" aria-hidden="true"></i>
+                    <span class="menu-title">Links</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-about" role="menuitem">
+                <a href="/about">
+                    <i class="iconfont icon-cup" aria-hidden="true"></i>
+                    <span class="menu-title">About</span>
+                </a>
+            </div>
+        
+        
+<div class="social-links flex sm:flex-col lg:hidden mt-5">
+    
+        <span class="social-item text-center">
+            <a target="_blank" rel="noopener" href="https://github.com/fengkx">
+                <i class="iconfont social-icon icon-github"></i>
+                <span class="menu-title hidden lg:inline">menu.github</span>
+            </a>
+        </span>
+    
+        <span class="social-item text-center">
+            <a target="_blank" rel="noopener" href="https://t.me/fengkx">
+                <i class="iconfont social-icon icon-telegram"></i>
+                <span class="menu-title hidden lg:inline">menu.telegram</span>
+            </a>
+        </span>
+    
+        <span class="social-item text-center">
+            <a target="_blank" rel="noopener" href="https://twitter.com/example">
+                <i class="iconfont social-icon icon-twitter"></i>
+                <span class="menu-title hidden lg:inline">menu.twitter</span>
+            </a>
+        </span>
+    
+        <span class="social-item text-center">
+            <a href="/atom.xml">
+                <i class="iconfont social-icon icon-rss"></i>
+                <span class="menu-title hidden lg:inline">menu.rss</span>
+            </a>
+        </span>
+    
+</div>
+
+
+    </nav>
+</header>
+
+        <section class="main-section">
+            
+    <main class="flex-1 px-4 py-14 md:px-5 lg:px-8 lg:py-4 relative min-h-screen">
+    
+
+    <article class="content article article-archives article-type-list" itemscope="">
+        <header class="article-header">
+            
+
+
+            <p class="article-meta mb-3 text-xs">
+                <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2020/07/22/ToDoPytorch%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/" class="article-date">
+	  <time datetime="2020-07-22T07:47:56.000Z" itemprop="datePublished">Jul 22</time>
+	</a>
+</span>
+
+                
+
+                
+
+                <span class="_partial/post-comment"><i class="icon icon-comment"></i>
+                    <a href="/2020/07/22/ToDoPytorch%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/#comments" class="article-comment-link">
+                        Comments
+                    </a>
+                </span>
+                
+
+            </p>
+        </header>
+        <div class="marked-body article-body">
+            <p>Dive-into-DL-PyTorch学习小结</p>
+<span id="more"></span>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">为什么权重W变小可以防止过拟合？</span><br><span class="line"></span><br><span class="line">1.奥卡姆剃刀法则：更小的权重W，从某种意义上来说，表示网络的复杂度更低，对数据的拟合更好。</span><br><span class="line"></span><br><span class="line">2.过拟合的时候，拟合函数的系数往往非常大。过拟合也就意味着更加注重所有的细节，因此拟合函数的波动就会很大，导致导数值很大，在自变量很小的情况下，只有系数足够大，才能导数值足够大。因此为了减少过拟合，减少系数W，就能减少过拟合。</span><br></pre></td></tr></table></figure>
+
+<p>1.dropout是经过激活函数之后的那一层进行dropout</p>
+<p>2.ModuleList和ModuleDict一样，仅仅是存放一些模块，用来列表化构造网络，但是模块之间是没有联系也没有顺序的，而且没有实现forward功能，需要自己实现。但是和python中的list和dict又不同，加入到ModuleList和ModuleDict中的所有模块的参数都会自动添加到整个网络net中。</p>
+<p>3.super().<strong>init</strong>()的作用使得在一个模块中初始化以后，可以继续调用另一个nn模块，如果没有这句话的话就不能够再次调用其他模块了，下图也表明Sequential、FancyMLP都是属于Module的子类，因此可以嵌套调用</p>
+<p><img src="/images/ToDoPytorch%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/1.png" alt="1"></p>
+<p>4.实际上卷积层的卷积核也相当于权重，并且还有偏差！！普通卷积是可以Pytorch中自带的，也是可以自定义卷积核的。</p>
+<p>5.卷积操作实际上是需要进行翻转+点积，翻转就是180度的旋转；互相关就是点积，也可以认为是不翻转卷积。但是因为卷积核在实际操作过程中都是学习出来的，因此为了避免不必要的计算，在实际的操作过程中都只使用互相关运算替代卷积。也就是说，深度学习中的卷积运算实际上是互相关运算。</p>
+<p>6.经过卷积核之后的尺寸大小:<br>$$<br>（n-kernel_size+2*padding)&#x2F;stride+1<br>$$<br>7.1×1的卷积层通常用来降低网络中的通道数，并控制模型复杂度</p>
+<p>8.池化层为了缓解卷积层对位置的过度敏感性；池化层在处理多通道数据时，是对每个输入通道分别池化，因此输入通道数和输出通道数是相等的，这点与卷积不同</p>
+<p>9.给定的感受野（与输出有关的输入图片的局部大小），采用堆积的小卷积核优于采用大的卷积核，因为可以增加网络深度来保证学习更复杂的模式，而且代价还比较小（参数更少）。</p>
+<p>10.均值和方差公式：</p>
+<p><img src="/images/ToDoPytorch%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/2.png" alt="2"></p>
+<p>在4维矩阵下（批量，通道，高，宽）做均值和方差是对所有的通道进行求均值和方差。</p>
+<p>另外，训练模式下的均值和方差都是用实时的数据来求的，Moving_mean和moving_var是用在测试数据上的。</p>
+<p><img src="/images/ToDoPytorch%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/3.png" alt="3"></p>
+<p>11.批量归一化一般在卷积之后，激活函数之前，BatchNorm2d&#x3D;卷积层,BatchNorm1d&#x3D;全连接层</p>
+<p>12.残差网络:直接训练出理想仿射函数非常的困难，因此采用求残差的方式来求，这样求出残差方程之后，只需要将残差的参数设为0就可以近似得出理想的仿射函数！</p>
+<p>13.困惑度:</p>
+<p><img src="/images/ToDoPytorch%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/4.png" alt="4"></p>
+<p>14.随机梯度下降是指随机采样一个样本来计算梯度，梯度下降是指使用整个训练数据集来计算梯度，小批量随机梯度下降是在两者之间，速度也在两者之间。</p>
+<h3 id="梯度优化算法比较："><a href="#梯度优化算法比较：" class="headerlink" title="梯度优化算法比较："></a>梯度优化算法比较：</h3><h5 id="动量法"><a href="#动量法" class="headerlink" title="动量法:"></a>动量法:</h5><p>当x1和x2的梯度值相差比较大的时候，需要足够小的学习率使得自变量在梯度值较大的维度上不发散，但是这样会导致迭代过慢。动量法依赖指数加权移动平均使得自变量的更新方向一致从而降低发散的可能。</p>
+<h5 id="AdaGrad算法："><a href="#AdaGrad算法：" class="headerlink" title="AdaGrad算法："></a>AdaGrad算法：</h5><p>自变量根据每个维度的梯度值大小来调整各个维度上的学习率，从而避免统一的学习率难以适应所有维度的问题。由于s_t一直在累加按元素平方的梯度，自变量中每个元素的学习率在迭代过程中一直在降低（或不变）。所以当学习率在迭代早期降得比较快且当前解依然不佳时，AdaGrad算法会在迭代后期由于学习率过小，导致很难找到一个有用的解。</p>
+<p>使用AdaGrad算法时，自变量中每个元素的学习率在迭代过程中一直在降低（或不变）。</p>
+<h5 id="RMSProp"><a href="#RMSProp" class="headerlink" title="RMSProp:"></a>RMSProp:</h5><p>在AdaGrad算法的基础上按元素做指数加权移动平均，防止AdaGrad中的元素学习率一直降低</p>
+<h5 id="AdaDelta算法："><a href="#AdaDelta算法：" class="headerlink" title="AdaDelta算法："></a>AdaDelta算法：</h5><p>没有学习率这一超参数，其他同RMSprop基本一样，不同之处是多维护一个额外的状态变量来代替学习率。</p>
+<h5 id="Adam算法："><a href="#Adam算法：" class="headerlink" title="Adam算法："></a>Adam算法：</h5><p>Adam算法在RMSProp算法的基础上对小批量随机梯度也做了指数加权移动平均。</p>
+<p>Adam算法使用了偏差修正。基本上是默认的最好算法。</p>
+<p>15.预训练模型的存放位置：</p>
+<p>C:\Users\yuyuyyu.cache\torch\checkpoints</p>
+<p>16.Dive-into-DL-PyTorch暂时学到9.8节，9.9节往后暂时没有学习，以后要深入这块知识再回来学习。</p>
+<p>学习链接：<a target="_blank" rel="noopener" href="https://tangshusen.me/Dive-into-DL-PyTorch/#/">https://tangshusen.me/Dive-into-DL-PyTorch/#/</a></p>
+
+        </div>
+        
+<blockquote class="copyright">
+    <p><strong>Link to this article : </strong><a class="permalink" href="http://yoursite.com/2020/07/22/ToDoPytorch%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/">http://yoursite.com/2020/07/22/ToDoPytorch学习总结/</a></p>
+    <p><strong>This article is available under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)</a> License</strong></p>
+</blockquote>
+
+
+    </article>
+    
+    <section id="comments">
+        
+    </section>
+
+
+    
+
+</main>
+
+
+<aside style="" id="sidebar" class="aside aside-fixture">
+    <div class="toc-sidebar">
+        <nav id="toc" class="article-toc">
+            <h3 class="toc-title">Catalogue</h3>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A2%AF%E5%BA%A6%E4%BC%98%E5%8C%96%E7%AE%97%E6%B3%95%E6%AF%94%E8%BE%83%EF%BC%9A"><span class="toc-number">1.</span> <span class="toc-text">梯度优化算法比较：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8A%A8%E9%87%8F%E6%B3%95"><span class="toc-number">1.0.1.</span> <span class="toc-text">动量法:</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#AdaGrad%E7%AE%97%E6%B3%95%EF%BC%9A"><span class="toc-number">1.0.2.</span> <span class="toc-text">AdaGrad算法：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#RMSProp"><span class="toc-number">1.0.3.</span> <span class="toc-text">RMSProp:</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#AdaDelta%E7%AE%97%E6%B3%95%EF%BC%9A"><span class="toc-number">1.0.4.</span> <span class="toc-text">AdaDelta算法：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Adam%E7%AE%97%E6%B3%95%EF%BC%9A"><span class="toc-number">1.0.5.</span> <span class="toc-text">Adam算法：</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </div>
+</aside>
+
+
+
+
+
+        </section>
+        <footer class="hidden lg:block fixed bottom-0 left-0 sm:w-1/12 lg:w-1/6 bg-gray-100 z-40">
+    
+    <div class="footer-social-links">
+        
+            <a target="_blank" rel="noopener" href="https://github.com/fengkx">
+                <i class="iconfont icon-github"></i>
+            </a>
+        
+            <a target="_blank" rel="noopener" href="https://t.me/fengkx">
+                <i class="iconfont icon-telegram"></i>
+            </a>
+        
+            <a target="_blank" rel="noopener" href="https://twitter.com/example">
+                <i class="iconfont icon-twitter"></i>
+            </a>
+        
+            <a href="/atom.xml">
+                <i class="iconfont icon-rss"></i>
+            </a>
+        
+    </div>
+    
+    
+</footer>
+
+        <div id="mask" class="hidden mask fixed inset-0 bg-gray-900 opacity-75 z-40"></div>
+        <div id="search-view-container" class="hidden shadow-xl"></div>
+        
+<script src="/js/dom-event.min.js"></script>
+
+
+
+<script src="/js/local-search.min.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/js/lightgallery.min.js"></script>
+    
+<script src="/js/light-gallery.min.js"></script>
+
+
+
+
+
+
+    </body>
+</html>

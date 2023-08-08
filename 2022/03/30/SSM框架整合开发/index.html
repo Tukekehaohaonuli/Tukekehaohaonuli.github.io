@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html  lang="english" >
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+    <title>Tukekenulia</title>
+    <meta name="description" content="主要步骤：1、依赖配置 2、全局配置，Spring.xml 3、功能实现流程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tukekenulia">
+<meta property="og:url" content="http://yoursite.com/2022/03/30/SSM%E6%A1%86%E6%9E%B6%E6%95%B4%E5%90%88%E5%BC%80%E5%8F%91/index.html">
+<meta property="og:site_name" content="Tukekenulia">
+<meta property="og:description" content="主要步骤：1、依赖配置 2、全局配置，Spring.xml 3、功能实现流程">
+<meta property="og:locale">
+<meta property="og:image" content="http://yoursite.com/images/SSM%E6%A1%86%E6%9E%B6%E6%95%B4%E5%90%88%E5%BC%80%E5%8F%91/1.png">
+<meta property="og:image" content="http://yoursite.com/images/SSM%E6%A1%86%E6%9E%B6%E6%95%B4%E5%90%88%E5%BC%80%E5%8F%91/2.png">
+<meta property="og:image" content="http://yoursite.com/images/SSM%E6%A1%86%E6%9E%B6%E6%95%B4%E5%90%88%E5%BC%80%E5%8F%91/3.png">
+<meta property="og:image" content="http://yoursite.com/images/SSM%E6%A1%86%E6%9E%B6%E6%95%B4%E5%90%88%E5%BC%80%E5%8F%91/4.png">
+<meta property="og:image" content="http://yoursite.com/images/SSM%E6%A1%86%E6%9E%B6%E6%95%B4%E5%90%88%E5%BC%80%E5%8F%91/5.png">
+<meta property="og:image" content="http://yoursite.com/images/SSM%E6%A1%86%E6%9E%B6%E6%95%B4%E5%90%88%E5%BC%80%E5%8F%91/6.png">
+<meta property="og:image" content="http://yoursite.com/images/SSM%E6%A1%86%E6%9E%B6%E6%95%B4%E5%90%88%E5%BC%80%E5%8F%91/7.png">
+<meta property="og:image" content="http://yoursite.com/images/SSM%E6%A1%86%E6%9E%B6%E6%95%B4%E5%90%88%E5%BC%80%E5%8F%91/8.png">
+<meta property="og:image" content="http://yoursite.com/images/SSM%E6%A1%86%E6%9E%B6%E6%95%B4%E5%90%88%E5%BC%80%E5%8F%91/9.png">
+<meta property="og:image" content="http://yoursite.com/images/SSM%E6%A1%86%E6%9E%B6%E6%95%B4%E5%90%88%E5%BC%80%E5%8F%91/10.png">
+<meta property="og:image" content="http://yoursite.com/images/SSM%E6%A1%86%E6%9E%B6%E6%95%B4%E5%90%88%E5%BC%80%E5%8F%91/11.png">
+<meta property="article:published_time" content="2022-03-30T08:38:58.000Z">
+<meta property="article:modified_time" content="2022-03-30T08:38:58.000Z">
+<meta property="article:author" content="Tukeke">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/images/SSM%E6%A1%86%E6%9E%B6%E6%95%B4%E5%90%88%E5%BC%80%E5%8F%91/1.png">
+
+    
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+
+    
+<link rel="stylesheet" href="/css/common.min.css">
+
+
+
+    
+    
+    
+    
+        <link href="//cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/css/lightgallery.min.css" rel="stylesheet">
+    
+    
+    
+<link rel="stylesheet" href="/css/iconfont.min.css">
+
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+    <body>
+        <header class="header header-fixture">
+    <div class="profile-search-wrap flex sm:block">
+        
+        
+        <div class="profile sm:text-center md:px-1 lg:px-3 sm:pb-4 sm:pt-6">
+            <a id="avatar" role="link" href="https://github.com/fengkx" class="inline-block lg:w-16 lg:h-16 w-8 h-8 m-2" target="_blank" rel="noopener" rel="noreferrer" >
+                <img src="https://www.gravatar.com/avatar/0bc83cb571cd1c50ba6f3e8a78ef1346?s=128" class="rounded-full" alt="avatar">
+            </a>
+            <h2 id="name" class="hidden lg:block">fengkx</h2>
+            <h3 id="title" class="hidden lg:block">Student &amp; Coder</h3>
+            
+            <small id="location" class="hidden lg:block">
+                <i class="iconfont icon-map-icon"></i>
+                Guangzhou, China
+            </small>
+            
+        </div>
+        
+        
+<div class="search flex-1 flex lg:inline-block sm:hidden lg:px-4 lg:mt-2 lg:mb-4 lg:w-full">
+    <form id="search-form" class="my-auto flex-1 lg:border lg:border-solid lg:border-gray-200">
+        <div class="input-group table bg-gray-100 lg:bg-white w-full">
+            <input id="search-input" type="text" placeholder="Search" class="inline-block w-full bg-gray-100 lg:bg-white p-1">
+            <span class="table-cell">
+                <button name="search tigger button" disabled>
+                    <i class="iconfont icon-search m-2"></i>
+                </button>
+            </span>
+        </div>
+    </form>
+        
+<div id="content-json" data-placeholder="Search" class="invisible hidden">/content.json</div>
+<script id="search-teamplate" type="text/html" data-path="/content.json">
+    <div>
+        <div class="search-header bg-gray-400">
+            <input id="actual-search-input" model="keyword" ref="input" class="inline-block w-full h-10 px-2 py-1" placeholder="Search" type="text">
+        </div>
+        <div class="search-result bg-gray-200">
+            {{#each searchPosts}}
+            <a href="/{{ path }}" class="result-item block px-2 pb-3 mb-1 pt-1 hover:bg-indigo-100">
+                <i class="iconfont icon-file"></i>
+                <h1 class="result-title inline font-medium text-lg">{{ title }}</h1>
+                <p class="result-content text-gray-600 text-sm">{{{ text }}}</p>
+            </a>
+            {{/each}}
+        </div>
+    </div>
+</script>
+
+</div>
+
+
+        <button name="menu toogle button" id="menu-toggle-btn" class="block sm:hidden p-3" role="button" aria-expanded="false">
+            <i class="iconfont icon-hamburger"></i>
+        </button>
+    </div>
+    <nav id="menu-nav" class="hidden sm:flex flex-col">
+        
+        
+            <div class="menu-item menu-home" role="menuitem">
+                <a href="/.">
+                    <i class="iconfont icon-home" aria-hidden="true"></i>
+                    <span class="menu-title">Home</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-archives" role="menuitem">
+                <a href="/archives">
+                    <i class="iconfont icon-archive" aria-hidden="true"></i>
+                    <span class="menu-title">Archives</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-categories" role="menuitem">
+                <a href="/categories">
+                    <i class="iconfont icon-folder" aria-hidden="true"></i>
+                    <span class="menu-title">Categories</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-tags" role="menuitem">
+                <a href="/tags">
+                    <i class="iconfont icon-tag" aria-hidden="true"></i>
+                    <span class="menu-title">Tags</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-repository" role="menuitem">
+                <a href="/repository">
+                    <i class="iconfont icon-project" aria-hidden="true"></i>
+                    <span class="menu-title">Repository</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-links" role="menuitem">
+                <a href="/links">
+                    <i class="iconfont icon-friend" aria-hidden="true"></i>
+                    <span class="menu-title">Links</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-about" role="menuitem">
+                <a href="/about">
+                    <i class="iconfont icon-cup" aria-hidden="true"></i>
+                    <span class="menu-title">About</span>
+                </a>
+            </div>
+        
+        
+<div class="social-links flex sm:flex-col lg:hidden mt-5">
+    
+        <span class="social-item text-center">
+            <a target="_blank" rel="noopener" href="https://github.com/fengkx">
+                <i class="iconfont social-icon icon-github"></i>
+                <span class="menu-title hidden lg:inline">menu.github</span>
+            </a>
+        </span>
+    
+        <span class="social-item text-center">
+            <a target="_blank" rel="noopener" href="https://t.me/fengkx">
+                <i class="iconfont social-icon icon-telegram"></i>
+                <span class="menu-title hidden lg:inline">menu.telegram</span>
+            </a>
+        </span>
+    
+        <span class="social-item text-center">
+            <a target="_blank" rel="noopener" href="https://twitter.com/example">
+                <i class="iconfont social-icon icon-twitter"></i>
+                <span class="menu-title hidden lg:inline">menu.twitter</span>
+            </a>
+        </span>
+    
+        <span class="social-item text-center">
+            <a href="/atom.xml">
+                <i class="iconfont social-icon icon-rss"></i>
+                <span class="menu-title hidden lg:inline">menu.rss</span>
+            </a>
+        </span>
+    
+</div>
+
+
+    </nav>
+</header>
+
+        <section class="main-section">
+            
+    <main class="flex-1 px-4 py-14 md:px-5 lg:px-8 lg:py-4 relative min-h-screen">
+    
+
+    <article class="content article article-archives article-type-list" itemscope="">
+        <header class="article-header">
+            
+
+
+            <p class="article-meta mb-3 text-xs">
+                <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2022/03/30/SSM%E6%A1%86%E6%9E%B6%E6%95%B4%E5%90%88%E5%BC%80%E5%8F%91/" class="article-date">
+	  <time datetime="2022-03-30T08:38:58.000Z" itemprop="datePublished">Mar 30</time>
+	</a>
+</span>
+
+                
+
+                
+
+                <span class="_partial/post-comment"><i class="icon icon-comment"></i>
+                    <a href="/2022/03/30/SSM%E6%A1%86%E6%9E%B6%E6%95%B4%E5%90%88%E5%BC%80%E5%8F%91/#comments" class="article-comment-link">
+                        Comments
+                    </a>
+                </span>
+                
+
+            </p>
+        </header>
+        <div class="marked-body article-body">
+            <h3 id="主要步骤："><a href="#主要步骤：" class="headerlink" title="主要步骤："></a>主要步骤：</h3><p>1、依赖配置</p>
+<p>2、全局配置，Spring.xml</p>
+<p>3、功能实现流程</p>
+<span id="more"></span>
+
+<h1 id="1-配置pom-xml"><a href="#1-配置pom-xml" class="headerlink" title="1-配置pom.xml"></a>1-配置pom.xml</h1><p>项目的整体布局：</p>
+<p><img src="/../images/SSM%E6%A1%86%E6%9E%B6%E6%95%B4%E5%90%88%E5%BC%80%E5%8F%91/1.png" alt="1"></p>
+<h3 id="oa："><a href="#oa：" class="headerlink" title="oa："></a>oa：</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//定义变量</span><br><span class="line">&lt;properties&gt;</span><br><span class="line">    &lt;spring.version&gt;5.2.8.RELEASE&lt;/spring.version&gt;</span><br><span class="line">&lt;/properties&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="oa-dao："><a href="#oa-dao：" class="headerlink" title="oa_dao："></a>oa_dao：</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependencies&gt;</span><br><span class="line">    //连接数据库的包</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;mysql&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;5.1.49&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">    //mybatis的包</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;org.mybatis&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;mybatis&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;3.5.1&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">    //springbean管理</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;org.springframework&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;spring-beans&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;$&#123;spring.version&#125;&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">    //spring中扫描上下文的包</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;org.springframework&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;spring-context&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;$&#123;spring.version&#125;&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">    //spring jdbc整合数据库的包</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;org.springframework&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;spring-jdbc&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;5.2.8.RELEASE&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">    //mybatis和spring整合的包</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;org.mybatis&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;mybatis-spring&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;1.3.1&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">&lt;/dependencies&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="oa-biz："><a href="#oa-biz：" class="headerlink" title="oa_biz："></a>oa_biz：</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependencies&gt;</span><br><span class="line">    //依赖于dao层</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;com.imooc&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;oa_dao&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">    //事务处理的包</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;org.springframework&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;spring-tx&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;$&#123;spring.version&#125;&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">    //切面变成的包</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;org.springframework&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;spring-aop&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;$&#123;spring.version&#125;&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">    //基于AspectJ的aop切面包</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;org.aspectj&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;aspectjweaver&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;1.9.6&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">&lt;/dependencies&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="oa-web："><a href="#oa-web：" class="headerlink" title="oa_web："></a>oa_web：</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependencies&gt;</span><br><span class="line">    //依赖于业务层</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;com.imooc&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;oa_biz&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">    //servlet包</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;javax.servlet&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;javax.servlet-api&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;4.0.0&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">    //jstl包</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;jstl&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;jstl&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;1.2&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">    //spring web包</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;org.springframework&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;spring-web&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;$&#123;spring.version&#125;&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;org.springframework&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;spring-webmvc&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;$&#123;spring.version&#125;&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">&lt;/dependencies&gt;</span><br></pre></td></tr></table></figure>
+
+<h1 id="2-包及全局配置"><a href="#2-包及全局配置" class="headerlink" title="2-包及全局配置"></a>2-包及全局配置</h1><p><img src="/../images/SSM%E6%A1%86%E6%9E%B6%E6%95%B4%E5%90%88%E5%BC%80%E5%8F%91/2.png" alt="2"></p>
+<h5 id="spring-xml模板："><a href="#spring-xml模板：" class="headerlink" title="spring.xml模板："></a>spring.xml模板：</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;</span><br><span class="line">       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><br><span class="line">       xmlns:context=&quot;http://www.springframework.org/schema/context&quot;</span><br><span class="line">       xmlns:aop=&quot;http://www.springframework.org/schema/aop&quot;</span><br><span class="line">       xmlns:tx=&quot;http://www.springframework.org/schema/tx&quot;</span><br><span class="line">       xmlns:mvc=&quot;http://www.springframework.org/schema/mvc&quot;</span><br><span class="line">       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans</span><br><span class="line">    http://www.springframework.org/schema/beans/spring-beans.xsd</span><br><span class="line">    http://www.springframework.org/schema/context</span><br><span class="line">    http://www.springframework.org/schema/context/spring-context.xsd</span><br><span class="line">    http://www.springframework.org/schema/aop</span><br><span class="line">    http://www.springframework.org/schema/aop/spring-aop.xsd</span><br><span class="line">    http://www.springframework.org/schema/tx</span><br><span class="line">    http://www.springframework.org/schema/tx/spring-tx.xsd</span><br><span class="line">    http://www.springframework.org/schema/mvc</span><br><span class="line">    http://www.springframework.org/schema/mvc/spring-mvc.xsd&quot;&gt;</span><br><span class="line">    </span><br><span class="line">&lt;/beans&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="oa-dao"><a href="#oa-dao" class="headerlink" title="oa_dao:"></a>oa_dao:</h3><h5 id="配置spring-dao-xml文件："><a href="#配置spring-dao-xml文件：" class="headerlink" title="配置spring-dao.xml文件："></a>配置spring-dao.xml文件：</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">   //开启自动扫描</span><br><span class="line">   &lt;context:component-scan base-package=&quot;com.imooc.oa.dao&quot;/&gt;</span><br><span class="line">//配置jdbc连接数据库</span><br><span class="line">   &lt;bean id=&quot;dataSource&quot; class=&quot;org.springframework.jdbc.datasource.DriverManagerDataSource&quot;&gt;</span><br><span class="line">       &lt;property name=&quot;driverClassName&quot; value=&quot;com.mysql.jdbc.Driver&quot;/&gt;</span><br><span class="line">       &lt;property name=&quot;url&quot; value=&quot;jdbc:mysql://localhost:3306/oa?useUnicode=true&amp;amp;characterEncoding=UTF-8&quot;/&gt;</span><br><span class="line">       &lt;property name=&quot;username&quot; value=&quot;root&quot;/&gt;</span><br><span class="line">       &lt;property name=&quot;password&quot; value=&quot;123456&quot;/&gt;</span><br><span class="line">   &lt;/bean&gt;</span><br><span class="line">   </span><br><span class="line">   //配置sqlSession即用Spring来管理mybatis数据库</span><br><span class="line">   &lt;bean id=&quot;sessionFactory&quot; class=&quot;org.mybatis.spring.SqlSessionFactoryBean&quot;&gt;</span><br><span class="line">       &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot;/&gt;</span><br><span class="line">       &lt;property name=&quot;typeAliasesPackage&quot; value=&quot;com.imooc.oa.entity&quot;/&gt;</span><br><span class="line">   &lt;/bean&gt;</span><br><span class="line">   </span><br><span class="line">   //配置原Mybatis中的持久化实体类的映射文件  xml注解方式下的配置</span><br><span class="line">   &lt;bean class=&quot;org.mybatis.spring.mapper.MapperScannerConfigurer&quot;&gt;</span><br><span class="line">       &lt;property name=&quot;sqlSessionFactoryBeanName&quot; value=&quot;sessionFactory&quot;/&gt;</span><br><span class="line">       //自动扫描dao下的实体类映射</span><br><span class="line">       &lt;property name=&quot;basePackage&quot; value=&quot;com.imooc.oa.dao&quot;/&gt;</span><br><span class="line">   &lt;/bean&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="oa-biz"><a href="#oa-biz" class="headerlink" title="oa_biz:"></a>oa_biz:</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">  //与dao层相关，导入dao层的配置</span><br><span class="line">  &lt;import resource=&quot;spring-dao.xml&quot;/&gt;</span><br><span class="line">  //</span><br><span class="line">   &lt;context:component-scan base-package=&quot;com.imooc.oa.biz&quot;/&gt;</span><br><span class="line">//开启AspectJ的注解开发，自动代理</span><br><span class="line">   &lt;aop:aspectj-autoproxy/&gt;</span><br><span class="line">   </span><br><span class="line">   //基于tx命名空间的的声明式事务管理方式的配置：</span><br><span class="line">   &lt;bean id=&quot;transationManager&quot; class=&quot;org.springframework.jdbc.datasource.DataSourceTransactionManager&quot;&gt;</span><br><span class="line">       &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot;/&gt;</span><br><span class="line">   &lt;/bean&gt;</span><br><span class="line"></span><br><span class="line">   &lt;tx:advice id=&quot;txAdvice&quot; transaction-manager=&quot;transationManager&quot;&gt;</span><br><span class="line">       &lt;tx:attributes&gt;</span><br><span class="line">           &lt;tx:method name=&quot;get*&quot; read-only=&quot;true&quot;/&gt;</span><br><span class="line">           &lt;tx:method name=&quot;find*&quot; read-only=&quot;true&quot;/&gt;</span><br><span class="line">           &lt;tx:method name=&quot;search*&quot; read-only=&quot;true&quot;/&gt;</span><br><span class="line">           &lt;tx:method name=&quot;*&quot; propagation=&quot;REQUIRED&quot;/&gt;</span><br><span class="line">       &lt;/tx:attributes&gt;</span><br><span class="line">   &lt;/tx:advice&gt;</span><br><span class="line"></span><br><span class="line">   &lt;aop:config&gt;</span><br><span class="line">       &lt;aop:pointcut id=&quot;txpc&quot; expression=&quot;execution(* com.imooc.oa.biz.*.*(..))&quot;/&gt;</span><br><span class="line">       &lt;aop:advisor advice-ref=&quot;txAdvice&quot; pointcut-ref=&quot;txpc&quot;/&gt;</span><br><span class="line">   &lt;/aop:config&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="oz-web"><a href="#oz-web" class="headerlink" title="oz_web:"></a>oz_web:</h3><p>web.xml模板：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;web-app xmlns=&quot;http://xmlns.jcp.org/xml/ns/javaee&quot;</span><br><span class="line">         xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><br><span class="line">         xsi:schemaLocation=&quot;http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd&quot;</span><br><span class="line">         version=&quot;4.0&quot;&gt;</span><br><span class="line"> &lt;/web-app&gt;</span><br></pre></td></tr></table></figure>
+
+<p>spring-web.xml配置：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;import resource=&quot;spring-biz.xml&quot;/&gt;</span><br><span class="line">//自动扫描</span><br><span class="line">&lt;context:component-scan base-package=&quot;com.imooc.oa.controller&quot;/&gt;</span><br><span class="line"></span><br><span class="line">//注解驱动，以使得访问路径与方法的匹配可以通过注解配置</span><br><span class="line">&lt;mvc:annotation-driven/&gt;</span><br><span class="line">//静态页面，如html,css,js,images可以访问</span><br><span class="line">&lt;mvc:default-servlet-handler/&gt;</span><br><span class="line">//配置SpringMVC，前后缀</span><br><span class="line">&lt;bean class=&quot;org.springframework.web.servlet.view.InternalResourceViewResolver&quot;&gt;</span><br><span class="line">    &lt;property name=&quot;viewClass&quot; value=&quot;org.springframework.web.servlet.view.JstlView&quot;/&gt;</span><br><span class="line">    &lt;property name=&quot;prefix&quot; value=&quot;/WEB-INF/pages/&quot;/&gt;</span><br><span class="line">    &lt;property name=&quot;suffix&quot; value=&quot;.jsp&quot;/&gt;</span><br><span class="line">&lt;/bean&gt;</span><br><span class="line"></span><br><span class="line">//配置注册拦截器</span><br><span class="line">&lt;mvc:interceptors&gt;</span><br><span class="line">    &lt;mvc:interceptor&gt;</span><br><span class="line">        &lt;mvc:mapping path=&quot;/**&quot;/&gt;</span><br><span class="line">        &lt;bean class=&quot;com.imooc.oa.global.LoginInterceptor&quot;/&gt;</span><br><span class="line">    &lt;/mvc:interceptor&gt;</span><br><span class="line">&lt;/mvc:interceptors&gt;</span><br></pre></td></tr></table></figure>
+
+<p>web.xml配置：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"> //挺疑惑为什么不使用SpringMVC中自带的编码过滤器而是手动配置的？</span><br><span class="line">     &lt;filter&gt;</span><br><span class="line">      &lt;filter-name&gt;encoding&lt;/filter-name&gt;</span><br><span class="line">      &lt;filter-class&gt;com.imooc.oa.global.EncodingFilter&lt;/filter-class&gt;</span><br><span class="line">      &lt;init-param&gt;</span><br><span class="line">          &lt;param-name&gt;encoding&lt;/param-name&gt;</span><br><span class="line">          &lt;param-value&gt;utf-8&lt;/param-value&gt;</span><br><span class="line">      &lt;/init-param&gt;</span><br><span class="line">  &lt;/filter&gt;</span><br><span class="line">  &lt;filter-mapping&gt;</span><br><span class="line">      &lt;filter-name&gt;encoding&lt;/filter-name&gt;</span><br><span class="line">      &lt;url-pattern&gt;/*&lt;/url-pattern&gt;</span><br><span class="line">  &lt;/filter-mapping&gt;</span><br><span class="line"> </span><br><span class="line"> //静态资源的加载问题</span><br><span class="line"> &lt;servlet-mapping&gt;</span><br><span class="line">      &lt;servlet-name&gt;default&lt;/servlet-name&gt;</span><br><span class="line">      &lt;url-pattern&gt;/assets/*&lt;/url-pattern&gt;</span><br><span class="line">      &lt;url-pattern&gt;/js/*&lt;/url-pattern&gt;</span><br><span class="line">      &lt;url-pattern&gt;/vendor/*&lt;/url-pattern&gt;</span><br><span class="line">      &lt;url-pattern&gt;*.js&lt;/url-pattern&gt;</span><br><span class="line">      &lt;url-pattern&gt;*.jpg&lt;/url-pattern&gt;</span><br><span class="line">      &lt;url-pattern&gt;*.gif&lt;/url-pattern&gt;</span><br><span class="line">      &lt;url-pattern&gt;*.png&lt;/url-pattern&gt;</span><br><span class="line">      &lt;url-pattern&gt;*.css&lt;/url-pattern&gt;</span><br><span class="line">  &lt;/servlet-mapping&gt;</span><br><span class="line">  </span><br><span class="line">  //配置SpringMVC</span><br><span class="line">    &lt;servlet&gt;</span><br><span class="line">  &lt;servlet-name&gt;SpringMVC&lt;/servlet-name&gt;</span><br><span class="line">  &lt;servlet-class&gt;org.springframework.web.servlet.DispatcherServlet&lt;/servlet-class&gt;</span><br><span class="line">  &lt;init-param&gt;</span><br><span class="line">    &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;</span><br><span class="line">    &lt;param-value&gt;classpath:spring-web.xml&lt;/param-value&gt;</span><br><span class="line">  &lt;/init-param&gt;</span><br><span class="line">  //一启动时就加载servlet 1为优先级</span><br><span class="line">  &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;</span><br><span class="line">&lt;/servlet&gt;</span><br><span class="line">&lt;servlet-mapping&gt;</span><br><span class="line">  &lt;servlet-name&gt;SpringMVC&lt;/servlet-name&gt;</span><br><span class="line">  &lt;url-pattern&gt;/&lt;/url-pattern&gt;</span><br><span class="line">&lt;/servlet-mapping&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="3-功能实现"><a href="#3-功能实现" class="headerlink" title="3-功能实现"></a>3-功能实现</h1><h3 id="部门管理："><a href="#部门管理：" class="headerlink" title="部门管理："></a>部门管理：</h3><p><img src="/../images/SSM%E6%A1%86%E6%9E%B6%E6%95%B4%E5%90%88%E5%BC%80%E5%8F%91/3.png" alt="3"></p>
+<p>实体类中日期格式化方式：@DateTimeFormat(pattern &#x3D; “yyyy-MM-dd hh:mm”)</p>
+<p>然后想要JSP中显示格式化的样式则，不需要使用${}：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;spring:eval expression=&quot;claimVoucher.createTime&quot;/&gt;</span><br></pre></td></tr></table></figure>
+
+<h5 id="Sql映射文件模板："><a href="#Sql映射文件模板：" class="headerlink" title="Sql映射文件模板："></a>Sql映射文件模板：</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;</span><br><span class="line">&lt;!DOCTYPE mapper PUBLIC &quot;-//mybatis.org//DTD Mapper 3.4//EN&quot; &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;</span><br><span class="line">//映射到对应配置的dao</span><br><span class="line">&lt;mapper namespace=&quot;com.imooc.oa.dao.DepartmentDao&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<h5 id="在控制器中传递的参数推荐使用map类型，他是java共有的不会和SpringMVC耦合，利于后期维护。"><a href="#在控制器中传递的参数推荐使用map类型，他是java共有的不会和SpringMVC耦合，利于后期维护。" class="headerlink" title="在控制器中传递的参数推荐使用map类型，他是java共有的不会和SpringMVC耦合，利于后期维护。"></a>在控制器中传递的参数推荐使用map类型，他是java共有的不会和SpringMVC耦合，利于后期维护。</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@RequestMapping(&quot;/list&quot;)</span><br><span class="line">public String list(Map&lt;String,Object&gt; map)&#123;</span><br><span class="line">    map.put(&quot;list&quot;,departmentBiz.getAll());</span><br><span class="line">    return &quot;department_list&quot;;</span><br><span class="line">&#125;</span><br><span class="line">这样的好处就在于放入到Map中，页面可以直接通过list来获得数据</span><br></pre></td></tr></table></figure>
+
+<h5 id="SpringMVC页面数据绑定时form表单的格式，传递给add为department对象的值："><a href="#SpringMVC页面数据绑定时form表单的格式，传递给add为department对象的值：" class="headerlink" title="SpringMVC页面数据绑定时form表单的格式，传递给add为department对象的值："></a>SpringMVC页面数据绑定时form表单的格式，传递给add为department对象的值：</h5><p>改成SpringMVC表单的好处是：自动封装提交的表单，如果想要使用SpringMVC类型的表单来传递你想要的对象，就需要在控制器中声明form表单需要提交的对象类型。</p>
+<p>例如你想要传递会控制器一个ClaimVoucherInfo（）对象，就要先给JSP传递一个，在传递回来：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">@RequestMapping(&quot;/to_update&quot;)</span><br><span class="line">public String toUpdate(int id,Map&lt;String,Object&gt; map)&#123;</span><br><span class="line">    map.put(&quot;items&quot;, Contant.getItems());</span><br><span class="line">    ClaimVoucherInfo info =new ClaimVoucherInfo();</span><br><span class="line">    info.setClaimVoucher(claimVoucherBiz.get(id));</span><br><span class="line">    info.setItems(claimVoucherBiz.getItems(id));</span><br><span class="line">    map.put(&quot;info&quot;,info);</span><br><span class="line">    return &quot;claim_voucher_update&quot;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@RequestMapping(&quot;/update&quot;)</span><br><span class="line">public String update(HttpSession session,ClaimVoucherInfo info)&#123;</span><br><span class="line">    Employee employee=(Employee)session.getAttribute(&quot;employee&quot;);</span><br><span class="line">    info.getClaimVoucher().setCreateSn(employee.getSn());</span><br><span class="line">    claimVoucherBiz.update(info.getClaimVoucher(),info.getItems());</span><br><span class="line">    return &quot;redirect:deal&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//form中的 id 和name保留</span><br><span class="line">&lt;form:form action=&quot;/department/add&quot; modelAttribute=&quot;department&quot;&gt;&lt;/form:form&gt;</span><br><span class="line">&lt;input&gt;标签中需要将id和name替换为path，如果id和name的值不同时，则代表id为样式，只需要将name改成path即可，去掉type和value，class改成cssClass：</span><br><span class="line">&lt;form:input path=&quot;sn&quot; cssClass=&quot;gui-input&quot; placeholder=&quot;编号...&quot; /&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;select&gt;改为</span><br><span class="line">//path代表的是要传入到employee的属性， itemLabel表明输出的部门名字，itemValue是要传入到employee属性对应的值。</span><br><span class="line">&lt;form:select path=&quot;departmentSn&quot; items=&quot;$&#123;dlist&#125;&quot; itemLabel=&quot;name&quot; itemValue=&quot;sn&quot;&gt;</span><br><span class="line">&lt;form:hidden path=&quot;password&quot;/&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="员工管理："><a href="#员工管理：" class="headerlink" title="员工管理："></a>员工管理：</h3><p><img src="/../images/SSM%E6%A1%86%E6%9E%B6%E6%95%B4%E5%90%88%E5%BC%80%E5%8F%91/4.png" alt="4"></p>
+<p><img src="/../images/SSM%E6%A1%86%E6%9E%B6%E6%95%B4%E5%90%88%E5%BC%80%E5%8F%91/5.png" alt="5"></p>
+<p><img src="/../images/SSM%E6%A1%86%E6%9E%B6%E6%95%B4%E5%90%88%E5%BC%80%E5%8F%91/6.png" alt="6"></p>
+<p>报销单处理持久层的时候，因为id是自动生成的，不能简写，并且要设置useGeneratedKeys和keyProperty属性</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;insert id=&quot;insert&quot; useGeneratedKeys=&quot;true&quot; keyProperty=&quot;id&quot; parameterType=&quot;ClaimVoucher&quot;&gt;</span><br><span class="line">        insert into claim_voucher(cause,create_sn,create_time,next_deal_sn,total_amount,status)</span><br><span class="line">        values(#&#123;cause&#125;,#&#123;createSn&#125;,#&#123;createTime&#125;,#&#123;nextDealSn&#125;,#&#123;totalAmount&#125;,#&#123;status&#125;)</span><br><span class="line">    &lt;/insert&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../images/SSM%E6%A1%86%E6%9E%B6%E6%95%B4%E5%90%88%E5%BC%80%E5%8F%91/7.png" alt="7"></p>
+<p><img src="/../images/SSM%E6%A1%86%E6%9E%B6%E6%95%B4%E5%90%88%E5%BC%80%E5%8F%91/8.png" alt="8"></p>
+<p><img src="/../images/SSM%E6%A1%86%E6%9E%B6%E6%95%B4%E5%90%88%E5%BC%80%E5%8F%91/9.png" alt="9"></p>
+<p><img src="/../images/SSM%E6%A1%86%E6%9E%B6%E6%95%B4%E5%90%88%E5%BC%80%E5%8F%91/10.png" alt="10"></p>
+<p><img src="/../images/SSM%E6%A1%86%E6%9E%B6%E6%95%B4%E5%90%88%E5%BC%80%E5%8F%91/11.png" alt="11"></p>
+<p>三层架构：持久层，业务层，表现层</p>
+<p>MVC：V(JSP)  C（Controller） M（持久层和业务层）</p>
+
+        </div>
+        
+<blockquote class="copyright">
+    <p><strong>Link to this article : </strong><a class="permalink" href="http://yoursite.com/2022/03/30/SSM%E6%A1%86%E6%9E%B6%E6%95%B4%E5%90%88%E5%BC%80%E5%8F%91/">http://yoursite.com/2022/03/30/SSM框架整合开发/</a></p>
+    <p><strong>This article is available under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)</a> License</strong></p>
+</blockquote>
+
+
+    </article>
+    
+    <section id="comments">
+        
+    </section>
+
+
+    
+
+</main>
+
+
+<aside style="" id="sidebar" class="aside aside-fixture">
+    <div class="toc-sidebar">
+        <nav id="toc" class="article-toc">
+            <h3 class="toc-title">Catalogue</h3>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BB%E8%A6%81%E6%AD%A5%E9%AA%A4%EF%BC%9A"><span class="toc-number">1.</span> <span class="toc-text">主要步骤：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E9%85%8D%E7%BD%AEpom-xml"><span class="toc-number"></span> <span class="toc-text">1-配置pom.xml</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#oa%EF%BC%9A"><span class="toc-number">1.</span> <span class="toc-text">oa：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#oa-dao%EF%BC%9A"><span class="toc-number">2.</span> <span class="toc-text">oa_dao：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#oa-biz%EF%BC%9A"><span class="toc-number">3.</span> <span class="toc-text">oa_biz：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#oa-web%EF%BC%9A"><span class="toc-number">4.</span> <span class="toc-text">oa_web：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E5%8C%85%E5%8F%8A%E5%85%A8%E5%B1%80%E9%85%8D%E7%BD%AE"><span class="toc-number"></span> <span class="toc-text">2-包及全局配置</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#spring-xml%E6%A8%A1%E6%9D%BF%EF%BC%9A"><span class="toc-number">0.0.1.</span> <span class="toc-text">spring.xml模板：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#oa-dao"><span class="toc-number">1.</span> <span class="toc-text">oa_dao:</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEspring-dao-xml%E6%96%87%E4%BB%B6%EF%BC%9A"><span class="toc-number">1.0.1.</span> <span class="toc-text">配置spring-dao.xml文件：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#oa-biz"><span class="toc-number">2.</span> <span class="toc-text">oa_biz:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#oz-web"><span class="toc-number">3.</span> <span class="toc-text">oz_web:</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0"><span class="toc-number"></span> <span class="toc-text">3-功能实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%83%A8%E9%97%A8%E7%AE%A1%E7%90%86%EF%BC%9A"><span class="toc-number">1.</span> <span class="toc-text">部门管理：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Sql%E6%98%A0%E5%B0%84%E6%96%87%E4%BB%B6%E6%A8%A1%E6%9D%BF%EF%BC%9A"><span class="toc-number">1.0.1.</span> <span class="toc-text">Sql映射文件模板：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9C%A8%E6%8E%A7%E5%88%B6%E5%99%A8%E4%B8%AD%E4%BC%A0%E9%80%92%E7%9A%84%E5%8F%82%E6%95%B0%E6%8E%A8%E8%8D%90%E4%BD%BF%E7%94%A8map%E7%B1%BB%E5%9E%8B%EF%BC%8C%E4%BB%96%E6%98%AFjava%E5%85%B1%E6%9C%89%E7%9A%84%E4%B8%8D%E4%BC%9A%E5%92%8CSpringMVC%E8%80%A6%E5%90%88%EF%BC%8C%E5%88%A9%E4%BA%8E%E5%90%8E%E6%9C%9F%E7%BB%B4%E6%8A%A4%E3%80%82"><span class="toc-number">1.0.2.</span> <span class="toc-text">在控制器中传递的参数推荐使用map类型，他是java共有的不会和SpringMVC耦合，利于后期维护。</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#SpringMVC%E9%A1%B5%E9%9D%A2%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A%E6%97%B6form%E8%A1%A8%E5%8D%95%E7%9A%84%E6%A0%BC%E5%BC%8F%EF%BC%8C%E4%BC%A0%E9%80%92%E7%BB%99add%E4%B8%BAdepartment%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%80%BC%EF%BC%9A"><span class="toc-number">1.0.3.</span> <span class="toc-text">SpringMVC页面数据绑定时form表单的格式，传递给add为department对象的值：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%91%98%E5%B7%A5%E7%AE%A1%E7%90%86%EF%BC%9A"><span class="toc-number">2.</span> <span class="toc-text">员工管理：</span></a></li></ol>
+        </nav>
+    </div>
+</aside>
+
+
+
+
+
+        </section>
+        <footer class="hidden lg:block fixed bottom-0 left-0 sm:w-1/12 lg:w-1/6 bg-gray-100 z-40">
+    
+    <div class="footer-social-links">
+        
+            <a target="_blank" rel="noopener" href="https://github.com/fengkx">
+                <i class="iconfont icon-github"></i>
+            </a>
+        
+            <a target="_blank" rel="noopener" href="https://t.me/fengkx">
+                <i class="iconfont icon-telegram"></i>
+            </a>
+        
+            <a target="_blank" rel="noopener" href="https://twitter.com/example">
+                <i class="iconfont icon-twitter"></i>
+            </a>
+        
+            <a href="/atom.xml">
+                <i class="iconfont icon-rss"></i>
+            </a>
+        
+    </div>
+    
+    
+</footer>
+
+        <div id="mask" class="hidden mask fixed inset-0 bg-gray-900 opacity-75 z-40"></div>
+        <div id="search-view-container" class="hidden shadow-xl"></div>
+        
+<script src="/js/dom-event.min.js"></script>
+
+
+
+<script src="/js/local-search.min.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/js/lightgallery.min.js"></script>
+    
+<script src="/js/light-gallery.min.js"></script>
+
+
+
+
+
+
+    </body>
+</html>

@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html  lang="english" >
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+    <title>Tukekenulia</title>
+    <meta name="description" content="主要步骤：1、数据库基本语法 2、数据库存储类型 3、完整性约束条件 4、数据表操作 5、MyISAM存储引擎，InnoDB存储引擎介绍 6、MySQL数据操作">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tukekenulia">
+<meta property="og:url" content="http://yoursite.com/2020/08/04/Java-Stage3-Step1.1~4-MySQL/index.html">
+<meta property="og:site_name" content="Tukekenulia">
+<meta property="og:description" content="主要步骤：1、数据库基本语法 2、数据库存储类型 3、完整性约束条件 4、数据表操作 5、MyISAM存储引擎，InnoDB存储引擎介绍 6、MySQL数据操作">
+<meta property="og:locale">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage3-Step1.1~4-MySQL/1.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage3-Step1.1~4-MySQL/2.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage3-Step1.1~4-MySQL/3.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage3-Step1.1~4-MySQL/4.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage3-Step1.1~4-MySQL/5.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage3-Step1.1~4-MySQL/6.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage3-Step1.1~4-MySQL/7.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage3-Step1.1~4-MySQL/8.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage3-Step1.1~4-MySQL/9.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage3-Step1.1~4-MySQL/10.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage3-Step1.1~4-MySQL/11.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage3-Step1.1~4-MySQL/12.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage3-Step1.1~4-MySQL/13.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage3-Step1.1~4-MySQL/14.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage3-Step1.1~4-MySQL/15.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage3-Step1.1~4-MySQL/16.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage3-Step1.1~4-MySQL/17.png">
+<meta property="article:published_time" content="2020-08-04T08:43:36.000Z">
+<meta property="article:modified_time" content="2020-08-04T08:43:36.000Z">
+<meta property="article:author" content="Tukeke">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/images/Java-Stage3-Step1.1~4-MySQL/1.png">
+
+    
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+
+    
+<link rel="stylesheet" href="/css/common.min.css">
+
+
+
+    
+    
+    
+    
+        <link href="//cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/css/lightgallery.min.css" rel="stylesheet">
+    
+    
+    
+<link rel="stylesheet" href="/css/iconfont.min.css">
+
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+    <body>
+        <header class="header header-fixture">
+    <div class="profile-search-wrap flex sm:block">
+        
+        
+        <div class="profile sm:text-center md:px-1 lg:px-3 sm:pb-4 sm:pt-6">
+            <a id="avatar" role="link" href="https://github.com/fengkx" class="inline-block lg:w-16 lg:h-16 w-8 h-8 m-2" target="_blank" rel="noopener" rel="noreferrer" >
+                <img src="https://www.gravatar.com/avatar/0bc83cb571cd1c50ba6f3e8a78ef1346?s=128" class="rounded-full" alt="avatar">
+            </a>
+            <h2 id="name" class="hidden lg:block">fengkx</h2>
+            <h3 id="title" class="hidden lg:block">Student &amp; Coder</h3>
+            
+            <small id="location" class="hidden lg:block">
+                <i class="iconfont icon-map-icon"></i>
+                Guangzhou, China
+            </small>
+            
+        </div>
+        
+        
+<div class="search flex-1 flex lg:inline-block sm:hidden lg:px-4 lg:mt-2 lg:mb-4 lg:w-full">
+    <form id="search-form" class="my-auto flex-1 lg:border lg:border-solid lg:border-gray-200">
+        <div class="input-group table bg-gray-100 lg:bg-white w-full">
+            <input id="search-input" type="text" placeholder="Search" class="inline-block w-full bg-gray-100 lg:bg-white p-1">
+            <span class="table-cell">
+                <button name="search tigger button" disabled>
+                    <i class="iconfont icon-search m-2"></i>
+                </button>
+            </span>
+        </div>
+    </form>
+        
+<div id="content-json" data-placeholder="Search" class="invisible hidden">/content.json</div>
+<script id="search-teamplate" type="text/html" data-path="/content.json">
+    <div>
+        <div class="search-header bg-gray-400">
+            <input id="actual-search-input" model="keyword" ref="input" class="inline-block w-full h-10 px-2 py-1" placeholder="Search" type="text">
+        </div>
+        <div class="search-result bg-gray-200">
+            {{#each searchPosts}}
+            <a href="/{{ path }}" class="result-item block px-2 pb-3 mb-1 pt-1 hover:bg-indigo-100">
+                <i class="iconfont icon-file"></i>
+                <h1 class="result-title inline font-medium text-lg">{{ title }}</h1>
+                <p class="result-content text-gray-600 text-sm">{{{ text }}}</p>
+            </a>
+            {{/each}}
+        </div>
+    </div>
+</script>
+
+</div>
+
+
+        <button name="menu toogle button" id="menu-toggle-btn" class="block sm:hidden p-3" role="button" aria-expanded="false">
+            <i class="iconfont icon-hamburger"></i>
+        </button>
+    </div>
+    <nav id="menu-nav" class="hidden sm:flex flex-col">
+        
+        
+            <div class="menu-item menu-home" role="menuitem">
+                <a href="/.">
+                    <i class="iconfont icon-home" aria-hidden="true"></i>
+                    <span class="menu-title">Home</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-archives" role="menuitem">
+                <a href="/archives">
+                    <i class="iconfont icon-archive" aria-hidden="true"></i>
+                    <span class="menu-title">Archives</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-categories" role="menuitem">
+                <a href="/categories">
+                    <i class="iconfont icon-folder" aria-hidden="true"></i>
+                    <span class="menu-title">Categories</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-tags" role="menuitem">
+                <a href="/tags">
+                    <i class="iconfont icon-tag" aria-hidden="true"></i>
+                    <span class="menu-title">Tags</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-repository" role="menuitem">
+                <a href="/repository">
+                    <i class="iconfont icon-project" aria-hidden="true"></i>
+                    <span class="menu-title">Repository</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-links" role="menuitem">
+                <a href="/links">
+                    <i class="iconfont icon-friend" aria-hidden="true"></i>
+                    <span class="menu-title">Links</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-about" role="menuitem">
+                <a href="/about">
+                    <i class="iconfont icon-cup" aria-hidden="true"></i>
+                    <span class="menu-title">About</span>
+                </a>
+            </div>
+        
+        
+<div class="social-links flex sm:flex-col lg:hidden mt-5">
+    
+        <span class="social-item text-center">
+            <a target="_blank" rel="noopener" href="https://github.com/fengkx">
+                <i class="iconfont social-icon icon-github"></i>
+                <span class="menu-title hidden lg:inline">menu.github</span>
+            </a>
+        </span>
+    
+        <span class="social-item text-center">
+            <a target="_blank" rel="noopener" href="https://t.me/fengkx">
+                <i class="iconfont social-icon icon-telegram"></i>
+                <span class="menu-title hidden lg:inline">menu.telegram</span>
+            </a>
+        </span>
+    
+        <span class="social-item text-center">
+            <a target="_blank" rel="noopener" href="https://twitter.com/example">
+                <i class="iconfont social-icon icon-twitter"></i>
+                <span class="menu-title hidden lg:inline">menu.twitter</span>
+            </a>
+        </span>
+    
+        <span class="social-item text-center">
+            <a href="/atom.xml">
+                <i class="iconfont social-icon icon-rss"></i>
+                <span class="menu-title hidden lg:inline">menu.rss</span>
+            </a>
+        </span>
+    
+</div>
+
+
+    </nav>
+</header>
+
+        <section class="main-section">
+            
+    <main class="flex-1 px-4 py-14 md:px-5 lg:px-8 lg:py-4 relative min-h-screen">
+    
+
+    <article class="content article article-archives article-type-list" itemscope="">
+        <header class="article-header">
+            
+
+
+            <p class="article-meta mb-3 text-xs">
+                <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2020/08/04/Java-Stage3-Step1.1~4-MySQL/" class="article-date">
+	  <time datetime="2020-08-04T08:43:36.000Z" itemprop="datePublished">Aug 4</time>
+	</a>
+</span>
+
+                
+
+                
+
+                <span class="_partial/post-comment"><i class="icon icon-comment"></i>
+                    <a href="/2020/08/04/Java-Stage3-Step1.1~4-MySQL/#comments" class="article-comment-link">
+                        Comments
+                    </a>
+                </span>
+                
+
+            </p>
+        </header>
+        <div class="marked-body article-body">
+            <h3 id="主要步骤："><a href="#主要步骤：" class="headerlink" title="主要步骤："></a>主要步骤：</h3><p>1、数据库基本语法</p>
+<p>2、数据库存储类型</p>
+<p>3、完整性约束条件</p>
+<p>4、数据表操作</p>
+<p>5、MyISAM存储引擎，InnoDB存储引擎介绍</p>
+<p>6、MySQL数据操作</p>
+<span id="more"></span>
+
+<h3 id="1-数据库基本语法"><a href="#1-数据库基本语法" class="headerlink" title="1-数据库基本语法"></a>1-数据库基本语法</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">CREATE DATABASE/SCHEMA db_name 创建数据库</span><br><span class="line">SHOW DATABASES/SCHEMAS 显示所有数据库</span><br><span class="line">CREATE DATABASE IF NOT EXISTS db_name CHARACTER SET =&#x27;utf8&#x27; 创建数据库并指定编码方式</span><br><span class="line">SHOW CREATE DATABASE db_name 查看指定数据库的详细信息</span><br><span class="line">ALTER DATABASE db_name DEFAULT CHARACTER SET &#x27;GBK&#x27; 修改指定数据库的编码方式</span><br><span class="line">USE db_name 使用指定数据库</span><br><span class="line">SELECT DATABASE()|SCHEMA() 得到当前打开的数据库</span><br><span class="line">DROP [IF EXISTS] db_name 删除指定数据库</span><br><span class="line">#|-- 注释</span><br><span class="line">SHOW WARNINGS 查看上一步操作产生的警告信息</span><br><span class="line">DESC tbl_name 查看表结构</span><br><span class="line">SHOW TABLE STATUS LIKE &#x27;tbl_name&#x27; ; 展示表的状态</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-数据库存储类型"><a href="#2-数据库存储类型" class="headerlink" title="2-数据库存储类型"></a>2-数据库存储类型</h3><p><img src="/images/Java-Stage3-Step1.1~4-MySQL/1.png" alt="1"></p>
+<p><img src="/images/Java-Stage3-Step1.1~4-MySQL/2.png" alt="2"></p>
+<p><img src="/images/Java-Stage3-Step1.1~4-MySQL/3.png" alt="3"></p>
+<p><img src="/images/Java-Stage3-Step1.1~4-MySQL/4.png" alt="4"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">TEXT 不能有默认值，大小写敏感</span><br><span class="line">CHAR 效率比 varchar 高  相当于空间换时间</span><br><span class="line">ENUM 编号从1开始</span><br><span class="line">YEAR </span><br><span class="line">0-69 表示 2000-2069 </span><br><span class="line">70-99 表示1970-1999</span><br><span class="line">0 插入的结果是0000</span><br><span class="line">‘0’ 插入的结果是2000</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-完整性约束条件"><a href="#3-完整性约束条件" class="headerlink" title="3-完整性约束条件"></a>3-完整性约束条件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">unsigned 无符号，没有负数，从0开始</span><br><span class="line">zerofill 零填充，长度不够的时候使用前补0填充</span><br><span class="line">NOT NULL 非空</span><br><span class="line">DEFAULT 默认值 插入的时候没有赋值就给默认值</span><br><span class="line">PRIMARY KEY 主键</span><br><span class="line">UNIQUE KEY 唯一性，一个表可以有多个，NULL除外</span><br><span class="line">AUTO_INCREMENT 自增长，只能用于数值列，而且配合索引使用(主键)</span><br><span class="line">FOREIGN KEY 外键约束</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-数据表操作"><a href="#4-数据表操作" class="headerlink" title="4-数据表操作"></a>4-数据表操作</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE tbl_name(</span><br><span class="line">	id INT UNSIGNED COMMENT ’用户编号‘,  -COMMENT代表注释</span><br><span class="line">	courseId INT UNSIGNED,</span><br><span class="line">	PRIMARY KEY(id,courseId)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p>添加字段：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE tbl_name</span><br><span class="line">ADD 字段名称 字段属性[完整性约束条件][FIRST|AFTER 字段名称]</span><br></pre></td></tr></table></figure>
+
+<p>删除字段：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ALTER TBALE tbl_name</span><br><span class="line">DROP 字段名称</span><br></pre></td></tr></table></figure>
+
+<p>添加默认值：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE tbl_name</span><br><span class="line">ALTER 字段名称 SET DEFAULT 默认值;</span><br></pre></td></tr></table></figure>
+
+<p>删除默认值：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE tbl_name</span><br><span class="line">ALTER 字段名称 DROP DEFAULT;</span><br></pre></td></tr></table></figure>
+
+<p>修改字段类型，字段属性：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ALTER TBALE tbl_name</span><br><span class="line">MODIFY 字段名称 字段类型 [字段属性] [FIRST|AFTER 字段名称]</span><br></pre></td></tr></table></figure>
+
+<p>修改字段名称、字段类型、字段属性:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE tbl_name</span><br><span class="line">CHANGE 原字段名称 新字段名称 字段类型 字段属性 [FIRST|AFTER 字段名称]</span><br></pre></td></tr></table></figure>
+
+<p>添加主键：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE tbl_name</span><br><span class="line">ADD PRIMARY KEY(字段名称)</span><br></pre></td></tr></table></figure>
+
+<p>删除主键：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE tbl_name</span><br><span class="line">DROP PRIMARY KEY;</span><br></pre></td></tr></table></figure>
+
+<p>添加唯一：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE tbl_name</span><br><span class="line">ADD UNIQUE KEY|INDEX  [index_name](字段名称)</span><br></pre></td></tr></table></figure>
+
+<p>删除唯一：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE tbl_name</span><br><span class="line">DROP INDEX [index_name](字段名称);</span><br></pre></td></tr></table></figure>
+
+<p>修改AUTO_INCREMANT的值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE tbl_name AUTO_INCREMENT=值</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="5-MyISAM存储引擎"><a href="#5-MyISAM存储引擎" class="headerlink" title="5-MyISAM存储引擎"></a>5-MyISAM存储引擎</h3><p><img src="/images/Java-Stage3-Step1.1~4-MySQL/5.png" alt="5"></p>
+<h3 id="6-InnoDB存储引擎"><a href="#6-InnoDB存储引擎" class="headerlink" title="6-InnoDB存储引擎"></a>6-InnoDB存储引擎</h3><p><img src="/images/Java-Stage3-Step1.1~4-MySQL/6.png" alt="6"></p>
+<h3 id="7-MySQL数据操作"><a href="#7-MySQL数据操作" class="headerlink" title="7-MySQL数据操作"></a>7-MySQL数据操作</h3><h5 id="插入记录："><a href="#插入记录：" class="headerlink" title="插入记录："></a>插入记录：</h5><p><img src="/images/Java-Stage3-Step1.1~4-MySQL/7.png" alt="7"></p>
+<h5 id="修改记录："><a href="#修改记录：" class="headerlink" title="修改记录："></a>修改记录：</h5><p><img src="/images/Java-Stage3-Step1.1~4-MySQL/8.png" alt="8"></p>
+<h5 id="删除记录："><a href="#删除记录：" class="headerlink" title="删除记录："></a>删除记录：</h5><p><img src="/images/Java-Stage3-Step1.1~4-MySQL/9.png" alt="9"></p>
+<p><img src="/images/Java-Stage3-Step1.1~4-MySQL/10.png" alt="10"></p>
+<h5 id="多表查询-笛卡尔积的形式就是普通多表查询"><a href="#多表查询-笛卡尔积的形式就是普通多表查询" class="headerlink" title="多表查询:笛卡尔积的形式就是普通多表查询"></a>多表查询:笛卡尔积的形式就是普通多表查询</h5><p><img src="/images/Java-Stage3-Step1.1~4-MySQL/11.png" alt="11"></p>
+<h5 id="外键约束："><a href="#外键约束：" class="headerlink" title="外键约束："></a>外键约束：</h5><p><img src="/images/Java-Stage3-Step1.1~4-MySQL/12.png" alt="12"></p>
+<h5 id="特殊形式查询：子查询，联合查询，自身连接查询"><a href="#特殊形式查询：子查询，联合查询，自身连接查询" class="headerlink" title="特殊形式查询：子查询，联合查询，自身连接查询"></a>特殊形式查询：子查询，联合查询，自身连接查询</h5><p>EXISTS () 若为真 则执行</p>
+<p>SELECT DISTINCT(username) FROM tbl_name  去掉字段username的重复值</p>
+<p><img src="/images/Java-Stage3-Step1.1~4-MySQL/13.png" alt="13"></p>
+<h5 id="MySQL常用函数："><a href="#MySQL常用函数：" class="headerlink" title="MySQL常用函数："></a>MySQL常用函数：</h5><h5 id="数学函数："><a href="#数学函数：" class="headerlink" title="数学函数："></a>数学函数：</h5><p><img src="/images/Java-Stage3-Step1.1~4-MySQL/14.png" alt="14"></p>
+<h5 id="字符串函数："><a href="#字符串函数：" class="headerlink" title="字符串函数："></a>字符串函数：</h5><p><img src="/images/Java-Stage3-Step1.1~4-MySQL/15.png" alt="15"></p>
+<h5 id="日期时间函数："><a href="#日期时间函数：" class="headerlink" title="日期时间函数："></a>日期时间函数：</h5><p><img src="/images/Java-Stage3-Step1.1~4-MySQL/16.png" alt="16"></p>
+<h5 id="其他常用函数："><a href="#其他常用函数：" class="headerlink" title="其他常用函数："></a>其他常用函数：</h5><p><img src="/images/Java-Stage3-Step1.1~4-MySQL/17.png" alt="17"></p>
+
+        </div>
+        
+<blockquote class="copyright">
+    <p><strong>Link to this article : </strong><a class="permalink" href="http://yoursite.com/2020/08/04/Java-Stage3-Step1.1~4-MySQL/">http://yoursite.com/2020/08/04/Java-Stage3-Step1.1~4-MySQL/</a></p>
+    <p><strong>This article is available under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)</a> License</strong></p>
+</blockquote>
+
+
+    </article>
+    
+    <section id="comments">
+        
+    </section>
+
+
+    
+
+</main>
+
+
+<aside style="" id="sidebar" class="aside aside-fixture">
+    <div class="toc-sidebar">
+        <nav id="toc" class="article-toc">
+            <h3 class="toc-title">Catalogue</h3>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BB%E8%A6%81%E6%AD%A5%E9%AA%A4%EF%BC%9A"><span class="toc-number">1.</span> <span class="toc-text">主要步骤：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95"><span class="toc-number">2.</span> <span class="toc-text">1-数据库基本语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%98%E5%82%A8%E7%B1%BB%E5%9E%8B"><span class="toc-number">3.</span> <span class="toc-text">2-数据库存储类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%AE%8C%E6%95%B4%E6%80%A7%E7%BA%A6%E6%9D%9F%E6%9D%A1%E4%BB%B6"><span class="toc-number">4.</span> <span class="toc-text">3-完整性约束条件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%95%B0%E6%8D%AE%E8%A1%A8%E6%93%8D%E4%BD%9C"><span class="toc-number">5.</span> <span class="toc-text">4-数据表操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-MyISAM%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E"><span class="toc-number">6.</span> <span class="toc-text">5-MyISAM存储引擎</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-InnoDB%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E"><span class="toc-number">7.</span> <span class="toc-text">6-InnoDB存储引擎</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-MySQL%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C"><span class="toc-number">8.</span> <span class="toc-text">7-MySQL数据操作</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%8F%92%E5%85%A5%E8%AE%B0%E5%BD%95%EF%BC%9A"><span class="toc-number">8.0.1.</span> <span class="toc-text">插入记录：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E8%AE%B0%E5%BD%95%EF%BC%9A"><span class="toc-number">8.0.2.</span> <span class="toc-text">修改记录：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E8%AE%B0%E5%BD%95%EF%BC%9A"><span class="toc-number">8.0.3.</span> <span class="toc-text">删除记录：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2-%E7%AC%9B%E5%8D%A1%E5%B0%94%E7%A7%AF%E7%9A%84%E5%BD%A2%E5%BC%8F%E5%B0%B1%E6%98%AF%E6%99%AE%E9%80%9A%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2"><span class="toc-number">8.0.4.</span> <span class="toc-text">多表查询:笛卡尔积的形式就是普通多表查询</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%A4%96%E9%94%AE%E7%BA%A6%E6%9D%9F%EF%BC%9A"><span class="toc-number">8.0.5.</span> <span class="toc-text">外键约束：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%89%B9%E6%AE%8A%E5%BD%A2%E5%BC%8F%E6%9F%A5%E8%AF%A2%EF%BC%9A%E5%AD%90%E6%9F%A5%E8%AF%A2%EF%BC%8C%E8%81%94%E5%90%88%E6%9F%A5%E8%AF%A2%EF%BC%8C%E8%87%AA%E8%BA%AB%E8%BF%9E%E6%8E%A5%E6%9F%A5%E8%AF%A2"><span class="toc-number">8.0.6.</span> <span class="toc-text">特殊形式查询：子查询，联合查询，自身连接查询</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#MySQL%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0%EF%BC%9A"><span class="toc-number">8.0.7.</span> <span class="toc-text">MySQL常用函数：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%95%B0%E5%AD%A6%E5%87%BD%E6%95%B0%EF%BC%9A"><span class="toc-number">8.0.8.</span> <span class="toc-text">数学函数：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%87%BD%E6%95%B0%EF%BC%9A"><span class="toc-number">8.0.9.</span> <span class="toc-text">字符串函数：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%97%A5%E6%9C%9F%E6%97%B6%E9%97%B4%E5%87%BD%E6%95%B0%EF%BC%9A"><span class="toc-number">8.0.10.</span> <span class="toc-text">日期时间函数：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0%EF%BC%9A"><span class="toc-number">8.0.11.</span> <span class="toc-text">其他常用函数：</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </div>
+</aside>
+
+
+
+
+
+        </section>
+        <footer class="hidden lg:block fixed bottom-0 left-0 sm:w-1/12 lg:w-1/6 bg-gray-100 z-40">
+    
+    <div class="footer-social-links">
+        
+            <a target="_blank" rel="noopener" href="https://github.com/fengkx">
+                <i class="iconfont icon-github"></i>
+            </a>
+        
+            <a target="_blank" rel="noopener" href="https://t.me/fengkx">
+                <i class="iconfont icon-telegram"></i>
+            </a>
+        
+            <a target="_blank" rel="noopener" href="https://twitter.com/example">
+                <i class="iconfont icon-twitter"></i>
+            </a>
+        
+            <a href="/atom.xml">
+                <i class="iconfont icon-rss"></i>
+            </a>
+        
+    </div>
+    
+    
+</footer>
+
+        <div id="mask" class="hidden mask fixed inset-0 bg-gray-900 opacity-75 z-40"></div>
+        <div id="search-view-container" class="hidden shadow-xl"></div>
+        
+<script src="/js/dom-event.min.js"></script>
+
+
+
+<script src="/js/local-search.min.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/js/lightgallery.min.js"></script>
+    
+<script src="/js/light-gallery.min.js"></script>
+
+
+
+
+
+
+    </body>
+</html>

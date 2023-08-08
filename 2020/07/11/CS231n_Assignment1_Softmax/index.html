@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html  lang="english" >
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+    <title>Tukekenulia</title>
+    <meta name="description" content="此篇仅记录自己学习CS231n的习题成果所用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tukekenulia">
+<meta property="og:url" content="http://yoursite.com/2020/07/11/CS231n_Assignment1_Softmax/index.html">
+<meta property="og:site_name" content="Tukekenulia">
+<meta property="og:description" content="此篇仅记录自己学习CS231n的习题成果所用">
+<meta property="og:locale">
+<meta property="og:image" content="http://yoursite.com/images/CS231n_Assignment1_Softmax/1.png">
+<meta property="og:image" content="http://yoursite.com/images/CS231n_Assignment1_Softmax/2.png">
+<meta property="og:image" content="http://yoursite.com/images/CS231n_Assignment1_Softmax/3.png">
+<meta property="og:image" content="http://yoursite.com/images/CS231n_Assignment1_Softmax/4.png">
+<meta property="og:image" content="http://yoursite.com/images/CS231n_Assignment1_Softmax/5.png">
+<meta property="og:image" content="http://yoursite.com/images/CS231n_Assignment1_Softmax/6.png">
+<meta property="og:image" content="http://yoursite.com/images/CS231n_Assignment1_Softmax/7.png">
+<meta property="article:published_time" content="2020-07-11T08:11:20.000Z">
+<meta property="article:modified_time" content="2020-07-11T08:11:20.000Z">
+<meta property="article:author" content="Tukeke">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/images/CS231n_Assignment1_Softmax/1.png">
+
+    
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+
+    
+<link rel="stylesheet" href="/css/common.min.css">
+
+
+
+    
+    
+    
+    
+        <link href="//cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/css/lightgallery.min.css" rel="stylesheet">
+    
+    
+    
+<link rel="stylesheet" href="/css/iconfont.min.css">
+
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+    <body>
+        <header class="header header-fixture">
+    <div class="profile-search-wrap flex sm:block">
+        
+        
+        <div class="profile sm:text-center md:px-1 lg:px-3 sm:pb-4 sm:pt-6">
+            <a id="avatar" role="link" href="https://github.com/fengkx" class="inline-block lg:w-16 lg:h-16 w-8 h-8 m-2" target="_blank" rel="noopener" rel="noreferrer" >
+                <img src="https://www.gravatar.com/avatar/0bc83cb571cd1c50ba6f3e8a78ef1346?s=128" class="rounded-full" alt="avatar">
+            </a>
+            <h2 id="name" class="hidden lg:block">fengkx</h2>
+            <h3 id="title" class="hidden lg:block">Student &amp; Coder</h3>
+            
+            <small id="location" class="hidden lg:block">
+                <i class="iconfont icon-map-icon"></i>
+                Guangzhou, China
+            </small>
+            
+        </div>
+        
+        
+<div class="search flex-1 flex lg:inline-block sm:hidden lg:px-4 lg:mt-2 lg:mb-4 lg:w-full">
+    <form id="search-form" class="my-auto flex-1 lg:border lg:border-solid lg:border-gray-200">
+        <div class="input-group table bg-gray-100 lg:bg-white w-full">
+            <input id="search-input" type="text" placeholder="Search" class="inline-block w-full bg-gray-100 lg:bg-white p-1">
+            <span class="table-cell">
+                <button name="search tigger button" disabled>
+                    <i class="iconfont icon-search m-2"></i>
+                </button>
+            </span>
+        </div>
+    </form>
+        
+<div id="content-json" data-placeholder="Search" class="invisible hidden">/content.json</div>
+<script id="search-teamplate" type="text/html" data-path="/content.json">
+    <div>
+        <div class="search-header bg-gray-400">
+            <input id="actual-search-input" model="keyword" ref="input" class="inline-block w-full h-10 px-2 py-1" placeholder="Search" type="text">
+        </div>
+        <div class="search-result bg-gray-200">
+            {{#each searchPosts}}
+            <a href="/{{ path }}" class="result-item block px-2 pb-3 mb-1 pt-1 hover:bg-indigo-100">
+                <i class="iconfont icon-file"></i>
+                <h1 class="result-title inline font-medium text-lg">{{ title }}</h1>
+                <p class="result-content text-gray-600 text-sm">{{{ text }}}</p>
+            </a>
+            {{/each}}
+        </div>
+    </div>
+</script>
+
+</div>
+
+
+        <button name="menu toogle button" id="menu-toggle-btn" class="block sm:hidden p-3" role="button" aria-expanded="false">
+            <i class="iconfont icon-hamburger"></i>
+        </button>
+    </div>
+    <nav id="menu-nav" class="hidden sm:flex flex-col">
+        
+        
+            <div class="menu-item menu-home" role="menuitem">
+                <a href="/.">
+                    <i class="iconfont icon-home" aria-hidden="true"></i>
+                    <span class="menu-title">Home</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-archives" role="menuitem">
+                <a href="/archives">
+                    <i class="iconfont icon-archive" aria-hidden="true"></i>
+                    <span class="menu-title">Archives</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-categories" role="menuitem">
+                <a href="/categories">
+                    <i class="iconfont icon-folder" aria-hidden="true"></i>
+                    <span class="menu-title">Categories</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-tags" role="menuitem">
+                <a href="/tags">
+                    <i class="iconfont icon-tag" aria-hidden="true"></i>
+                    <span class="menu-title">Tags</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-repository" role="menuitem">
+                <a href="/repository">
+                    <i class="iconfont icon-project" aria-hidden="true"></i>
+                    <span class="menu-title">Repository</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-links" role="menuitem">
+                <a href="/links">
+                    <i class="iconfont icon-friend" aria-hidden="true"></i>
+                    <span class="menu-title">Links</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-about" role="menuitem">
+                <a href="/about">
+                    <i class="iconfont icon-cup" aria-hidden="true"></i>
+                    <span class="menu-title">About</span>
+                </a>
+            </div>
+        
+        
+<div class="social-links flex sm:flex-col lg:hidden mt-5">
+    
+        <span class="social-item text-center">
+            <a target="_blank" rel="noopener" href="https://github.com/fengkx">
+                <i class="iconfont social-icon icon-github"></i>
+                <span class="menu-title hidden lg:inline">menu.github</span>
+            </a>
+        </span>
+    
+        <span class="social-item text-center">
+            <a target="_blank" rel="noopener" href="https://t.me/fengkx">
+                <i class="iconfont social-icon icon-telegram"></i>
+                <span class="menu-title hidden lg:inline">menu.telegram</span>
+            </a>
+        </span>
+    
+        <span class="social-item text-center">
+            <a target="_blank" rel="noopener" href="https://twitter.com/example">
+                <i class="iconfont social-icon icon-twitter"></i>
+                <span class="menu-title hidden lg:inline">menu.twitter</span>
+            </a>
+        </span>
+    
+        <span class="social-item text-center">
+            <a href="/atom.xml">
+                <i class="iconfont social-icon icon-rss"></i>
+                <span class="menu-title hidden lg:inline">menu.rss</span>
+            </a>
+        </span>
+    
+</div>
+
+
+    </nav>
+</header>
+
+        <section class="main-section">
+            
+    <main class="flex-1 px-4 py-14 md:px-5 lg:px-8 lg:py-4 relative min-h-screen">
+    
+
+    <article class="content article article-archives article-type-list" itemscope="">
+        <header class="article-header">
+            
+
+
+            <p class="article-meta mb-3 text-xs">
+                <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2020/07/11/CS231n_Assignment1_Softmax/" class="article-date">
+	  <time datetime="2020-07-11T08:11:20.000Z" itemprop="datePublished">Jul 11</time>
+	</a>
+</span>
+
+                
+
+                
+
+                <span class="_partial/post-comment"><i class="icon icon-comment"></i>
+                    <a href="/2020/07/11/CS231n_Assignment1_Softmax/#comments" class="article-comment-link">
+                        Comments
+                    </a>
+                </span>
+                
+
+            </p>
+        </header>
+        <div class="marked-body article-body">
+            <p>此篇仅记录自己学习CS231n的习题成果所用</p>
+<span id="more"></span>
+
+<p>Softmax exercise需要完成一下步骤：</p>
+<p>1.为Softmax分类器实现一个完全向量化的损失函数</p>
+<p>2.实现其解析梯度的全向量化表达式</p>
+<p>3.用数值梯度检查你的实现</p>
+<p>4.使用验证集来调整学习速率和正则化强度</p>
+<p>5.用SGD优化损失函数</p>
+<p>6.将最终学到的权重可视化</p>
+<p>&#x2F;&#x2F;基本与SVM的步骤相同</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line">import random</span><br><span class="line">import numpy as np</span><br><span class="line">from cs231n.data_utils import load_CIFAR10</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line"></span><br><span class="line">%matplotlib inline</span><br><span class="line">plt.rcParams[&#x27;figure.figsize&#x27;] = (10.0, 8.0) # set default size of plots</span><br><span class="line">plt.rcParams[&#x27;image.interpolation&#x27;] = &#x27;nearest&#x27;</span><br><span class="line">plt.rcParams[&#x27;image.cmap&#x27;] = &#x27;gray&#x27;</span><br><span class="line"></span><br><span class="line"># for auto-reloading extenrnal modules</span><br><span class="line"># see http://stackoverflow.com/questions/1907993/autoreload-of-modules-in-ipython</span><br><span class="line">%load_ext autoreload</span><br><span class="line">%autoreload 2</span><br><span class="line"></span><br><span class="line">def get_CIFAR10_data(num_training=49000, num_validation=1000, num_test=1000, num_dev=500):</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    Load the CIFAR-10 dataset from disk and perform preprocessing to prepare</span><br><span class="line">    it for the linear classifier. These are the same steps as we used for the</span><br><span class="line">    SVM, but condensed to a single function.  </span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    # Load the raw CIFAR-10 data</span><br><span class="line">    cifar10_dir = &#x27;cs231n/datasets/cifar-10-batches-py&#x27;</span><br><span class="line">    </span><br><span class="line">    # Cleaning up variables to prevent loading data multiple times (which may cause memory issue)</span><br><span class="line">    try:</span><br><span class="line">       del X_train, y_train</span><br><span class="line">       del X_test, y_test</span><br><span class="line">       print(&#x27;Clear previously loaded data.&#x27;)</span><br><span class="line">    except:</span><br><span class="line">       pass</span><br><span class="line"></span><br><span class="line">    X_train, y_train, X_test, y_test = load_CIFAR10(cifar10_dir)</span><br><span class="line">    </span><br><span class="line">    # subsample the data</span><br><span class="line">    mask = list(range(num_training, num_training + num_validation))</span><br><span class="line">    X_val = X_train[mask]</span><br><span class="line">    y_val = y_train[mask]</span><br><span class="line">    mask = list(range(num_training))</span><br><span class="line">    X_train = X_train[mask]</span><br><span class="line">    y_train = y_train[mask]</span><br><span class="line">    mask = list(range(num_test))</span><br><span class="line">    X_test = X_test[mask]</span><br><span class="line">    y_test = y_test[mask]</span><br><span class="line">    mask = np.random.choice(num_training, num_dev, replace=False)</span><br><span class="line">    X_dev = X_train[mask]</span><br><span class="line">    y_dev = y_train[mask]</span><br><span class="line">    </span><br><span class="line">    # Preprocessing: reshape the image data into rows</span><br><span class="line">    X_train = np.reshape(X_train, (X_train.shape[0], -1))</span><br><span class="line">    X_val = np.reshape(X_val, (X_val.shape[0], -1))</span><br><span class="line">    X_test = np.reshape(X_test, (X_test.shape[0], -1))</span><br><span class="line">    X_dev = np.reshape(X_dev, (X_dev.shape[0], -1))</span><br><span class="line">    </span><br><span class="line">    # Normalize the data: subtract the mean image</span><br><span class="line">    mean_image = np.mean(X_train, axis = 0)</span><br><span class="line">    X_train -= mean_image</span><br><span class="line">    X_val -= mean_image</span><br><span class="line">    X_test -= mean_image</span><br><span class="line">    X_dev -= mean_image</span><br><span class="line">    </span><br><span class="line">    # add bias dimension and transform into columns</span><br><span class="line">    X_train = np.hstack([X_train, np.ones((X_train.shape[0], 1))])</span><br><span class="line">    X_val = np.hstack([X_val, np.ones((X_val.shape[0], 1))])</span><br><span class="line">    X_test = np.hstack([X_test, np.ones((X_test.shape[0], 1))])</span><br><span class="line">    X_dev = np.hstack([X_dev, np.ones((X_dev.shape[0], 1))])</span><br><span class="line">    </span><br><span class="line">    return X_train, y_train, X_val, y_val, X_test, y_test, X_dev, y_dev</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># Invoke the above function to get our data.</span><br><span class="line">X_train, y_train, X_val, y_val, X_test, y_test, X_dev, y_dev = get_CIFAR10_data()</span><br><span class="line">print(&#x27;Train data shape: &#x27;, X_train.shape)</span><br><span class="line">print(&#x27;Train labels shape: &#x27;, y_train.shape)</span><br><span class="line">print(&#x27;Validation data shape: &#x27;, X_val.shape)</span><br><span class="line">print(&#x27;Validation labels shape: &#x27;, y_val.shape)</span><br><span class="line">print(&#x27;Test data shape: &#x27;, X_test.shape)</span><br><span class="line">print(&#x27;Test labels shape: &#x27;, y_test.shape)</span><br><span class="line">print(&#x27;dev data shape: &#x27;, X_dev.shape)</span><br><span class="line">print(&#x27;dev labels shape: &#x27;, y_dev.shape)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/CS231n_Assignment1_Softmax/1.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">//完成softmax_loss_naive函数，并获得loss和dW的值并输出LOSS的值</span><br><span class="line"></span><br><span class="line"># First implement the naive softmax loss function with nested loops.</span><br><span class="line"># Open the file cs231n/classifiers/softmax.py and implement the</span><br><span class="line"># softmax_loss_naive function.</span><br><span class="line"></span><br><span class="line">from cs231n.classifiers.softmax import softmax_loss_naive</span><br><span class="line">import time</span><br><span class="line"></span><br><span class="line"># Generate a random softmax weight matrix and use it to compute the loss.</span><br><span class="line">W = np.random.randn(3073, 10) * 0.0001</span><br><span class="line">loss, grad = softmax_loss_naive(W, X_dev, y_dev, 0.0)</span><br><span class="line"></span><br><span class="line"># As a rough sanity check, our loss should be something close to -log(0.1).</span><br><span class="line">print(&#x27;loss: %f&#x27; % loss)</span><br><span class="line">print(&#x27;sanity check: %f&#x27; % (-np.log(0.1)))</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/CS231n_Assignment1_Softmax/2.png" alt="2"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">//用数值分析的方法来验证计算dW值计算是否正确 //调用的方法在gradient_check.py中</span><br><span class="line"># Complete the implementation of softmax_loss_naive and implement a (naive)</span><br><span class="line"># version of the gradient that uses nested loops.</span><br><span class="line">loss, grad = softmax_loss_naive(W, X_dev, y_dev, 0.0)</span><br><span class="line"></span><br><span class="line"># As we did for the SVM, use numeric gradient checking as a debugging tool.</span><br><span class="line"># The numeric gradient should be close to the analytic gradient.</span><br><span class="line">from cs231n.gradient_check import grad_check_sparse</span><br><span class="line">f = lambda w: softmax_loss_naive(w, X_dev, y_dev, 0.0)[0]</span><br><span class="line">grad_numerical = grad_check_sparse(f, W, grad, 10)</span><br><span class="line"></span><br><span class="line"># similar to SVM case, do another gradient check with regularization</span><br><span class="line">loss, grad = softmax_loss_naive(W, X_dev, y_dev, 5e1)</span><br><span class="line">f = lambda w: softmax_loss_naive(w, X_dev, y_dev, 5e1)[0]</span><br><span class="line">grad_numerical = grad_check_sparse(f, W, grad, 10)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/CS231n_Assignment1_Softmax/3.png" alt="3"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"># Now that we have a naive implementation of the softmax loss function and its gradient,</span><br><span class="line"># implement a vectorized version in softmax_loss_vectorized.</span><br><span class="line"># The two versions should compute the same results, but the vectorized version should be</span><br><span class="line"># much faster.</span><br><span class="line">tic = time.time()</span><br><span class="line">loss_naive, grad_naive = softmax_loss_naive(W, X_dev, y_dev, 0.000005)</span><br><span class="line">toc = time.time()</span><br><span class="line">print(&#x27;naive loss: %e computed in %fs&#x27; % (loss_naive, toc - tic))</span><br><span class="line"></span><br><span class="line">from cs231n.classifiers.softmax import softmax_loss_vectorized</span><br><span class="line">tic = time.time()</span><br><span class="line">loss_vectorized, grad_vectorized = softmax_loss_vectorized(W, X_dev, y_dev, 0.000005)</span><br><span class="line">toc = time.time()</span><br><span class="line">print(&#x27;vectorized loss: %e computed in %fs&#x27; % (loss_vectorized, toc - tic))</span><br><span class="line"></span><br><span class="line"># As we did for the SVM, we use the Frobenius norm to compare the two versions</span><br><span class="line"># of the gradient.</span><br><span class="line">grad_difference = np.linalg.norm(grad_naive - grad_vectorized, ord=&#x27;fro&#x27;)</span><br><span class="line">print(&#x27;Loss difference: %f&#x27; % np.abs(loss_naive - loss_vectorized))</span><br><span class="line">print(&#x27;Gradient difference: %f&#x27; % grad_difference)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/CS231n_Assignment1_Softmax/4.png" alt="4"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">//找到最佳的正则化值和梯度下降的学习率，使预测的准确率最高</span><br><span class="line"># Use the validation set to tune hyperparameters (regularization strength and</span><br><span class="line"># learning rate). You should experiment with different ranges for the learning</span><br><span class="line"># rates and regularization strengths; if you are careful you should be able to</span><br><span class="line"># get a classification accuracy of over 0.35 on the validation set.</span><br><span class="line"></span><br><span class="line">from cs231n.classifiers import Softmax</span><br><span class="line">results = &#123;&#125;</span><br><span class="line">best_val = -1</span><br><span class="line">best_softmax = None</span><br><span class="line"></span><br><span class="line">################################################################################</span><br><span class="line"># TODO:                                                                        #</span><br><span class="line"># Use the validation set to set the learning rate and regularization strength. #</span><br><span class="line"># This should be identical to the validation that you did for the SVM; save    #</span><br><span class="line"># the best trained softmax classifer in best_softmax.                          #</span><br><span class="line">################################################################################</span><br><span class="line"></span><br><span class="line"># Provided as a reference. You may or may not want to change these hyperparameters</span><br><span class="line">learning_rates = [1e-7, 5e-7]</span><br><span class="line">regularization_strengths = [2.5e4, 5e4]</span><br><span class="line"></span><br><span class="line">for lr in learning_rates:</span><br><span class="line">    for reg in regularization_strengths:</span><br><span class="line">        softmax=Softmax()</span><br><span class="line">        softmax.train(X_train,y_train,lr,reg,num_iters=2000,verbose=False)</span><br><span class="line">        y_train_pred=softmax.predict(X_train)</span><br><span class="line">        train_accuracy=np.mean(y_train_pred==y_train)</span><br><span class="line">        y_val_pred=softmax.predict(X_val)</span><br><span class="line">        val_accuracy=np.mean(y_val_pred==y_val)</span><br><span class="line">        if val_accuracy&gt;best_val:</span><br><span class="line">            best_val=val_accuracy</span><br><span class="line">            best_softmax=softmax</span><br><span class="line">        results[(lr,reg)]=train_accuracy,val_accuracy</span><br><span class="line"></span><br><span class="line"># *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****</span><br><span class="line"></span><br><span class="line">pass</span><br><span class="line"></span><br><span class="line"># *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****</span><br><span class="line">    </span><br><span class="line"># Print out results.</span><br><span class="line">for lr, reg in sorted(results):</span><br><span class="line">    train_accuracy, val_accuracy = results[(lr, reg)]</span><br><span class="line">    print(&#x27;lr %e reg %e train accuracy: %f val accuracy: %f&#x27; % (</span><br><span class="line">                lr, reg, train_accuracy, val_accuracy))</span><br><span class="line">    </span><br><span class="line">print(&#x27;best validation accuracy achieved during cross-validation: %f&#x27; % best_val)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/CS231n_Assignment1_Softmax/5.png" alt="5"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//训练器在测试集上的准确率</span><br><span class="line"># evaluate on test set</span><br><span class="line"># Evaluate the best softmax on test set</span><br><span class="line">y_test_pred = best_softmax.predict(X_test)</span><br><span class="line">test_accuracy = np.mean(y_test == y_test_pred)</span><br><span class="line">print(&#x27;softmax on raw pixels final test set accuracy: %f&#x27; % (test_accuracy, ))</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/CS231n_Assignment1_Softmax/6.png" alt="6"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"># Visualize the learned weights for each class</span><br><span class="line">w = best_softmax.W[:-1,:] # strip out the bias</span><br><span class="line">w = w.reshape(32, 32, 3, 10)</span><br><span class="line"></span><br><span class="line">w_min, w_max = np.min(w), np.max(w)</span><br><span class="line"></span><br><span class="line">classes = [&#x27;plane&#x27;, &#x27;car&#x27;, &#x27;bird&#x27;, &#x27;cat&#x27;, &#x27;deer&#x27;, &#x27;dog&#x27;, &#x27;frog&#x27;, &#x27;horse&#x27;, &#x27;ship&#x27;, &#x27;truck&#x27;]</span><br><span class="line">for i in range(10):</span><br><span class="line">    plt.subplot(2, 5, i + 1)</span><br><span class="line">    </span><br><span class="line">    # Rescale the weights to be between 0 and 255</span><br><span class="line">    wimg = 255.0 * (w[:, :, :, i].squeeze() - w_min) / (w_max - w_min)   </span><br><span class="line"> //将每张图压缩到RGB空间中并显示出来</span><br><span class="line">    plt.imshow(wimg.astype(&#x27;uint8&#x27;))</span><br><span class="line">    plt.axis(&#x27;off&#x27;)</span><br><span class="line">    plt.title(classes[i])</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/CS231n_Assignment1_Softmax/7.png" alt="7"></p>
+<h1 id="softmax-py"><a href="#softmax-py" class="headerlink" title="softmax.py"></a>softmax.py</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br></pre></td><td class="code"><pre><span class="line">//softmax求导的法则，需要注意的是需要讨论j==y[i]与j!=y[i]的情况，因为在求正确标签值的分数loss值的时候只与W_y_i有关，因此在j==y[i]的情况下，只需要对W_y_i进行求导即可，反之在j!=y[i]的情况下，只和错误的标签值的分数有关，因此只需要对W_j进行求导即可。</span><br><span class="line">//同SVM一样求损失函数和梯度的2种方式</span><br><span class="line">from builtins import range</span><br><span class="line">import numpy as np</span><br><span class="line">from random import shuffle</span><br><span class="line">from past.builtins import xrange</span><br><span class="line"></span><br><span class="line">def softmax_loss_naive(W, X, y, reg)://解析梯度</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    Softmax loss function, naive implementation (with loops)</span><br><span class="line"></span><br><span class="line">    Inputs have dimension D, there are C classes, and we operate on minibatches</span><br><span class="line">    of N examples.</span><br><span class="line"></span><br><span class="line">    Inputs:</span><br><span class="line">    - W: A numpy array of shape (D, C) containing weights.</span><br><span class="line">    - X: A numpy array of shape (N, D) containing a minibatch of data.</span><br><span class="line">    - y: A numpy array of shape (N,) containing training labels; y[i] = c means</span><br><span class="line">      that X[i] has label c, where 0 &lt;= c &lt; C.</span><br><span class="line">    - reg: (float) regularization strength</span><br><span class="line"></span><br><span class="line">    Returns a tuple of:</span><br><span class="line">    - loss as single float</span><br><span class="line">    - gradient with respect to weights W; an array of same shape as W</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    # Initialize the loss and gradient to zero.</span><br><span class="line">    loss = 0.0</span><br><span class="line">    dW = np.zeros_like(W)</span><br><span class="line"></span><br><span class="line">    #############################################################################</span><br><span class="line">    # TODO: Compute the softmax loss and its gradient using explicit loops.     #</span><br><span class="line">    # Store the loss in loss and the gradient in dW. If you are not careful     #</span><br><span class="line">    # here, it is easy to run into numeric instability. Don&#x27;t forget the        #</span><br><span class="line">    # regularization!                                                           #</span><br><span class="line">    #############################################################################</span><br><span class="line">    # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    num_classes=W.shape[1]</span><br><span class="line">    num_train=X.shape[0]</span><br><span class="line">   # scores=np.shape(num_train,num_classes)</span><br><span class="line">   # scores.reshape(num_train,num_classes)</span><br><span class="line">    for i in range(num_train):</span><br><span class="line">        scores=X[i].dot(W)</span><br><span class="line">        shift_scores=scores-max(scores)</span><br><span class="line">        loss_i=-shift_scores[y[i]]+np.log(sum(np.exp(shift_scores)))</span><br><span class="line">        loss+=loss_i</span><br><span class="line">        for j in range(num_classes):</span><br><span class="line">            softmax_out=np.exp(shift_scores[j])/sum(np.exp(shift_scores))</span><br><span class="line">            if j==y[i]:</span><br><span class="line">                dW[:,j]+=(-1+softmax_out)*X[i]</span><br><span class="line">            else:</span><br><span class="line">                dW[:,j]+=softmax_out*X[i]</span><br><span class="line">                </span><br><span class="line">    loss/=num_train</span><br><span class="line">    loss+=reg*np.sum(W*W)</span><br><span class="line">    dW=dW/num_train+reg*2*W</span><br><span class="line">          </span><br><span class="line"></span><br><span class="line">    pass</span><br><span class="line"></span><br><span class="line">    # *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****</span><br><span class="line"></span><br><span class="line">    return loss, dW</span><br><span class="line">    </span><br><span class="line">def softmax_loss_vectorized(W, X, y, reg):</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    Softmax loss function, vectorized version.</span><br><span class="line"></span><br><span class="line">    Inputs and outputs are the same as softmax_loss_naive.</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    # Initialize the loss and gradient to zero.</span><br><span class="line">    loss = 0.0</span><br><span class="line">    dW = np.zeros_like(W)</span><br><span class="line"></span><br><span class="line">    #############################################################################</span><br><span class="line">    # TODO: Compute the softmax loss and its gradient using no explicit loops.  #</span><br><span class="line">    # Store the loss in loss and the gradient in dW. If you are not careful     #</span><br><span class="line">    # here, it is easy to run into numeric instability. Don&#x27;t forget the        #</span><br><span class="line">    # regularization!                                                           #</span><br><span class="line">    #############################################################################</span><br><span class="line">    # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****</span><br><span class="line">    num_train=X.shape[0]</span><br><span class="line">    num_classes=W.shape[1]</span><br><span class="line">    scores=X.dot(W)</span><br><span class="line">    shift_scores=scores-np.max(scores,axis=1).reshape(-1,1)</span><br><span class="line">    softmax_out=np.exp(shift_scores)/np.sum(np.exp(shift_scores),axis=1).reshape(-1,1)</span><br><span class="line">    loss=-np.sum(np.log(softmax_out[range(num_train),list(y)]))</span><br><span class="line">    loss/=num_train</span><br><span class="line">    loss+=reg*np.sum(W*W)</span><br><span class="line">    </span><br><span class="line">    dS=softmax_scores.copy()</span><br><span class="line">    dS[range(num_train),list(y)]-=1</span><br><span class="line">    dW=(X.T).dot(dS)</span><br><span class="line">    dW=dW/num_train+reg*W</span><br><span class="line"></span><br><span class="line">    pass</span><br><span class="line"></span><br><span class="line">    # *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****</span><br><span class="line"></span><br><span class="line">    return loss, dW</span><br><span class="line">    </span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="gradient-check-py"><a href="#gradient-check-py" class="headerlink" title="gradient_check.py"></a>gradient_check.py</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">//数值分析求导数的方法</span><br><span class="line">def grad_check_sparse(f, x, analytic_grad, num_checks=10, h=1e-5):</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    sample a few random elements and only return numerical</span><br><span class="line">    in this dimensions.</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">    for i in range(num_checks):</span><br><span class="line">        ix = tuple([randrange(m) for m in x.shape])</span><br><span class="line"></span><br><span class="line">        oldval = x[ix]</span><br><span class="line">        x[ix] = oldval + h # increment by h</span><br><span class="line">        fxph = f(x) # evaluate f(x + h)</span><br><span class="line">        x[ix] = oldval - h # increment by h</span><br><span class="line">        fxmh = f(x) # evaluate f(x - h)</span><br><span class="line">        x[ix] = oldval # reset</span><br><span class="line"></span><br><span class="line">        grad_numerical = (fxph - fxmh) / (2 * h)</span><br><span class="line">        grad_analytic = analytic_grad[ix]</span><br><span class="line">        rel_error = (abs(grad_numerical - grad_analytic) /</span><br><span class="line">                    (abs(grad_numerical) + abs(grad_analytic)))</span><br><span class="line">        print(&#x27;numerical: %f analytic: %f, relative error: %e&#x27;</span><br><span class="line">              %(grad_numerical, grad_analytic, rel_error))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="linear-classifier-用法同SVM"><a href="#linear-classifier-用法同SVM" class="headerlink" title="linear_classifier   &#x2F;&#x2F;用法同SVM"></a>linear_classifier   &#x2F;&#x2F;用法同SVM</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br></pre></td><td class="code"><pre><span class="line">from __future__ import print_function</span><br><span class="line"></span><br><span class="line">from builtins import range</span><br><span class="line">from builtins import object</span><br><span class="line">import numpy as np</span><br><span class="line">from cs231n.classifiers.linear_svm import *</span><br><span class="line">from cs231n.classifiers.softmax import *</span><br><span class="line">from past.builtins import xrange</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class LinearClassifier(object):</span><br><span class="line"></span><br><span class="line">    def __init__(self):</span><br><span class="line">        self.W = None</span><br><span class="line"></span><br><span class="line">    def train(self, X, y, learning_rate=1e-3, reg=1e-5, num_iters=100,</span><br><span class="line">              batch_size=200, verbose=False):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        Train this linear classifier using stochastic gradient descent.</span><br><span class="line"></span><br><span class="line">        Inputs:</span><br><span class="line">        - X: A numpy array of shape (N, D) containing training data; there are N</span><br><span class="line">          training samples each of dimension D.</span><br><span class="line">        - y: A numpy array of shape (N,) containing training labels; y[i] = c</span><br><span class="line">          means that X[i] has label 0 &lt;= c &lt; C for C classes.</span><br><span class="line">        - learning_rate: (float) learning rate for optimization.</span><br><span class="line">        - reg: (float) regularization strength.</span><br><span class="line">        - num_iters: (integer) number of steps to take when optimizing</span><br><span class="line">        - batch_size: (integer) number of training examples to use at each step.</span><br><span class="line">        - verbose: (boolean) If true, print progress during optimization.</span><br><span class="line"></span><br><span class="line">        Outputs:</span><br><span class="line">        A list containing the value of the loss function at each training iteration.</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        num_train, dim = X.shape</span><br><span class="line">        num_classes = np.max(y) + 1 # assume y takes values 0...K-1 where K is number of classes</span><br><span class="line">        if self.W is None:</span><br><span class="line">            # lazily initialize W</span><br><span class="line">            self.W = 0.001 * np.random.randn(dim, num_classes)</span><br><span class="line"></span><br><span class="line">        # Run stochastic gradient descent to optimize W</span><br><span class="line">        loss_history = []</span><br><span class="line">        for it in range(num_iters):</span><br><span class="line">            X_batch = None</span><br><span class="line">            y_batch = None</span><br><span class="line"></span><br><span class="line">            #########################################################################</span><br><span class="line">            # TODO:                                                                 #</span><br><span class="line">            # Sample batch_size elements from the training data and their           #</span><br><span class="line">            # corresponding labels to use in this round of gradient descent.        #</span><br><span class="line">            # Store the data in X_batch and their corresponding labels in           #</span><br><span class="line">            # y_batch; after sampling X_batch should have shape (batch_size, dim)   #</span><br><span class="line">            # and y_batch should have shape (batch_size,)                           #</span><br><span class="line">            #                                                                       #</span><br><span class="line">            # Hint: Use np.random.choice to generate indices. Sampling with         #</span><br><span class="line">            # replacement is faster than sampling without replacement.              #</span><br><span class="line">            #########################################################################</span><br><span class="line">            # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****</span><br><span class="line">            index=np.random.choice(num_train,batch_size,replace=True) ##i think replace is False</span><br><span class="line">            X_batch=X[index]</span><br><span class="line">            y_batch=y[index]</span><br><span class="line"></span><br><span class="line">            pass</span><br><span class="line"></span><br><span class="line">            # *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****</span><br><span class="line"></span><br><span class="line">            # evaluate loss and gradient</span><br><span class="line">            loss, grad = self.loss(X_batch, y_batch, reg)</span><br><span class="line">            loss_history.append(loss)</span><br><span class="line"></span><br><span class="line">            # perform parameter update</span><br><span class="line">            #########################################################################</span><br><span class="line">            # TODO:                                                                 #</span><br><span class="line">            # Update the weights using the gradient and the learning rate.          #</span><br><span class="line">            #########################################################################</span><br><span class="line">            # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****</span><br><span class="line">            self.W+=-learning_rate*grad</span><br><span class="line"></span><br><span class="line">            pass</span><br><span class="line"></span><br><span class="line">            # *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****</span><br><span class="line"></span><br><span class="line">            if verbose and it % 100 == 0:</span><br><span class="line">                print(&#x27;iteration %d / %d: loss %f&#x27; % (it, num_iters, loss))</span><br><span class="line"></span><br><span class="line">        return loss_history</span><br><span class="line"></span><br><span class="line">    def predict(self, X):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        Use the trained weights of this linear classifier to predict labels for</span><br><span class="line">        data points.</span><br><span class="line"></span><br><span class="line">        Inputs:</span><br><span class="line">        - X: A numpy array of shape (N, D) containing training data; there are N</span><br><span class="line">          training samples each of dimension D.</span><br><span class="line"></span><br><span class="line">        Returns:</span><br><span class="line">        - y_pred: Predicted labels for the data in X. y_pred is a 1-dimensional</span><br><span class="line">          array of length N, and each element is an integer giving the predicted</span><br><span class="line">          class.</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        y_pred = np.zeros(X.shape[0])</span><br><span class="line">        ###########################################################################</span><br><span class="line">        # TODO:                                                                   #</span><br><span class="line">        # Implement this method. Store the predicted labels in y_pred.            #</span><br><span class="line">        ###########################################################################</span><br><span class="line">        # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****</span><br><span class="line">        y_pred=np.argmax(X.dot(self.W),axis=1)</span><br><span class="line">        </span><br><span class="line"></span><br><span class="line">        pass</span><br><span class="line"></span><br><span class="line">        # *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****</span><br><span class="line">        return y_pred</span><br><span class="line"></span><br><span class="line">    def loss(self, X_batch, y_batch, reg):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        Compute the loss function and its derivative.</span><br><span class="line">        Subclasses will override this.</span><br><span class="line"></span><br><span class="line">        Inputs:</span><br><span class="line">        - X_batch: A numpy array of shape (N, D) containing a minibatch of N</span><br><span class="line">          data points; each point has dimension D.</span><br><span class="line">        - y_batch: A numpy array of shape (N,) containing labels for the minibatch.</span><br><span class="line">        - reg: (float) regularization strength.</span><br><span class="line"></span><br><span class="line">        Returns: A tuple containing:</span><br><span class="line">        - loss as a single float</span><br><span class="line">        - gradient with respect to self.W; an array of the same shape as W</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        pass</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class LinearSVM(LinearClassifier):</span><br><span class="line">    &quot;&quot;&quot; A subclass that uses the Multiclass SVM loss function &quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">    def loss(self, X_batch, y_batch, reg):</span><br><span class="line">        return svm_loss_vectorized(self.W, X_batch, y_batch, reg)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class Softmax(LinearClassifier):</span><br><span class="line">    &quot;&quot;&quot; A subclass that uses the Softmax + Cross-entropy loss function &quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">    def loss(self, X_batch, y_batch, reg):</span><br><span class="line">        return softmax_loss_vectorized(self.W, X_batch, y_batch, reg)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+        </div>
+        
+<blockquote class="copyright">
+    <p><strong>Link to this article : </strong><a class="permalink" href="http://yoursite.com/2020/07/11/CS231n_Assignment1_Softmax/">http://yoursite.com/2020/07/11/CS231n_Assignment1_Softmax/</a></p>
+    <p><strong>This article is available under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)</a> License</strong></p>
+</blockquote>
+
+
+    </article>
+    
+    <section id="comments">
+        
+    </section>
+
+
+    
+
+</main>
+
+
+<aside style="" id="sidebar" class="aside aside-fixture">
+    <div class="toc-sidebar">
+        <nav id="toc" class="article-toc">
+            <h3 class="toc-title">Catalogue</h3>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#softmax-py"><span class="toc-number">1.</span> <span class="toc-text">softmax.py</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#gradient-check-py"><span class="toc-number">2.</span> <span class="toc-text">gradient_check.py</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#linear-classifier-%E7%94%A8%E6%B3%95%E5%90%8CSVM"><span class="toc-number">3.</span> <span class="toc-text">linear_classifier   &#x2F;&#x2F;用法同SVM</span></a></li></ol>
+        </nav>
+    </div>
+</aside>
+
+
+
+
+
+        </section>
+        <footer class="hidden lg:block fixed bottom-0 left-0 sm:w-1/12 lg:w-1/6 bg-gray-100 z-40">
+    
+    <div class="footer-social-links">
+        
+            <a target="_blank" rel="noopener" href="https://github.com/fengkx">
+                <i class="iconfont icon-github"></i>
+            </a>
+        
+            <a target="_blank" rel="noopener" href="https://t.me/fengkx">
+                <i class="iconfont icon-telegram"></i>
+            </a>
+        
+            <a target="_blank" rel="noopener" href="https://twitter.com/example">
+                <i class="iconfont icon-twitter"></i>
+            </a>
+        
+            <a href="/atom.xml">
+                <i class="iconfont icon-rss"></i>
+            </a>
+        
+    </div>
+    
+    
+</footer>
+
+        <div id="mask" class="hidden mask fixed inset-0 bg-gray-900 opacity-75 z-40"></div>
+        <div id="search-view-container" class="hidden shadow-xl"></div>
+        
+<script src="/js/dom-event.min.js"></script>
+
+
+
+<script src="/js/local-search.min.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/js/lightgallery.min.js"></script>
+    
+<script src="/js/light-gallery.min.js"></script>
+
+
+
+
+
+
+    </body>
+</html>

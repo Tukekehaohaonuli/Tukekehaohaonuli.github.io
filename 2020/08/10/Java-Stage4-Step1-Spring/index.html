@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html  lang="english" >
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+    <title>Tukekenulia</title>
+    <meta name="description" content="主要步骤：1、Spring IOC、Bean、AOP 2、AspectJ AOP 3、Spring JDBC Template 4、Spring事务管理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tukekenulia">
+<meta property="og:url" content="http://yoursite.com/2020/08/10/Java-Stage4-Step1-Spring/index.html">
+<meta property="og:site_name" content="Tukekenulia">
+<meta property="og:description" content="主要步骤：1、Spring IOC、Bean、AOP 2、AspectJ AOP 3、Spring JDBC Template 4、Spring事务管理">
+<meta property="og:locale">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage4-Step1-Spring/1.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage4-Step1-Spring/2.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage4-Step1-Spring/3.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage4-Step1-Spring/4.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage4-Step1-Spring/5.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage4-Step1-Spring/6.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage4-Step1-Spring/7.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage4-Step1-Spring/8.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage4-Step1-Spring/9.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage4-Step1-Spring/10.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage4-Step1-Spring/11.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage4-Step1-Spring/12.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage4-Step1-Spring/13.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage4-Step1-Spring/14.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage4-Step1-Spring/15.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage4-Step1-Spring/16.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage4-Step1-Spring/17.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage4-Step1-Spring/18.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage4-Step1-Spring/19.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage4-Step1-Spring/20.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage4-Step1-Spring/21.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage4-Step1-Spring/22.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage4-Step1-Spring/23.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage4-Step1-Spring/24.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage4-Step1-Spring/25.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage4-Step1-Spring/26.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage4-Step1-Spring/27.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage4-Step1-Spring/28.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage4-Step1-Spring/29.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage4-Step1-Spring/30.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage4-Step1-Spring/31.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage4-Step1-Spring/33.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage4-Step1-Spring/34.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage4-Step1-Spring/35.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage4-Step1-Spring/32.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage4-Step1-Spring/37.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage4-Step1-Spring/38.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage4-Step1-Spring/39.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage4-Step1-Spring/40.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage4-Step1-Spring/41.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage4-Step1-Spring/42.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage4-Step1-Spring/43.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage4-Step1-Spring/44.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage4-Step1-Spring/45.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage4-Step1-Spring/47.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage4-Step1-Spring/48.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage4-Step1-Spring/49.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage4-Step1-Spring/46.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage4-Step1-Spring/50.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage4-Step1-Spring/51.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage4-Step1-Spring/52.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage4-Step1-Spring/53.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage4-Step1-Spring/54.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage4-Step1-Spring/55.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage4-Step1-Spring/56.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage4-Step1-Spring/57.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage4-Step1-Spring/58.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage4-Step1-Spring/59.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage4-Step1-Spring/60.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage4-Step1-Spring/61.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage4-Step1-Spring/62.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-Stage4-Step1-Spring/63.png">
+<meta property="article:published_time" content="2020-08-10T12:44:52.000Z">
+<meta property="article:modified_time" content="2020-08-10T12:44:52.000Z">
+<meta property="article:author" content="Tukeke">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/images/Java-Stage4-Step1-Spring/1.png">
+
+    
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+
+    
+<link rel="stylesheet" href="/css/common.min.css">
+
+
+
+    
+    
+    
+    
+        <link href="//cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/css/lightgallery.min.css" rel="stylesheet">
+    
+    
+    
+<link rel="stylesheet" href="/css/iconfont.min.css">
+
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+    <body>
+        <header class="header header-fixture">
+    <div class="profile-search-wrap flex sm:block">
+        
+        
+        <div class="profile sm:text-center md:px-1 lg:px-3 sm:pb-4 sm:pt-6">
+            <a id="avatar" role="link" href="https://github.com/fengkx" class="inline-block lg:w-16 lg:h-16 w-8 h-8 m-2" target="_blank" rel="noopener" rel="noreferrer" >
+                <img src="https://www.gravatar.com/avatar/0bc83cb571cd1c50ba6f3e8a78ef1346?s=128" class="rounded-full" alt="avatar">
+            </a>
+            <h2 id="name" class="hidden lg:block">fengkx</h2>
+            <h3 id="title" class="hidden lg:block">Student &amp; Coder</h3>
+            
+            <small id="location" class="hidden lg:block">
+                <i class="iconfont icon-map-icon"></i>
+                Guangzhou, China
+            </small>
+            
+        </div>
+        
+        
+<div class="search flex-1 flex lg:inline-block sm:hidden lg:px-4 lg:mt-2 lg:mb-4 lg:w-full">
+    <form id="search-form" class="my-auto flex-1 lg:border lg:border-solid lg:border-gray-200">
+        <div class="input-group table bg-gray-100 lg:bg-white w-full">
+            <input id="search-input" type="text" placeholder="Search" class="inline-block w-full bg-gray-100 lg:bg-white p-1">
+            <span class="table-cell">
+                <button name="search tigger button" disabled>
+                    <i class="iconfont icon-search m-2"></i>
+                </button>
+            </span>
+        </div>
+    </form>
+        
+<div id="content-json" data-placeholder="Search" class="invisible hidden">/content.json</div>
+<script id="search-teamplate" type="text/html" data-path="/content.json">
+    <div>
+        <div class="search-header bg-gray-400">
+            <input id="actual-search-input" model="keyword" ref="input" class="inline-block w-full h-10 px-2 py-1" placeholder="Search" type="text">
+        </div>
+        <div class="search-result bg-gray-200">
+            {{#each searchPosts}}
+            <a href="/{{ path }}" class="result-item block px-2 pb-3 mb-1 pt-1 hover:bg-indigo-100">
+                <i class="iconfont icon-file"></i>
+                <h1 class="result-title inline font-medium text-lg">{{ title }}</h1>
+                <p class="result-content text-gray-600 text-sm">{{{ text }}}</p>
+            </a>
+            {{/each}}
+        </div>
+    </div>
+</script>
+
+</div>
+
+
+        <button name="menu toogle button" id="menu-toggle-btn" class="block sm:hidden p-3" role="button" aria-expanded="false">
+            <i class="iconfont icon-hamburger"></i>
+        </button>
+    </div>
+    <nav id="menu-nav" class="hidden sm:flex flex-col">
+        
+        
+            <div class="menu-item menu-home" role="menuitem">
+                <a href="/.">
+                    <i class="iconfont icon-home" aria-hidden="true"></i>
+                    <span class="menu-title">Home</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-archives" role="menuitem">
+                <a href="/archives">
+                    <i class="iconfont icon-archive" aria-hidden="true"></i>
+                    <span class="menu-title">Archives</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-categories" role="menuitem">
+                <a href="/categories">
+                    <i class="iconfont icon-folder" aria-hidden="true"></i>
+                    <span class="menu-title">Categories</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-tags" role="menuitem">
+                <a href="/tags">
+                    <i class="iconfont icon-tag" aria-hidden="true"></i>
+                    <span class="menu-title">Tags</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-repository" role="menuitem">
+                <a href="/repository">
+                    <i class="iconfont icon-project" aria-hidden="true"></i>
+                    <span class="menu-title">Repository</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-links" role="menuitem">
+                <a href="/links">
+                    <i class="iconfont icon-friend" aria-hidden="true"></i>
+                    <span class="menu-title">Links</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-about" role="menuitem">
+                <a href="/about">
+                    <i class="iconfont icon-cup" aria-hidden="true"></i>
+                    <span class="menu-title">About</span>
+                </a>
+            </div>
+        
+        
+<div class="social-links flex sm:flex-col lg:hidden mt-5">
+    
+        <span class="social-item text-center">
+            <a target="_blank" rel="noopener" href="https://github.com/fengkx">
+                <i class="iconfont social-icon icon-github"></i>
+                <span class="menu-title hidden lg:inline">menu.github</span>
+            </a>
+        </span>
+    
+        <span class="social-item text-center">
+            <a target="_blank" rel="noopener" href="https://t.me/fengkx">
+                <i class="iconfont social-icon icon-telegram"></i>
+                <span class="menu-title hidden lg:inline">menu.telegram</span>
+            </a>
+        </span>
+    
+        <span class="social-item text-center">
+            <a target="_blank" rel="noopener" href="https://twitter.com/example">
+                <i class="iconfont social-icon icon-twitter"></i>
+                <span class="menu-title hidden lg:inline">menu.twitter</span>
+            </a>
+        </span>
+    
+        <span class="social-item text-center">
+            <a href="/atom.xml">
+                <i class="iconfont social-icon icon-rss"></i>
+                <span class="menu-title hidden lg:inline">menu.rss</span>
+            </a>
+        </span>
+    
+</div>
+
+
+    </nav>
+</header>
+
+        <section class="main-section">
+            
+    <main class="flex-1 px-4 py-14 md:px-5 lg:px-8 lg:py-4 relative min-h-screen">
+    
+
+    <article class="content article article-archives article-type-list" itemscope="">
+        <header class="article-header">
+            
+
+
+            <p class="article-meta mb-3 text-xs">
+                <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2020/08/10/Java-Stage4-Step1-Spring/" class="article-date">
+	  <time datetime="2020-08-10T12:44:52.000Z" itemprop="datePublished">Aug 10</time>
+	</a>
+</span>
+
+                
+
+                
+
+                <span class="_partial/post-comment"><i class="icon icon-comment"></i>
+                    <a href="/2020/08/10/Java-Stage4-Step1-Spring/#comments" class="article-comment-link">
+                        Comments
+                    </a>
+                </span>
+                
+
+            </p>
+        </header>
+        <div class="marked-body article-body">
+            <h3 id="主要步骤："><a href="#主要步骤：" class="headerlink" title="主要步骤："></a>主要步骤：</h3><p>1、Spring IOC、Bean、AOP</p>
+<p>2、AspectJ AOP</p>
+<p>3、Spring JDBC Template</p>
+<p>4、Spring事务管理</p>
+<span id="more"></span>
+
+<h1 id="1-Spring入门"><a href="#1-Spring入门" class="headerlink" title="1-Spring入门"></a>1-Spring入门</h1><p>下载地址:<a target="_blank" rel="noopener" href="https://repo.spring.io/libs-release-local/org/springframework/spring/">https://repo.spring.io/libs-release-local/org/springframework/spring/</a></p>
+<p>直接引入依赖即可</p>
+<p>Spring基本开发包：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">      &lt;groupId&gt;org.springframework&lt;/groupId&gt;</span><br><span class="line">      &lt;artifactId&gt;spring-core&lt;/artifactId&gt;</span><br><span class="line">      &lt;version&gt;5.2.8.RELEASE&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">      &lt;groupId&gt;org.springframework&lt;/groupId&gt;</span><br><span class="line">      &lt;artifactId&gt;spring-context&lt;/artifactId&gt;</span><br><span class="line">      &lt;version&gt;5.2.8.RELEASE&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">      &lt;groupId&gt;org.springframework&lt;/groupId&gt;</span><br><span class="line">      &lt;artifactId&gt;spring-beans&lt;/artifactId&gt;</span><br><span class="line">      &lt;version&gt;5.2.8.RELEASE&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">      &lt;groupId&gt;org.springframework&lt;/groupId&gt;</span><br><span class="line">      &lt;artifactId&gt;spring-expression&lt;/artifactId&gt;</span><br><span class="line">      &lt;version&gt;5.2.8.RELEASE&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<p>spring单元测试包：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">      &lt;groupId&gt;org.springframework&lt;/groupId&gt;</span><br><span class="line">      &lt;artifactId&gt;spring-test&lt;/artifactId&gt;</span><br><span class="line">      &lt;version&gt;5.2.8.RELEASE&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<p>传统AOP开发的包：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;org.springframework&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;spring-aop&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;5.2.8.RELEASE&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">  &lt;groupId&gt;aopalliance&lt;/groupId&gt;</span><br><span class="line">  &lt;artifactId&gt;aopalliance&lt;/artifactId&gt;</span><br><span class="line">  &lt;version&gt;1.0&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<p>AspectJ AOP开发的包：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">      &lt;groupId&gt;org.aspectj&lt;/groupId&gt;</span><br><span class="line">      &lt;artifactId&gt;aspectjweaver&lt;/artifactId&gt;</span><br><span class="line">      &lt;version&gt;1.9.6&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">      &lt;groupId&gt;org.springframework&lt;/groupId&gt;</span><br><span class="line">      &lt;artifactId&gt;spring-aspects&lt;/artifactId&gt;</span><br><span class="line">      &lt;version&gt;5.2.8.RELEASE&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/Java-Stage4-Step1-Spring/1.png" alt="1"></p>
+<h3 id="Spring-IOC入门"><a href="#Spring-IOC入门" class="headerlink" title="Spring IOC入门"></a>Spring IOC入门</h3><p>引入依赖：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">      &lt;groupId&gt;commons-logging&lt;/groupId&gt;</span><br><span class="line">      &lt;artifactId&gt;commons-logging&lt;/artifactId&gt;</span><br><span class="line">      &lt;version&gt;1.1.1&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">      &lt;groupId&gt;log4j&lt;/groupId&gt;</span><br><span class="line">      &lt;artifactId&gt;log4j&lt;/artifactId&gt;</span><br><span class="line">      &lt;version&gt;1.2.12&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<p>在applicationContext.xml中配置：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">    &lt;!-- UserService的创建权交给了Spring --&gt;</span><br><span class="line">   &lt;bean id=&quot;userService&quot; class=&quot;com.imooc.ioc.demo1.UserServiceImpl&quot;&gt;</span><br><span class="line">        &lt;property name=&quot;name&quot; value=&quot;李四&quot;/&gt;</span><br><span class="line">    &lt;/bean&gt;</span><br><span class="line">id是调用的类的名字，class为具体实现的类。</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/Java-Stage4-Step1-Spring/2.png" alt="2"></p>
+<h5 id="这样做的好处是降低了业务层的耦合，由Spring工厂来完成实体类的创建。直接调用即可。"><a href="#这样做的好处是降低了业务层的耦合，由Spring工厂来完成实体类的创建。直接调用即可。" class="headerlink" title="这样做的好处是降低了业务层的耦合，由Spring工厂来完成实体类的创建。直接调用即可。"></a>这样做的好处是降低了业务层的耦合，由Spring工厂来完成实体类的创建。直接调用即可。</h5><p><img src="/images/Java-Stage4-Step1-Spring/3.png" alt="3"></p>
+<p><img src="/images/Java-Stage4-Step1-Spring/4.png" alt="4"></p>
+<h1 id="2-Spring-Bean管理"><a href="#2-Spring-Bean管理" class="headerlink" title="2-Spring Bean管理"></a>2-Spring Bean管理</h1><h3 id="Spring-bean-（XML方式）"><a href="#Spring-bean-（XML方式）" class="headerlink" title="Spring bean （XML方式）"></a>Spring bean （XML方式）</h3><p><img src="/images/Java-Stage4-Step1-Spring/5.png" alt="5"></p>
+<p><img src="/images/Java-Stage4-Step1-Spring/6.png" alt="6"></p>
+<p><img src="/images/Java-Stage4-Step1-Spring/7.png" alt="7"></p>
+<p><img src="/images/Java-Stage4-Step1-Spring/8.png" alt="8"></p>
+<p><img src="/images/Java-Stage4-Step1-Spring/9.png" alt="9"></p>
+<p><img src="/images/Java-Stage4-Step1-Spring/10.png" alt="10"></p>
+<h3 id="Spring-Bean属性注入"><a href="#Spring-Bean属性注入" class="headerlink" title="Spring Bean属性注入"></a>Spring Bean属性注入</h3><h5 id="普通类型的的值用value注入，对象类型的值用ref注入。"><a href="#普通类型的的值用value注入，对象类型的值用ref注入。" class="headerlink" title="普通类型的的值用value注入，对象类型的值用ref注入。"></a>普通类型的的值用value注入，对象类型的值用ref注入。</h5><p><img src="/images/Java-Stage4-Step1-Spring/11.png" alt="11"></p>
+<p><img src="/images/Java-Stage4-Step1-Spring/12.png" alt="12"></p>
+<h5 id="在applicationContext开头beans标签内引入P命名空间："><a href="#在applicationContext开头beans标签内引入P命名空间：" class="headerlink" title="在applicationContext开头beans标签内引入P命名空间："></a>在applicationContext开头beans标签内引入P命名空间：</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xmlns:p=&quot;http://www.springframework.org/schema/p&quot;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/Java-Stage4-Step1-Spring/13.png" alt="13"></p>
+<p><img src="/images/Java-Stage4-Step1-Spring/14.png" alt="14"> </p>
+<h5 id="复杂属性的注入："><a href="#复杂属性的注入：" class="headerlink" title="复杂属性的注入："></a>复杂属性的注入：</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">数组类型：</span><br><span class="line">&lt;property name=&quot;&quot;&gt;</span><br><span class="line">	&lt;list&gt;</span><br><span class="line">	&lt;/list&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">list类型：</span><br><span class="line">&lt;property name=&quot;&quot;&gt;</span><br><span class="line">	&lt;list&gt;</span><br><span class="line">	&lt;/list&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">set类型：</span><br><span class="line">&lt;property name=&quot;&quot;&gt;</span><br><span class="line">	&lt;set&gt;</span><br><span class="line">	&lt;/set&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">Map类型:</span><br><span class="line">&lt;property name=&quot;&quot;&gt;</span><br><span class="line">	&lt;map&gt;</span><br><span class="line">	    &lt;entry key=&quot;&quot;  value=&quot;&quot;/&gt;</span><br><span class="line">	&lt;/map&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">properties类型:</span><br><span class="line">&lt;property name=&quot;&quot;&gt;</span><br><span class="line">	&lt;props&gt;</span><br><span class="line">		&lt;prop key=&quot;username&quot;&gt;root&lt;/prop&gt;</span><br><span class="line">		&lt;prop key=&quot;password&quot;&gt;123456&lt;/prop&gt;</span><br><span class="line">	&lt;/props&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="Spring的Bean管理（注解方式）"><a href="#Spring的Bean管理（注解方式）" class="headerlink" title="Spring的Bean管理（注解方式）"></a>Spring的Bean管理（注解方式）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">    &lt;!--开启注解扫描=======================--&gt;</span><br><span class="line">&lt;!--    &lt;context:component-scan base-package=&quot;com.imooc&quot;/&gt;--&gt;</span><br></pre></td></tr></table></figure>
+
+<p>在原来的业务层添加注解即可：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@Component</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/Java-Stage4-Step1-Spring/15.png" alt="15"></p>
+<p><img src="/images/Java-Stage4-Step1-Spring/16.png" alt="16"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@Resource(name=&quot;&quot;)</span><br><span class="line">相当于</span><br><span class="line">@Autowired</span><br><span class="line">@Qualifier(&quot;&quot;)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/Java-Stage4-Step1-Spring/17.png" alt="17"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@Scope(&quot;prototype&quot;)  可以指定是否是单例模式</span><br></pre></td></tr></table></figure>
+
+<h3 id="Spring-Bean的xml和注解开发的混合使用"><a href="#Spring-Bean的xml和注解开发的混合使用" class="headerlink" title="Spring Bean的xml和注解开发的混合使用"></a>Spring Bean的xml和注解开发的混合使用</h3><p><img src="/images/Java-Stage4-Step1-Spring/18.png" alt="18"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;context:annotation-config&gt; 这个标签开启了属性注入的方式</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="3-Spring-AOP"><a href="#3-Spring-AOP" class="headerlink" title="3-Spring AOP"></a>3-Spring AOP</h1><h3 id="一：AOP相关术语"><a href="#一：AOP相关术语" class="headerlink" title="一：AOP相关术语"></a>一：AOP相关术语</h3><p><img src="/images/Java-Stage4-Step1-Spring/19.png" alt="19"></p>
+<p><img src="/images/Java-Stage4-Step1-Spring/20.png" alt="20"></p>
+<h3 id="二：（原理）JDK动态代理：就是将原有的userDao实现一个代理类，从而在原有类的基础上扩增功能，只能实现有接口的方法："><a href="#二：（原理）JDK动态代理：就是将原有的userDao实现一个代理类，从而在原有类的基础上扩增功能，只能实现有接口的方法：" class="headerlink" title="二：（原理）JDK动态代理：就是将原有的userDao实现一个代理类，从而在原有类的基础上扩增功能，只能实现有接口的方法："></a>二：（原理）JDK动态代理：就是将原有的userDao实现一个代理类，从而在原有类的基础上扩增功能，只能实现有接口的方法：</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public class MyJdkProxy implements InvocationHandler &#123;</span><br><span class="line">    private UserDao userDao;</span><br><span class="line">    public MyJdkProxy(UserDao userDao)&#123;</span><br><span class="line">        this.userDao=userDao;</span><br><span class="line">    &#125;</span><br><span class="line">    public Object createProxy()&#123;</span><br><span class="line">        Object proxy=Proxy.newProxyInstance(userDao.getClass().getClassLoader(),userDao.getClass().getInterfaces(),this);</span><br><span class="line">        return proxy;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable &#123;</span><br><span class="line">        if(&quot;save&quot;.equals(method.getName()))&#123;</span><br><span class="line">            System.out.println(&quot;权限校验&quot;);</span><br><span class="line">            return method.invoke(userDao,args);</span><br><span class="line">        &#125;</span><br><span class="line">        return method.invoke(userDao,args);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="三：（原理）cglib的动态代理，可以实现没有接口的方法"><a href="#三：（原理）cglib的动态代理，可以实现没有接口的方法" class="headerlink" title="三：（原理）cglib的动态代理，可以实现没有接口的方法"></a>三：（原理）cglib的动态代理，可以实现没有接口的方法</h3><p><img src="/images/Java-Stage4-Step1-Spring/21.png" alt="21"></p>
+<h3 id="四-SpringAOP通知类型和切面类型"><a href="#四-SpringAOP通知类型和切面类型" class="headerlink" title="四:SpringAOP通知类型和切面类型"></a>四:SpringAOP通知类型和切面类型</h3><p><img src="/images/Java-Stage4-Step1-Spring/22.png" alt="22"></p>
+<p><img src="/images/Java-Stage4-Step1-Spring/23.png" alt="23"></p>
+<p><img src="/images/Java-Stage4-Step1-Spring/24.png" alt="24"></p>
+<h3 id="五-Spring-一般切面的代理（传统AOP）"><a href="#五-Spring-一般切面的代理（传统AOP）" class="headerlink" title="五:Spring 一般切面的代理（传统AOP）"></a>五:Spring 一般切面的代理（传统AOP）</h3><p><img src="/images/Java-Stage4-Step1-Spring/25.png" alt="25"></p>
+<p>创建Spring的xml：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--配置目标类=======================--&gt;</span><br><span class="line">   &lt;bean id=&quot;studentDao&quot; class=&quot;com.imooc.aop.demo3.StudentDaoImpl&quot;/&gt;</span><br><span class="line"></span><br><span class="line">   &lt;!--前置通知类型=====================--&gt;</span><br><span class="line">   &lt;bean id=&quot;myBeforeAdvice&quot; class=&quot;com.imooc.aop.demo3.MyBeforeAdvice&quot;/&gt;</span><br><span class="line"></span><br><span class="line">   &lt;!--Spring的AOP 产生代理对象--&gt;</span><br><span class="line">   &lt;bean id=&quot;studentDaoProxy&quot; class=&quot;org.springframework.aop.framework.ProxyFactoryBean&quot;&gt;</span><br><span class="line">       &lt;!--配置目标类--&gt;</span><br><span class="line">       &lt;property name=&quot;target&quot; ref=&quot;studentDao&quot;/&gt;</span><br><span class="line">       &lt;!--实现的接口--&gt;</span><br><span class="line">       &lt;property name=&quot;proxyInterfaces&quot; value=&quot;com.imooc.aop.demo3.StudentDao&quot;/&gt;</span><br><span class="line">       &lt;!--采用拦截的名称--&gt;</span><br><span class="line">       &lt;property name=&quot;interceptorNames&quot; value=&quot;myBeforeAdvice&quot;/&gt;</span><br><span class="line">       &lt;property name=&quot;optimize&quot; value=&quot;true&quot;&gt;&lt;/property&gt;</span><br><span class="line">   &lt;/bean&gt;</span><br></pre></td></tr></table></figure>
+
+<p>注解方式来实现：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@RunWith(SpringJUnit4ClassRunner.class)</span><br><span class="line">//让测试运行于Spring测试环境，以便在测试开始的时候自动创建Spring的应用上下文</span><br><span class="line">@ContextConfiguration(&quot;classpath:applicationContext.xml&quot;) //引入配置文件</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/Java-Stage4-Step1-Spring/26.png" alt="26"></p>
+<h3 id="六：Spring带有切入点的切面的代理-（传统AOP）"><a href="#六：Spring带有切入点的切面的代理-（传统AOP）" class="headerlink" title="六：Spring带有切入点的切面的代理 （传统AOP）"></a>六：Spring带有切入点的切面的代理 （传统AOP）</h3><p><img src="/images/Java-Stage4-Step1-Spring/27.png" alt="27"></p>
+<p>spring的xml文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"> &lt;!--配置目标类============--&gt;</span><br><span class="line">    &lt;bean id=&quot;customerDao&quot; class=&quot;com.imooc.aop.demo4.CustomerDao&quot;/&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!--配置通知============== --&gt;</span><br><span class="line">    &lt;bean id=&quot;myAroundAdvice&quot; class=&quot;com.imooc.aop.demo4.MyAroundAdvice&quot;/&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!--一般的切面是使用通知作为切面的，因为要对目标类的某个方法进行增强就需要配置一个带有切入点的切面--&gt;</span><br><span class="line">    &lt;bean id=&quot;myAdvisor&quot; class=&quot;org.springframework.aop.support.RegexpMethodPointcutAdvisor&quot;&gt;</span><br><span class="line">        &lt;!--pattern中配置正则表达式：.任意字符  *任意次数 --&gt;</span><br><span class="line">    &lt;!--&lt;property name=&quot;pattern&quot; value=&quot;.*save.*&quot;/&gt;--&gt;</span><br><span class="line">        &lt;property name=&quot;patterns&quot; value=&quot;.*save.*,.*delete.*&quot;/&gt;</span><br><span class="line">    &lt;property name=&quot;advice&quot; ref=&quot;myAroundAdvice&quot;/&gt;</span><br><span class="line">&lt;/bean&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 配置产生代理 --&gt;</span><br><span class="line">    &lt;bean id=&quot;customerDaoProxy&quot; class=&quot;org.springframework.aop.framework.ProxyFactoryBean&quot;&gt;</span><br><span class="line">        &lt;property name=&quot;target&quot; ref=&quot;customerDao&quot;/&gt;</span><br><span class="line">        &lt;property name=&quot;proxyTargetClass&quot; value=&quot;true&quot;/&gt;  //不是接口，是方法的情况下</span><br><span class="line">        &lt;property name=&quot;interceptorNames&quot; value=&quot;myAdvisor&quot;/&gt;</span><br><span class="line">    &lt;/bean&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="七：自动创建代理（传统AOP的自动代理）"><a href="#七：自动创建代理（传统AOP的自动代理）" class="headerlink" title="七：自动创建代理（传统AOP的自动代理）"></a>七：自动创建代理（传统AOP的自动代理）</h3><p><img src="/images/Java-Stage4-Step1-Spring/28.png" alt="28"></p>
+<p><img src="/images/Java-Stage4-Step1-Spring/29.png" alt="29"></p>
+<p><img src="/images/Java-Stage4-Step1-Spring/30.png" alt="30"></p>
+<h1 id="4-Spring-基于AspectJ的AOP开发"><a href="#4-Spring-基于AspectJ的AOP开发" class="headerlink" title="4-Spring 基于AspectJ的AOP开发"></a>4-Spring 基于AspectJ的AOP开发</h1><h3 id="一-基于AspectJ的注解方式的AOP开发"><a href="#一-基于AspectJ的注解方式的AOP开发" class="headerlink" title="一:基于AspectJ的注解方式的AOP开发"></a>一:基于AspectJ的注解方式的AOP开发</h3><h4 id="1、AspectJ的配置"><a href="#1、AspectJ的配置" class="headerlink" title="1、AspectJ的配置"></a>1、AspectJ的配置</h4><p>applicationContext.xml</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--开启AspectJ的注解开发，自动代理=====================--&gt;</span><br><span class="line">&lt;aop:aspectj-autoproxy/&gt;</span><br><span class="line"></span><br><span class="line">&lt;!--目标类===================--&gt;</span><br><span class="line">&lt;bean id=&quot;productDao&quot; class=&quot;com.imooc.aspectJ.demo1.ProductDao&quot;/&gt;</span><br><span class="line"></span><br><span class="line">&lt;!--定义切面--&gt;</span><br><span class="line">&lt;bean class=&quot;com.imooc.aspectJ.demo1.MyAspectAnno&quot;/&gt;</span><br></pre></td></tr></table></figure>
+
+<p>切面：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@Aspect</span><br><span class="line">public class MyAspectAnno &#123;</span><br><span class="line"></span><br><span class="line">    @Before(value=&quot;execution(* com.imooc.aspectJ.demo1.ProductDao.*(..))&quot;)</span><br><span class="line">    public void before()&#123;</span><br><span class="line">        System.out.println(&quot;前置通知&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>目标类：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public class ProductDao &#123;</span><br><span class="line"></span><br><span class="line">    public void save()&#123;</span><br><span class="line">        System.out.println(&quot;保存！&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    public void update()&#123;</span><br><span class="line">        System.out.println(&quot;更新！&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    public void delete()&#123;</span><br><span class="line">        System.out.println(&quot;删除！&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    public void select()&#123;</span><br><span class="line">        System.out.println(&quot;查询！&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>测试类：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">@RunWith(SpringJUnit4ClassRunner.class)</span><br><span class="line">@ContextConfiguration(&quot;classpath:applicationContext.xml&quot;)</span><br><span class="line">public class SpringDemo1 &#123;</span><br><span class="line"></span><br><span class="line">    @Resource(name=&quot;productDao&quot;)</span><br><span class="line">    private ProductDao productDao;</span><br><span class="line"></span><br><span class="line">    @Test</span><br><span class="line">    public void demo1()&#123;</span><br><span class="line">        productDao.save();</span><br><span class="line">        productDao.update();</span><br><span class="line">        productDao.delete();</span><br><span class="line">        productDao.findAll();</span><br><span class="line">        productDao.findOne();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2、AspectJ的通知类型"><a href="#2、AspectJ的通知类型" class="headerlink" title="2、AspectJ的通知类型"></a>2、AspectJ的通知类型</h4><p><img src="/images/Java-Stage4-Step1-Spring/31.png" alt="31"></p>
+<p><img src="/images/Java-Stage4-Step1-Spring/33.png" alt="33"></p>
+<p><img src="/images/Java-Stage4-Step1-Spring/34.png" alt="34"></p>
+<p><img src="/images/Java-Stage4-Step1-Spring/35.png" alt="35"></p>
+<h4 id="3、AspectJ-切入点定义"><a href="#3、AspectJ-切入点定义" class="headerlink" title="3、AspectJ 切入点定义"></a>3、AspectJ 切入点定义</h4><p><img src="/images/Java-Stage4-Step1-Spring/32.png" alt="32"></p>
+<h4 id="4、通过-Pointcut减少维护量"><a href="#4、通过-Pointcut减少维护量" class="headerlink" title="4、通过@Pointcut减少维护量"></a>4、通过@Pointcut减少维护量</h4><p><img src="/images/Java-Stage4-Step1-Spring/37.png" alt="37"></p>
+<h3 id="二-基于AspectJ的XML方式的AOP开发"><a href="#二-基于AspectJ的XML方式的AOP开发" class="headerlink" title="二:基于AspectJ的XML方式的AOP开发"></a>二:基于AspectJ的XML方式的AOP开发</h3><h4 id="1、AspectJ的配置-1"><a href="#1、AspectJ的配置-1" class="headerlink" title="1、AspectJ的配置"></a>1、AspectJ的配置</h4><p>applicationContext.xml</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--XML的配置方式完成AOP的开发===============--&gt;</span><br><span class="line">    &lt;!--配置目标类=================--&gt;</span><br><span class="line">    &lt;bean id=&quot;customerDao&quot; class=&quot;com.imooc.aspectJ.demo2.CustomerDaoImpl&quot;/&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!--配置切面类--&gt;</span><br><span class="line">    &lt;bean id=&quot;myAspectXml&quot; class=&quot;com.imooc.aspectJ.demo2.MyAspectXml&quot;/&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!--aop的相关配置=================--&gt;</span><br><span class="line">    &lt;aop:config&gt;</span><br><span class="line">        &lt;!--配置切入点--&gt;</span><br><span class="line">        &lt;aop:pointcut id=&quot;pointcut1&quot; expression=&quot;execution(* com.imooc.aspectJ.demo2.CustomerDao.save(..))&quot;/&gt;</span><br><span class="line">        &lt;aop:pointcut id=&quot;pointcut2&quot; expression=&quot;execution(* com.imooc.aspectJ.demo2.CustomerDao.update(..))&quot;/&gt;</span><br><span class="line">        &lt;aop:pointcut id=&quot;pointcut3&quot; expression=&quot;execution(* com.imooc.aspectJ.demo2.CustomerDao.delete(..))&quot;/&gt;</span><br><span class="line">        &lt;aop:pointcut id=&quot;pointcut4&quot; expression=&quot;execution(* com.imooc.aspectJ.demo2.CustomerDao.findOne(..))&quot;/&gt;</span><br><span class="line">        &lt;aop:pointcut id=&quot;pointcut5&quot; expression=&quot;execution(* com.imooc.aspectJ.demo2.CustomerDao.findAll(..))&quot;/&gt;</span><br><span class="line">        &lt;!--配置AOP的切面--&gt;</span><br><span class="line">        &lt;aop:aspect ref=&quot;myAspectXml&quot;&gt;</span><br><span class="line">            &lt;!--配置前置通知--&gt;</span><br><span class="line">            &lt;aop:before method=&quot;before&quot; pointcut-ref=&quot;pointcut1&quot;/&gt;</span><br><span class="line">            &lt;!--配置后置通知--&gt;</span><br><span class="line">            &lt;aop:after-returning method=&quot;afterReturing&quot; pointcut-ref=&quot;pointcut2&quot; returning=&quot;result&quot;/&gt;</span><br><span class="line">            &lt;!--配置环绕通知--&gt;</span><br><span class="line">            &lt;aop:around method=&quot;around&quot; pointcut-ref=&quot;pointcut3&quot;/&gt;</span><br><span class="line">            &lt;!--配置异常抛出通知--&gt;</span><br><span class="line">            &lt;aop:after-throwing method=&quot;afterThrowing&quot; pointcut-ref=&quot;pointcut4&quot; throwing=&quot;e&quot;/&gt;</span><br><span class="line">            &lt;!--配置最终通知--&gt;</span><br><span class="line">            &lt;aop:after method=&quot;after&quot; pointcut-ref=&quot;pointcut5&quot;/&gt;</span><br><span class="line">        &lt;/aop:aspect&gt;</span><br><span class="line"></span><br><span class="line">    &lt;/aop:config&gt;</span><br></pre></td></tr></table></figure>
+
+<p>注解开发：开发便捷</p>
+<p>XML开发：维护便捷</p>
+<h1 id="5-Spring组件JDBC-Template"><a href="#5-Spring组件JDBC-Template" class="headerlink" title="5-Spring组件JDBC Template"></a>5-Spring组件JDBC Template</h1><p>（了解即可，因为一般都用MyBatis）</p>
+<p>注解开发的意义就是标明了注解之后，通过xml中的自动扫描就可以直接实现。</p>
+<p><img src="/images/Java-Stage4-Step1-Spring/38.png" alt="38"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">  &lt;groupId&gt;org.springframework&lt;/groupId&gt;</span><br><span class="line">  &lt;artifactId&gt;spring-jdbc&lt;/artifactId&gt;</span><br><span class="line">  &lt;version&gt;5.2.8.RELEASE&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">  &lt;groupId&gt;org.springframework&lt;/groupId&gt;</span><br><span class="line">  &lt;artifactId&gt;spring-tx&lt;/artifactId&gt;</span><br><span class="line">  &lt;version&gt;5.2.8.RELEASE&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/Java-Stage4-Step1-Spring/39.png" alt="39"></p>
+<p><img src="/images/Java-Stage4-Step1-Spring/40.png" alt="40"></p>
+<p><img src="/images/Java-Stage4-Step1-Spring/41.png" alt="41"></p>
+<p><img src="/images/Java-Stage4-Step1-Spring/42.png" alt="42"></p>
+<p><img src="/images/Java-Stage4-Step1-Spring/43.png" alt="43"></p>
+<p><img src="/images/Java-Stage4-Step1-Spring/44.png" alt="44"></p>
+<h1 id="6-Spring事务管理"><a href="#6-Spring事务管理" class="headerlink" title="6-Spring事务管理"></a>6-Spring事务管理</h1><h3 id="一-事务基本语句"><a href="#一-事务基本语句" class="headerlink" title="一:事务基本语句"></a>一:事务基本语句</h3><p><img src="/images/Java-Stage4-Step1-Spring/45.png" alt="45"></p>
+<h3 id="二-脏读，不可重复读，幻读"><a href="#二-脏读，不可重复读，幻读" class="headerlink" title="二:脏读，不可重复读，幻读"></a>二:脏读，不可重复读，幻读</h3><p><img src="/images/Java-Stage4-Step1-Spring/47.png" alt="47"></p>
+<p><img src="/images/Java-Stage4-Step1-Spring/48.png" alt="48"></p>
+<p><img src="/images/Java-Stage4-Step1-Spring/49.png" alt="49"></p>
+<h3 id="三-事务隔离级别"><a href="#三-事务隔离级别" class="headerlink" title="三:事务隔离级别"></a>三:事务隔离级别</h3><p><img src="/images/Java-Stage4-Step1-Spring/46.png" alt="46"></p>
+<h3 id="四-JDBC事务处理"><a href="#四-JDBC事务处理" class="headerlink" title="四:JDBC事务处理"></a>四:JDBC事务处理</h3><p><img src="/images/Java-Stage4-Step1-Spring/50.png" alt="50"></p>
+<p><img src="/images/Java-Stage4-Step1-Spring/51.png" alt="51"></p>
+<h3 id="五-Spring事务处理"><a href="#五-Spring事务处理" class="headerlink" title="五:Spring事务处理"></a>五:Spring事务处理</h3><h4 id="Spring事务管理API："><a href="#Spring事务管理API：" class="headerlink" title="Spring事务管理API："></a>Spring事务管理API：</h4><p><img src="/images/Java-Stage4-Step1-Spring/52.png" alt="52"></p>
+<h4 id="TransationDefinition接口："><a href="#TransationDefinition接口：" class="headerlink" title="TransationDefinition接口："></a>TransationDefinition接口：</h4><p><img src="/images/Java-Stage4-Step1-Spring/53.png" alt="53"></p>
+<h4 id="Spring事务传播行为："><a href="#Spring事务传播行为：" class="headerlink" title="Spring事务传播行为："></a>Spring事务传播行为：</h4><p><img src="/images/Java-Stage4-Step1-Spring/54.png" alt="54"></p>
+<h4 id="Spring编程式事务管理："><a href="#Spring编程式事务管理：" class="headerlink" title="Spring编程式事务管理："></a>Spring编程式事务管理：</h4><p><img src="/images/Java-Stage4-Step1-Spring/55.png" alt="55"></p>
+<h4 id="Spring声明式事务管理："><a href="#Spring声明式事务管理：" class="headerlink" title="Spring声明式事务管理："></a>Spring声明式事务管理：</h4><p><img src="/images/Java-Stage4-Step1-Spring/56.png" alt="56"></p>
+<p><img src="/images/Java-Stage4-Step1-Spring/57.png" alt="57"></p>
+<h5 id="基于拦截器的TransactionInterceptor的配置："><a href="#基于拦截器的TransactionInterceptor的配置：" class="headerlink" title="基于拦截器的TransactionInterceptor的配置："></a>基于拦截器的TransactionInterceptor的配置：</h5><p><img src="/images/Java-Stage4-Step1-Spring/58.png" alt="58"></p>
+<h5 id=""><a href="#" class="headerlink" title=""></a><img src="/images/Java-Stage4-Step1-Spring/59.png" alt="59"></h5><h5 id="简化拦截器TransactionProxyFactoryBean的配置："><a href="#简化拦截器TransactionProxyFactoryBean的配置：" class="headerlink" title="简化拦截器TransactionProxyFactoryBean的配置："></a>简化拦截器TransactionProxyFactoryBean的配置：</h5><p><img src="/images/Java-Stage4-Step1-Spring/60.png" alt="60"></p>
+<h5 id="基于tx命名空间的的声明式事务管理方式的spring-xml配置："><a href="#基于tx命名空间的的声明式事务管理方式的spring-xml配置：" class="headerlink" title="基于tx命名空间的的声明式事务管理方式的spring.xml配置："></a>基于tx命名空间的的声明式事务管理方式的spring.xml配置：</h5><p><img src="/images/Java-Stage4-Step1-Spring/61.png" alt="61"></p>
+<h5 id="基于-Transactional（注解）的声明式事务管理的spring-xml配置："><a href="#基于-Transactional（注解）的声明式事务管理的spring-xml配置：" class="headerlink" title="基于@Transactional（注解）的声明式事务管理的spring.xml配置："></a>基于@Transactional（注解）的声明式事务管理的spring.xml配置：</h5><p>项目较小的时候配置简单方便，但是相比较tx而言，当项目变大时业务维护复杂。</p>
+<p><img src="/images/Java-Stage4-Step1-Spring/62.png" alt="62"></p>
+<p><img src="/images/Java-Stage4-Step1-Spring/63.png" alt="63"></p>
+<h1 id="7-Spring-MyBatis人员管理系统"><a href="#7-Spring-MyBatis人员管理系统" class="headerlink" title="7-Spring+MyBatis人员管理系统"></a>7-Spring+MyBatis人员管理系统</h1><p>原有的：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Class cla = Class.forName(className);</span><br><span class="line">          Object object = cla.newInstance();</span><br><span class="line">          Method method = cla.getMethod(methodName,HttpServletRequest.class, HttpServletResponse.class);</span><br><span class="line">          method.invoke(object,request,response);</span><br></pre></td></tr></table></figure>
+
+<p>交由Spring管理的方式获得方法名：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ApplicationContext context=new ClassPathXmlApplicationContext(&quot;spring.xml&quot;);</span><br><span class="line">Object obj=context.getBean(beanName);</span><br><span class="line">Method method=obj.getClass().getMethod(methodName,HttpServletRequest.class, HttpServletResponse.class);</span><br><span class="line">method.invoke(obj,request,response);</span><br></pre></td></tr></table></figure>
+
+<p>Spring.xml:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;</span><br><span class="line">       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:tx=&quot;http://www.springframework.org/schema/tx&quot;</span><br><span class="line">       xmlns:aop=&quot;http://www.springframework.org/schema/aop&quot;</span><br><span class="line">       xmlns:context=&quot;http://www.springframework.org/schema/context&quot;</span><br><span class="line">       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;bean id=&quot;dataSource&quot; class=&quot;org.springframework.jdbc.datasource.DriverManagerDataSource&quot;&gt;</span><br><span class="line">        &lt;property name=&quot;driverClassName&quot; value=&quot;com.mysql.jdbc.Driver&quot; /&gt;</span><br><span class="line">        &lt;property name=&quot;url&quot; value=&quot;jdbc:mysql://localhost:3306/hospital?useUnicode=true&amp;amp;characterEncoding=UTF-8&quot;/&gt;</span><br><span class="line">        &lt;property name=&quot;username&quot; value=&quot;root&quot;/&gt;</span><br><span class="line">        &lt;property name=&quot;password&quot; value=&quot;123456&quot; /&gt;</span><br><span class="line">    &lt;/bean&gt;</span><br><span class="line">    &lt;bean id=&quot;sqlSessionFactory&quot;  class=&quot;org.mybatis.spring.SqlSessionFactoryBean&quot;&gt;</span><br><span class="line">        &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot;/&gt;</span><br><span class="line">        &lt;property name=&quot;typeAliasesPackage&quot; value=&quot;com.imooc.sm.entity&quot;/&gt;</span><br><span class="line">        //实体类可以用简称的方式</span><br><span class="line">    &lt;/bean&gt;</span><br><span class="line">    &lt;bean class=&quot;org.mybatis.spring.mapper.MapperScannerConfigurer&quot;&gt;</span><br><span class="line">        &lt;property name=&quot;basePackage&quot; value=&quot;com.imooc.sm.dao&quot;/&gt;</span><br><span class="line">        &lt;property name=&quot;sqlSessionFactoryBeanName&quot; value=&quot;sqlSessionFactory&quot;/&gt;</span><br><span class="line">    &lt;/bean&gt;</span><br><span class="line"></span><br><span class="line">    &lt;bean id=&quot;transactionManager&quot; class=&quot;org.springframework.jdbc.datasource.DataSourceTransactionManager&quot;&gt;</span><br><span class="line">        &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot;/&gt;</span><br><span class="line">    &lt;/bean&gt;</span><br><span class="line">    &lt;tx:advice id=&quot;txAdvice&quot; transaction-manager=&quot;transactionManager&quot;&gt;</span><br><span class="line">        &lt;tx:attributes&gt;</span><br><span class="line">            &lt;tx:method name=&quot;get*&quot; read-only=&quot;true&quot;/&gt;</span><br><span class="line">            &lt;tx:method name=&quot;find*&quot;  read-only=&quot;true&quot;/&gt;</span><br><span class="line">            &lt;tx:method name=&quot;search*&quot; read-only=&quot;true&quot;/&gt;</span><br><span class="line">            &lt;tx:method name=&quot;*&quot; propagation=&quot;REQUIRED&quot;/&gt;</span><br><span class="line">        &lt;/tx:attributes&gt;</span><br><span class="line">    &lt;/tx:advice&gt;</span><br><span class="line">    </span><br><span class="line">    &lt;aop:config&gt;</span><br><span class="line">        &lt;aop:pointcut id=&quot;pointcut&quot; expression=&quot;execution(* com.imooc.sm.service.*.*(..))&quot;/&gt;</span><br><span class="line">        &lt;aop:advisor advice-ref=&quot;txAdvice&quot; pointcut-ref=&quot;pointcut&quot;/&gt;</span><br><span class="line">    &lt;/aop:config&gt;</span><br><span class="line"></span><br><span class="line">    &lt;context:component-scan base-package=&quot;com.imooc.sm&quot;/&gt;</span><br><span class="line">&lt;/beans&gt;</span><br></pre></td></tr></table></figure>
+
+<p>日期格式转化器：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SimpleDateFormat(&quot;yyyy-MM-dd&quot;)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">request.getServletContext().getRealPath() /获得项目的相对路径</span><br><span class="line">request.getContextPath()获得项目根目录的绝对路径</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+        
+<blockquote class="copyright">
+    <p><strong>Link to this article : </strong><a class="permalink" href="http://yoursite.com/2020/08/10/Java-Stage4-Step1-Spring/">http://yoursite.com/2020/08/10/Java-Stage4-Step1-Spring/</a></p>
+    <p><strong>This article is available under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)</a> License</strong></p>
+</blockquote>
+
+
+    </article>
+    
+    <section id="comments">
+        
+    </section>
+
+
+    
+
+</main>
+
+
+<aside style="" id="sidebar" class="aside aside-fixture">
+    <div class="toc-sidebar">
+        <nav id="toc" class="article-toc">
+            <h3 class="toc-title">Catalogue</h3>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BB%E8%A6%81%E6%AD%A5%E9%AA%A4%EF%BC%9A"><span class="toc-number">1.</span> <span class="toc-text">主要步骤：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-Spring%E5%85%A5%E9%97%A8"><span class="toc-number"></span> <span class="toc-text">1-Spring入门</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Spring-IOC%E5%85%A5%E9%97%A8"><span class="toc-number">1.</span> <span class="toc-text">Spring IOC入门</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%BF%99%E6%A0%B7%E5%81%9A%E7%9A%84%E5%A5%BD%E5%A4%84%E6%98%AF%E9%99%8D%E4%BD%8E%E4%BA%86%E4%B8%9A%E5%8A%A1%E5%B1%82%E7%9A%84%E8%80%A6%E5%90%88%EF%BC%8C%E7%94%B1Spring%E5%B7%A5%E5%8E%82%E6%9D%A5%E5%AE%8C%E6%88%90%E5%AE%9E%E4%BD%93%E7%B1%BB%E7%9A%84%E5%88%9B%E5%BB%BA%E3%80%82%E7%9B%B4%E6%8E%A5%E8%B0%83%E7%94%A8%E5%8D%B3%E5%8F%AF%E3%80%82"><span class="toc-number">1.0.1.</span> <span class="toc-text">这样做的好处是降低了业务层的耦合，由Spring工厂来完成实体类的创建。直接调用即可。</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-Spring-Bean%E7%AE%A1%E7%90%86"><span class="toc-number"></span> <span class="toc-text">2-Spring Bean管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Spring-bean-%EF%BC%88XML%E6%96%B9%E5%BC%8F%EF%BC%89"><span class="toc-number">1.</span> <span class="toc-text">Spring bean （XML方式）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Spring-Bean%E5%B1%9E%E6%80%A7%E6%B3%A8%E5%85%A5"><span class="toc-number">2.</span> <span class="toc-text">Spring Bean属性注入</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%99%AE%E9%80%9A%E7%B1%BB%E5%9E%8B%E7%9A%84%E7%9A%84%E5%80%BC%E7%94%A8value%E6%B3%A8%E5%85%A5%EF%BC%8C%E5%AF%B9%E8%B1%A1%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%80%BC%E7%94%A8ref%E6%B3%A8%E5%85%A5%E3%80%82"><span class="toc-number">2.0.1.</span> <span class="toc-text">普通类型的的值用value注入，对象类型的值用ref注入。</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9C%A8applicationContext%E5%BC%80%E5%A4%B4beans%E6%A0%87%E7%AD%BE%E5%86%85%E5%BC%95%E5%85%A5P%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%EF%BC%9A"><span class="toc-number">2.0.2.</span> <span class="toc-text">在applicationContext开头beans标签内引入P命名空间：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%A4%8D%E6%9D%82%E5%B1%9E%E6%80%A7%E7%9A%84%E6%B3%A8%E5%85%A5%EF%BC%9A"><span class="toc-number">2.0.3.</span> <span class="toc-text">复杂属性的注入：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Spring%E7%9A%84Bean%E7%AE%A1%E7%90%86%EF%BC%88%E6%B3%A8%E8%A7%A3%E6%96%B9%E5%BC%8F%EF%BC%89"><span class="toc-number">3.</span> <span class="toc-text">Spring的Bean管理（注解方式）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Spring-Bean%E7%9A%84xml%E5%92%8C%E6%B3%A8%E8%A7%A3%E5%BC%80%E5%8F%91%E7%9A%84%E6%B7%B7%E5%90%88%E4%BD%BF%E7%94%A8"><span class="toc-number">4.</span> <span class="toc-text">Spring Bean的xml和注解开发的混合使用</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-Spring-AOP"><span class="toc-number"></span> <span class="toc-text">3-Spring AOP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%EF%BC%9AAOP%E7%9B%B8%E5%85%B3%E6%9C%AF%E8%AF%AD"><span class="toc-number">1.</span> <span class="toc-text">一：AOP相关术语</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%EF%BC%9A%EF%BC%88%E5%8E%9F%E7%90%86%EF%BC%89JDK%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86%EF%BC%9A%E5%B0%B1%E6%98%AF%E5%B0%86%E5%8E%9F%E6%9C%89%E7%9A%84userDao%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E4%BB%A3%E7%90%86%E7%B1%BB%EF%BC%8C%E4%BB%8E%E8%80%8C%E5%9C%A8%E5%8E%9F%E6%9C%89%E7%B1%BB%E7%9A%84%E5%9F%BA%E7%A1%80%E4%B8%8A%E6%89%A9%E5%A2%9E%E5%8A%9F%E8%83%BD%EF%BC%8C%E5%8F%AA%E8%83%BD%E5%AE%9E%E7%8E%B0%E6%9C%89%E6%8E%A5%E5%8F%A3%E7%9A%84%E6%96%B9%E6%B3%95%EF%BC%9A"><span class="toc-number">2.</span> <span class="toc-text">二：（原理）JDK动态代理：就是将原有的userDao实现一个代理类，从而在原有类的基础上扩增功能，只能实现有接口的方法：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%EF%BC%9A%EF%BC%88%E5%8E%9F%E7%90%86%EF%BC%89cglib%E7%9A%84%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86%EF%BC%8C%E5%8F%AF%E4%BB%A5%E5%AE%9E%E7%8E%B0%E6%B2%A1%E6%9C%89%E6%8E%A5%E5%8F%A3%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number">3.</span> <span class="toc-text">三：（原理）cglib的动态代理，可以实现没有接口的方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B-SpringAOP%E9%80%9A%E7%9F%A5%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%88%87%E9%9D%A2%E7%B1%BB%E5%9E%8B"><span class="toc-number">4.</span> <span class="toc-text">四:SpringAOP通知类型和切面类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94-Spring-%E4%B8%80%E8%88%AC%E5%88%87%E9%9D%A2%E7%9A%84%E4%BB%A3%E7%90%86%EF%BC%88%E4%BC%A0%E7%BB%9FAOP%EF%BC%89"><span class="toc-number">5.</span> <span class="toc-text">五:Spring 一般切面的代理（传统AOP）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%AD%EF%BC%9ASpring%E5%B8%A6%E6%9C%89%E5%88%87%E5%85%A5%E7%82%B9%E7%9A%84%E5%88%87%E9%9D%A2%E7%9A%84%E4%BB%A3%E7%90%86-%EF%BC%88%E4%BC%A0%E7%BB%9FAOP%EF%BC%89"><span class="toc-number">6.</span> <span class="toc-text">六：Spring带有切入点的切面的代理 （传统AOP）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%83%EF%BC%9A%E8%87%AA%E5%8A%A8%E5%88%9B%E5%BB%BA%E4%BB%A3%E7%90%86%EF%BC%88%E4%BC%A0%E7%BB%9FAOP%E7%9A%84%E8%87%AA%E5%8A%A8%E4%BB%A3%E7%90%86%EF%BC%89"><span class="toc-number">7.</span> <span class="toc-text">七：自动创建代理（传统AOP的自动代理）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-Spring-%E5%9F%BA%E4%BA%8EAspectJ%E7%9A%84AOP%E5%BC%80%E5%8F%91"><span class="toc-number"></span> <span class="toc-text">4-Spring 基于AspectJ的AOP开发</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80-%E5%9F%BA%E4%BA%8EAspectJ%E7%9A%84%E6%B3%A8%E8%A7%A3%E6%96%B9%E5%BC%8F%E7%9A%84AOP%E5%BC%80%E5%8F%91"><span class="toc-number">1.</span> <span class="toc-text">一:基于AspectJ的注解方式的AOP开发</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81AspectJ%E7%9A%84%E9%85%8D%E7%BD%AE"><span class="toc-number">1.1.</span> <span class="toc-text">1、AspectJ的配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%81AspectJ%E7%9A%84%E9%80%9A%E7%9F%A5%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.2.</span> <span class="toc-text">2、AspectJ的通知类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%E3%80%81AspectJ-%E5%88%87%E5%85%A5%E7%82%B9%E5%AE%9A%E4%B9%89"><span class="toc-number">1.3.</span> <span class="toc-text">3、AspectJ 切入点定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4%E3%80%81%E9%80%9A%E8%BF%87-Pointcut%E5%87%8F%E5%B0%91%E7%BB%B4%E6%8A%A4%E9%87%8F"><span class="toc-number">1.4.</span> <span class="toc-text">4、通过@Pointcut减少维护量</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C-%E5%9F%BA%E4%BA%8EAspectJ%E7%9A%84XML%E6%96%B9%E5%BC%8F%E7%9A%84AOP%E5%BC%80%E5%8F%91"><span class="toc-number">2.</span> <span class="toc-text">二:基于AspectJ的XML方式的AOP开发</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81AspectJ%E7%9A%84%E9%85%8D%E7%BD%AE-1"><span class="toc-number">2.1.</span> <span class="toc-text">1、AspectJ的配置</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-Spring%E7%BB%84%E4%BB%B6JDBC-Template"><span class="toc-number"></span> <span class="toc-text">5-Spring组件JDBC Template</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-Spring%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86"><span class="toc-number"></span> <span class="toc-text">6-Spring事务管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80-%E4%BA%8B%E5%8A%A1%E5%9F%BA%E6%9C%AC%E8%AF%AD%E5%8F%A5"><span class="toc-number">1.</span> <span class="toc-text">一:事务基本语句</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C-%E8%84%8F%E8%AF%BB%EF%BC%8C%E4%B8%8D%E5%8F%AF%E9%87%8D%E5%A4%8D%E8%AF%BB%EF%BC%8C%E5%B9%BB%E8%AF%BB"><span class="toc-number">2.</span> <span class="toc-text">二:脏读，不可重复读，幻读</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89-%E4%BA%8B%E5%8A%A1%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB"><span class="toc-number">3.</span> <span class="toc-text">三:事务隔离级别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B-JDBC%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86"><span class="toc-number">4.</span> <span class="toc-text">四:JDBC事务处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94-Spring%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86"><span class="toc-number">5.</span> <span class="toc-text">五:Spring事务处理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Spring%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86API%EF%BC%9A"><span class="toc-number">5.1.</span> <span class="toc-text">Spring事务管理API：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#TransationDefinition%E6%8E%A5%E5%8F%A3%EF%BC%9A"><span class="toc-number">5.2.</span> <span class="toc-text">TransationDefinition接口：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Spring%E4%BA%8B%E5%8A%A1%E4%BC%A0%E6%92%AD%E8%A1%8C%E4%B8%BA%EF%BC%9A"><span class="toc-number">5.3.</span> <span class="toc-text">Spring事务传播行为：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Spring%E7%BC%96%E7%A8%8B%E5%BC%8F%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86%EF%BC%9A"><span class="toc-number">5.4.</span> <span class="toc-text">Spring编程式事务管理：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Spring%E5%A3%B0%E6%98%8E%E5%BC%8F%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86%EF%BC%9A"><span class="toc-number">5.5.</span> <span class="toc-text">Spring声明式事务管理：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E6%8B%A6%E6%88%AA%E5%99%A8%E7%9A%84TransactionInterceptor%E7%9A%84%E9%85%8D%E7%BD%AE%EF%BC%9A"><span class="toc-number">5.5.1.</span> <span class="toc-text">基于拦截器的TransactionInterceptor的配置：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-number">5.5.2.</span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%AE%80%E5%8C%96%E6%8B%A6%E6%88%AA%E5%99%A8TransactionProxyFactoryBean%E7%9A%84%E9%85%8D%E7%BD%AE%EF%BC%9A"><span class="toc-number">5.5.3.</span> <span class="toc-text">简化拦截器TransactionProxyFactoryBean的配置：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8Etx%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E7%9A%84%E7%9A%84%E5%A3%B0%E6%98%8E%E5%BC%8F%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86%E6%96%B9%E5%BC%8F%E7%9A%84spring-xml%E9%85%8D%E7%BD%AE%EF%BC%9A"><span class="toc-number">5.5.4.</span> <span class="toc-text">基于tx命名空间的的声明式事务管理方式的spring.xml配置：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E-Transactional%EF%BC%88%E6%B3%A8%E8%A7%A3%EF%BC%89%E7%9A%84%E5%A3%B0%E6%98%8E%E5%BC%8F%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86%E7%9A%84spring-xml%E9%85%8D%E7%BD%AE%EF%BC%9A"><span class="toc-number">5.5.5.</span> <span class="toc-text">基于@Transactional（注解）的声明式事务管理的spring.xml配置：</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7-Spring-MyBatis%E4%BA%BA%E5%91%98%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F"><span class="toc-number"></span> <span class="toc-text">7-Spring+MyBatis人员管理系统</span></a>
+        </nav>
+    </div>
+</aside>
+
+
+
+
+
+        </section>
+        <footer class="hidden lg:block fixed bottom-0 left-0 sm:w-1/12 lg:w-1/6 bg-gray-100 z-40">
+    
+    <div class="footer-social-links">
+        
+            <a target="_blank" rel="noopener" href="https://github.com/fengkx">
+                <i class="iconfont icon-github"></i>
+            </a>
+        
+            <a target="_blank" rel="noopener" href="https://t.me/fengkx">
+                <i class="iconfont icon-telegram"></i>
+            </a>
+        
+            <a target="_blank" rel="noopener" href="https://twitter.com/example">
+                <i class="iconfont icon-twitter"></i>
+            </a>
+        
+            <a href="/atom.xml">
+                <i class="iconfont icon-rss"></i>
+            </a>
+        
+    </div>
+    
+    
+</footer>
+
+        <div id="mask" class="hidden mask fixed inset-0 bg-gray-900 opacity-75 z-40"></div>
+        <div id="search-view-container" class="hidden shadow-xl"></div>
+        
+<script src="/js/dom-event.min.js"></script>
+
+
+
+<script src="/js/local-search.min.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/js/lightgallery.min.js"></script>
+    
+<script src="/js/light-gallery.min.js"></script>
+
+
+
+
+
+
+    </body>
+</html>

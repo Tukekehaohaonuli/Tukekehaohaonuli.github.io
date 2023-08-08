@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html  lang="english" >
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+    <title>Tukekenulia</title>
+    <meta name="description" content="Spring Data JPA入门使用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tukekenulia">
+<meta property="og:url" content="http://yoursite.com/2020/09/25/Spring%20Data%20JPA/index.html">
+<meta property="og:site_name" content="Tukekenulia">
+<meta property="og:description" content="Spring Data JPA入门使用">
+<meta property="og:locale">
+<meta property="og:image" content="http://yoursite.com/images/Spring-Data-JPA/1.png">
+<meta property="article:published_time" content="2020-09-25T07:44:26.000Z">
+<meta property="article:modified_time" content="2020-09-25T07:44:26.000Z">
+<meta property="article:author" content="Tukeke">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/images/Spring-Data-JPA/1.png">
+
+    
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+
+    
+<link rel="stylesheet" href="/css/common.min.css">
+
+
+
+    
+    
+    
+    
+        <link href="//cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/css/lightgallery.min.css" rel="stylesheet">
+    
+    
+    
+<link rel="stylesheet" href="/css/iconfont.min.css">
+
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+    <body>
+        <header class="header header-fixture">
+    <div class="profile-search-wrap flex sm:block">
+        
+        
+        <div class="profile sm:text-center md:px-1 lg:px-3 sm:pb-4 sm:pt-6">
+            <a id="avatar" role="link" href="https://github.com/fengkx" class="inline-block lg:w-16 lg:h-16 w-8 h-8 m-2" target="_blank" rel="noopener" rel="noreferrer" >
+                <img src="https://www.gravatar.com/avatar/0bc83cb571cd1c50ba6f3e8a78ef1346?s=128" class="rounded-full" alt="avatar">
+            </a>
+            <h2 id="name" class="hidden lg:block">fengkx</h2>
+            <h3 id="title" class="hidden lg:block">Student &amp; Coder</h3>
+            
+            <small id="location" class="hidden lg:block">
+                <i class="iconfont icon-map-icon"></i>
+                Guangzhou, China
+            </small>
+            
+        </div>
+        
+        
+<div class="search flex-1 flex lg:inline-block sm:hidden lg:px-4 lg:mt-2 lg:mb-4 lg:w-full">
+    <form id="search-form" class="my-auto flex-1 lg:border lg:border-solid lg:border-gray-200">
+        <div class="input-group table bg-gray-100 lg:bg-white w-full">
+            <input id="search-input" type="text" placeholder="Search" class="inline-block w-full bg-gray-100 lg:bg-white p-1">
+            <span class="table-cell">
+                <button name="search tigger button" disabled>
+                    <i class="iconfont icon-search m-2"></i>
+                </button>
+            </span>
+        </div>
+    </form>
+        
+<div id="content-json" data-placeholder="Search" class="invisible hidden">/content.json</div>
+<script id="search-teamplate" type="text/html" data-path="/content.json">
+    <div>
+        <div class="search-header bg-gray-400">
+            <input id="actual-search-input" model="keyword" ref="input" class="inline-block w-full h-10 px-2 py-1" placeholder="Search" type="text">
+        </div>
+        <div class="search-result bg-gray-200">
+            {{#each searchPosts}}
+            <a href="/{{ path }}" class="result-item block px-2 pb-3 mb-1 pt-1 hover:bg-indigo-100">
+                <i class="iconfont icon-file"></i>
+                <h1 class="result-title inline font-medium text-lg">{{ title }}</h1>
+                <p class="result-content text-gray-600 text-sm">{{{ text }}}</p>
+            </a>
+            {{/each}}
+        </div>
+    </div>
+</script>
+
+</div>
+
+
+        <button name="menu toogle button" id="menu-toggle-btn" class="block sm:hidden p-3" role="button" aria-expanded="false">
+            <i class="iconfont icon-hamburger"></i>
+        </button>
+    </div>
+    <nav id="menu-nav" class="hidden sm:flex flex-col">
+        
+        
+            <div class="menu-item menu-home" role="menuitem">
+                <a href="/.">
+                    <i class="iconfont icon-home" aria-hidden="true"></i>
+                    <span class="menu-title">Home</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-archives" role="menuitem">
+                <a href="/archives">
+                    <i class="iconfont icon-archive" aria-hidden="true"></i>
+                    <span class="menu-title">Archives</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-categories" role="menuitem">
+                <a href="/categories">
+                    <i class="iconfont icon-folder" aria-hidden="true"></i>
+                    <span class="menu-title">Categories</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-tags" role="menuitem">
+                <a href="/tags">
+                    <i class="iconfont icon-tag" aria-hidden="true"></i>
+                    <span class="menu-title">Tags</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-repository" role="menuitem">
+                <a href="/repository">
+                    <i class="iconfont icon-project" aria-hidden="true"></i>
+                    <span class="menu-title">Repository</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-links" role="menuitem">
+                <a href="/links">
+                    <i class="iconfont icon-friend" aria-hidden="true"></i>
+                    <span class="menu-title">Links</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-about" role="menuitem">
+                <a href="/about">
+                    <i class="iconfont icon-cup" aria-hidden="true"></i>
+                    <span class="menu-title">About</span>
+                </a>
+            </div>
+        
+        
+<div class="social-links flex sm:flex-col lg:hidden mt-5">
+    
+        <span class="social-item text-center">
+            <a target="_blank" rel="noopener" href="https://github.com/fengkx">
+                <i class="iconfont social-icon icon-github"></i>
+                <span class="menu-title hidden lg:inline">menu.github</span>
+            </a>
+        </span>
+    
+        <span class="social-item text-center">
+            <a target="_blank" rel="noopener" href="https://t.me/fengkx">
+                <i class="iconfont social-icon icon-telegram"></i>
+                <span class="menu-title hidden lg:inline">menu.telegram</span>
+            </a>
+        </span>
+    
+        <span class="social-item text-center">
+            <a target="_blank" rel="noopener" href="https://twitter.com/example">
+                <i class="iconfont social-icon icon-twitter"></i>
+                <span class="menu-title hidden lg:inline">menu.twitter</span>
+            </a>
+        </span>
+    
+        <span class="social-item text-center">
+            <a href="/atom.xml">
+                <i class="iconfont social-icon icon-rss"></i>
+                <span class="menu-title hidden lg:inline">menu.rss</span>
+            </a>
+        </span>
+    
+</div>
+
+
+    </nav>
+</header>
+
+        <section class="main-section">
+            
+    <main class="flex-1 px-4 py-14 md:px-5 lg:px-8 lg:py-4 relative min-h-screen">
+    
+
+    <article class="content article article-archives article-type-list" itemscope="">
+        <header class="article-header">
+            
+
+
+            <p class="article-meta mb-3 text-xs">
+                <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2020/09/25/Spring%20Data%20JPA/" class="article-date">
+	  <time datetime="2020-09-25T07:44:26.000Z" itemprop="datePublished">Sep 25</time>
+	</a>
+</span>
+
+                
+
+                
+
+                <span class="_partial/post-comment"><i class="icon icon-comment"></i>
+                    <a href="/2020/09/25/Spring%20Data%20JPA/#comments" class="article-comment-link">
+                        Comments
+                    </a>
+                </span>
+                
+
+            </p>
+        </header>
+        <div class="marked-body article-body">
+            <p>Spring Data JPA入门使用</p>
+<span id="more"></span>
+
+<h2 id="1-Spring-Data-JPA-的基本用法"><a href="#1-Spring-Data-JPA-的基本用法" class="headerlink" title="1-Spring Data JPA 的基本用法"></a>1-Spring Data JPA 的基本用法</h2><h4 id="Spring-Data-JPA"><a href="#Spring-Data-JPA" class="headerlink" title="Spring Data JPA"></a>Spring Data JPA</h4><p>Spring Data JPA 是 Spring 基于 ORM 框架、JPA 规范的基础上封装的一套 JPA 应用框架，可以让开发者用极简的代码即可实现对数据的访问和操作。Spring Data JPA 其实就是 Spring 基于 Hibernate 之上构建的 JPA 使用解决方案，方便在 Spring Boot 项目中使用 JPA 技术。</p>
+<h4 id="添加依赖"><a href="#添加依赖" class="headerlink" title="添加依赖"></a>添加依赖</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-data-jpa<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">上述依赖是错误的导入JPA！</span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.data<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-data-jpa<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>mysql<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mysql-connector-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="添加配置文件"><a href="#添加配置文件" class="headerlink" title="添加配置文件"></a>添加配置文件</h4><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring.datasource.url</span>=<span class="string">jdbc:mysql://localhost:3306/test?serverTimezone=UTC&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=true</span></span><br><span class="line"><span class="attr">spring.datasource.username</span>=<span class="string">root</span></span><br><span class="line"><span class="attr">spring.datasource.password</span>=<span class="string">123456</span></span><br><span class="line"><span class="attr">spring.datasource.driver-class-name</span>=<span class="string">com.mysql.cj.jdbc.Driver</span></span><br><span class="line"></span><br><span class="line"><span class="attr">spring.jpa.properties.hibernate.hbm2ddl.auto</span>=<span class="string">create</span></span><br><span class="line"><span class="attr">spring.jpa.properties.hibernate.dialect</span>=<span class="string">org.hibernate.dialect.MySQL5InnoDBDialect</span></span><br><span class="line"><span class="comment">#SQL 输出</span></span><br><span class="line"><span class="attr">spring.jpa.show-sql</span>=<span class="string">true</span></span><br><span class="line"><span class="comment">#format 一下 SQL 进行输出</span></span><br><span class="line"><span class="attr">spring.jpa.properties.hibernate.format_sql</span>=<span class="string">true</span></span><br></pre></td></tr></table></figure>
+
+<p>hibernate.hbm2ddl.auto 参数的作用主要用于：自动创建、更新、验证数据库表结构，有四个值。</p>
+<ul>
+<li>create：每次加载 Hibernate 时都会删除上一次生成的表，然后根据 model 类再重新来生成新表，哪怕两次没有任何改变也要这样执行，这就是导致数据库表数据丢失的一个重要原因。</li>
+<li>create-drop：每次加载 Hibernate 时根据 model 类生成表，但是 sessionFactory 一关闭，表就自动删除。</li>
+<li>update：最常用的属性，第一次加载 Hibernate 时根据 model 类会自动建立起表的结构（前提是先建立好数据库），以后加载 Hibernate 时根据 model 类自动更新表结构，即使表结构改变了，但表中的行仍然存在，不会删除以前的行。要注意的是当部署到服务器后，表结构是不会被马上建立起来的，是要等应用第一次运行起来后才会。</li>
+<li>validate ：每次加载 Hibernate 时，验证创建数据库表结构，只会和数据库中的表进行比较，不会创建新表，但是会插入新值。</li>
+</ul>
+<p>其中：</p>
+<ul>
+<li>dialect 主要是指定生成表名的存储引擎为 InnoDB</li>
+<li>show-sql 是否在日志中打印出自动生成的 SQL，方便调试的时候查看</li>
+</ul>
+<h4 id="实体类"><a href="#实体类" class="headerlink" title="实体类"></a>实体类</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">User</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Id</span></span><br><span class="line">    <span class="meta">@GeneratedValue</span></span><br><span class="line">    <span class="keyword">private</span> Long id;</span><br><span class="line">    <span class="meta">@Column(nullable = false， unique = true)</span></span><br><span class="line">    <span class="keyword">private</span> String userName;</span><br><span class="line">    <span class="meta">@Column(nullable = false)</span></span><br><span class="line">    <span class="keyword">private</span> String passWord;</span><br><span class="line">    <span class="meta">@Column(nullable = false， unique = true)</span></span><br><span class="line">    <span class="keyword">private</span> String email;</span><br><span class="line">    <span class="meta">@Column(nullable = true， unique = true)</span></span><br><span class="line">    <span class="keyword">private</span> String nickName;</span><br><span class="line">    <span class="meta">@Column(nullable = false)</span></span><br><span class="line">    <span class="keyword">private</span> String regTime;</span><br><span class="line">    <span class="comment">//省略 getter settet 方法、构造方法</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>下面对上面用的注解做一个解释。</p>
+<ul>
+<li><code>@Entity(name=&quot;EntityName&quot;)</code> 必须，用来标注一个数据库对应的实体，数据库中创建的表名默认和类名一致。其中，name 为可选，对应数据库中一个表，使用此注解标记 Pojo 是一个 JPA 实体。</li>
+<li><code>@Table(name=&quot;&quot;，catalog=&quot;&quot;，schema=&quot;&quot;)</code> 可选，用来标注一个数据库对应的实体，数据库中创建的表名默认和类名一致。通常和 @Entity 配合使用，只能标注在实体的 class 定义处，表示实体对应的数据库表的信息。</li>
+<li><code>@Id</code> 必须，@Id 定义了映射到数据库表的主键的属性，一个实体只能有一个属性被映射为主键。</li>
+<li><code>@GeneratedValue(strategy=GenerationType，generator=&quot;&quot;)</code> 可选，strategy: 表示主键生成策略，有 AUTO、INDENTITY、SEQUENCE 和 TABLE 4 种，分别表示让 ORM 框架自动选择，generator: 表示主键生成器的名称。</li>
+<li><code>@Column(name = &quot;user_code&quot;， nullable = false， length=32)</code> 可选，@Column 描述了数据库表中该字段的详细定义，这对于根据 JPA 注解生成数据库表结构的工具。name: 表示数据库表中该字段的名称，默认情形属性名称一致；nullable: 表示该字段是否允许为 null，默认为 true；unique: 表示该字段是否是唯一标识，默认为 false；length: 表示该字段的大小，仅对 String 类型的字段有效。</li>
+<li><code>@Transient</code>可选，@Transient 表示该属性并非一个到数据库表的字段的映射，ORM 框架将忽略该属性。</li>
+<li><code>@Enumerated</code> 可选，使用枚举的时候，我们希望数据库中存储的是枚举对应的 String 类型，而不是枚举的索引值，需要在属性上面添加 @Enumerated(EnumType.STRING) 注解。</li>
+</ul>
+<h4 id="Repository-构建"><a href="#Repository-构建" class="headerlink" title="Repository 构建"></a>Repository 构建</h4><p>创建的 Repository 只要继承 JpaRepository 即可，就会帮我们自动生成很多内置方法。另外还有一个功能非常实用，可以根据方法名自动生产 SQL，比如 findByUserName 会自动生产一个以 userName 为参数的查询方法，比如 findAll 会自动查询表里面的所有数据等。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">UserRepository</span> <span class="keyword">extends</span> <span class="title class_">JpaRepository</span>&lt;User,Long&gt; &#123;</span><br><span class="line">    User <span class="title function_">findByUserName</span><span class="params">(String userName)</span>;</span><br><span class="line">    User <span class="title function_">findByUserNameOrEmail</span><span class="params">(String username,String email)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我们只需要在对应的 Repository 中创建好方法，使用的时候直接将接口注入到类中调用即可。在 IDEA 中打开类 UserRepository，在这个类的大括号内的区域右键单击，选择 Diagrams | Show Diagram 选项，即可打开类图</p>
+<p><img src="/images/Spring-Data-JPA/1.png" alt="1"></p>
+<p>通过类图发现</p>
+<p>通过上图我们发现 JpaRepository 继承 PagingAndSortingRepository 和 QueryByExampleExecutor，PagingAndSortingRepository 类主要负责排序和分页内容，QueryByExampleExecutor 提供了很多示例的查询方法，如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">QueryByExampleExecutor</span>&lt;T&gt; &#123; </span><br><span class="line">    &lt;S <span class="keyword">extends</span> <span class="title class_">T</span>&gt; S <span class="title function_">findOne</span><span class="params">(Example&lt;S&gt; example)</span>;   <span class="comment">//根据“实例”查找一个对象</span></span><br><span class="line">    &lt;S <span class="keyword">extends</span> <span class="title class_">T</span>&gt; Iterable&lt;S&gt; <span class="title function_">findAll</span><span class="params">(Example&lt;S&gt; example)</span>;     <span class="comment">//根据“实例”查找一批对象</span></span><br><span class="line">    &lt;S <span class="keyword">extends</span> <span class="title class_">T</span>&gt; Iterable&lt;S&gt; <span class="title function_">findAll</span><span class="params">(Example&lt;S&gt; example,Sort sort)</span>;  <span class="comment">//根据“实例”查找一批对象，且排序</span></span><br><span class="line">    &lt;S <span class="keyword">extends</span> <span class="title class_">T</span>&gt; Page&lt;S&gt; <span class="title function_">findAll</span><span class="params">(Example&lt;S&gt; example,Pageable pageable)</span>;  <span class="comment">//根据“实例”查找一批对象，且排序和分页</span></span><br><span class="line">    &lt;S <span class="keyword">extends</span> <span class="title class_">T</span>&gt; <span class="type">long</span> <span class="title function_">count</span><span class="params">(Example&lt;S&gt; example)</span>;  <span class="comment">//根据“实例”查找，返回符合条件的对象个数</span></span><br><span class="line">    &lt;S <span class="keyword">extends</span> <span class="title class_">T</span>&gt; <span class="type">boolean</span> <span class="title function_">exists</span><span class="params">(Example&lt;S&gt; example)</span>;  <span class="comment">//根据“实例”判断是否有符合条件的对象</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>因此，继承 JpaRepository 的会自动拥有上述这些方法和排序、分页功能。查看源码我们发现 PagingAndSortingRepository 又继承了 CrudRepository。CrudRepository 的源码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@NoRepositoryBean</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">CrudRepository</span>&lt;T,ID&gt; <span class="keyword">extends</span> <span class="title class_">Repository</span>&lt;T,ID&gt; &#123;</span><br><span class="line">    &lt;S <span class="keyword">extends</span> <span class="title class_">T</span>&gt; S <span class="title function_">save</span><span class="params">(S entity)</span>;</span><br><span class="line">    &lt;S <span class="keyword">extends</span> <span class="title class_">T</span>&gt; Iterable&lt;S&gt; <span class="title function_">saveAll</span><span class="params">(Iterable&lt;S&gt; entities)</span>;</span><br><span class="line">    Optional&lt;T&gt; <span class="title function_">findById</span><span class="params">(ID id)</span>;</span><br><span class="line">    <span class="type">boolean</span> <span class="title function_">existsById</span><span class="params">(ID id)</span>;</span><br><span class="line">    Iterable&lt;T&gt; <span class="title function_">findAll</span><span class="params">()</span>;</span><br><span class="line">    Iterable&lt;T&gt; <span class="title function_">findAllById</span><span class="params">(Iterable&lt;ID&gt; ids)</span>;</span><br><span class="line">    <span class="type">long</span> <span class="title function_">count</span><span class="params">()</span>;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">deleteById</span><span class="params">(ID id)</span>;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">delete</span><span class="params">(T entity)</span>;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">deleteAll</span><span class="params">(Iterable&lt;? extends T&gt; entities)</span>;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">deleteAll</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>从 CrudRepository 的源码可以看出 CrudRepository 内置了我们最常用的增、删、改、查的方法，方便我们去使用，因为 JpaRepository 继承了 PagingAndSortingRepository，PagingAndSortingRepository 继承了 CrudRepository，所以继承 JpaRepository 的类也默认拥有了上述方法。</p>
+<h4 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h4><p>创建好 UserRepository 之后，当业务代码中需要使用时直接将此接口注入到对应的类中，在 Spring Boot 启动时，会自动根据注解内容创建实现类并注入到目标类中。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RunWith(SpringRunner.class)</span></span><br><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserRepositoryTests</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Resource</span></span><br><span class="line">    <span class="keyword">private</span> UserRepository userRepository;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">test</span><span class="params">()</span>  &#123;</span><br><span class="line">        <span class="type">Date</span> <span class="variable">date</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Date</span>();</span><br><span class="line">        <span class="type">DateFormat</span> <span class="variable">dateFormat</span> <span class="operator">=</span> DateFormat.getDateTimeInstance(DateFormat.LONG,DateFormat.LONG);        </span><br><span class="line">        <span class="type">String</span> <span class="variable">formattedDate</span> <span class="operator">=</span> dateFormat.format(date);</span><br><span class="line"></span><br><span class="line">        userRepository.save(<span class="keyword">new</span> <span class="title class_">User</span>(<span class="string">&quot;aa&quot;</span>,<span class="string">&quot;aa@126.com&quot;</span>,<span class="string">&quot;aa&quot;</span>,<span class="string">&quot;aa123456&quot;</span>,formattedDate));</span><br><span class="line">        userRepository.save(<span class="keyword">new</span> <span class="title class_">User</span>(<span class="string">&quot;bb&quot;</span>,<span class="string">&quot;bb@126.com&quot;</span>,<span class="string">&quot;bb&quot;</span>,<span class="string">&quot;bb123456&quot;</span>,formattedDate));</span><br><span class="line">        userRepository.save(<span class="keyword">new</span> <span class="title class_">User</span>(<span class="string">&quot;cc&quot;</span>,<span class="string">&quot;cc@126.com&quot;</span>,<span class="string">&quot;cc&quot;</span>,<span class="string">&quot;cc123456&quot;</span>,formattedDate));</span><br><span class="line"></span><br><span class="line">        Assert.assertEquals(<span class="number">9</span>,userRepository.findAll().size());</span><br><span class="line">        Assert.assertEquals(<span class="string">&quot;bb&quot;</span>,userRepository.findByUserNameOrEmail(<span class="string">&quot;bb&quot;</span>,<span class="string">&quot;cc@126.com&quot;</span>).getNickName());</span><br><span class="line">        userRepository.delete(userRepository.findByUserName(<span class="string">&quot;aa1&quot;</span>));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>上述测试方法简单测试了 JPA 的报错和查询功能，测试用例执行成功表示 JPA 的增、删、改成功。</p>
+<h3 id="基本查询"><a href="#基本查询" class="headerlink" title="基本查询"></a>基本查询</h3><p>我们可以将 Spring Data JPA 查询分为两种，一种是 Spring Data JPA 默认实现的，另一种是需要根据查询的情况来自行构建。</p>
+<h4 id="预生成方法"><a href="#预生成方法" class="headerlink" title="预生成方法"></a>预生成方法</h4><p>预生成方法就是我们上面看到的那些方法，因为继承了 JpaRepository 而拥有了父类的这些内容。</p>
+<p>（1）继承 JpaRepository</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">UserRepository</span> <span class="keyword">extends</span> <span class="title class_">JpaRepository</span>&lt;User,Long&gt; &#123;</span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>（2）使用默认方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testBaseQuery</span><span class="params">()</span> &#123;</span><br><span class="line">    userRepository.findAll();</span><br><span class="line">    userRepository.findById(<span class="number">1l</span>);</span><br><span class="line">    userRepository.save(user);</span><br><span class="line">    userRepository.delete(user);</span><br><span class="line">    userRepository.count();</span><br><span class="line">    userRepository.existsById(<span class="number">1l</span>);</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>所有父类拥有的方法都可以直接调用，根据方法名也可以看出它的含义。</p>
+<h4 id="自定义查询"><a href="#自定义查询" class="headerlink" title="自定义查询"></a>自定义查询</h4><p>Spring Data JPA 可以根据接口方法名来实现数据库操作，主要的语法是 findXXBy、readAXXBy、queryXXBy、countXXBy、getXXBy 后面跟属性名称，利用这个功能仅需要在定义的 Repository 中添加对应的方法名即可，使用时 Spring Boot 会自动帮我们实现，示例如下。</p>
+<p>根据用户名查询用户：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">User <span class="title function_">findByUserName</span><span class="params">(String userName)</span>;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>也可以加一些关键字 And、or：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">User <span class="title function_">findByUserNameOrEmail</span><span class="params">(String username,String email)</span>;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>修改、删除、统计也是类似语法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Long <span class="title function_">deleteById</span><span class="params">(Long id)</span>;</span><br><span class="line">Long <span class="title function_">countByUserName</span><span class="params">(String userName)</span></span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>基本上 SQL 体系中的关键词都可以使用，如 LIKE 、IgnoreCase、OrderBy：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">List&lt;User&gt; <span class="title function_">findByEmailLike</span><span class="params">(String email)</span>;</span><br><span class="line"></span><br><span class="line">User <span class="title function_">findByUserNameIgnoreCase</span><span class="params">(String userName)</span>;</span><br><span class="line"></span><br><span class="line">List&lt;User&gt; <span class="title function_">findByUserNameOrderByEmailDesc</span><span class="params">(String email)</span>;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>可以根据查询的条件不断地添加和拼接，Spring Boot 都可以正确解析和执行，其他使用示例可以参考下表。</p>
+<p><strong>具体的关键字，使用方法和生产成 SQL 如下表所示</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">Keyword</th>
+<th align="left">Sample</th>
+<th align="left">JPQL snippet</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">And</td>
+<td align="left">findByLastnameAndFirstname</td>
+<td align="left">… where x.lastname &#x3D; ?1 and x.firstname &#x3D; ?2</td>
+</tr>
+<tr>
+<td align="left">Or</td>
+<td align="left">findByLastnameOrFirstname</td>
+<td align="left">… where x.lastname &#x3D; ?1 or x.firstname &#x3D; ?2</td>
+</tr>
+<tr>
+<td align="left">Is，Equals</td>
+<td align="left">findByFirstnameIs，findByFirstnameEquals</td>
+<td align="left">… where x.firstname &#x3D; ?1</td>
+</tr>
+<tr>
+<td align="left">Between</td>
+<td align="left">findByStartDateBetween</td>
+<td align="left">… where x.startDate between ?1 and ?2</td>
+</tr>
+<tr>
+<td align="left">LessThan</td>
+<td align="left">findByAgeLessThan</td>
+<td align="left">… where x.age &lt; ?1</td>
+</tr>
+<tr>
+<td align="left">LessThanEqual</td>
+<td align="left">findByAgeLessThanEqual</td>
+<td align="left">… where x.age ⇐ ?1</td>
+</tr>
+<tr>
+<td align="left">GreaterThan</td>
+<td align="left">findByAgeGreaterThan</td>
+<td align="left">… where x.age &gt; ?1</td>
+</tr>
+<tr>
+<td align="left">GreaterThanEqual</td>
+<td align="left">findByAgeGreaterThanEqual</td>
+<td align="left">… where x.age &gt;&#x3D; ?1</td>
+</tr>
+<tr>
+<td align="left">After</td>
+<td align="left">findByStartDateAfter</td>
+<td align="left">… where x.startDate &gt; ?1</td>
+</tr>
+<tr>
+<td align="left">Before</td>
+<td align="left">findByStartDateBefore</td>
+<td align="left">… where x.startDate &lt; ?1</td>
+</tr>
+<tr>
+<td align="left">IsNull</td>
+<td align="left">findByAgeIsNull</td>
+<td align="left">… where x.age is null</td>
+</tr>
+<tr>
+<td align="left">IsNotNull，NotNull</td>
+<td align="left">findByAge(Is)NotNull</td>
+<td align="left">… where x.age not null</td>
+</tr>
+<tr>
+<td align="left">Like</td>
+<td align="left">findByFirstnameLike</td>
+<td align="left">… where x.firstname like ?1</td>
+</tr>
+<tr>
+<td align="left">NotLike</td>
+<td align="left">findByFirstnameNotLike</td>
+<td align="left">… where x.firstname not like ?1</td>
+</tr>
+<tr>
+<td align="left">StartingWith</td>
+<td align="left">findByFirstnameStartingWith</td>
+<td align="left">… where x.firstname like ?1 (parameter bound with appended %)</td>
+</tr>
+<tr>
+<td align="left">EndingWith</td>
+<td align="left">findByFirstnameEndingWith</td>
+<td align="left">… where x.firstname like ?1 (parameter bound with prepended %)</td>
+</tr>
+<tr>
+<td align="left">Containing</td>
+<td align="left">findByFirstnameContaining</td>
+<td align="left">… where x.firstname like ?1 (parameter bound wrapped in %)</td>
+</tr>
+<tr>
+<td align="left">OrderBy</td>
+<td align="left">findByAgeOrderByLastnameDesc</td>
+<td align="left">… where x.age &#x3D; ?1 order by x.lastname desc</td>
+</tr>
+<tr>
+<td align="left">Not</td>
+<td align="left">findByLastnameNot</td>
+<td align="left">… where x.lastname &lt;&gt; ?1</td>
+</tr>
+<tr>
+<td align="left">In</td>
+<td align="left">findByAgeIn(Collection ages)</td>
+<td align="left">… where x.age in ?1</td>
+</tr>
+<tr>
+<td align="left">NotIn</td>
+<td align="left">findByAgeNotIn(Collection age)</td>
+<td align="left">… where x.age not in ?1</td>
+</tr>
+<tr>
+<td align="left">TRUE</td>
+<td align="left">findByActiveTrue()</td>
+<td align="left">… where x.active &#x3D; true</td>
+</tr>
+<tr>
+<td align="left">FALSE</td>
+<td align="left">findByActiveFalse()</td>
+<td align="left">… where x.active &#x3D; false</td>
+</tr>
+<tr>
+<td align="left">IgnoreCase</td>
+<td align="left">findByFirstnameIgnoreCase</td>
+<td align="left">… where UPPER(x.firstame) &#x3D; UPPER(?1)</td>
+</tr>
+</tbody></table>
+<h2 id="2-Spring-Data-JPA-的高级用法"><a href="#2-Spring-Data-JPA-的高级用法" class="headerlink" title="2-Spring Data JPA 的高级用法"></a>2-Spring Data JPA 的高级用法</h2><h3 id="自定义-SQL-查询"><a href="#自定义-SQL-查询" class="headerlink" title="自定义 SQL 查询"></a>自定义 SQL 查询</h3><p>使用 Spring Data 大部分的 SQL 都可以根据方法名定义的方式来实现，但是由于某些原因必须使用自定义的 SQL 来查询，Spring Data 也可以完美支持。</p>
+<p>在 SQL 的查询方法上面使用 @Query 注解，在注解内写 Hql 来查询内容。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Query(&quot;select u from User u&quot;)</span></span><br><span class="line">Page&lt;User&gt; <span class="title function_">findALL</span><span class="params">(Pageable pageable)</span>;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>当然如果感觉使用原生 SQL 更习惯，它也是支持的，需要再添加一个参数 nativeQuery &#x3D; true。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Query(&quot;select * from user u where u.nick_name = ?1&quot;, nativeQuery = true)</span></span><br><span class="line">Page&lt;User&gt; <span class="title function_">findByNickName</span><span class="params">(String nickName, Pageable pageable)</span>;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>@Query 上面的 1 代表的是方法参数里面的顺序，如果有多个参数也可以按照这个方式添加 1、2、3….。除了按照这种方式传参外，还可以使用 @Param 来支持。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Query(&quot;select u from User u where u.nickName = :nickName&quot;)</span></span><br><span class="line">Page&lt;User&gt; <span class="title function_">findByNickName</span><span class="params">(<span class="meta">@Param(&quot;nickName&quot;)</span> String nickName, Pageable pageable)</span>;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>如涉及到删除和修改需要加上 @Modifying，也可以根据需要添加 @Transactional 对事务的支持、操作超时设置等。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Transactional(timeout = 10)</span></span><br><span class="line"><span class="meta">@Modifying</span></span><br><span class="line"><span class="meta">@Query(&quot;update User set userName = ?1 where id = ?2&quot;)</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">modifyById</span><span class="params">(String  userName, Long id)</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Transactional</span></span><br><span class="line"><span class="meta">@Modifying</span></span><br><span class="line"><span class="meta">@Query(&quot;delete from User where id = ?1&quot;)</span></span><br><span class="line"><span class="keyword">void</span> <span class="title function_">deleteById</span><span class="params">(Long id)</span>;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p><strong>使用已命名的查询</strong></p>
+<p>除了使用 @Query 注解外，还可以预先定义好一些查询，并为其命名，然后再 Repository 中添加相同命名的方法。</p>
+<p>定义命名的 Query：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="meta">@NamedQueries(&#123;</span></span><br><span class="line"><span class="meta">        @NamedQuery(name = &quot;User.findByPassWord&quot;, query = &quot;select u from User u where u.passWord = ?1&quot;),</span></span><br><span class="line"><span class="meta">        @NamedQuery(name = &quot;User.findByNickName&quot;, query = &quot;select u from User u where u.nickName = ?1&quot;),</span></span><br><span class="line"><span class="meta">&#125;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">User</span> &#123;</span><br><span class="line">    ……</span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>通过 @NamedQueries 注解可以定义多个命名 Query，@NamedQuery 的 name 属性定义了 Query 的名称，注意加上 Entity 名称 . 作为前缀，query 属性定义查询语句。</p>
+<p>定义对应的方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">List&lt;User&gt; <span class="title function_">findByPassWord</span><span class="params">(String passWord)</span>;</span><br><span class="line">List&lt;User&gt; <span class="title function_">findByNickName</span><span class="params">(String nickName)</span>;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p><strong>Query 查找策略</strong></p>
+<p>到此，我们有了三种方法来定义 Query：（1）通过方法名自动创建 Query，（2）通过 @Query 注解实现自定义 Query，（3）通过 @NamedQuery 注解来定义 Query。那么，Spring Data JPA 如何来查找这些 Query 呢?</p>
+<p>通过配置 @EnableJpaRepositories 的 queryLookupStrategy 属性来配置 Query 查找策略，有如下定义。</p>
+<ul>
+<li>CREATE：尝试从查询方法名构造特定于存储的查询。一般的方法是从方法名中删除一组已知的前缀，并解析方法的其余部分。</li>
+<li>USE_DECLARED_QUERY：尝试查找已声明的查询，如果找不到，则抛出异常。查询可以通过某个地方的注释定义，也可以通过其他方式声明。</li>
+<li>CREATE_IF_NOT_FOUND（默认）：CREATE 和 USE_DECLARED_QUERY 的组合，它首先查找一个已声明的查询，如果没有找到已声明的查询，它将创建一个自定义方法基于名称的查询。它允许通过方法名进行快速查询定义，还可以根据需要引入声明的查询来定制这些查询调优。</li>
+</ul>
+<p>一般情况下使用默认配置即可，如果确定项目 Query 的具体定义方式，可以更改上述配置，例如，全部使用 @Query 来定义查询，又或者全部使用命名的查询。</p>
+<h3 id="分页查询"><a href="#分页查询" class="headerlink" title="分页查询"></a>分页查询</h3><p>Spring Data JPA 已经帮我们内置了分页功能，在查询的方法中，需要传入参数 Pageable，当查询中有多个参数的时候 Pageable 建议作为最后一个参数传入。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Query(&quot;select u from User u&quot;)</span></span><br><span class="line">Page&lt;User&gt; <span class="title function_">findALL</span><span class="params">(Pageable pageable)</span>;</span><br><span class="line"></span><br><span class="line">Page&lt;User&gt; <span class="title function_">findByNickName</span><span class="params">(String nickName, Pageable pageable)</span>;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>Pageable 是 Spring 封装的分页实现类，使用的时候需要传入页数、每页条数和排序规则，Page 是 Spring 封装的分页对象，封装了总页数、分页数据等。返回对象除使用 Page 外，还可以使用 Slice 作为返回值。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Slice&lt;User&gt; <span class="title function_">findByNickNameAndEmail</span><span class="params">(String nickName, String email,Pageable pageable)</span>;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>Page 和 Slice 的区别如下。</p>
+<ul>
+<li>Page 接口继承自 Slice 接口，而 Slice 继承自 Iterable 接口。</li>
+<li>Page 接口扩展了 Slice 接口，添加了获取总页数和元素总数量的方法，因此，返回 Page 接口时，必须执行两条 SQL，一条复杂查询分页数据，另一条负责统计数据数量。</li>
+<li>返回 Slice 结果时，查询的 SQL 只会有查询分页数据这一条，不统计数据数量。</li>
+<li>用途不一样：Slice 不需要知道总页数、总数据量，只需要知道是否有下一页、上一页，是否是首页、尾页等，比如前端滑动加载一页可用；而 Page 知道总页数、总数据量，可以用于展示具体的页数信息，比如后台分页查询。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testPageQuery</span><span class="params">()</span>  &#123;</span><br><span class="line">    <span class="type">int</span> page=<span class="number">1</span>,size=<span class="number">2</span>;</span><br><span class="line">    <span class="type">Sort</span> <span class="variable">sort</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Sort</span>(Sort.Direction.DESC, <span class="string">&quot;id&quot;</span>);</span><br><span class="line">    <span class="type">Pageable</span> <span class="variable">pageable</span> <span class="operator">=</span> PageRequest.of(page, size, sort);</span><br><span class="line">    userRepository.findALL(pageable);</span><br><span class="line">    userRepository.findByNickName(<span class="string">&quot;aa&quot;</span>, pageable);</span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Sort，控制分页数据的排序，可以选择升序和降序。</li>
+<li>PageRequest，控制分页的辅助类，可以设置页码、每页的数据条数、排序等。</li>
+</ul>
+<p>还有一些更简洁的方式来排序和分页查询，如下。</p>
+<p><strong>限制查询</strong></p>
+<p>有时候我们只需要查询前 N 个元素，或者只取前一个实体。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">User <span class="title function_">findFirstByOrderByLastnameAsc</span><span class="params">()</span>;</span><br><span class="line"></span><br><span class="line">User <span class="title function_">findTopByOrderByAgeDesc</span><span class="params">()</span>;</span><br><span class="line"></span><br><span class="line">Page&lt;User&gt; <span class="title function_">queryFirst10ByLastname</span><span class="params">(String lastname, Pageable pageable)</span>;</span><br><span class="line"></span><br><span class="line">List&lt;User&gt; <span class="title function_">findFirst10ByLastname</span><span class="params">(String lastname, Sort sort)</span>;</span><br><span class="line"></span><br><span class="line">List&lt;User&gt; <span class="title function_">findTop10ByLastname</span><span class="params">(String lastname, Pageable pageable)</span>;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<h3 id="复杂查询"><a href="#复杂查询" class="headerlink" title="复杂查询"></a>复杂查询</h3><p>我们可以通过 AND 或者 OR 等连接词来不断拼接属性来构建多条件查询，但如果参数大于 6 个时，方法名就会变得非常的长，并且还不能解决动态多条件查询的场景。到这里就需要给大家介绍另外一个利器 JpaSpecificationExecutor 了。</p>
+<p>JpaSpecificationExecutor 是 JPA 2.0 提供的 Criteria API 的使用封装，可以用于动态生成 Query 来满足我们业务中的各种复杂场景。Spring Data JPA 为我们提供了 JpaSpecificationExecutor 接口，只要简单实现 toPredicate 方法就可以实现复杂的查询。</p>
+<p>我们来看一下 JpaSpecificationExecutor 的源码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">JpaSpecificationExecutor</span>&lt;T&gt; &#123;</span><br><span class="line">   <span class="comment">//根据 Specification 条件查询单个对象，注意的是，如果条件能查出来多个会报错</span></span><br><span class="line">   T <span class="title function_">findOne</span><span class="params">(<span class="meta">@Nullable</span> Specification&lt;T&gt; spec)</span>;</span><br><span class="line">   <span class="comment">//根据 Specification 条件查询 List 结果</span></span><br><span class="line">   List&lt;T&gt; <span class="title function_">findAll</span><span class="params">(<span class="meta">@Nullable</span> Specification&lt;T&gt; spec)</span>;</span><br><span class="line">   <span class="comment">//根据 Specification 条件，分页查询</span></span><br><span class="line">   Page&lt;T&gt; <span class="title function_">findAll</span><span class="params">(<span class="meta">@Nullable</span> Specification&lt;T&gt; spec, Pageable pageable)</span>;</span><br><span class="line">   <span class="comment">//根据 Specification 条件，带排序的查询结果</span></span><br><span class="line">   List&lt;T&gt; <span class="title function_">findAll</span><span class="params">(<span class="meta">@Nullable</span> Specification&lt;T&gt; spec, Sort sort)</span>;</span><br><span class="line">   <span class="comment">//根据 Specification 条件，查询数量</span></span><br><span class="line">   <span class="type">long</span> <span class="title function_">count</span><span class="params">(<span class="meta">@Nullable</span> Specification&lt;T&gt; spec)</span>;</span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>JpaSpecificationExecutor 的源码很简单，根据 Specification 的查询条件返回 List、Page 或者 count 数据。在使用 JpaSpecificationExecutor 构建复杂查询场景之前，我们需要了解几个概念：</p>
+<ul>
+<li>Root<code>&lt;T&gt;</code> root，代表了可以查询和操作的实体对象的根，开一个通过 get(“属性名”) 来获取对应的值。</li>
+<li>CriteriaQuery query，代表一个 specific 的顶层查询对象，它包含着查询的各个部分，比如 select 、from、where、group by、order by 等。</li>
+<li>CriteriaBuilder cb，来构建 CritiaQuery 的构建器对象，其实就相当于条件或者是条件组合，并以 Predicate 的形式返回。</li>
+</ul>
+<p><strong>使用案例</strong></p>
+<p>下面的使用案例中会报错这几个对象的使用。</p>
+<p>首先定义一个 UserDetail 对象，作为演示的数据模型。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserDetail</span> &#123;</span><br><span class="line">    <span class="meta">@Id</span></span><br><span class="line">    <span class="meta">@GeneratedValue</span></span><br><span class="line">    <span class="keyword">private</span> Long id;</span><br><span class="line">    <span class="meta">@Column(nullable = false, unique = true)</span></span><br><span class="line">    <span class="keyword">private</span> Long userId;</span><br><span class="line">    <span class="keyword">private</span> Integer age;</span><br><span class="line">    <span class="keyword">private</span> String realName;</span><br><span class="line">    <span class="keyword">private</span> String status;</span><br><span class="line">    <span class="keyword">private</span> String hobby;</span><br><span class="line">    <span class="keyword">private</span> String introduction;</span><br><span class="line">    <span class="keyword">private</span> String lastLoginIp;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>创建 UserDetail 对应的 Repository：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">UserDetailRepository</span> <span class="keyword">extends</span> <span class="title class_">JpaSpecificationExecutor</span>&lt;UserDetail&gt;,JpaRepository&lt;UserDetail, Long&gt;  &#123;</span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>定义一个查询 <code>Page&lt;UserDetail&gt;</code> 的接口：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">UserDetailService</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> Page&lt;UserDetail&gt; <span class="title function_">findByCondition</span><span class="params">(UserDetailParam detailParam, Pageable pageable)</span>;</span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>在 UserDetailServiceImpl 中，我们来演示 JpaSpecificationExecutor 的具体使用。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserDetailServiceImpl</span> <span class="keyword">implements</span>  <span class="title class_">UserDetailService</span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Resource</span></span><br><span class="line">    <span class="keyword">private</span> UserDetailRepository userDetailRepository;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Page&lt;UserDetail&gt; <span class="title function_">findByCondition</span><span class="params">(UserDetailParam detailParam, Pageable pageable)</span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> userDetailRepository.findAll((root, query, cb) -&gt; &#123;</span><br><span class="line">            List&lt;Predicate&gt; predicates = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;Predicate&gt;();</span><br><span class="line">            <span class="comment">//equal 示例</span></span><br><span class="line">            <span class="keyword">if</span> (!StringUtils.isNullOrEmpty(detailParam.getIntroduction()))&#123;</span><br><span class="line">                predicates.add(cb.equal(root.get(<span class="string">&quot;introduction&quot;</span>),detailParam.getIntroduction()));</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//like 示例</span></span><br><span class="line">            <span class="keyword">if</span> (!StringUtils.isNullOrEmpty(detailParam.getRealName()))&#123;</span><br><span class="line">                predicates.add(cb.like(root.get(<span class="string">&quot;realName&quot;</span>),<span class="string">&quot;%&quot;</span>+detailParam.getRealName()+<span class="string">&quot;%&quot;</span>));</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//between 示例</span></span><br><span class="line">            <span class="keyword">if</span> (detailParam.getMinAge()!=<span class="literal">null</span> &amp;&amp; detailParam.getMaxAge()!=<span class="literal">null</span>) &#123;</span><br><span class="line">                <span class="type">Predicate</span> <span class="variable">agePredicate</span> <span class="operator">=</span> cb.between(root.get(<span class="string">&quot;age&quot;</span>), detailParam.getMinAge(), detailParam.getMaxAge());</span><br><span class="line">                predicates.add(agePredicate);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//greaterThan 大于等于示例</span></span><br><span class="line">            <span class="keyword">if</span> (detailParam.getMinAge()!=<span class="literal">null</span>)&#123;</span><br><span class="line">                predicates.add(cb.greaterThan(root.get(<span class="string">&quot;age&quot;</span>),detailParam.getMinAge()));</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> query.where(predicates.toArray(<span class="keyword">new</span> <span class="title class_">Predicate</span>[predicates.size()])).getRestriction();</span><br><span class="line">        &#125;, pageable);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>上面的示例是根据不同条件来动态查询 UserDetail 分页数据，UserDetailParam 是参数的封装，示例中使用了常用的大于、like、等于等示例，根据这个思路我们可以不断扩展完成更复杂的动态 SQL 查询。</p>
+<p>使用时只需要将 UserDetailService 注入调用相关方法即可：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RunWith(SpringRunner.class)</span></span><br><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">JpaSpecificationTests</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Resource</span></span><br><span class="line">    <span class="keyword">private</span> UserDetailService userDetailService;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testFindByCondition</span><span class="params">()</span>  &#123;</span><br><span class="line">        <span class="type">int</span> page=<span class="number">0</span>,size=<span class="number">10</span>;</span><br><span class="line">        <span class="type">Sort</span> <span class="variable">sort</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Sort</span>(Sort.Direction.DESC, <span class="string">&quot;id&quot;</span>);</span><br><span class="line">        <span class="type">Pageable</span> <span class="variable">pageable</span> <span class="operator">=</span> PageRequest.of(page, size, sort);</span><br><span class="line">        UserDetailParam param=<span class="keyword">new</span> <span class="title class_">UserDetailParam</span>();</span><br><span class="line">        param.setIntroduction(<span class="string">&quot;程序员&quot;</span>);</span><br><span class="line">        param.setMinAge(<span class="number">10</span>);</span><br><span class="line">        param.setMaxAge(<span class="number">30</span>);</span><br><span class="line">        Page&lt;UserDetail&gt; page1=userDetailService.findByCondition(param,pageable);</span><br><span class="line">        <span class="keyword">for</span> (UserDetail userDetail:page1)&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;userDetail: &quot;</span>+userDetail.toString());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<h3 id="多表查询"><a href="#多表查询" class="headerlink" title="多表查询"></a>多表查询</h3><p>多表查询在 Spring Data JPA 中有两种实现方式，第一种是利用 Hibernate 的级联查询来实现，第二种是创建一个结果集的接口来接收连表查询后的结果，这里主要介绍第二种方式。</p>
+<p>我们还是使用上面的 UserDetail 作为数据模型来使用，定义一个结果集的接口类，接口类的内容来自于用户表和用户详情表。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">UserInfo</span> &#123;</span><br><span class="line">    String <span class="title function_">getUserName</span><span class="params">()</span>;</span><br><span class="line">    String <span class="title function_">getEmail</span><span class="params">()</span>;</span><br><span class="line">    String <span class="title function_">getAddress</span><span class="params">()</span>;</span><br><span class="line">    String <span class="title function_">getHobby</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>在运行中 Spring 会给接口（UserInfo）自动生产一个代理类来接收返回的结果，代码中使用 getXX 的形式来获取。</p>
+</blockquote>
+<p>在 UserDetailRepository 中添加查询的方法，返回类型设置为 UserInfo：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Query(&quot;select u.userName as userName, u.email as email, d.introduction as introduction , d.hobby as hobby from User u , UserDetail d &quot; +</span></span><br><span class="line"><span class="meta">            &quot;where u.id=d.userId  and  d.hobby = ?1 &quot;)</span></span><br><span class="line">List&lt;UserInfo&gt; <span class="title function_">findUserInfo</span><span class="params">(String hobby)</span>;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p><strong>特别注意这里的 SQL 是 HQL，需要写类的名和属性，这块很容易出错。</strong></p>
+<p>测试验证：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testUserInfo</span><span class="params">()</span>  &#123;</span><br><span class="line">    List&lt;UserInfo&gt; userInfos=userDetailRepository.findUserInfo(<span class="string">&quot;钓鱼&quot;</span>);</span><br><span class="line">    <span class="keyword">for</span> (UserInfo userInfo:userInfos)&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;userInfo: &quot;</span>+userInfo.getUserName()+<span class="string">&quot;-&quot;</span>+userInfo.getEmail()+<span class="string">&quot;-&quot;</span>+userInfo.getHobby()+<span class="string">&quot;-&quot;</span>+userInfo.getIntroduction());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>运行测试方法后返回：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">userInfo: aa-aa@126.com-钓鱼-程序员</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>证明关联查询成功，最后的返回结果来自于两个表，按照这个思路可以进行三个或者更多表的关联查询。</p>
+<h1 id="3-Spring-Data-JPA-多数据源的使用"><a href="#3-Spring-Data-JPA-多数据源的使用" class="headerlink" title="3-Spring Data JPA 多数据源的使用"></a>3-Spring Data JPA 多数据源的使用</h1><p>Spring Data JPA 使用多数据源的整体思路是，配置不同的数据源，在启动时分别加载多个数据源配置，并且注入到不同的 repository 中。这样不同的 repository 包就有不同的数据源，使用时注入对应包下的 repository，就会使用对应数据源的操作。</p>
+<p>其中：</p>
+<ul>
+<li>config 启动时加载、配置多数据源；</li>
+<li>model 存放数据操作的实体类；</li>
+<li>repository 目录下有两个包路径 test1 和 test2 ，分别代表两个不同数据源下的仓库，这两个包下的 repository 可以相同也可以不同。</li>
+</ul>
+<h3 id="多数据源的支持"><a href="#多数据源的支持" class="headerlink" title="多数据源的支持"></a>多数据源的支持</h3><p>配置 Spring Data JPA 对多数据源的使用，一般分为以下几步：</p>
+<ul>
+<li>创建数据库 test1 和 test2</li>
+<li>配置多数据源</li>
+<li>不同源的 repository 放入不同包路径</li>
+<li>声明不同的包路径下使用不同的数据源、事务支持</li>
+<li>不同的包路径下创建对应的 repository</li>
+<li>测试使用</li>
+</ul>
+<p>上面的一些步骤我们在前面两课中已经讲过了，这里只补充不同的内容。</p>
+<p>配置两个数据源：</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring.datasource.primary.jdbc-url</span>=<span class="string">jdbc:mysql://localhost:3306/test1?serverTimezone=UTC&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=true</span></span><br><span class="line"><span class="attr">spring.datasource.primary.username</span>=<span class="string">root</span></span><br><span class="line"><span class="attr">spring.datasource.primary.password</span>=<span class="string">root</span></span><br><span class="line"><span class="attr">spring.datasource.primary.driver-class-name</span>=<span class="string">com.mysql.cj.jdbc.Driver</span></span><br><span class="line"></span><br><span class="line"><span class="attr">spring.datasource.secondary.jdbc-url</span>=<span class="string">jdbc:mysql://localhost:3306/test2?serverTimezone=UTC&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=true</span></span><br><span class="line"><span class="attr">spring.datasource.secondary.username</span>=<span class="string">root</span></span><br><span class="line"><span class="attr">spring.datasource.secondary.password</span>=<span class="string">root</span></span><br><span class="line"><span class="attr">spring.datasource.secondary.driver-class-name</span>=<span class="string">com.mysql.cj.jdbc.Driver</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">#SQL 输出</span></span><br><span class="line"><span class="attr">spring.jpa.show-sql</span>=<span class="string">true</span></span><br><span class="line"><span class="attr">spring.jpa.properties.hibernate.hbm2ddl.auto</span>=<span class="string">create</span></span><br><span class="line"><span class="attr">spring.jpa.properties.hibernate.dialect</span>=<span class="string">org.hibernate.dialect.MySQL5InnoDBDialect</span></span><br><span class="line"><span class="comment">#format 一下 SQL 进行输出</span></span><br><span class="line"><span class="attr">spring.jpa.properties.hibernate.format_sql</span>=<span class="string">true</span></span><br><span class="line"><span class="attr">复制</span></span><br></pre></td></tr></table></figure>
+
+<p>设置将项目中的 SQL 格式化后打印出来，方便在开发过程中调试跟踪。</p>
+<p>创建 DataSourceConfig 添加 @Configuration 注解，在项目启动时运行初始化数据库资源。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">DataSourceConfig</span> &#123;</span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>在 DataSourceConfig 类中加载配置文件，利用 ConfigurationProperties 自动装配的特性加载两个数据源。</p>
+<p>加载第一个数据源，数据源配置以 spring.datasource.primary 开头，注意当有多个数据源时，需要将其中一个标注为 @Primary，作为默认的数据源使用。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean(name = &quot;primaryDataSource&quot;)</span></span><br><span class="line"><span class="meta">@Primary</span></span><br><span class="line"><span class="meta">@ConfigurationProperties(&quot;spring.datasource.primary&quot;)</span></span><br><span class="line"><span class="keyword">public</span> DataSource <span class="title function_">firstDataSource</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> DataSourceBuilder.create().build();</span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>加载第二个数据源，数据源配置以 spring.datasource.secondary 为开头。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean(name = &quot;secondaryDataSource&quot;)</span></span><br><span class="line"><span class="meta">@ConfigurationProperties(&quot;spring.datasource.secondary&quot;)</span></span><br><span class="line"><span class="keyword">public</span> DataSource <span class="title function_">secondDataSource</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> DataSourceBuilder.create().build();</span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>加载 JPA 的相关配置信息，JpaProperties 是 JPA 的一些属性配置信息，构建 LocalEntityManagerFactoryBean 需要参数信息注入到方法中。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="keyword">private</span> JpaProperties jpaProperties;</span><br><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="keyword">private</span> HibernateProperties hibernateProperties;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Bean(name = &quot;vendorProperties&quot;)</span></span><br><span class="line"><span class="keyword">public</span> Map&lt;String, Object&gt; <span class="title function_">getVendorProperties</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> hibernateProperties.determineHibernateProperties(jpaProperties.getProperties(), <span class="keyword">new</span> <span class="title class_">HibernateSettings</span>());</span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p><strong>第一个数据源的加载配置过程</strong></p>
+<p>首先来看第一个数据源的加载配置过程，创建 PrimaryConfig 类，将上面创建好的第一个数据源注入到类中，添加 @Configuration 和 @EnableTransactionManagement 注解，第一个代表启动时加载，第二个注解表示启用事务，同时将第一个数据源和 JPA 配置信息注入到类中。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableTransactionManagement</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">PrimaryConfig</span> &#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="meta">@Qualifier(&quot;primaryDataSource&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> DataSource primaryDataSource;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="meta">@Qualifier(&quot;vendorProperties&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> Map&lt;String, Object&gt; vendorProperties;</span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>LocalEntityManagerFactoryBean 负责创建一个适合于仅使用 JPA 进行数据访问的环境的 EntityManager，构建的时候需要指明提示实体类的包路径、数据源和 JPA 配置信息。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean(name = &quot;entityManagerFactoryPrimary&quot;)</span></span><br><span class="line"><span class="meta">@Primary</span></span><br><span class="line"><span class="keyword">public</span> LocalContainerEntityManagerFactoryBean <span class="title function_">entityManagerFactoryPrimary</span> <span class="params">(EntityManagerFactoryBuilder builder)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> builder</span><br><span class="line">            .dataSource(primaryDataSource)</span><br><span class="line">            .properties(vendorProperties)</span><br><span class="line">            .packages(<span class="string">&quot;com.neo.model&quot;</span>) <span class="comment">//设置实体类所在位置</span></span><br><span class="line">            .persistenceUnit(<span class="string">&quot;primaryPersistenceUnit&quot;</span>)</span><br><span class="line">            .build();</span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>利用上面的 entityManagerFactoryPrimary() 方法构建好最终的 EntityManager。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean(name = &quot;entityManagerPrimary&quot;)</span></span><br><span class="line"><span class="meta">@Primary</span></span><br><span class="line"><span class="keyword">public</span> EntityManager <span class="title function_">entityManager</span><span class="params">(EntityManagerFactoryBuilder builder)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> entityManagerFactoryPrimary(builder).getObject().createEntityManager();</span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>EntityManager 是 JPA 中用于增、删、改、查的接口，它的作用相当于一座桥梁，连接内存中的 Java 对象和数据库的数据存储。使用 EntityManager 中的相关接口对数据库实体进行操作的时候， EntityManager 会跟踪实体对象的状态，并决定在特定时刻将对实体的操作映射到数据库操作上面。</p>
+<p>同时给数据源添加上 JPA 事务。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean(name = &quot;transactionManagerPrimary&quot;)</span></span><br><span class="line"><span class="meta">@Primary</span></span><br><span class="line">PlatformTransactionManager <span class="title function_">transactionManagerPrimary</span><span class="params">(EntityManagerFactoryBuilder builder)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">JpaTransactionManager</span>(entityManagerFactoryPrimary(builder).getObject());</span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>最后一步最为关键，将我们在类中配置好的 EntityManager 和事务信息注入到对应数据源的 repository 目录下，这样此目录下的 repository 就会拥有对应数据源和事务的信息。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableTransactionManagement</span></span><br><span class="line"><span class="meta">@EnableJpaRepositories(</span></span><br><span class="line"><span class="meta">        entityManagerFactoryRef=&quot;entityManagerFactoryPrimary&quot;,</span></span><br><span class="line"><span class="meta">        transactionManagerRef=&quot;transactionManagerPrimary&quot;,</span></span><br><span class="line"><span class="meta">        basePackages= &#123; &quot;com.neo.repository.test1&quot; &#125;)</span><span class="comment">//设置dao（repo）所在位置</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">PrimaryConfig</span> &#123;&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>其中，basePackages 支持设置多个包路径，例如，<code>basePackages= &#123; &quot;com.neo.repository.test1&quot;,&quot;com.neo.repository.test3&quot; &#125;</code></p>
+<p>到此第一个数据源配置完成了。</p>
+<p><strong>第二个数据源的加载配置过程</strong></p>
+<p>第二个数据源配置和第一个数据源配置类似，只是方法上去掉了注解：@Primary，第二个数据源数据源加载配置类 SecondaryConfig 完整代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableTransactionManagement</span></span><br><span class="line"><span class="meta">@EnableJpaRepositories(</span></span><br><span class="line"><span class="meta">        entityManagerFactoryRef=&quot;entityManagerFactorySecondary&quot;,</span></span><br><span class="line"><span class="meta">        transactionManagerRef=&quot;transactionManagerSecondary&quot;,</span></span><br><span class="line"><span class="meta">        basePackages= &#123; &quot;com.neo.repository.test2&quot; &#125;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SecondaryConfig</span> &#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="meta">@Qualifier(&quot;secondaryDataSource&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> DataSource secondaryDataSource;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="meta">@Qualifier(&quot;vendorProperties&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> Map&lt;String, Object&gt; vendorProperties;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean(name = &quot;entityManagerFactorySecondary&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> LocalContainerEntityManagerFactoryBean <span class="title function_">entityManagerFactorySecondary</span> <span class="params">(EntityManagerFactoryBuilder builder)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> builder</span><br><span class="line">                .dataSource(secondaryDataSource)</span><br><span class="line">                .properties(vendorProperties)</span><br><span class="line">                .packages(<span class="string">&quot;com.neo.model&quot;</span>)</span><br><span class="line">                .persistenceUnit(<span class="string">&quot;secondaryPersistenceUnit&quot;</span>)</span><br><span class="line">                .build();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean(name = &quot;entityManagerSecondary&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> EntityManager <span class="title function_">entityManager</span><span class="params">(EntityManagerFactoryBuilder builder)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> entityManagerFactorySecondary(builder).getObject().createEntityManager();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean(name = &quot;transactionManagerSecondary&quot;)</span></span><br><span class="line">    PlatformTransactionManager <span class="title function_">transactionManagerSecondary</span><span class="params">(EntityManagerFactoryBuilder builder)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">JpaTransactionManager</span>(entityManagerFactorySecondary(builder).getObject());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>到此多数据源的配置就完成了，项目中使用哪个数据源的操作，就注入对应包下的 repository 进行操作即可，接下来我们对上面配置好的数据源进行测试。</p>
+<p>创建 UserRepositoryTests 测试类，将两个包下的 repository 都注入到测试类中：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RunWith(SpringRunner.class)</span></span><br><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserRepositoryTests</span> &#123;</span><br><span class="line">    <span class="meta">@Resource</span></span><br><span class="line">    <span class="keyword">private</span> UserTest1Repository userTest1Repository;</span><br><span class="line">    <span class="meta">@Resource</span></span><br><span class="line">    <span class="keyword">private</span> UserTest2Repository userTest2Repository;</span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>首先测试两个数据库中都存入数据，数据源1插入 2 条用户信息，数据源2插入 1 条用户信息。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testSave</span><span class="params">()</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">    <span class="type">Date</span> <span class="variable">date</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Date</span>();</span><br><span class="line">    <span class="type">DateFormat</span> <span class="variable">dateFormat</span> <span class="operator">=</span> DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG);</span><br><span class="line">    <span class="type">String</span> <span class="variable">formattedDate</span> <span class="operator">=</span> dateFormat.format(date);</span><br><span class="line"></span><br><span class="line">    userTest1Repository.save(<span class="keyword">new</span> <span class="title class_">User</span>(<span class="string">&quot;aa&quot;</span>, <span class="string">&quot;aa123456&quot;</span>,<span class="string">&quot;aa@126.com&quot;</span>, <span class="string">&quot;aa&quot;</span>,  formattedDate));</span><br><span class="line">    userTest1Repository.save(<span class="keyword">new</span> <span class="title class_">User</span>(<span class="string">&quot;bb&quot;</span>, <span class="string">&quot;bb123456&quot;</span>,<span class="string">&quot;bb@126.com&quot;</span>, <span class="string">&quot;bb&quot;</span>,  formattedDate));</span><br><span class="line">    userTest2Repository.save(<span class="keyword">new</span> <span class="title class_">User</span>(<span class="string">&quot;cc&quot;</span>, <span class="string">&quot;cc123456&quot;</span>,<span class="string">&quot;cc@126.com&quot;</span>, <span class="string">&quot;cc&quot;</span>,  formattedDate));</span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>执行完测试用例后查看数据库，发现 test1 库有两条数据，test2 有一条，证明两个数据源均保存数据正常。下面继续测试删除功能，使用两个数据源的 repository 将用户信息全部删除。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testDelete</span><span class="params">()</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">    userTest1Repository.deleteAll();</span><br><span class="line">    userTest2Repository.deleteAll();</span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>执行完测试用例后，发现 test1 库和 test2 库用户表的信息已经被清空，证明多数据源删除成功。</p>
+
+        </div>
+        
+<blockquote class="copyright">
+    <p><strong>Link to this article : </strong><a class="permalink" href="http://yoursite.com/2020/09/25/Spring%20Data%20JPA/">http://yoursite.com/2020/09/25/Spring Data JPA/</a></p>
+    <p><strong>This article is available under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)</a> License</strong></p>
+</blockquote>
+
+
+    </article>
+    
+    <section id="comments">
+        
+    </section>
+
+
+    
+
+</main>
+
+
+<aside style="" id="sidebar" class="aside aside-fixture">
+    <div class="toc-sidebar">
+        <nav id="toc" class="article-toc">
+            <h3 class="toc-title">Catalogue</h3>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Spring-Data-JPA-%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text">1-Spring Data JPA 的基本用法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Spring-Data-JPA"><span class="toc-number">1.0.1.</span> <span class="toc-text">Spring Data JPA</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E4%BE%9D%E8%B5%96"><span class="toc-number">1.0.2.</span> <span class="toc-text">添加依赖</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">1.0.3.</span> <span class="toc-text">添加配置文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E4%BD%93%E7%B1%BB"><span class="toc-number">1.0.4.</span> <span class="toc-text">实体类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Repository-%E6%9E%84%E5%BB%BA"><span class="toc-number">1.0.5.</span> <span class="toc-text">Repository 构建</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95"><span class="toc-number">1.0.6.</span> <span class="toc-text">测试</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%9F%A5%E8%AF%A2"><span class="toc-number">1.1.</span> <span class="toc-text">基本查询</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A2%84%E7%94%9F%E6%88%90%E6%96%B9%E6%B3%95"><span class="toc-number">1.1.1.</span> <span class="toc-text">预生成方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E6%9F%A5%E8%AF%A2"><span class="toc-number">1.1.2.</span> <span class="toc-text">自定义查询</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Spring-Data-JPA-%E7%9A%84%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95"><span class="toc-number">2.</span> <span class="toc-text">2-Spring Data JPA 的高级用法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89-SQL-%E6%9F%A5%E8%AF%A2"><span class="toc-number">2.1.</span> <span class="toc-text">自定义 SQL 查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2"><span class="toc-number">2.2.</span> <span class="toc-text">分页查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%8D%E6%9D%82%E6%9F%A5%E8%AF%A2"><span class="toc-number">2.3.</span> <span class="toc-text">复杂查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2"><span class="toc-number">2.4.</span> <span class="toc-text">多表查询</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-Spring-Data-JPA-%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number"></span> <span class="toc-text">3-Spring Data JPA 多数据源的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90%E7%9A%84%E6%94%AF%E6%8C%81"><span class="toc-number">0.1.</span> <span class="toc-text">多数据源的支持</span></a></li></ol></li></ol>
+        </nav>
+    </div>
+</aside>
+
+
+
+
+
+        </section>
+        <footer class="hidden lg:block fixed bottom-0 left-0 sm:w-1/12 lg:w-1/6 bg-gray-100 z-40">
+    
+    <div class="footer-social-links">
+        
+            <a target="_blank" rel="noopener" href="https://github.com/fengkx">
+                <i class="iconfont icon-github"></i>
+            </a>
+        
+            <a target="_blank" rel="noopener" href="https://t.me/fengkx">
+                <i class="iconfont icon-telegram"></i>
+            </a>
+        
+            <a target="_blank" rel="noopener" href="https://twitter.com/example">
+                <i class="iconfont icon-twitter"></i>
+            </a>
+        
+            <a href="/atom.xml">
+                <i class="iconfont icon-rss"></i>
+            </a>
+        
+    </div>
+    
+    
+</footer>
+
+        <div id="mask" class="hidden mask fixed inset-0 bg-gray-900 opacity-75 z-40"></div>
+        <div id="search-view-container" class="hidden shadow-xl"></div>
+        
+<script src="/js/dom-event.min.js"></script>
+
+
+
+<script src="/js/local-search.min.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/js/lightgallery.min.js"></script>
+    
+<script src="/js/light-gallery.min.js"></script>
+
+
+
+
+
+
+    </body>
+</html>
