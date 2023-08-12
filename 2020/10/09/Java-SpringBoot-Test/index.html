@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html  lang="english" >
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+    <title>Java-SpringBoot-Test | Tukekenulia</title>
+    <meta name="description" content="Spring Boot 对测试的支持在微服务架构下，整个系统被切割为 N 个独立的微服务相互配合来使用，那么对于系统可用性会有更高的要求。从大到小可以分为三个层级，开发人员编码需要做的单元测试，微服务和微服务之间的接口联调测试，最后是微服务和微服务之间的集成测试。通过三层的严格测试才能有效的保证系统的稳定性。 作为一名开发人员，严格做好代码的单元测试才是保证软件质量的第一步。Spring Bo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java-SpringBoot-Test">
+<meta property="og:url" content="http://yoursite.com/2020/10/09/Java-SpringBoot-Test/index.html">
+<meta property="og:site_name" content="Tukekenulia">
+<meta property="og:description" content="Spring Boot 对测试的支持在微服务架构下，整个系统被切割为 N 个独立的微服务相互配合来使用，那么对于系统可用性会有更高的要求。从大到小可以分为三个层级，开发人员编码需要做的单元测试，微服务和微服务之间的接口联调测试，最后是微服务和微服务之间的集成测试。通过三层的严格测试才能有效的保证系统的稳定性。 作为一名开发人员，严格做好代码的单元测试才是保证软件质量的第一步。Spring Bo">
+<meta property="og:locale">
+<meta property="article:published_time" content="2020-10-09T07:21:20.000Z">
+<meta property="article:modified_time" content="2023-08-12T07:27:35.903Z">
+<meta property="article:author" content="Tukeke">
+<meta name="twitter:card" content="summary">
+
+    
+    <link rel="icon" href="images/icon.png" type="image/x-icon">
+
+    
+<link rel="stylesheet" href="/css/common.min.css">
+
+
+
+    
+    
+    
+    
+        <link href="//cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/css/lightgallery.min.css" rel="stylesheet">
+    
+    
+    
+<link rel="stylesheet" href="/css/iconfont.min.css">
+
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+    <body>
+        <header class="header header-fixture">
+    <div class="profile-search-wrap flex sm:block">
+        
+        
+        <div class="profile sm:text-center md:px-1 lg:px-3 sm:pb-4 sm:pt-6">
+            <a id="avatar" role="link" href="https://github.com/" class="inline-block lg:w-16 lg:h-16 w-8 h-8 m-2" target="_blank" rel="noopener" rel="noreferrer" >
+                <img src="https://www.gravatar.com/avatar/0bc83cb571cd1c50ba6f3e8a78ef1346?s=128" class="rounded-full" alt="avatar">
+            </a>
+            <h2 id="name" class="hidden lg:block">Tukeke</h2>
+            <h3 id="title" class="hidden lg:block">Student &amp; Coder</h3>
+            
+            <small id="location" class="hidden lg:block">
+                <i class="iconfont icon-map-icon"></i>
+                Wenzhou, China
+            </small>
+            
+        </div>
+        
+        
+<div class="search flex-1 flex lg:inline-block sm:hidden lg:px-4 lg:mt-2 lg:mb-4 lg:w-full">
+    <form id="search-form" class="my-auto flex-1 lg:border lg:border-solid lg:border-gray-200">
+        <div class="input-group table bg-gray-100 lg:bg-white w-full">
+            <input id="search-input" type="text" placeholder="Search" class="inline-block w-full bg-gray-100 lg:bg-white p-1">
+            <span class="table-cell">
+                <button name="search tigger button" disabled>
+                    <i class="iconfont icon-search m-2"></i>
+                </button>
+            </span>
+        </div>
+    </form>
+        
+<div id="content-json" data-placeholder="Search" class="invisible hidden">/content.json</div>
+<script id="search-teamplate" type="text/html" data-path="/content.json">
+    <div>
+        <div class="search-header bg-gray-400">
+            <input id="actual-search-input" model="keyword" ref="input" class="inline-block w-full h-10 px-2 py-1" placeholder="Search" type="text">
+        </div>
+        <div class="search-result bg-gray-200">
+            {{#each searchPosts}}
+            <a href="/{{ path }}" class="result-item block px-2 pb-3 mb-1 pt-1 hover:bg-indigo-100">
+                <i class="iconfont icon-file"></i>
+                <h1 class="result-title inline font-medium text-lg">{{ title }}</h1>
+                <p class="result-content text-gray-600 text-sm">{{{ text }}}</p>
+            </a>
+            {{/each}}
+        </div>
+    </div>
+</script>
+
+</div>
+
+
+        <button name="menu toogle button" id="menu-toggle-btn" class="block sm:hidden p-3" role="button" aria-expanded="false">
+            <i class="iconfont icon-hamburger"></i>
+        </button>
+    </div>
+    <nav id="menu-nav" class="hidden sm:flex flex-col">
+        
+        
+            <div class="menu-item menu-home" role="menuitem">
+                <a href="/.">
+                    <i class="iconfont icon-home" aria-hidden="true"></i>
+                    <span class="menu-title">Home</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-archives" role="menuitem">
+                <a href="/archives">
+                    <i class="iconfont icon-archive" aria-hidden="true"></i>
+                    <span class="menu-title">Archives</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-categories" role="menuitem">
+                <a href="/categories">
+                    <i class="iconfont icon-folder" aria-hidden="true"></i>
+                    <span class="menu-title">Categories</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-tags" role="menuitem">
+                <a href="/tags">
+                    <i class="iconfont icon-tag" aria-hidden="true"></i>
+                    <span class="menu-title">Tags</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-repository" role="menuitem">
+                <a href="/repository">
+                    <i class="iconfont icon-project" aria-hidden="true"></i>
+                    <span class="menu-title">Repository</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-links" role="menuitem">
+                <a href="/links">
+                    <i class="iconfont icon-friend" aria-hidden="true"></i>
+                    <span class="menu-title">Links</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-about" role="menuitem">
+                <a href="/about">
+                    <i class="iconfont icon-cup" aria-hidden="true"></i>
+                    <span class="menu-title">About</span>
+                </a>
+            </div>
+        
+        
+<div class="social-links flex sm:flex-col lg:hidden mt-5">
+    
+        <span class="social-item text-center">
+            <a target="_blank" rel="noopener" href="https://github.com/">
+                <i class="iconfont social-icon icon-github"></i>
+                <span class="menu-title hidden lg:inline">menu.github</span>
+            </a>
+        </span>
+    
+        <span class="social-item text-center">
+            <a target="_blank" rel="noopener" href="https://t.me/">
+                <i class="iconfont social-icon icon-telegram"></i>
+                <span class="menu-title hidden lg:inline">menu.telegram</span>
+            </a>
+        </span>
+    
+        <span class="social-item text-center">
+            <a target="_blank" rel="noopener" href="https://twitter.com/example">
+                <i class="iconfont social-icon icon-twitter"></i>
+                <span class="menu-title hidden lg:inline">menu.twitter</span>
+            </a>
+        </span>
+    
+        <span class="social-item text-center">
+            <a href="/atom.xml">
+                <i class="iconfont social-icon icon-rss"></i>
+                <span class="menu-title hidden lg:inline">menu.rss</span>
+            </a>
+        </span>
+    
+</div>
+
+
+    </nav>
+</header>
+
+        <section class="main-section">
+            
+    <main class="flex-1 px-4 py-14 md:px-5 lg:px-8 lg:py-4 relative min-h-screen">
+    
+
+    <article class="content article article-archives article-type-list" itemscope="">
+        <header class="article-header">
+            
+    
+        <h1 class="article-title text-lg" itemprop="name">
+            Java-SpringBoot-Test
+        </h1>
+    
+
+
+
+            <p class="article-meta mb-3 text-xs">
+                <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2020/10/09/Java-SpringBoot-Test/" class="article-date">
+	  <time datetime="2020-10-09T07:21:20.000Z" itemprop="datePublished">Oct 9</time>
+	</a>
+</span>
+
+                
+
+                
+
+                <span class="_partial/post-comment"><i class="icon icon-comment"></i>
+                    <a href="/2020/10/09/Java-SpringBoot-Test/#comments" class="article-comment-link">
+                        Comments
+                    </a>
+                </span>
+                
+
+            </p>
+        </header>
+        <div class="marked-body article-body">
+            <span id="more"></span>
+
+<h2 id="Spring-Boot-对测试的支持"><a href="#Spring-Boot-对测试的支持" class="headerlink" title="Spring Boot 对测试的支持"></a>Spring Boot 对测试的支持</h2><p>在微服务架构下，整个系统被切割为 N 个独立的微服务相互配合来使用，那么对于系统可用性会有更高的要求。从大到小可以分为三个层级，开发人员编码需要做的单元测试，微服务和微服务之间的接口联调测试，最后是微服务和微服务之间的集成测试。通过三层的严格测试才能有效的保证系统的稳定性。</p>
+<p>作为一名开发人员，严格做好代码的单元测试才是保证软件质量的第一步。Spring Boot 做为一个优秀的开源框架合集对测试的支持非常友好，Spring Boot 提供了专门支持测试的组件 Spring Boot Test，Spring Boot Test 集成了业内流行的 7 种强大的测试框架：</p>
+<ul>
+<li>JUnit：一个 Java 语言的单元测试框架</li>
+<li>Spring Test：为 Spring Boot 应用提供集成测试和工具支持</li>
+<li>AssertJ：支持流式断言的 Java 测试框架</li>
+<li>Hamcrest：一个匹配器库</li>
+<li>Mockito：一个 Java Mock 框架</li>
+<li>JSONassert：一个针对 JSON 的断言库</li>
+<li>JsonPath：JSON XPath 库</li>
+</ul>
+<p>这 7 种测试框架完整的支持了软件开发中各种场景，我们只需要在项目中集成 Spring Boot Test 即可拥有这 7 种测试框架的各种功能，并且 Spring 针对 Spring Boot 项目使用场景进行了封装和优化，以方便在 Spring Boot 项目中去使用，接下来将介绍 Spring Boot Test 的使用。</p>
+<h3 id="快速入手"><a href="#快速入手" class="headerlink" title="快速入手"></a>快速入手</h3><p>我们创建一个 spring-boot-test 项目来演示 Spring Boot Test 的使用，只需要在项目中添加 spring-boot-starter-test 依赖即可：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-test<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p><strong>测试方法</strong></p>
+<p>首先来演示一个最简单的测试，只是测试一个方法的执行：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HelloTest</span> &#123;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">hello</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;hello world&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>在 Idea 中点击 helle() 方法名，选择 Run hello() 即可运行，执行完毕控制台打印信息如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hello world</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>证明方法执行成功。</p>
+<p><strong>测试服务</strong></p>
+<p>大多数情况下都是需要测试项目中某一个服务的准确性，这个时候往往需要 Spring Boot 启动后的上下文环境，对于这种情况只需要添加两个注解即可支持。我们创建一个 HelloService 服务来演示。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">HelloService</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sayHello</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>创建一个它的实现类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HelloServieImpl</span> <span class="keyword">implements</span> <span class="title class_">HelloService</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sayHello</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;hello service&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>在这个实现类中 sayHello() 方法输出了字符串：”hello service”。</p>
+<p>为了可以在测试中获取到启动后的上下文环境（Beans），Spring Boot Test 提供了两个注解来支持。测试时只需在测试类的上面添加 @RunWith(SpringRunner.class) 和 @SpringBootTest 注解即可。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RunWith(SpringRunner.class)</span></span><br><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HelloServiceTest</span> &#123;</span><br><span class="line">    <span class="meta">@Resource</span></span><br><span class="line">    HelloService helloService;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span>  <span class="title function_">sayHelloTest</span><span class="params">()</span>&#123;</span><br><span class="line">        helloService.sayHello();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>同时在测试类中注入 HelloService，sayHelloTest 测试方法中调用 HelloService 的 sayHello() 方法，执行测试方法后，就会发现在控制台打印出了 Spring Boot 的启动信息，说明在执行测试方法之前，Spring Boot 对容器进行了初始化，输出完启动信息后会打印出以下信息：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hello service</span><br></pre></td></tr></table></figure>
+
+<p>证明测试服务成功。但是这种测试会稍显麻烦，因为控制台打印了太多的东西，需要我们来仔细分辨，这里有更优雅的解决方案，可以利用 OutputCapture 来判断 System 是否输出了我们想要的内容，添加 OutputCapture 改造如下。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> org.assertj.core.api.Assertions.assertThat;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.test.rule.OutputCapture;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RunWith(SpringRunner.class)</span></span><br><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HelloServiceTest</span> &#123;</span><br><span class="line">    <span class="meta">@Rule</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">OutputCapture</span> <span class="variable">outputCapture</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">OutputCapture</span>();</span><br><span class="line">    <span class="meta">@Resource</span></span><br><span class="line">    HelloService helloService;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span>  <span class="title function_">sayHelloTest</span><span class="params">()</span>&#123;</span><br><span class="line">        helloService.sayHello();</span><br><span class="line">        assertThat(<span class="built_in">this</span>.outputCapture.toString().contains(<span class="string">&quot;hello service&quot;</span>)).isTrue();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>OutputCapture 是 Spring Boot 提供的一个测试类，它能捕获 System.out 和 System.err 的输出，我们可以利用这个特性来判断程序中的输出是否执行。</p>
+<p>这样当输出内容是”hello service”测试用例执行成功，如果不是的话会执行失败，再也无需关注控制台输出内容。</p>
+<p>据统计现在开发的 Java 项目中 90%以上都是 Web 项目，如何检验 Web 项目对外提供接口的准确性就变得很重要。在以往的经历中，我们常常会在浏览器中访问一些特定的地址来进行测试，但如果涉及到一些非 get 请求就会变的稍微麻烦一一些。有的朋友会使用 PostMan 工具或者自己写一些 Http Post 请求来进行测试，但终究不够优雅方便。</p>
+<p>Spring Boot Test 中有准对 Web 测试的解决方案：MockMvc，MockMvc 实现了对 Http 请求的模拟，能够直接使用网络的形式，转换到 Controller 的调用，这样可以使得测试速度更快、不依赖网络环境，而且提供了一套验证的工具，这样可以使得请求的验证统一而且更方便。</p>
+<p>接下来进行演示，首先在项目中添加 Web 依赖：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>创建一个 HelloController 对外输出一个 hello 的方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HelloController</span> &#123;</span><br><span class="line">    <span class="meta">@RequestMapping(name=&quot;/hello&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getHello</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;hello web&quot;</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>创建 HelloWebTest 对我们上面创建的 web 接口 getHello() 方法进行测试。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;</span><br><span class="line"><span class="meta">@RunWith(SpringRunner.class)</span></span><br><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HelloWebTest</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> MockMvc mockMvc;</span><br><span class="line">    <span class="meta">@Before</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setUp</span><span class="params">()</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        mockMvc = MockMvcBuilders.standaloneSetup(<span class="keyword">new</span> <span class="title class_">HelloController</span>()).build();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testHello</span><span class="params">()</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        mockMvc.perform(MockMvcRequestBuilders.post(<span class="string">&quot;/hello&quot;</span>)</span><br><span class="line">                .accept(MediaType.APPLICATION_JSON_UTF8)).andDo(print());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>@Before 注意意味着在测试用例执行前需要执行的操作，这里是初始化需要建立的测试环境。</li>
+<li>MockMvcRequestBuilders.post 是指支持 post 请求，这里其实可以支持各种类型的请求，比如 get 请求、put 请求、patch 请求、delete 请求等。</li>
+<li>andDo(print())，andDo()：添加 ResultHandler 结果处理器，print() 打印出请求和相应的内容</li>
+</ul>
+<p>控制台输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">MockHttpServletRequest:</span><br><span class="line">      HTTP Method = POST</span><br><span class="line">      Request URI = /hello</span><br><span class="line">       Parameters = &#123;&#125;</span><br><span class="line">          Headers = &#123;Accept=[application/json;charset=UTF-8]&#125;</span><br><span class="line">             Body = &lt;no character encoding set&gt;</span><br><span class="line">    Session Attrs = &#123;&#125;</span><br><span class="line"></span><br><span class="line">Handler:</span><br><span class="line">             Type = com.neo.web.HelloController</span><br><span class="line">           Method = public java.lang.String com.neo.web.HelloController.getUser()</span><br><span class="line"></span><br><span class="line">Async:</span><br><span class="line">    Async started = false</span><br><span class="line">     Async result = null</span><br><span class="line"></span><br><span class="line">Resolved Exception:</span><br><span class="line">             Type = null</span><br><span class="line"></span><br><span class="line">ModelAndView:</span><br><span class="line">        View name = null</span><br><span class="line">             View = null</span><br><span class="line">            Model = null</span><br><span class="line"></span><br><span class="line">FlashMap:</span><br><span class="line">       Attributes = null</span><br><span class="line"></span><br><span class="line">MockHttpServletResponse:</span><br><span class="line">           Status = 200</span><br><span class="line">    Error message = null</span><br><span class="line">          Headers = &#123;Content-Type=[application/json;charset=UTF-8], Content-Length=[9]&#125;</span><br><span class="line">     Content type = application/json;charset=UTF-8</span><br><span class="line">             Body = hello web</span><br><span class="line">    Forwarded URL = null</span><br><span class="line">   Redirected URL = null</span><br><span class="line">          Cookies = []</span><br></pre></td></tr></table></figure>
+
+<p>通过上面输出的信息我们发现，将整个请求的过程全部打印了出来，包括请求头信息，请求参数，返回信息等。根据打印的 Body 信息可以得知 HelloController 的 getHello() 方法测试成功。</p>
+<p>但有时候我们并不想知道整个请求流程，只需要验证返回的结果是否正确即可，我们可以做下面的改造：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testHello</span><span class="params">()</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">    mockMvc.perform(MockMvcRequestBuilders.post(<span class="string">&quot;/hello&quot;</span>)</span><br><span class="line">            .accept(MediaType.APPLICATION_JSON_UTF8))</span><br><span class="line"><span class="comment">//                .andDo(print())</span></span><br><span class="line">             .andExpect(content().string(equalTo(<span class="string">&quot;hello web&quot;</span>)));</span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>如果接口返回值是”hello web”测试执行成功，否则测试用例执行失败。也支持验证结果集中是否包含了特定的字符串，这时可以使用 containsString() 方法来判断。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.andExpect(content().string(containsString(&quot;hello&quot;)));;</span><br></pre></td></tr></table></figure>
+
+<p>支持在请求的时候传递参数：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">@Test</span><br><span class="line">public void testHelloMore() throws Exception &#123;</span><br><span class="line">    final MultiValueMap&lt;String, String&gt; params = new LinkedMultiValueMap&lt;&gt;();</span><br><span class="line">    params.add(&quot;id&quot;, &quot;6&quot;);</span><br><span class="line">    params.add(&quot;hello&quot;, &quot;world&quot;);</span><br><span class="line">    mockMvc.perform(</span><br><span class="line">             MockMvcRequestBuilders.post(&quot;/hello&quot;)</span><br><span class="line">            .params(params)</span><br><span class="line">            .contentType(MediaType.APPLICATION_JSON_UTF8)</span><br><span class="line">            .accept(MediaType.APPLICATION_JSON_UTF8))</span><br><span class="line">            .andExpect(status().isOk())</span><br><span class="line">            .andExpect(content().string(containsString(&quot;hello&quot;)));;</span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>返回结果如果是 Json 可以使用下面语法来判断：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.andExpect(MockMvcResultMatchers.jsonPath(&quot;$.name&quot;).value(&quot;纯洁的微笑&quot;))</span><br></pre></td></tr></table></figure>
+
+<p>MockMvc 提供一组工具函数用来执行 Assert 判断，这组工具使用函数的链式调用，允许将多个测试用例拼接在一起，同时进行多个判断。</p>
+<ul>
+<li>perform 构建一个请求，并且返回 ResultActions 实例，该实例则可以获取到请求的返回内容。</li>
+<li>params 构建请求时候的参数，也支持 param(key,value) 的方式连续添加。</li>
+<li>contentType(MediaType.APPLICATION_JSON_UTF8) 代表发送端发送的数据格式。</li>
+<li>accept(MediaType.APPLICATION_JSON_UTF8) 代表客户端希望接受的数据类型格式。</li>
+<li>mockMvc.perform() 建立 Web 请求。</li>
+<li>andExpect(…) 可以在 perform(…) 函数调用后多次调用，表示对多个条件的判断。</li>
+<li>status().isOk() 判断请求状态是否返回 200。</li>
+<li>andReturn 该方法返回 MvcResult 对象，该对象可以获取到返回的视图名称、返回的 Response 状态、获取拦截请求的拦截器集合等。</li>
+</ul>
+<p>JUnit 是针对 Java 语言的一个单元测试框架，它被认为是迄今为止所开发的最重要的第三方 Java 库。 JUnit 的优点是整个测试过程无需人的参与，无需分析和判断最终测试结果是否正确，而且可以很容易地一次性运行多个测试。 JUnit 的最新版本为 Junit 5，Spring Boot 默认集成的是 Junit 4。</p>
+<p>以下为 Junit 常用注解</p>
+<ul>
+<li>@Test：把一个方法标记为测试方法</li>
+<li>@Before：每一个测试方法执行前自动调用一次</li>
+<li>@After：每一个测试方法执行完自动调用一次</li>
+<li>@BeforeClass：所有测试方法执行前执行一次，在测试类还没有实例化就已经被加载，所以用 static 修饰</li>
+<li>@AfterClass：所有测试方法执行完执行一次，在测试类还没有实例化就已经被加载，所以用 static 修饰</li>
+<li>@Ignore：暂不执行该测试方法</li>
+<li>@RunWith 当一个类用 @RunWith 注释或继承一个用 @RunWith 注释的类时，JUnit 将调用它所引用的类来运行该类中的测试而不是开发者去在 junit 内部去构建它。我们在开发过程中使用这个特性。</li>
+</ul>
+<p>创建测试类 JUnit4Test 类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">JUnit4Test</span> &#123;</span><br><span class="line">    <span class="type">Calculation</span> <span class="variable">calculation</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Calculation</span>();</span><br><span class="line">    <span class="type">int</span> result;<span class="comment">//测试结果</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//在 JUnit4 中使用 @Test 标注为测试方法</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="comment">//测试方法必须是 public void 的</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testAdd</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;---testAdd开始测试---&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//每个里面只测一次，因为 assertEquals 一旦测试发现错误就抛出异常，不再运行后续代码</span></span><br><span class="line">        result = calculation.add(<span class="number">1</span>, <span class="number">2</span>);</span><br><span class="line">        assertEquals(<span class="number">3</span>, result);</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">&quot;---testAdd正常运行结束---&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//又一个测试方法</span></span><br><span class="line">    <span class="comment">//timeout 表示测试允许的执行时间毫秒数，expected 表示忽略哪些抛出的异常（不会因为该异常导致测试不通过）</span></span><br><span class="line">    <span class="meta">@Test(timeout = 1, expected = NullPointerException.class)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testSub</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;---testSub开始测试---&quot;</span>);</span><br><span class="line"></span><br><span class="line">        result = calculation.sub(<span class="number">3</span>, <span class="number">2</span>);</span><br><span class="line">        assertEquals(<span class="number">1</span>, result);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">NullPointerException</span>();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//System.out.println(&quot;---testSub正常运行结束---&quot;);</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">//指示该[静态方法]将在该类的[所有]测试方法执行之[前]执行</span></span><br><span class="line">    <span class="meta">@BeforeClass</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">beforeAll</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;||==BeforeClass==||&quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;||==通常在这个方法中加载资源==||&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//指示该[静态方法]将在该类的[所有]测试方法执行之[后]执行</span></span><br><span class="line">    <span class="meta">@AfterClass</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">afterAll</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;||==AfterClass==||&quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;||==通常在这个方法中释放资源==||&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//该[成员方法]在[每个]测试方法执行之[前]执行</span></span><br><span class="line">    <span class="meta">@Before</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">beforeEvery</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;|==Before==|&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//该[成员方法]在[每个]测试方法执行之[后]执行</span></span><br><span class="line">    <span class="meta">@After</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">afterEvery</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;|==After==|&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>calculation 是自定义的计算器工具类，具体可以参考示例项目，执行测试类后，输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">||==BeforeClass==||</span><br><span class="line">||==通常在这个方法中加载资源==||</span><br><span class="line">|==Before==|</span><br><span class="line">---testAdd开始测试---</span><br><span class="line">---testAdd正常运行结束---</span><br><span class="line">|==After==|</span><br><span class="line">|==Before==|</span><br><span class="line">---testSub开始测试---</span><br><span class="line">|==After==|</span><br><span class="line">||==AfterClass==||</span><br><span class="line">||==通常在这个方法中释放资源==||</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>对比上面的介绍可以清晰的了解每个注解的使用。</p>
+<p><strong>Assert 使用</strong></p>
+<p>Assert 翻译为中文为“断言”，使用过 JUnit 的读者都熟知这个概念，它断定某一个实际的运行值和预期想一样，否则就抛出异常 。Spring 对方法入参的检测借用了这个概念，其提供的 Assert 类拥有众多按规则对方法入参进行断言的方法，可以满足大部分方法入参检测的要求。</p>
+<p>Spring Boot 也提供了断言式的验证，帮助我们在测试时验证方法的返回结果。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RunWith(SpringRunner.class)</span></span><br><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TestAssert</span> &#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> UserService userService;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">TestAssert</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="comment">//验证结果是否为空</span></span><br><span class="line">        Assert.assertNotNull(userService.getUser());</span><br><span class="line">        <span class="comment">//验证结果是否相等</span></span><br><span class="line">        Assert.assertEquals(<span class="string">&quot;i am neo!&quot;</span>, userService.getUser());</span><br><span class="line">        <span class="comment">//验证条件是否成立</span></span><br><span class="line">        Assert.assertFalse(<span class="number">1</span>+<span class="number">1</span>&gt;<span class="number">3</span>);</span><br><span class="line">        <span class="comment">//验证对象是否相等</span></span><br><span class="line">        Assert.assertSame(userService,userService);</span><br><span class="line">        <span class="type">int</span> status=<span class="number">404</span>;</span><br><span class="line">        <span class="comment">//验证结果集，提示</span></span><br><span class="line">        Assert.assertFalse(<span class="string">&quot;错误，正确的返回值为200&quot;</span>, status != <span class="number">200</span>);</span><br><span class="line">        String[] expectedOutput = &#123;<span class="string">&quot;one&quot;</span>, <span class="string">&quot;two&quot;</span>, <span class="string">&quot;one&quot;</span>&#125;;</span><br><span class="line">        String[] methodOutput = &#123;<span class="string">&quot;one&quot;</span>, <span class="string">&quot;one&quot;</span>, <span class="string">&quot;two&quot;</span>&#125;;</span><br><span class="line">        <span class="comment">//验证数组是否相同</span></span><br><span class="line">        Assert.assertArrayEquals(expectedOutput, methodOutput);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>通过上面使用的例子我们可以发现，使用 Assert 可以非常方便验证测试返回结果，避免我们写很多的 if&#x2F;else 判断，让代码更加的优雅。</p>
+<p><strong>如何使用 assertThat</strong>：</p>
+<p>JUnit 4 学习 JMock，引入了 Hamcrest 匹配机制，使得程序员在编写单元测试的 assert 语句时，可以具有更强的可读性，而且也更加灵活。Hamcrest 是一个测试的框架，它提供了一套通用的匹配符 Matcher，灵活使用这些匹配符定义的规则，程序员可以更加精确的表达自己的测试思想，指定所想设定的测试条件。</p>
+<p>断言便是 Junit 中最常使用的语法之一，在文章开始使用了 assertThat 对 System 输出的文本进行了判断，assertThat 其实是 JUnit 4 最新的语法糖，只使用 assertThat 一个断言语句，结合 Hamcrest 提供的匹配符，就可以替代之前的所有断言的使用方式。</p>
+<p>assertThat 的基本语法如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">assertThat( [value], [matcher statement] );</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>value 是接下来想要测试的变量值；</li>
+<li>matcher statement 是使用 Hamcrest 匹配符来表达的对前面变量所期望的值的声明，如果 value 值与 matcher statement 所表达的期望值相符，则测试成功，否则测试失败。</li>
+</ul>
+<p>一般匹配符</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// allOf 匹配符表明如果接下来的所有条件必须都成立测试才通过，相当于“与”（&amp;&amp;）</span><br><span class="line">assertThat( testedNumber, allOf( greaterThan(6), lessThan(33) ) );</span><br><span class="line">// anyOf 匹配符表明如果接下来的所有条件只要有一个成立则测试通过，相当于“或”（||）</span><br><span class="line">assertThat( testedNumber, anyOf( greaterThan(33), lessThan(6) ) );</span><br><span class="line">// anything 匹配符表明无论什么条件，永远为true</span><br><span class="line">assertThat( testedNumber, anything() );</span><br><span class="line">// is 匹配符表明如果前面待测的 object 等于后面给出的 object，则测试通过</span><br><span class="line">assertThat( testedString, is( &quot;keeppuresmile&quot; ) );</span><br><span class="line">// not 匹配符和 is 匹配符正好相反，表明如果前面待测的 object 不等于后面给出的 object，则测试通过</span><br><span class="line">assertThat( testedString, not( &quot;keeppuresmile&quot; ) );</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>字符串相关匹配符</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">// containsString 匹配符表明如果测试的字符串 testedString 包含子字符串&quot;keeppuresmile&quot;则测试通过</span><br><span class="line">assertThat( testedString, containsString( &quot;keeppuresmile&quot; ) );</span><br><span class="line">// endsWith 匹配符表明如果测试的字符串 testedString 以子字符串&quot;keeppuresmile&quot;结尾则测试通过</span><br><span class="line">assertThat( testedString, endsWith( &quot;keeppuresmile&quot; ) ); </span><br><span class="line">// startsWith匹配符表明如果测试的字符串testedString以子字符串&quot;keeppuresmile&quot;开始则测试通过</span><br><span class="line">assertThat( testedString, startsWith( &quot;keeppuresmile&quot; ) ); </span><br><span class="line">// equalTo 匹配符表明如果测试的 testedValue 等于 expectedValue 则测试通过，equalTo 可以测试数值之间，字</span><br><span class="line">//符串之间和对象之间是否相等，相当于 Object 的 equals 方法</span><br><span class="line">assertThat( testedValue, equalTo( expectedValue ) ); </span><br><span class="line">// equalToIgnoringCase 匹配符表明如果测试的字符串 testedString 在忽略大小写的情况下等于</span><br><span class="line">//&quot;keeppuresmile&quot;则测试通过</span><br><span class="line">assertThat( testedString, equalToIgnoringCase( &quot;keeppuresmile&quot; ) ); </span><br><span class="line">// equalToIgnoringWhiteSpace 匹配符表明如果测试的字符串 testedString 在忽略头尾的任意个空格的情况下等</span><br><span class="line">//于&quot;keeppuresmile&quot;则测试通过，注意：字符串中的空格不能被忽略</span><br><span class="line">assertThat( testedString, equalToIgnoringWhiteSpace( &quot;keeppuresmile&quot; ) );</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>数值相关匹配符</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// closeTo 匹配符表明如果所测试的浮点型数 testedDouble 在 10.0±0.3 范围之内则测试通过</span><br><span class="line">assertThat( testedDouble, closeTo( 10.0, 0.3 ) );</span><br><span class="line">// greaterThan 匹配符表明如果所测试的数值 testedNumber 大于 12.0 则测试通过</span><br><span class="line">assertThat( testedNumber, greaterThan(12.0) );</span><br><span class="line">// lessThan 匹配符表明如果所测试的数值 testedNumber 小于 12.0 则测试通过</span><br><span class="line">assertThat( testedNumber, lessThan (12.0) );</span><br><span class="line">// greaterThanOrEqualTo 匹配符表明如果所测试的数值 testedNumber 大于等于 12.0 则测试通过</span><br><span class="line">assertThat( testedNumber, greaterThanOrEqualTo (12.0) );</span><br><span class="line">// lessThanOrEqualTo 匹配符表明如果所测试的数值 testedNumber 小于等于 12.0 则测试通过</span><br><span class="line">assertThat( testedNumber, lessThanOrEqualTo (12.0) );</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>collection 相关匹配符</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// hasEntry 匹配符表明如果测试的 Map 对象 mapObject 含有一个键值为&quot;key&quot;对应元素值为&quot;value&quot;的 Entry 项则</span><br><span class="line">//测试通过</span><br><span class="line">assertThat( mapObject, hasEntry( &quot;key&quot;, &quot;value&quot; ) );</span><br><span class="line">// hasItem匹配符表明如果测试的迭代对象 iterableObject 含有元素“element”项则测试通过</span><br><span class="line">assertThat( iterableObject, hasItem ( &quot;element&quot; ) );</span><br><span class="line">// hasKey匹配符表明如果测试的 Map 对象 mapObject 含有键值“key”则测试通过</span><br><span class="line">assertThat( mapObject, hasKey ( &quot;key&quot; ) );</span><br><span class="line">// hasValue匹配符表明如果测试的 Map 对象 mapObject 含有元素值“value”则测试通过</span><br><span class="line">assertThat( mapObject, hasValue ( &quot;key&quot; ) );</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>具体使用可参考示例项目中 CalculationTest 的使用。</p>
+<p>Junt 使用的几条建议：</p>
+<ul>
+<li>测试方法上必须使用 @Test 进行修饰</li>
+<li>测试方法必须使用 public void 进行修饰，不能带任何的参数</li>
+<li>新建一个源代码目录来存放我们的测试代码，即将测试代码和项目业务代码分开</li>
+<li>测试类所在的包名应该和被测试类所在的包名保持一致</li>
+<li>测试单元中的每个方法必须可以独立测试，测试方法间不能有任何的依赖</li>
+<li>测试类使用 Test 作为类名的后缀（不是必须）</li>
+<li>测试方法使用 test 作为方法名的前缀（不是必须）</li>
+</ul>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>Spring Boot 是一款自带测试组件的开源软件，Spring Boot Test 中内置了 7 种强大的测试工具，覆盖了测试中的方方面面，在实际应用中我们只需要导入 Spring Boot Test 既可让项目具备各种测试功能。在微服务架构下严格采用三层测试覆盖，才能有效保证项目质量。</p>
+
+        </div>
+        
+<blockquote class="copyright">
+    <p><strong>Link to this article : </strong><a class="permalink" href="http://yoursite.com/2020/10/09/Java-SpringBoot-Test/">http://yoursite.com/2020/10/09/Java-SpringBoot-Test/</a></p>
+    <p><strong>This article is available under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)</a> License</strong></p>
+</blockquote>
+
+
+    </article>
+    
+    <section id="comments">
+        
+    </section>
+
+
+    
+
+</main>
+
+
+<aside style="" id="sidebar" class="aside aside-fixture">
+    <div class="toc-sidebar">
+        <nav id="toc" class="article-toc">
+            <h3 class="toc-title">Catalogue</h3>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring-Boot-%E5%AF%B9%E6%B5%8B%E8%AF%95%E7%9A%84%E6%94%AF%E6%8C%81"><span class="toc-number">1.</span> <span class="toc-text">Spring Boot 对测试的支持</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E5%85%A5%E6%89%8B"><span class="toc-number">1.1.</span> <span class="toc-text">快速入手</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">1.2.</span> <span class="toc-text">总结</span></a></li></ol></li></ol>
+        </nav>
+    </div>
+</aside>
+
+
+
+
+
+        </section>
+        <footer class="hidden lg:block fixed bottom-0 left-0 sm:w-1/12 lg:w-1/6 bg-gray-100 z-40">
+    
+    <div class="footer-social-links">
+        
+            <a target="_blank" rel="noopener" href="https://github.com/">
+                <i class="iconfont icon-github"></i>
+            </a>
+        
+            <a target="_blank" rel="noopener" href="https://t.me/">
+                <i class="iconfont icon-telegram"></i>
+            </a>
+        
+            <a target="_blank" rel="noopener" href="https://twitter.com/example">
+                <i class="iconfont icon-twitter"></i>
+            </a>
+        
+            <a href="/atom.xml">
+                <i class="iconfont icon-rss"></i>
+            </a>
+        
+    </div>
+    
+    
+</footer>
+
+        <div id="mask" class="hidden mask fixed inset-0 bg-gray-900 opacity-75 z-40"></div>
+        <div id="search-view-container" class="hidden shadow-xl"></div>
+        
+<script src="/js/dom-event.min.js"></script>
+
+
+
+<script src="/js/local-search.min.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/js/lightgallery.min.js"></script>
+    
+<script src="/js/light-gallery.min.js"></script>
+
+
+
+
+
+
+    </body>
+</html>

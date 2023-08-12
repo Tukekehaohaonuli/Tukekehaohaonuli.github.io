@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html  lang="english" >
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+    <title>Java-Java-RestFul | Tukekenulia</title>
+    <meta name="description" content="1-Spring Boot 构建 Java-RestFul Web 服务Spring Boot 通过不同的注解来支持前端的请求。  @GetMapping，处理 Get 请求 @PostMapping，处理 Post 请求 @PutMapping，用于更新资源 @DeleteMapping，处理删除请求 @PatchMapping，用于更新部分资源  123456789101112131415">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java-Java-RestFul">
+<meta property="og:url" content="http://yoursite.com/2020/09/01/Java-Restful/index.html">
+<meta property="og:site_name" content="Tukekenulia">
+<meta property="og:description" content="1-Spring Boot 构建 Java-RestFul Web 服务Spring Boot 通过不同的注解来支持前端的请求。  @GetMapping，处理 Get 请求 @PostMapping，处理 Post 请求 @PutMapping，用于更新资源 @DeleteMapping，处理删除请求 @PatchMapping，用于更新部分资源  123456789101112131415">
+<meta property="og:locale">
+<meta property="og:image" content="http://yoursite.com/images/Java-RestFul/1.png">
+<meta property="article:published_time" content="2020-09-01T11:11:14.000Z">
+<meta property="article:modified_time" content="2023-08-12T04:14:31.955Z">
+<meta property="article:author" content="Tukeke">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/images/Java-RestFul/1.png">
+
+    
+    <link rel="icon" href="images/icon.png" type="image/x-icon">
+
+    
+<link rel="stylesheet" href="/css/common.min.css">
+
+
+
+    
+    
+    
+    
+        <link href="//cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/css/lightgallery.min.css" rel="stylesheet">
+    
+    
+    
+<link rel="stylesheet" href="/css/iconfont.min.css">
+
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+    <body>
+        <header class="header header-fixture">
+    <div class="profile-search-wrap flex sm:block">
+        
+        
+        <div class="profile sm:text-center md:px-1 lg:px-3 sm:pb-4 sm:pt-6">
+            <a id="avatar" role="link" href="https://github.com/" class="inline-block lg:w-16 lg:h-16 w-8 h-8 m-2" target="_blank" rel="noopener" rel="noreferrer" >
+                <img src="https://www.gravatar.com/avatar/0bc83cb571cd1c50ba6f3e8a78ef1346?s=128" class="rounded-full" alt="avatar">
+            </a>
+            <h2 id="name" class="hidden lg:block">Tukeke</h2>
+            <h3 id="title" class="hidden lg:block">Student &amp; Coder</h3>
+            
+            <small id="location" class="hidden lg:block">
+                <i class="iconfont icon-map-icon"></i>
+                Wenzhou, China
+            </small>
+            
+        </div>
+        
+        
+<div class="search flex-1 flex lg:inline-block sm:hidden lg:px-4 lg:mt-2 lg:mb-4 lg:w-full">
+    <form id="search-form" class="my-auto flex-1 lg:border lg:border-solid lg:border-gray-200">
+        <div class="input-group table bg-gray-100 lg:bg-white w-full">
+            <input id="search-input" type="text" placeholder="Search" class="inline-block w-full bg-gray-100 lg:bg-white p-1">
+            <span class="table-cell">
+                <button name="search tigger button" disabled>
+                    <i class="iconfont icon-search m-2"></i>
+                </button>
+            </span>
+        </div>
+    </form>
+        
+<div id="content-json" data-placeholder="Search" class="invisible hidden">/content.json</div>
+<script id="search-teamplate" type="text/html" data-path="/content.json">
+    <div>
+        <div class="search-header bg-gray-400">
+            <input id="actual-search-input" model="keyword" ref="input" class="inline-block w-full h-10 px-2 py-1" placeholder="Search" type="text">
+        </div>
+        <div class="search-result bg-gray-200">
+            {{#each searchPosts}}
+            <a href="/{{ path }}" class="result-item block px-2 pb-3 mb-1 pt-1 hover:bg-indigo-100">
+                <i class="iconfont icon-file"></i>
+                <h1 class="result-title inline font-medium text-lg">{{ title }}</h1>
+                <p class="result-content text-gray-600 text-sm">{{{ text }}}</p>
+            </a>
+            {{/each}}
+        </div>
+    </div>
+</script>
+
+</div>
+
+
+        <button name="menu toogle button" id="menu-toggle-btn" class="block sm:hidden p-3" role="button" aria-expanded="false">
+            <i class="iconfont icon-hamburger"></i>
+        </button>
+    </div>
+    <nav id="menu-nav" class="hidden sm:flex flex-col">
+        
+        
+            <div class="menu-item menu-home" role="menuitem">
+                <a href="/.">
+                    <i class="iconfont icon-home" aria-hidden="true"></i>
+                    <span class="menu-title">Home</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-archives" role="menuitem">
+                <a href="/archives">
+                    <i class="iconfont icon-archive" aria-hidden="true"></i>
+                    <span class="menu-title">Archives</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-categories" role="menuitem">
+                <a href="/categories">
+                    <i class="iconfont icon-folder" aria-hidden="true"></i>
+                    <span class="menu-title">Categories</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-tags" role="menuitem">
+                <a href="/tags">
+                    <i class="iconfont icon-tag" aria-hidden="true"></i>
+                    <span class="menu-title">Tags</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-repository" role="menuitem">
+                <a href="/repository">
+                    <i class="iconfont icon-project" aria-hidden="true"></i>
+                    <span class="menu-title">Repository</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-links" role="menuitem">
+                <a href="/links">
+                    <i class="iconfont icon-friend" aria-hidden="true"></i>
+                    <span class="menu-title">Links</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-about" role="menuitem">
+                <a href="/about">
+                    <i class="iconfont icon-cup" aria-hidden="true"></i>
+                    <span class="menu-title">About</span>
+                </a>
+            </div>
+        
+        
+<div class="social-links flex sm:flex-col lg:hidden mt-5">
+    
+        <span class="social-item text-center">
+            <a target="_blank" rel="noopener" href="https://github.com/">
+                <i class="iconfont social-icon icon-github"></i>
+                <span class="menu-title hidden lg:inline">menu.github</span>
+            </a>
+        </span>
+    
+        <span class="social-item text-center">
+            <a target="_blank" rel="noopener" href="https://t.me/">
+                <i class="iconfont social-icon icon-telegram"></i>
+                <span class="menu-title hidden lg:inline">menu.telegram</span>
+            </a>
+        </span>
+    
+        <span class="social-item text-center">
+            <a target="_blank" rel="noopener" href="https://twitter.com/example">
+                <i class="iconfont social-icon icon-twitter"></i>
+                <span class="menu-title hidden lg:inline">menu.twitter</span>
+            </a>
+        </span>
+    
+        <span class="social-item text-center">
+            <a href="/atom.xml">
+                <i class="iconfont social-icon icon-rss"></i>
+                <span class="menu-title hidden lg:inline">menu.rss</span>
+            </a>
+        </span>
+    
+</div>
+
+
+    </nav>
+</header>
+
+        <section class="main-section">
+            
+    <main class="flex-1 px-4 py-14 md:px-5 lg:px-8 lg:py-4 relative min-h-screen">
+    
+
+    <article class="content article article-archives article-type-list" itemscope="">
+        <header class="article-header">
+            
+    
+        <h1 class="article-title text-lg" itemprop="name">
+            Java-Java-RestFul
+        </h1>
+    
+
+
+
+            <p class="article-meta mb-3 text-xs">
+                <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2020/09/01/Java-Restful/" class="article-date">
+	  <time datetime="2020-09-01T11:11:14.000Z" itemprop="datePublished">Sep 1</time>
+	</a>
+</span>
+
+                
+
+                
+
+                <span class="_partial/post-comment"><i class="icon icon-comment"></i>
+                    <a href="/2020/09/01/Java-Restful/#comments" class="article-comment-link">
+                        Comments
+                    </a>
+                </span>
+                
+
+            </p>
+        </header>
+        <div class="marked-body article-body">
+            <span id="more"></span>
+
+<h1 id="1-Spring-Boot-构建-Java-RestFul-Web-服务"><a href="#1-Spring-Boot-构建-Java-RestFul-Web-服务" class="headerlink" title="1-Spring Boot 构建 Java-RestFul Web 服务"></a>1-Spring Boot 构建 Java-RestFul Web 服务</h1><p>Spring Boot 通过不同的注解来支持前端的请求。</p>
+<ul>
+<li>@GetMapping，处理 Get 请求</li>
+<li>@PostMapping，处理 Post 请求</li>
+<li>@PutMapping，用于更新资源</li>
+<li>@DeleteMapping，处理删除请求</li>
+<li>@PatchMapping，用于更新部分资源</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">@GetMapping(value=&quot;/xxx&quot;)</span><br><span class="line">等价于</span><br><span class="line">@RequestMapping(value = &quot;/xxx&quot;,method = RequestMethod.GET)</span><br><span class="line"></span><br><span class="line">@PostMapping(value=&quot;/xxx&quot;)</span><br><span class="line">等价于</span><br><span class="line">@RequestMapping(value = &quot;/xxx&quot;,method = RequestMethod.POST)</span><br><span class="line"></span><br><span class="line">@PutMapping(value=&quot;/xxx&quot;)</span><br><span class="line">等价于</span><br><span class="line">@RequestMapping(value = &quot;/xxx&quot;,method = RequestMethod.PUT)</span><br><span class="line"></span><br><span class="line">@DeleteMapping(value=&quot;/xxx&quot;)</span><br><span class="line">等价于</span><br><span class="line">@RequestMapping(value = &quot;/xxx&quot;,method = RequestMethod.DELETE)</span><br><span class="line"></span><br><span class="line">@PatchMapping(value=&quot;/xxx&quot;)</span><br><span class="line">等价于</span><br><span class="line">@RequestMapping(value = &quot;/xxx&quot;,method = RequestMethod.PATCH)</span><br></pre></td></tr></table></figure>
+
+<p>我们使用 ConcurrentHashMap 来模拟存储 Message 对象的增删改查，AtomicLong 做为消息的自增组建来使用。ConcurrentHashMap 是 Java 中高性能并发的 Map 接口，AtomicLong 作用是对长整形进行原子操作，可以在高并场景下获取到唯一的 Long 值。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@Service(&quot;messageRepository&quot;)</span><br><span class="line">public class InMemoryMessageRepository implements MessageRepository &#123;</span><br><span class="line"></span><br><span class="line">    private static AtomicLong counter = new AtomicLong();</span><br><span class="line">    private final ConcurrentMap&lt;Long, Message&gt; messages = new ConcurrentHashMap&lt;&gt;();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="2-使用-Swagger-2-构建-Java-RestFul-APIs"><a href="#2-使用-Swagger-2-构建-Java-RestFul-APIs" class="headerlink" title="2-使用 Swagger 2 构建 Java-RestFul APIs"></a>2-使用 Swagger 2 构建 Java-RestFul APIs</h1><p>Swagger 是一系列 Java-RestFul API 的工具，通过 Swagger 可以获得项目的一种交互式文档，客户端 SDK 的自动生成等功能。使用 Spring Boot 集成 Swagger 的理念是，使用注解来标记出需要在 API 文档中展示的信息，Swagger 会根据项目中标记的注解来生成对应的 API 文档。Swagger 被号称世界上最流行的 API 工具，它提供了 API 管理的全套解决方案，</p>
+<h4 id="添加依赖包"><a href="#添加依赖包" class="headerlink" title="添加依赖包"></a>添加依赖包</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;io.springfox&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;springfox-swagger2&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;2.8.0&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;io.springfox&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;springfox-swagger-ui&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;2.8.0&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="创建-SwaggerConfig-配置类"><a href="#创建-SwaggerConfig-配置类" class="headerlink" title="创建 SwaggerConfig 配置类"></a>创建 SwaggerConfig 配置类</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@Configuration</span><br><span class="line">@EnableSwagger2</span><br><span class="line">public class SwaggerConfig &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在 SwaggerConfig 的类上添加两个注解：</p>
+<ul>
+<li>@Configuration，启动时加载此类</li>
+<li>@EnableSwagger2，表示此项目启用 Swagger API 文档</li>
+</ul>
+<p>在 SwaggerConfig 中添加两个方法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@Bean</span><br><span class="line">public Docket api() &#123;</span><br><span class="line">    return new Docket(DocumentationType.SWAGGER_2)</span><br><span class="line">            .apiInfo(apiInfo())</span><br><span class="line">            .select()</span><br><span class="line">            // 自行修改为自己的包路径</span><br><span class="line">            .apis(RequestHandlerSelectors.basePackage(&quot;com.neo.xxx&quot;))</span><br><span class="line">            .paths(PathSelectors.any())</span><br><span class="line">            .build();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>此方法使用 @Bean，在启动时初始化，返回实例 Docket（Swagger API 摘要），这里需要注意的是 .apis(RequestHandlerSelectors.basePackage(“com.neo.xxx”)) 指定需要扫描的包路径，只有此路径下的 Controller 类才会自动生成 Swagger API 文档。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">private ApiInfo apiInfo() &#123;</span><br><span class="line">    return new ApiInfoBuilder()</span><br><span class="line">            .title(&quot;客户管理&quot;)</span><br><span class="line">            .description(&quot;客户管理中心 API 1.0 操作文档&quot;)</span><br><span class="line">            //服务条款网址</span><br><span class="line">            .termsOfServiceUrl(&quot;http://www.ityouknow.com/&quot;)</span><br><span class="line">            .version(&quot;1.0&quot;)</span><br><span class="line">            .contact(new Contact(&quot;纯洁的微笑&quot;, &quot;http://www.ityouknow.com/&quot;, &quot;ityouknow@126.com&quot;))</span><br><span class="line">            .build();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这块配置相对重要一些，主要配置页面展示的基本信息包括，标题、描述、版本、服务条款、联系方式等，查看 ApiInfo 类的源码还会发现支持 license 配置等。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public class ApiInfo &#123;</span><br><span class="line">    public static final Contact DEFAULT_CONTACT = new Contact(&quot;&quot;, &quot;&quot;, &quot;&quot;);</span><br><span class="line">    public static final ApiInfo DEFAULT;</span><br><span class="line">    private final String version;</span><br><span class="line">    private final String title;</span><br><span class="line">    private final String description;</span><br><span class="line">    private final String termsOfServiceUrl;</span><br><span class="line">    private final String license;</span><br><span class="line">    private final String licenseUrl;</span><br><span class="line">    private final Contact contact;</span><br><span class="line">    private final List&lt;VendorExtension&gt; vendorExtensions;</span><br><span class="line">    //...</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>配置完成之后启动项目，在浏览器中输入网址 <a target="_blank" rel="noopener" href="http://localhost:8080/swagger-ui.html%EF%BC%8C%E5%8D%B3%E5%8F%AF%E7%9C%8B%E5%88%B0%E4%B8%8A%E9%9D%A2%E7%9A%84%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF">http://localhost:8080/swagger-ui.html，即可看到上面的配置信息</a></p>
+<h3 id="Swagger-常用注解"><a href="#Swagger-常用注解" class="headerlink" title="Swagger 常用注解"></a>Swagger 常用注解</h3><p>Swagger 通过注解表明该接口会生成文档，包括接口名、请求方法、参数、返回信息等，常用注解内容如下：</p>
+<table>
+<thead>
+<tr>
+<th align="left">作用范围</th>
+<th align="left">API</th>
+<th align="left">使用位置</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">协议集描述</td>
+<td align="left">@Api</td>
+<td align="left">用于 Controller 类上</td>
+</tr>
+<tr>
+<td align="left">协议描述</td>
+<td align="left">@ApiOperation</td>
+<td align="left">用在 Controller 的方法上</td>
+</tr>
+<tr>
+<td align="left">非对象参数集</td>
+<td align="left">@ApiImplicitParams</td>
+<td align="left">用在 Controller 的方法上</td>
+</tr>
+<tr>
+<td align="left">非对象参数描述</td>
+<td align="left">@ApiImplicitParam</td>
+<td align="left">用在 @ApiImplicitParams 的方法里边</td>
+</tr>
+<tr>
+<td align="left">响应集</td>
+<td align="left">@ApiResponses</td>
+<td align="left">用在 Controller 的方法上</td>
+</tr>
+<tr>
+<td align="left">响应信息参数</td>
+<td align="left">@ApiResponse</td>
+<td align="left">用在 @ApiResponses 里边</td>
+</tr>
+<tr>
+<td align="left">描述返回对象的意义</td>
+<td align="left">@ApiModel</td>
+<td align="left">用在返回对象类上</td>
+</tr>
+<tr>
+<td align="left">对象属性</td>
+<td align="left">@ApiModelProperty</td>
+<td align="left">用在出入参数对象的字段上</td>
+</tr>
+</tbody></table>
+<h4 id="Api-的使用"><a href="#Api-的使用" class="headerlink" title="@Api 的使用"></a>@Api 的使用</h4><p>Api 作用在 Controller 类上，做为 Swagger 文档资源，该注解将一个 Controller（Class）标注为一个 Swagger 资源（API）。在默认情况下，Swagger-Core 只会扫描解析具有 @Api 注解的类，而会自动忽略其他类别资源（JAX-RS endpoints、Servlets 等）的注解。</p>
+<p>使用示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@Api(value = &quot;消息&quot;, description = &quot;消息操作 API&quot;, position = 100, protocols = &quot;http&quot;)</span><br><span class="line">@RestController</span><br><span class="line">@RequestMapping(&quot;/&quot;)</span><br><span class="line">public class MessageController &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="left">属性名称</th>
+<th align="left">备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">value</td>
+<td align="left">url 的路径值</td>
+</tr>
+<tr>
+<td align="left">tags</td>
+<td align="left">如果设置这个值，value 的值会被覆盖</td>
+</tr>
+<tr>
+<td align="left">description</td>
+<td align="left">对 API 资源的描述</td>
+</tr>
+<tr>
+<td align="left">produces</td>
+<td align="left">For example, “application&#x2F;json, application&#x2F;xml”</td>
+</tr>
+<tr>
+<td align="left">consumes</td>
+<td align="left">For example, “application&#x2F;json, application&#x2F;xml”</td>
+</tr>
+<tr>
+<td align="left">protocols</td>
+<td align="left">Possible values: http, https, ws, wss</td>
+</tr>
+<tr>
+<td align="left">authorizations</td>
+<td align="left">高级特性认证时配置</td>
+</tr>
+<tr>
+<td align="left">hidden</td>
+<td align="left">配置为 true 将在文档中隐藏</td>
+</tr>
+</tbody></table>
+<p>自动将 MessageController 内的方法都添加了映射，并标明了每种方法的请求方式。</p>
+<h4 id="ApiOperation-的使用"><a href="#ApiOperation-的使用" class="headerlink" title="@ApiOperation 的使用"></a>@ApiOperation 的使用</h4><p>ApiOperation 定义在方法上，描述方法名、方法解释、返回信息、标记等信息。</p>
+<p>使用示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@ApiOperation(</span><br><span class="line">            value = &quot;消息列表&quot;,</span><br><span class="line">            notes = &quot;完整的消息内容列表&quot;,</span><br><span class="line">            produces=&quot;application/json, application/xml&quot;,</span><br><span class="line">            consumes=&quot;application/json, application/xml&quot;,</span><br><span class="line">            response = List.class)</span><br><span class="line">@GetMapping(value = &quot;messages&quot;)</span><br><span class="line">public List&lt;Message&gt; list() &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="left">属性名称</th>
+<th align="left">备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">value</td>
+<td align="left">url 的路径值</td>
+</tr>
+<tr>
+<td align="left">tags</td>
+<td align="left">如果设置这个值、value的 值会被覆盖</td>
+</tr>
+<tr>
+<td align="left">produces</td>
+<td align="left">For example, “application&#x2F;json, application&#x2F;xml”</td>
+</tr>
+<tr>
+<td align="left">consumes</td>
+<td align="left">For example, “application&#x2F;json, application&#x2F;xml”</td>
+</tr>
+<tr>
+<td align="left">protocols</td>
+<td align="left">Possible values: http, https, ws, wss</td>
+</tr>
+<tr>
+<td align="left">authorizations</td>
+<td align="left">高级特性认证时配置</td>
+</tr>
+<tr>
+<td align="left">hidden</td>
+<td align="left">配置为 true 将在文档中隐藏</td>
+</tr>
+<tr>
+<td align="left">response</td>
+<td align="left">返回的对象</td>
+</tr>
+<tr>
+<td align="left">responseContainer</td>
+<td align="left">这些对象是有效的 “List”, “Set” or “Map”，其他无效</td>
+</tr>
+<tr>
+<td align="left">httpMethod</td>
+<td align="left">“GET”、”HEAD”、”POST”、”PUT”、”DELETE”、”OPTIONS” and “PATCH”</td>
+</tr>
+<tr>
+<td align="left">code</td>
+<td align="left">http 的状态码 默认 200</td>
+</tr>
+<tr>
+<td align="left">extensions</td>
+<td align="left">扩展属性</td>
+</tr>
+</tbody></table>
+<p>重启项目之后，在浏览器中输入网址 <a target="_blank" rel="noopener" href="http://localhost:8080/swagger-ui.html#/message-controller/listUsingGET%EF%BC%8C%E5%8F%AF%E4%BB%A5%E7%9C%8B%E5%88%B0%E5%A6%82%E4%B8%8B%E6%95%88%E6%9E%9C%EF%BC%9A">http://localhost:8080/swagger-ui.html#/message-controller/listUsingGET，可以看到如下效果：</a></p>
+<p><img src="/images/Java-RestFul/1.png" alt="1"></p>
+<h4 id="ApiImplicitParams-和-ApiImplicitParam-的使用"><a href="#ApiImplicitParams-和-ApiImplicitParam-的使用" class="headerlink" title="@ApiImplicitParams 和 @ApiImplicitParam 的使用"></a>@ApiImplicitParams 和 @ApiImplicitParam 的使用</h4><p>@ApiImplicitParams 用于描述方法的返回信息，和 @ApiImplicitParam 注解配合使用；@ApiImplicitParam 用来描述具体某一个参数的信息，包括参数的名称、类型、限制等信息。</p>
+<p>使用示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@ApiOperation(value = &quot;添加消息&quot;, notes = &quot;根据参数创建消息&quot;)</span><br><span class="line">    @ApiImplicitParams(&#123;</span><br><span class="line">            @ApiImplicitParam(name = &quot;id&quot;, value = &quot;消息 ID&quot;, required = true, dataType = &quot;Long&quot;, paramType = &quot;query&quot;),</span><br><span class="line">            @ApiImplicitParam(name = &quot;text&quot;, value = &quot;正文&quot;, required = true, dataType = &quot;String&quot;, paramType = &quot;query&quot;),</span><br><span class="line">            @ApiImplicitParam(name = &quot;summary&quot;, value = &quot;摘要&quot;, required = false, dataType = &quot;String&quot;, paramType = &quot;query&quot;),</span><br><span class="line">&#125;)</span><br><span class="line">@PostMapping(value = &quot;message&quot;)</span><br><span class="line">public Message create(Message message) &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="left">属性名称</th>
+<th align="left">备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">name</td>
+<td align="left">接收参数名</td>
+</tr>
+<tr>
+<td align="left">value</td>
+<td align="left">接收参数的意义描述</td>
+</tr>
+<tr>
+<td align="left">required</td>
+<td align="left">参数是否必填值为 true 或者 false</td>
+</tr>
+<tr>
+<td align="left">dataType</td>
+<td align="left">参数的数据类型只作为标志说明，并没有实际验证</td>
+</tr>
+<tr>
+<td align="left">paramType</td>
+<td align="left">查询参数类型，其值： path 以地址的形式提交数据 query 直接跟参数完成自动映射赋 body 以流的形式提交，仅支持 POST header 参数在 request headers 里边提交 form 以 form 表单的形式提交 仅支持 POST</td>
+</tr>
+<tr>
+<td align="left">defaultValue</td>
+<td align="left">默认值</td>
+</tr>
+</tbody></table>
+<p>在浏览器中输入网址 <a target="_blank" rel="noopener" href="http://localhost:8080/swagger-ui.html#/message-controller/createUsingPOST">http://localhost:8080/swagger-ui.html#/message-controller/createUsingPOST</a></p>
+<h4 id="ApiResponses-和-ApiResponse-的使用"><a href="#ApiResponses-和-ApiResponse-的使用" class="headerlink" title="@ApiResponses 和 @ApiResponse 的使用"></a>@ApiResponses 和 @ApiResponse 的使用</h4><p>@ApiResponses 主要封装方法的返回信息和 @ApiResponse 配置起来使用，@ApiResponse 定义返回的具体信息包括返回码、返回信息等。</p>
+<p>使用示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">@ApiOperation(value = &quot;修改消息&quot;, notes = &quot;根据参数修改消息&quot;)</span><br><span class="line">@PutMapping(value = &quot;message&quot;)</span><br><span class="line">@ApiResponses(&#123;</span><br><span class="line">        @ApiResponse(code = 100, message = &quot;请求参数有误&quot;),</span><br><span class="line">        @ApiResponse(code = 101, message = &quot;未授权&quot;),</span><br><span class="line">        @ApiResponse(code = 103, message = &quot;禁止访问&quot;),</span><br><span class="line">        @ApiResponse(code = 104, message = &quot;请求路径不存在&quot;),</span><br><span class="line">        @ApiResponse(code = 200, message = &quot;服务器内部错误&quot;)</span><br><span class="line">&#125;)</span><br><span class="line">public Message modify(Message message) &#123;</span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="left">属性名称</th>
+<th align="left">备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">code</td>
+<td align="left">http 的状态码</td>
+</tr>
+<tr>
+<td align="left">message</td>
+<td align="left">描述</td>
+</tr>
+<tr>
+<td align="left">response</td>
+<td align="left">默认响应类 Void</td>
+</tr>
+<tr>
+<td align="left">reference</td>
+<td align="left">参考</td>
+</tr>
+<tr>
+<td align="left">responseHeaders</td>
+<td align="left">封装返回信息</td>
+</tr>
+<tr>
+<td align="left">responseContainer</td>
+<td align="left">字符串</td>
+</tr>
+</tbody></table>
+<p>在浏览器中输入网址 <a target="_blank" rel="noopener" href="http://localhost:8080/swagger-ui.html#/message-controller/modifyUsingPUT">http://localhost:8080/swagger-ui.html#/message-controller/modifyUsingPUT</a></p>
+<h4 id="ApiModel-和-ApiModelProperty-的使用"><a href="#ApiModel-和-ApiModelProperty-的使用" class="headerlink" title="@ApiModel 和 @ApiModelProperty 的使用"></a>@ApiModel 和 @ApiModelProperty 的使用</h4><p>在实际的项目中我们常常会封装一个对象作为返回值，@ApiModel 就是负责描述对象的信息，@ApiModelProperty 负责描述对象中属性的相关内容。</p>
+<p>使用示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">@ApiModel(description = &quot;响应对象&quot;)</span><br><span class="line">public class BaseResult&lt;T&gt; &#123;</span><br><span class="line">    private static final int SUCCESS_CODE = 0;</span><br><span class="line">    private static final String SUCCESS_MESSAGE = &quot;成功&quot;;</span><br><span class="line"></span><br><span class="line">    @ApiModelProperty(value = &quot;响应码&quot;, name = &quot;code&quot;, required = true, example = &quot;&quot; + SUCCESS_CODE)</span><br><span class="line">    private int code;</span><br><span class="line">    @ApiModelProperty(value = &quot;响应消息&quot;, name = &quot;msg&quot;, required = true, example = SUCCESS_MESSAGE)</span><br><span class="line">    private String msg;</span><br><span class="line">    @ApiModelProperty(value = &quot;响应数据&quot;, name = &quot;data&quot;)</span><br><span class="line">    private T data;</span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>属性配置如下表所示：</p>
+<table>
+<thead>
+<tr>
+<th align="left">属性名称</th>
+<th align="left">备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">value</td>
+<td align="left">属性描述</td>
+</tr>
+<tr>
+<td align="left">name</td>
+<td align="left">如果配置覆盖属性名称</td>
+</tr>
+<tr>
+<td align="left">allowableValues</td>
+<td align="left">允许的值</td>
+</tr>
+<tr>
+<td align="left">access</td>
+<td align="left">可以不配置</td>
+</tr>
+<tr>
+<td align="left">notes</td>
+<td align="left">没有使用</td>
+</tr>
+<tr>
+<td align="left">dataType</td>
+<td align="left">数据类型</td>
+</tr>
+<tr>
+<td align="left">required</td>
+<td align="left">是否为必传参数</td>
+</tr>
+<tr>
+<td align="left">position</td>
+<td align="left">显示的顺序位置</td>
+</tr>
+<tr>
+<td align="left">hidden</td>
+<td align="left">是否因此</td>
+</tr>
+<tr>
+<td align="left">example</td>
+<td align="left">举例</td>
+</tr>
+<tr>
+<td align="left">readOnly</td>
+<td align="left">只读</td>
+</tr>
+<tr>
+<td align="left">reference</td>
+<td align="left">引用</td>
+</tr>
+</tbody></table>
+<p>这样我们在 Controller 中封装返还信息时就可以这样操作：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@PatchMapping(value=&quot;/message/text&quot;)</span><br><span class="line">public BaseResult&lt;Message&gt; patch(Message message) &#123;</span><br><span class="line">    Message messageResult=this.messageRepository.updateText(message);</span><br><span class="line">    return BaseResult.successWithData(messageResult);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在浏览器中输入网址 <a target="_blank" rel="noopener" href="http://localhost:8080/swagger-ui.html%EF%BC%8C%E7%82%B9%E8%A7%A3%E9%A1%B5%E9%9D%A2">http://localhost:8080/swagger-ui.html，点解页面</a> Models 折叠项</p>
+<p>灵活地利用这些注解就可以自动构建出清晰的 API 文档。</p>
+<h3 id="Try-it-out"><a href="#Try-it-out" class="headerlink" title="Try it out"></a>Try it out</h3><p>使用 Swagger 创建的在线 API 还有一个非常强大的功能，可以在页面直接测试接口的可用性，这样在前端和后端接口调试出现问题时，可以非常方便地利用此功能进行接口验证。在上面参数讲解过程中，我们发现每个接口描述右侧都有一个按钮 try it out，单击 try it out 按钮即可进入表单页面</p>
+<p>在表单页面添加相关字段后，单击“Execute”按钮就会将请求发送到后台，从而进行接口验证。</p>
+<p>在后端调整 Swagger 方法上对应参数，即可看到 curl 命令参数的变化。</p>
+
+        </div>
+        
+<blockquote class="copyright">
+    <p><strong>Link to this article : </strong><a class="permalink" href="http://yoursite.com/2020/09/01/Java-Restful/">http://yoursite.com/2020/09/01/Java-Restful/</a></p>
+    <p><strong>This article is available under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)</a> License</strong></p>
+</blockquote>
+
+
+    </article>
+    
+    <section id="comments">
+        
+    </section>
+
+
+    
+
+</main>
+
+
+<aside style="" id="sidebar" class="aside aside-fixture">
+    <div class="toc-sidebar">
+        <nav id="toc" class="article-toc">
+            <h3 class="toc-title">Catalogue</h3>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-Spring-Boot-%E6%9E%84%E5%BB%BA-Java-RestFul-Web-%E6%9C%8D%E5%8A%A1"><span class="toc-number">1.</span> <span class="toc-text">1-Spring Boot 构建 Java-RestFul Web 服务</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E4%BD%BF%E7%94%A8-Swagger-2-%E6%9E%84%E5%BB%BA-Java-RestFul-APIs"><span class="toc-number">2.</span> <span class="toc-text">2-使用 Swagger 2 构建 Java-RestFul APIs</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E4%BE%9D%E8%B5%96%E5%8C%85"><span class="toc-number">2.0.0.1.</span> <span class="toc-text">添加依赖包</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA-SwaggerConfig-%E9%85%8D%E7%BD%AE%E7%B1%BB"><span class="toc-number">2.0.0.2.</span> <span class="toc-text">创建 SwaggerConfig 配置类</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Swagger-%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3"><span class="toc-number">2.0.1.</span> <span class="toc-text">Swagger 常用注解</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Api-%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">2.0.1.1.</span> <span class="toc-text">@Api 的使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ApiOperation-%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">2.0.1.2.</span> <span class="toc-text">@ApiOperation 的使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ApiImplicitParams-%E5%92%8C-ApiImplicitParam-%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">2.0.1.3.</span> <span class="toc-text">@ApiImplicitParams 和 @ApiImplicitParam 的使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ApiResponses-%E5%92%8C-ApiResponse-%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">2.0.1.4.</span> <span class="toc-text">@ApiResponses 和 @ApiResponse 的使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ApiModel-%E5%92%8C-ApiModelProperty-%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">2.0.1.5.</span> <span class="toc-text">@ApiModel 和 @ApiModelProperty 的使用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Try-it-out"><span class="toc-number">2.0.2.</span> <span class="toc-text">Try it out</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </div>
+</aside>
+
+
+
+
+
+        </section>
+        <footer class="hidden lg:block fixed bottom-0 left-0 sm:w-1/12 lg:w-1/6 bg-gray-100 z-40">
+    
+    <div class="footer-social-links">
+        
+            <a target="_blank" rel="noopener" href="https://github.com/">
+                <i class="iconfont icon-github"></i>
+            </a>
+        
+            <a target="_blank" rel="noopener" href="https://t.me/">
+                <i class="iconfont icon-telegram"></i>
+            </a>
+        
+            <a target="_blank" rel="noopener" href="https://twitter.com/example">
+                <i class="iconfont icon-twitter"></i>
+            </a>
+        
+            <a href="/atom.xml">
+                <i class="iconfont icon-rss"></i>
+            </a>
+        
+    </div>
+    
+    
+</footer>
+
+        <div id="mask" class="hidden mask fixed inset-0 bg-gray-900 opacity-75 z-40"></div>
+        <div id="search-view-container" class="hidden shadow-xl"></div>
+        
+<script src="/js/dom-event.min.js"></script>
+
+
+
+<script src="/js/local-search.min.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/js/lightgallery.min.js"></script>
+    
+<script src="/js/light-gallery.min.js"></script>
+
+
+
+
+
+
+    </body>
+</html>

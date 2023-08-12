@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html  lang="english" >
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+    <title>Java-SpringBoot-邮件系统 | Tukekenulia</title>
+    <meta name="description" content="使用 Spring Boot 开发邮件系统项目名:sendmail    实线代表 &amp;#x6e;&amp;#101;&amp;#111;&amp;#64;&amp;#49;&amp;#x32;&amp;#54;&amp;#x2e;&amp;#99;&amp;#x6f;&amp;#109; 发送邮件给 &amp;#105;&amp;#x74;&amp;#99;&amp;#x6c;&amp;#x75;&amp;#98;&amp;#x40;&amp;#x61;&amp;#97;&amp;#x2e;&amp;#x63;&amp;#x6f;&amp;#109;；虚线代表 &amp;#x69;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java-SpringBoot-邮件系统">
+<meta property="og:url" content="http://yoursite.com/2020/10/01/Java-SpringBoot-%E9%82%AE%E4%BB%B6%E7%B3%BB%E7%BB%9F/index.html">
+<meta property="og:site_name" content="Tukekenulia">
+<meta property="og:description" content="使用 Spring Boot 开发邮件系统项目名:sendmail    实线代表 &amp;#x6e;&amp;#101;&amp;#111;&amp;#64;&amp;#49;&amp;#x32;&amp;#54;&amp;#x2e;&amp;#99;&amp;#x6f;&amp;#109; 发送邮件给 &amp;#105;&amp;#x74;&amp;#99;&amp;#x6c;&amp;#x75;&amp;#98;&amp;#x40;&amp;#x61;&amp;#97;&amp;#x2e;&amp;#x63;&amp;#x6f;&amp;#109;；虚线代表 &amp;#x69;">
+<meta property="og:locale">
+<meta property="og:image" content="http://yoursite.com/images/Java-SpringBoot-%E9%82%AE%E4%BB%B6%E7%B3%BB%E7%BB%9F/1.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-SpringBoot-%E9%82%AE%E4%BB%B6%E7%B3%BB%E7%BB%9F/2.png">
+<meta property="og:image" content="http://yoursite.com/images/Java-SpringBoot-%E9%82%AE%E4%BB%B6%E7%B3%BB%E7%BB%9F/3.png">
+<meta property="article:published_time" content="2020-10-01T06:01:22.000Z">
+<meta property="article:modified_time" content="2023-08-12T07:19:05.743Z">
+<meta property="article:author" content="Tukeke">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/images/Java-SpringBoot-%E9%82%AE%E4%BB%B6%E7%B3%BB%E7%BB%9F/1.png">
+
+    
+    <link rel="icon" href="images/icon.png" type="image/x-icon">
+
+    
+<link rel="stylesheet" href="/css/common.min.css">
+
+
+
+    
+    
+    
+    
+        <link href="//cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/css/lightgallery.min.css" rel="stylesheet">
+    
+    
+    
+<link rel="stylesheet" href="/css/iconfont.min.css">
+
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+    <body>
+        <header class="header header-fixture">
+    <div class="profile-search-wrap flex sm:block">
+        
+        
+        <div class="profile sm:text-center md:px-1 lg:px-3 sm:pb-4 sm:pt-6">
+            <a id="avatar" role="link" href="https://github.com/" class="inline-block lg:w-16 lg:h-16 w-8 h-8 m-2" target="_blank" rel="noopener" rel="noreferrer" >
+                <img src="https://www.gravatar.com/avatar/0bc83cb571cd1c50ba6f3e8a78ef1346?s=128" class="rounded-full" alt="avatar">
+            </a>
+            <h2 id="name" class="hidden lg:block">Tukeke</h2>
+            <h3 id="title" class="hidden lg:block">Student &amp; Coder</h3>
+            
+            <small id="location" class="hidden lg:block">
+                <i class="iconfont icon-map-icon"></i>
+                Wenzhou, China
+            </small>
+            
+        </div>
+        
+        
+<div class="search flex-1 flex lg:inline-block sm:hidden lg:px-4 lg:mt-2 lg:mb-4 lg:w-full">
+    <form id="search-form" class="my-auto flex-1 lg:border lg:border-solid lg:border-gray-200">
+        <div class="input-group table bg-gray-100 lg:bg-white w-full">
+            <input id="search-input" type="text" placeholder="Search" class="inline-block w-full bg-gray-100 lg:bg-white p-1">
+            <span class="table-cell">
+                <button name="search tigger button" disabled>
+                    <i class="iconfont icon-search m-2"></i>
+                </button>
+            </span>
+        </div>
+    </form>
+        
+<div id="content-json" data-placeholder="Search" class="invisible hidden">/content.json</div>
+<script id="search-teamplate" type="text/html" data-path="/content.json">
+    <div>
+        <div class="search-header bg-gray-400">
+            <input id="actual-search-input" model="keyword" ref="input" class="inline-block w-full h-10 px-2 py-1" placeholder="Search" type="text">
+        </div>
+        <div class="search-result bg-gray-200">
+            {{#each searchPosts}}
+            <a href="/{{ path }}" class="result-item block px-2 pb-3 mb-1 pt-1 hover:bg-indigo-100">
+                <i class="iconfont icon-file"></i>
+                <h1 class="result-title inline font-medium text-lg">{{ title }}</h1>
+                <p class="result-content text-gray-600 text-sm">{{{ text }}}</p>
+            </a>
+            {{/each}}
+        </div>
+    </div>
+</script>
+
+</div>
+
+
+        <button name="menu toogle button" id="menu-toggle-btn" class="block sm:hidden p-3" role="button" aria-expanded="false">
+            <i class="iconfont icon-hamburger"></i>
+        </button>
+    </div>
+    <nav id="menu-nav" class="hidden sm:flex flex-col">
+        
+        
+            <div class="menu-item menu-home" role="menuitem">
+                <a href="/.">
+                    <i class="iconfont icon-home" aria-hidden="true"></i>
+                    <span class="menu-title">Home</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-archives" role="menuitem">
+                <a href="/archives">
+                    <i class="iconfont icon-archive" aria-hidden="true"></i>
+                    <span class="menu-title">Archives</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-categories" role="menuitem">
+                <a href="/categories">
+                    <i class="iconfont icon-folder" aria-hidden="true"></i>
+                    <span class="menu-title">Categories</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-tags" role="menuitem">
+                <a href="/tags">
+                    <i class="iconfont icon-tag" aria-hidden="true"></i>
+                    <span class="menu-title">Tags</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-repository" role="menuitem">
+                <a href="/repository">
+                    <i class="iconfont icon-project" aria-hidden="true"></i>
+                    <span class="menu-title">Repository</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-links" role="menuitem">
+                <a href="/links">
+                    <i class="iconfont icon-friend" aria-hidden="true"></i>
+                    <span class="menu-title">Links</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-about" role="menuitem">
+                <a href="/about">
+                    <i class="iconfont icon-cup" aria-hidden="true"></i>
+                    <span class="menu-title">About</span>
+                </a>
+            </div>
+        
+        
+<div class="social-links flex sm:flex-col lg:hidden mt-5">
+    
+        <span class="social-item text-center">
+            <a target="_blank" rel="noopener" href="https://github.com/">
+                <i class="iconfont social-icon icon-github"></i>
+                <span class="menu-title hidden lg:inline">menu.github</span>
+            </a>
+        </span>
+    
+        <span class="social-item text-center">
+            <a target="_blank" rel="noopener" href="https://t.me/">
+                <i class="iconfont social-icon icon-telegram"></i>
+                <span class="menu-title hidden lg:inline">menu.telegram</span>
+            </a>
+        </span>
+    
+        <span class="social-item text-center">
+            <a target="_blank" rel="noopener" href="https://twitter.com/example">
+                <i class="iconfont social-icon icon-twitter"></i>
+                <span class="menu-title hidden lg:inline">menu.twitter</span>
+            </a>
+        </span>
+    
+        <span class="social-item text-center">
+            <a href="/atom.xml">
+                <i class="iconfont social-icon icon-rss"></i>
+                <span class="menu-title hidden lg:inline">menu.rss</span>
+            </a>
+        </span>
+    
+</div>
+
+
+    </nav>
+</header>
+
+        <section class="main-section">
+            
+    <main class="flex-1 px-4 py-14 md:px-5 lg:px-8 lg:py-4 relative min-h-screen">
+    
+
+    <article class="content article article-archives article-type-list" itemscope="">
+        <header class="article-header">
+            
+    
+        <h1 class="article-title text-lg" itemprop="name">
+            Java-SpringBoot-邮件系统
+        </h1>
+    
+
+
+
+            <p class="article-meta mb-3 text-xs">
+                <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2020/10/01/Java-SpringBoot-%E9%82%AE%E4%BB%B6%E7%B3%BB%E7%BB%9F/" class="article-date">
+	  <time datetime="2020-10-01T06:01:22.000Z" itemprop="datePublished">Oct 1</time>
+	</a>
+</span>
+
+                
+
+                
+
+                <span class="_partial/post-comment"><i class="icon icon-comment"></i>
+                    <a href="/2020/10/01/Java-SpringBoot-%E9%82%AE%E4%BB%B6%E7%B3%BB%E7%BB%9F/#comments" class="article-comment-link">
+                        Comments
+                    </a>
+                </span>
+                
+
+            </p>
+        </header>
+        <div class="marked-body article-body">
+            <span id="more"></span>
+
+<h2 id="使用-Spring-Boot-开发邮件系统"><a href="#使用-Spring-Boot-开发邮件系统" class="headerlink" title="使用 Spring Boot 开发邮件系统"></a>使用 Spring Boot 开发邮件系统</h2><p>项目名:sendmail</p>
+<p><img src="/images/Java-SpringBoot-%E9%82%AE%E4%BB%B6%E7%B3%BB%E7%BB%9F/1.png" alt="1"></p>
+<p><img src="/images/Java-SpringBoot-%E9%82%AE%E4%BB%B6%E7%B3%BB%E7%BB%9F/2.png" alt="2"></p>
+<blockquote>
+<p>实线代表 <a href="mailto:&#x6e;&#101;&#111;&#64;&#49;&#x32;&#54;&#x2e;&#99;&#x6f;&#109;">&#x6e;&#101;&#111;&#64;&#49;&#x32;&#54;&#x2e;&#99;&#x6f;&#109;</a> 发送邮件给 <a href="mailto:&#105;&#x74;&#99;&#x6c;&#x75;&#98;&#x40;&#x61;&#97;&#x2e;&#x63;&#x6f;&#109;">&#105;&#x74;&#99;&#x6c;&#x75;&#98;&#x40;&#x61;&#97;&#x2e;&#x63;&#x6f;&#109;</a>；虚线代表 <a href="mailto:&#x69;&#116;&#99;&#x6c;&#x75;&#x62;&#64;&#97;&#x61;&#46;&#x63;&#111;&#109;">&#x69;&#116;&#99;&#x6c;&#x75;&#x62;&#64;&#97;&#x61;&#46;&#x63;&#111;&#109;</a> 发送邮件给 <a href="mailto:&#110;&#x65;&#x6f;&#64;&#x31;&#50;&#54;&#46;&#99;&#111;&#x6d;">&#110;&#x65;&#x6f;&#64;&#x31;&#50;&#54;&#46;&#99;&#111;&#x6d;</a>。</p>
+</blockquote>
+<h3 id="邮件发送流程"><a href="#邮件发送流程" class="headerlink" title="邮件发送流程"></a>邮件发送流程</h3><ul>
+<li>发信人在用户代理上编辑邮件，并写清楚收件人的邮箱地址；</li>
+<li>用户代理根据发信人编辑的信息，生成一封符合邮件格式的邮件；</li>
+<li>用户代理把邮件发送到发信人的邮件服务器上，邮件服务器上面有一个缓冲队列，发送到邮件服务器上面的邮件都会加入到缓冲队列中，等待邮件服务器上的 SMTP 客户端进行发送；</li>
+<li>发信人的邮件服务器使用 SMTP 协议把这封邮件发送到收件人的邮件服务器上；</li>
+<li>收件人的邮件服务器收到邮件后，把这封邮件放到收件人在这个服务器上的信箱中；</li>
+<li>收件人使用用户代理来收取邮件，首先用户代理使用 POP 3 协议来连接收件人所在的邮件服务器，身份验证成功后，用户代理就可以把邮件服务器上面的收件人邮箱里面的邮件读取出来，并展示给收件人。</li>
+</ul>
+<p>最早期的时候使用 JavaMail 的相关 API 来开发，需要自己去封装消息体，代码量比较庞大；后来 Spring 推出了 JavaMailSender 来简化邮件发送过程，JavaMailSender 提供了强大的邮件发送功能，可支持各种类型的邮件发送。</p>
+<p>现在 Spring Boot 在 JavaMailSender 的基础上又进行了封装，就有了现在的 spring-boot-starter-mail，让邮件发送流程更加简洁和完善。下面将介绍如何使用 Spring Boot 发送邮件。</p>
+<h4 id="pom-包配置"><a href="#pom-包配置" class="headerlink" title="pom 包配置"></a>pom 包配置</h4><p>引入加 spring-boot-starter-mail 依赖包：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span> </span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-mail<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h4><p>在 application.properties 中添加邮箱配置，不同的邮箱参数稍有不同，下面列举几个常用邮箱配置。</p>
+<p>163 邮箱配置：</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring.mail.host</span>=<span class="string">smtp.163.com //邮箱服务器地址</span></span><br><span class="line"><span class="attr">spring.mail.username</span>=<span class="string">xxx@oo.com //用户名</span></span><br><span class="line"><span class="attr">spring.mail.password</span>=<span class="string">xxyyooo    //密码</span></span><br><span class="line"><span class="attr">spring.mail.default-encoding</span>=<span class="string">UTF-8</span></span><br><span class="line"></span><br><span class="line"><span class="attr">//超时时间，可选</span></span><br><span class="line"><span class="attr">spring.mail.properties.mail.smtp.connectiontimeout</span>=<span class="string">5000  </span></span><br><span class="line"><span class="attr">spring.mail.properties.mail.smtp.timeout</span>=<span class="string">3000</span></span><br><span class="line"><span class="attr">spring.mail.properties.mail.smtp.writetimeout</span>=<span class="string">5000</span></span><br><span class="line"><span class="attr">复制</span></span><br></pre></td></tr></table></figure>
+
+<p>126 邮箱配置：</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring.mail.host</span>=<span class="string">smtp.126.com</span></span><br><span class="line"><span class="attr">spring.mail.username</span>=<span class="string">yourEmail@126.com</span></span><br><span class="line"><span class="attr">spring.mail.password</span>=<span class="string">yourPassword</span></span><br><span class="line"><span class="attr">spring.mail.default-encoding</span>=<span class="string">UTF-8</span></span><br><span class="line"><span class="attr">复制</span></span><br></pre></td></tr></table></figure>
+
+<p>QQ 邮箱配置如下：</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring.mail.host</span>=<span class="string">smtp.qq.com</span></span><br><span class="line"><span class="attr">spring.mail.username</span>=<span class="string">ityouknow@qq.com</span></span><br><span class="line"><span class="attr">spring.mail.password</span>=<span class="string">yourPassword</span></span><br><span class="line"><span class="attr">spring.mail.default-encoding</span>=<span class="string">UTF-8</span></span><br><span class="line"><span class="attr">复制</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：测试时需要将 spring.mail.username 和 spring.mail.password 改成自己邮箱对应的登录名和密码，这里的密码不是邮箱的登录密码，是开启 POP 3 之后设置的客户端授权密码。</p>
+</blockquote>
+<p><strong>开启 POP 3 &#x2F; SMTP 服务、IMAP &#x2F; SMTP 服务</strong></p>
+<p><img src="/images/Java-SpringBoot-%E9%82%AE%E4%BB%B6%E7%B3%BB%E7%BB%9F/3.png" alt="3"></p>
+<p>设置客户端授权密码一般需求手机验证码验证。</p>
+<h4 id="文本邮件发送"><a href="#文本邮件发送" class="headerlink" title="文本邮件发送"></a>文本邮件发送</h4><p>Spring 已经帮我们内置了 JavaMailSender，直接在项目中引用即可，封装一个 MailService 类来实现普通的邮件发送方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MailServiceImpl</span> <span class="keyword">implements</span> <span class="title class_">MailService</span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="type">Logger</span> <span class="variable">logger</span> <span class="operator">=</span> LoggerFactory.getLogger(<span class="built_in">this</span>.getClass());</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> JavaMailSender mailSender;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Value(&quot;$&#123;spring.mail.username&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> String from;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sendSimpleMail</span><span class="params">(String to, String subject, String content)</span> &#123;</span><br><span class="line">        <span class="type">SimpleMailMessage</span> <span class="variable">message</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SimpleMailMessage</span>();</span><br><span class="line">        message.setFrom(from);</span><br><span class="line">        message.setTo(to);</span><br><span class="line">        message.setSubject(subject);</span><br><span class="line">        message.setText(content);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            mailSender.send(message);</span><br><span class="line">            logger.info(<span class="string">&quot;简单邮件已经发送。&quot;</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            logger.error(<span class="string">&quot;发送简单邮件时发生异常！&quot;</span>, e);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>文本邮件抄送使用：message.copyTo(copyTo) 来实现。</p>
+</blockquote>
+<ul>
+<li>from，即为邮件发送者，一般设置在配置文件中</li>
+<li>to，邮件接收者，此参数可以为数组，同时发送多人</li>
+<li>subject，邮件主题</li>
+<li>content，邮件的主体</li>
+</ul>
+<p>邮件发送者 from 一般采用固定的形式写到配置文件中。</p>
+<h4 id="编写-test-类进行测试"><a href="#编写-test-类进行测试" class="headerlink" title="编写 test 类进行测试"></a>编写 test 类进行测试</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RunWith(SpringRunner.class)</span></span><br><span class="line"><span class="meta">@Spring</span> BootTest</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MailServiceTest</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> MailService MailService;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testSimpleMail</span><span class="params">()</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        mailService.sendSimpleMail(<span class="string">&quot;ityouknow@126.com&quot;</span>,<span class="string">&quot;这是一封简单邮件&quot;</span>,<span class="string">&quot;大家好，这是我的第一封邮件！&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>稍微等待几秒，就可以在邮箱中找到此邮件内容了，至此一个简单的文本邮件发送就完成了。</p>
+<h3 id="富文本邮件"><a href="#富文本邮件" class="headerlink" title="富文本邮件"></a>富文本邮件</h3><p>在日常使用的过程中，我们通常在邮件中加入图片或者附件来丰富邮件的内容，下面将介绍如何使用 Spring Boot 来发送富文本邮件。</p>
+<h4 id="发送-HTML-格式邮件"><a href="#发送-HTML-格式邮件" class="headerlink" title="发送 HTML 格式邮件"></a>发送 HTML 格式邮件</h4><p>邮件发送支持以 HTML 语法去构建自定义的邮件格式，Spring Boot 支持使用 HTML 发送邮件。</p>
+<p>我们在 MailService 中添加支持 HTML 邮件发送的方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sendHtmlMail</span><span class="params">(String to, String subject, String content)</span> &#123;</span><br><span class="line">    <span class="type">MimeMessage</span> <span class="variable">message</span> <span class="operator">=</span> mailSender.createMimeMessage();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="comment">//true 表示需要创建一个 multipart message</span></span><br><span class="line">        <span class="type">MimeMessageHelper</span> <span class="variable">helper</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">MimeMessageHelper</span>(message, <span class="literal">true</span>);</span><br><span class="line">        helper.setFrom(from);</span><br><span class="line">        helper.setTo(to);</span><br><span class="line">        helper.setSubject(subject);</span><br><span class="line">        helper.setText(content, <span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line">        mailSender.send(message);</span><br><span class="line">        logger.info(<span class="string">&quot;html邮件发送成功&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (MessagingException e) &#123;</span><br><span class="line">        logger.error(<span class="string">&quot;发送html邮件时发生异常！&quot;</span>, e);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>富文本邮件抄送使用：helper.addCc(cc) 来实现。</p>
+</blockquote>
+<p>和文本邮件发送代码对比，富文本邮件发送使用 MimeMessageHelper 类，该类支持发送复杂邮件模板，支持文本、附件、HTML、图片等，接下来会一一使用到。</p>
+<p>在测试类中构建 HTML 内容，测试发送：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testHtmlMail</span><span class="params">()</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">    String content=<span class="string">&quot;&lt;html&gt;\n&quot;</span> +</span><br><span class="line">            <span class="string">&quot;&lt;body&gt;\n&quot;</span> +</span><br><span class="line">            <span class="string">&quot;    &lt;h3&gt;hello world ! 这是一封html邮件!&lt;/h3&gt;\n&quot;</span> +</span><br><span class="line">            <span class="string">&quot;&lt;/body&gt;\n&quot;</span> +</span><br><span class="line">            <span class="string">&quot;&lt;/html&gt;&quot;</span>;</span><br><span class="line">    mailService.sendHtmlMail(<span class="string">&quot;ityouknow@126.com&quot;</span>,<span class="string">&quot;这是一封HTML邮件&quot;</span>,content);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>由此发现发送 HTML 邮件，是需要拼接一段 HTML 的 String 字符串交给 MimeMessageHelper 来处理，最后由邮件客户端负责渲染显示内容。</p>
+<h4 id="发送带附件的邮件"><a href="#发送带附件的邮件" class="headerlink" title="发送带附件的邮件"></a>发送带附件的邮件</h4><p>在 MailService 添加 sendAttachmentsMail 方法，发送带附件的邮件主要是使用 FileSystemResource 对文件进行封装，再添加到 MimeMessageHelper 中。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sendAttachmentsMail</span><span class="params">(String to, String subject, String content, String filePath)</span>&#123;</span><br><span class="line">    <span class="type">MimeMessage</span> <span class="variable">message</span> <span class="operator">=</span> mailSender.createMimeMessage();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="type">MimeMessageHelper</span> <span class="variable">helper</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">MimeMessageHelper</span>(message, <span class="literal">true</span>);</span><br><span class="line">        helper.setFrom(from);</span><br><span class="line">        helper.setTo(to);</span><br><span class="line">        helper.setSubject(subject);</span><br><span class="line">        helper.setText(content, <span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line">        <span class="type">FileSystemResource</span> <span class="variable">file</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileSystemResource</span>(<span class="keyword">new</span> <span class="title class_">File</span>(filePath));</span><br><span class="line">        <span class="type">String</span> <span class="variable">fileName</span> <span class="operator">=</span> file.getFilename();</span><br><span class="line">        helper.addAttachment(fileName, file);</span><br><span class="line">        <span class="comment">//helper.addAttachment(&quot;test&quot;+fileName, file);</span></span><br><span class="line"></span><br><span class="line">        mailSender.send(message);</span><br><span class="line">        logger.info(<span class="string">&quot;带附件的邮件已经发送。&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (MessagingException e) &#123;</span><br><span class="line">        logger.error(<span class="string">&quot;发送带附件的邮件时发生异常！&quot;</span>, e);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>添加多个附件可以使用多条 helper.addAttachment(fileName, file)。</p>
+</blockquote>
+<p>在测试类中添加测试方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sendAttachmentsMail</span><span class="params">()</span> &#123;</span><br><span class="line">    String filePath=<span class="string">&quot;e:\\temp\\fastdfs-client-java-5.0.0.jar&quot;</span>;</span><br><span class="line">    mailService.sendAttachmentsMail(<span class="string">&quot;ityouknow@126.com&quot;</span>, <span class="string">&quot;主题：带附件的邮件&quot;</span>, <span class="string">&quot;有附件，请查收！&quot;</span>, filePath);</span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>附件可以是图片、压缩包、Word 等任何文件，但是邮件厂商一般都会对附件大小有限制，太大的附件建议使用网盘上传后，在邮件中给出链接。</p>
+</blockquote>
+<h4 id="发送带静态资源的邮件"><a href="#发送带静态资源的邮件" class="headerlink" title="发送带静态资源的邮件"></a>发送带静态资源的邮件</h4><p>邮件中的静态资源一般指图片，在 MailService 中添加 sendInlineResourceMail 方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sendInlineResourceMail</span><span class="params">(String to, String subject, String content, String rscPath, String rscId)</span>&#123;</span><br><span class="line">    <span class="type">MimeMessage</span> <span class="variable">message</span> <span class="operator">=</span> mailSender.createMimeMessage();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="type">MimeMessageHelper</span> <span class="variable">helper</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">MimeMessageHelper</span>(message, <span class="literal">true</span>);</span><br><span class="line">        helper.setFrom(from);</span><br><span class="line">        helper.setTo(to);</span><br><span class="line">        helper.setSubject(subject);</span><br><span class="line">        helper.setText(content, <span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line">        <span class="type">FileSystemResource</span> <span class="variable">res</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileSystemResource</span>(<span class="keyword">new</span> <span class="title class_">File</span>(rscPath));</span><br><span class="line">        helper.addInline(rscId, res);</span><br><span class="line"></span><br><span class="line">        mailSender.send(message);</span><br><span class="line">        logger.info(<span class="string">&quot;嵌入静态资源的邮件已经发送。&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (MessagingException e) &#123;</span><br><span class="line">        logger.error(<span class="string">&quot;发送嵌入静态资源的邮件时发生异常！&quot;</span>, e);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>在测试类中添加测试方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sendInlineResourceMail</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">String</span> <span class="variable">rscId</span> <span class="operator">=</span> <span class="string">&quot;neo006&quot;</span>;</span><br><span class="line">    String content=<span class="string">&quot;&lt;html&gt;&lt;body&gt;这是有图片的邮件：&lt;img src=\&#x27;cid:&quot;</span> + rscId + <span class="string">&quot;\&#x27; &gt;&lt;/body&gt;&lt;/html&gt;&quot;</span>;</span><br><span class="line">    <span class="type">String</span> <span class="variable">imgPath</span> <span class="operator">=</span> <span class="string">&quot;e:\\temp\\weixin.jpg&quot;</span>;</span><br><span class="line"></span><br><span class="line">    mailService.sendInlineResourceMail(<span class="string">&quot;ityouknow@126.com&quot;</span>, <span class="string">&quot;主题：这是有图片的邮件&quot;</span>, content, imgPath, rscId);</span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>添加多个图片可以使用多条 <code>&lt;img src=&#39;cid:&quot; + rscId + &quot;&#39; &gt;</code> 和 helper.addInline(rscId, res) 来实现。</p>
+</blockquote>
+<h3 id="邮件系统"><a href="#邮件系统" class="headerlink" title="邮件系统"></a>邮件系统</h3><p>如果只是想在系统中做一个邮件工具类的话，以上的内容基本就可以满足要求了。若要做成一个邮件系统的话还需要考虑以下几方面：</p>
+<ul>
+<li>对外提供发送邮件的服务接口</li>
+<li>固定格式邮件是否考虑使用模板</li>
+<li>发送邮件时出现网络错误，是否考虑适当的重试机制</li>
+<li>邮件系统是否考虑异步化，提升服务响应时间</li>
+<li>是否开发邮件后台管理系统、开发出对应的管理软件、通过页面发送邮件、统计发送邮件成功率等数据。</li>
+<li>常见异常处理措施</li>
+</ul>
+<h4 id="对外提供接口"><a href="#对外提供接口" class="headerlink" title="对外提供接口"></a>对外提供接口</h4><p>作为一个独立的邮件系统，需要对外提供接口调用，我们以简单文本邮件为例做个演示。</p>
+<p>首先需要定义个实例返回对象：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MailResult</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> String rspCode;</span><br><span class="line">    <span class="keyword">private</span> String rspMsg;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">MailResult</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.rspCode = <span class="string">&quot;00&quot;</span>;</span><br><span class="line">        <span class="built_in">this</span>.rspMsg = <span class="string">&quot;发送成功&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//省略 setter/getter</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>默认成功的返回码为：00，返回消息为：发送成功。</p>
+<p>创建一个 MailController 类对外提供 HTTP 请求接口。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MailController</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="type">Logger</span> <span class="variable">logger</span> <span class="operator">=</span> LoggerFactory.getLogger(<span class="built_in">this</span>.getClass());</span><br><span class="line">    <span class="meta">@Resource</span></span><br><span class="line">    <span class="keyword">private</span> MailService mailService;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/sendSimpleMail&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> MailResult <span class="title function_">sendSimpleMail</span><span class="params">(String to, String subject, String content)</span> &#123;</span><br><span class="line">        MailResult result=<span class="keyword">new</span> <span class="title class_">MailResult</span>();</span><br><span class="line">        <span class="keyword">if</span>(StringUtils.isEmpty(to) || !to.contains(<span class="string">&quot;@&quot;</span>))&#123;</span><br><span class="line">            result.setRspCode(<span class="string">&quot;01&quot;</span>);</span><br><span class="line">            result.setRspCode(<span class="string">&quot;手机人邮件格式不正确&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(StringUtils.isEmpty(content) )&#123;</span><br><span class="line">            result.setRspCode(<span class="string">&quot;03&quot;</span>);</span><br><span class="line">            result.setRspCode(<span class="string">&quot;邮件正文不能为空&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">       <span class="keyword">try</span> &#123;</span><br><span class="line">            mailService.sendSimpleMail(to,subject,content);</span><br><span class="line">            logger.info(<span class="string">&quot;简单邮件已经发送。&quot;</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            result.setRspCode(<span class="string">&quot;04&quot;</span>);</span><br><span class="line">            result.setRspCode(<span class="string">&quot;邮件发送出现异常&quot;</span>);</span><br><span class="line">            logger.error(<span class="string">&quot;sendSimpleMail Exception &quot;</span>, e);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>当外部请求过来时首先进行参数校验，如果参数有误返回请求；发送邮件出现异常时返回错误，正常情况下返回 00；注意在 Service 层如果对异常信息进行了捕获的话，需要将异常信息抛到上层。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    mailSender.send(message);</span><br><span class="line">    logger.info(<span class="string">&quot;简单邮件已经发送。&quot;</span>);</span><br><span class="line">&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">    logger.error(<span class="string">&quot;发送简单邮件时发生异常！&quot;</span>, e);</span><br><span class="line">    <span class="keyword">throw</span> e;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>类似上述代码。</p>
+<p>按照这个思路也可以提供发送带图片、带附件的邮件，同时也可以封装发送多人邮件、群发邮件等复杂情况。</p>
+<h4 id="邮件模板"><a href="#邮件模板" class="headerlink" title="邮件模板"></a>邮件模板</h4><p>通常我们使用邮件发送服务的时候，都会有一些固定的场景，如重置密码、注册确认等，给每个用户发送的内容可能只有小部分是变化的。因此，很多时候我们会使用模板引擎来为各类邮件设置成模板，这样只需要在发送时去替换变化部分的参数即可。</p>
+<p>我们会经常收到这样的邮件：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">尊敬的 neo 用户：</span><br><span class="line"></span><br><span class="line">      恭喜您注册成为 xxx 网的用户，同时感谢您对 xxx 的关注与支持并欢迎您使用 xxx 的产品与服务。</span><br><span class="line">      ……</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>邮件正文只有 neo 这个用户名在变化，邮件其他内容均不变，如果每次发送邮件都需拼接 HTML 代码，程序不够优雅，并且每次邮件正文有变化都需修改代码非常不方便。因此对于这类邮件，建议做成邮件模板来处理，模板的本质很简单，就是在模板中替换变化的参数，转换为 HTML 字符串即可，这里以 Thymeleaf 为例来演示。</p>
+<p>Thymeleaf 是 Spring 官方推荐的前端模板引擎，类似 Velocity、FreeMarker 等模板引擎，相较与其他的模板引擎，Thymeleaf 具有开箱即用的特性。它提供标准和 Spring 标准两种方言，可以直接套用模板实现 JSTL、OGNL 表达式效果，避免每天套模板、改 JSTL、改标签的困扰。Thymeleaf 在有没有网络的环境下皆可运行，即它可以让美工在浏览器中查看页面的静态效果，也可以让程序员在服务器中查看带数据的动态页面效果。</p>
+<p>下面来演示使用 Thymeleaf 制作邮件模板。</p>
+<p><strong>（1）添加依赖包</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-thymeleaf<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p><strong>（2）在 resorces&#x2F;templates 下创建 emailTemplate.html</strong></p>
+<p>emailTemplate.html 文件内容即为邮件的正文内容模板。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;zh&quot;</span> <span class="attr">xmlns:th</span>=<span class="string">&quot;http://www.thymeleaf.org&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span>邮件模板<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        您好，感谢您的注册，这是一封验证邮件，请点击下面的链接完成注册，感谢您的支持<span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#&quot;</span> <span class="attr">th:href</span>=<span class="string">&quot;@&#123;http://www.ityouknow.com/register/&#123;id&#125;(id=$&#123;id&#125;) &#125;&quot;</span>&gt;</span>激活账号<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>我们发现上述的模板中只有 id 是一个动态的值，在发送过程中会根据传入的 id 值来替换链接中的 {id}。</p>
+<p><strong>（3）解析模板并发送</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sendTemplateMail</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="comment">//创建邮件正文</span></span><br><span class="line">    <span class="type">Context</span> <span class="variable">context</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Context</span>();</span><br><span class="line">    <span class="comment">//设置模板需要替换的参数</span></span><br><span class="line">    context.setVariable(<span class="string">&quot;id&quot;</span>, <span class="string">&quot;006&quot;</span>);</span><br><span class="line">    <span class="comment">//使用 templateEngine 替换掉动态参数生产出最后的 HTML 内容</span></span><br><span class="line">    <span class="type">String</span> <span class="variable">emailContent</span> <span class="operator">=</span> templateEngine.process(<span class="string">&quot;emailTemplate&quot;</span>, context);</span><br><span class="line">    <span class="comment">//最后调用 sendHtmlMail 发送邮件</span></span><br><span class="line">    mailService.sendHtmlMail(<span class="string">&quot;ityouknow@126.com&quot;</span>,<span class="string">&quot;主题：这是模板邮件&quot;</span>,emailContent);</span><br><span class="line">&#125;</span><br><span class="line">复制</span><br></pre></td></tr></table></figure>
+
+<p>我们发现最后调用的还是 sendHtmlMail 的方法，邮件模板的作用只是处理 HTML 生成的部分，通过 Thymeleaf 模板引擎解析固定的模板，再根据参数来动态替换其中的变量，最后通过前面的 HTML 发送的方法发送邮件。</p>
+<h4 id="发送失败"><a href="#发送失败" class="headerlink" title="发送失败"></a>发送失败</h4><p>因为各种原因，总会有邮件发送失败的情况，如邮件发送过于频繁、网络异常等。在出现这种情况的时候，我们一般会考虑重新重试发送邮件，会分为以下几个步骤来实现：</p>
+<ul>
+<li>接收到发送邮件请求，首先记录请求并且入库；</li>
+<li>调用邮件发送接口发送邮件，并且将发送结果记录入库；</li>
+<li>启动定时系统扫描时间段内，未发送成功并且重试次数小于 3 次的邮件，进行再次发送；</li>
+<li>重新发送邮件的时间，建议以 2 的次方间隔时间，如 2、4、8、16…。</li>
+</ul>
+<p>下面是一些常见的错误返回码。</p>
+<ul>
+<li>421 HL:ICC 该 IP 同时并发连接数过大，超过了网易的限制，被临时禁止连接。</li>
+<li>451 Requested mail action not taken: too much fail authentication 登录失败次数过多，被临时禁止登录，请检查密码与帐号验证设置。</li>
+<li>553 authentication is required，密码配置不正确。</li>
+<li>554 DT:SPM 发送的邮件内容包含了未被许可的信息，或被系统识别为垃圾邮件，请检查是否有用户发送病毒或者垃圾邮件。</li>
+<li>550 Invalid User 请求的用户不存在。</li>
+<li>554 MI:STC 发件人当天内累计邮件数量超过限制，当天不再接收该发件人的投信。</li>
+</ul>
+<p><strong>如果使用一个邮箱频繁发送相同内容邮件，也会被认定为垃圾邮件，报 554 DT:SPM 错误。</strong></p>
+<p><strong>异步发送</strong></p>
+<p>很多时候邮件发送并不是主业务必须关注的结果，比如通知类、提醒类的业务可以允许延时或者失败，这个时候可以采用异步的方式来发送邮件，加快主交易执行速度。在实际项目中可以采用消息中间件 MQ 发送邮件，具体做法是创建一个邮件发送的消息队列，在业务中有需要用到邮件发送功能时，给对应消息队列按照规定参数发送一条消息，邮件系统监听此队列，当有消息过来时，处理邮件发送的逻辑。</p>
+<p><strong>管理后台</strong></p>
+<p>考虑做一个完善的邮件系统，可以设计一个独立的邮件管理后台，不但可以让系统之间调用时使用，也可以提供图形化界面让公司的运营、市场部的同事来发送邮件、查询邮件的发送进度、统计邮件发送成功率；也可以设置一些代码钩子，统计用户点击固定链接次数，方便公司营销人员监控邮件营销转化率。</p>
+<p>一个非常完善的邮件系统需要考虑的因素非常多，比如是否设置白名单、黑名单来做邮件接收人的过滤机制，是否给用户提供邮件退订的接口等。因此，在初期邮件发送的基本功能完成之后，再结合公司业务，快速迭代逐步完善邮件系统，是一个推荐的做法。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>使用 Spring Boot 集成发送邮件的功能非常简单，只需要简单编码就可以实现发送普通文本邮件、带附件邮件、HTML 格式邮件、带图片邮件等。如果需要做成一个邮件系统还需要考虑很多因素，如邮箱发送失败重试机制、防止邮件被识别为垃圾邮件、固定时间内发送邮件的限制等。在微服务架构中，常常将一些基础功能下沉下来，作为独立的服务来使用，邮件系统作为平台的基础功能，特别适合作为独立的微服务来支持整个系统。</p>
+
+        </div>
+        
+<blockquote class="copyright">
+    <p><strong>Link to this article : </strong><a class="permalink" href="http://yoursite.com/2020/10/01/Java-SpringBoot-%E9%82%AE%E4%BB%B6%E7%B3%BB%E7%BB%9F/">http://yoursite.com/2020/10/01/Java-SpringBoot-邮件系统/</a></p>
+    <p><strong>This article is available under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)</a> License</strong></p>
+</blockquote>
+
+
+    </article>
+    
+    <section id="comments">
+        
+    </section>
+
+
+    
+
+</main>
+
+
+<aside style="" id="sidebar" class="aside aside-fixture">
+    <div class="toc-sidebar">
+        <nav id="toc" class="article-toc">
+            <h3 class="toc-title">Catalogue</h3>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-Spring-Boot-%E5%BC%80%E5%8F%91%E9%82%AE%E4%BB%B6%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.</span> <span class="toc-text">使用 Spring Boot 开发邮件系统</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%82%AE%E4%BB%B6%E5%8F%91%E9%80%81%E6%B5%81%E7%A8%8B"><span class="toc-number">1.1.</span> <span class="toc-text">邮件发送流程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#pom-%E5%8C%85%E9%85%8D%E7%BD%AE"><span class="toc-number">1.1.1.</span> <span class="toc-text">pom 包配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">1.1.2.</span> <span class="toc-text">配置文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%87%E6%9C%AC%E9%82%AE%E4%BB%B6%E5%8F%91%E9%80%81"><span class="toc-number">1.1.3.</span> <span class="toc-text">文本邮件发送</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%96%E5%86%99-test-%E7%B1%BB%E8%BF%9B%E8%A1%8C%E6%B5%8B%E8%AF%95"><span class="toc-number">1.1.4.</span> <span class="toc-text">编写 test 类进行测试</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%8C%E6%96%87%E6%9C%AC%E9%82%AE%E4%BB%B6"><span class="toc-number">1.2.</span> <span class="toc-text">富文本邮件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%91%E9%80%81-HTML-%E6%A0%BC%E5%BC%8F%E9%82%AE%E4%BB%B6"><span class="toc-number">1.2.1.</span> <span class="toc-text">发送 HTML 格式邮件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%91%E9%80%81%E5%B8%A6%E9%99%84%E4%BB%B6%E7%9A%84%E9%82%AE%E4%BB%B6"><span class="toc-number">1.2.2.</span> <span class="toc-text">发送带附件的邮件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%91%E9%80%81%E5%B8%A6%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%E7%9A%84%E9%82%AE%E4%BB%B6"><span class="toc-number">1.2.3.</span> <span class="toc-text">发送带静态资源的邮件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%82%AE%E4%BB%B6%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.3.</span> <span class="toc-text">邮件系统</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%B9%E5%A4%96%E6%8F%90%E4%BE%9B%E6%8E%A5%E5%8F%A3"><span class="toc-number">1.3.1.</span> <span class="toc-text">对外提供接口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%82%AE%E4%BB%B6%E6%A8%A1%E6%9D%BF"><span class="toc-number">1.3.2.</span> <span class="toc-text">邮件模板</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%91%E9%80%81%E5%A4%B1%E8%B4%A5"><span class="toc-number">1.3.3.</span> <span class="toc-text">发送失败</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">1.4.</span> <span class="toc-text">总结</span></a></li></ol></li></ol>
+        </nav>
+    </div>
+</aside>
+
+
+
+
+
+        </section>
+        <footer class="hidden lg:block fixed bottom-0 left-0 sm:w-1/12 lg:w-1/6 bg-gray-100 z-40">
+    
+    <div class="footer-social-links">
+        
+            <a target="_blank" rel="noopener" href="https://github.com/">
+                <i class="iconfont icon-github"></i>
+            </a>
+        
+            <a target="_blank" rel="noopener" href="https://t.me/">
+                <i class="iconfont icon-telegram"></i>
+            </a>
+        
+            <a target="_blank" rel="noopener" href="https://twitter.com/example">
+                <i class="iconfont icon-twitter"></i>
+            </a>
+        
+            <a href="/atom.xml">
+                <i class="iconfont icon-rss"></i>
+            </a>
+        
+    </div>
+    
+    
+</footer>
+
+        <div id="mask" class="hidden mask fixed inset-0 bg-gray-900 opacity-75 z-40"></div>
+        <div id="search-view-container" class="hidden shadow-xl"></div>
+        
+<script src="/js/dom-event.min.js"></script>
+
+
+
+<script src="/js/local-search.min.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/js/lightgallery.min.js"></script>
+    
+<script src="/js/light-gallery.min.js"></script>
+
+
+
+
+
+
+    </body>
+</html>
